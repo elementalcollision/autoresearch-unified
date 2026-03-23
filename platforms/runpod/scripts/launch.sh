@@ -307,12 +307,38 @@ else
     echo "  (Ctrl+C to stop gracefully)"
     echo
 
+    # ── Set up results sync (RAS: data durability) ──────────
+    SYNC_SCRIPT="$WORKSPACE/platforms/runpod/scripts/sync_results.sh"
+    if [ -f "$SYNC_SCRIPT" ]; then
+        chmod +x "$SYNC_SCRIPT"
+        export AUTORESEARCH_WORKSPACE="$WORKSPACE"
+
+        # Create experiment branch and push to GitHub
+        BRANCH="autoresearch/${TAG}-$(echo "$GPU_NAME" | tr ' ' '-' | tr '[:upper:]' '[:lower:]')"
+        git checkout -b "$BRANCH" 2>/dev/null || git checkout "$BRANCH" 2>/dev/null || true
+        git push -u origin "$BRANCH" 2>/dev/null || warn "Could not push to origin (set up git credentials for sync)"
+
+        # Install cron job — sync every 10 minutes
+        service cron start 2>/dev/null || true
+        CRON_LINE="*/10 * * * * AUTORESEARCH_WORKSPACE=$WORKSPACE $SYNC_SCRIPT >> $WORKSPACE/sync.log 2>&1"
+        ( crontab -l 2>/dev/null | grep -v sync_results; echo "$CRON_LINE" ) | crontab -
+        success "Results sync: every 10 min → volume + GitHub ($BRANCH)"
+
+        # Run initial sync
+        bash "$SYNC_SCRIPT" 2>/dev/null || true
+    else
+        warn "Sync script not found — results will only persist on container disk"
+    fi
+
     python -m tui.headless \
         --tag "$TAG" \
         --max "$MAX_EXPERIMENTS" \
         --results "results/$DATASET/results.tsv" \
         --dataset "$DATASET" \
         2>&1 | tee /tmp/agent_run.log
+
+    # Final sync after agent completes
+    [ -f "$SYNC_SCRIPT" ] && bash "$SYNC_SCRIPT" 2>/dev/null || true
 
     echo
     echo "  Agent run complete."
