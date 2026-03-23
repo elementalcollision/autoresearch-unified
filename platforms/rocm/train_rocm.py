@@ -555,16 +555,17 @@ if os.environ.get("AUTORESEARCH_ORCHESTRATOR") != "1":
                     except ValueError:
                         pass
 
-    header = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\n"
+    header = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\n"
     if not os.path.exists(results_tsv):
-        with open(results_tsv, "w") as f:
-            f.write(header)
+        from tui.resilience import atomic_write
+        atomic_write(results_tsv, header)
 
     status = "baseline" if exp_num == 0 else "keep"
-    with open(results_tsv, "a") as f:
-        f.write(
-            f"exp{exp_num}\tstandalone run\t{val_bpb:.6f}\t{peak_vram_mb / 1024:.1f}\t"
-            f"{tok_sec}\t{steady_state_mfu:.1f}\t{step}\t{status}\t"
-            f"depth={DEPTH}, {_hw_info['chip_name']}\n"
-        )
+    row = (
+        f"exp{exp_num}\tstandalone run\t{val_bpb:.6f}\t{peak_vram_mb / 1024:.1f}\t"
+        f"{tok_sec}\t{steady_state_mfu:.1f}\t{step}\t{status}\t"
+        f"depth={DEPTH}\t{_hw_info['chip_name']}\n"
+    )
+    from tui.resilience import atomic_append
+    atomic_append(results_tsv, row)
     print(f"results_tsv:      {results_tsv}")
