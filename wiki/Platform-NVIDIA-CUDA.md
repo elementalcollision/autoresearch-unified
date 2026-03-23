@@ -104,7 +104,7 @@ Across all three GPUs and all completed datasets, the agent converges to the **S
 
 ```python
 from datasets import load_dataset
-ds = load_dataset("elementalcollision/autoresearch-experiments")
+ds = load_dataset("davegraham/autoresearch-experiments")
 df = ds["train"].to_pandas()
 cuda = df[df["platform"] == "nvidia_cuda"]
 ```

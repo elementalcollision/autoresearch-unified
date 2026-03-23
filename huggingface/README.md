@@ -42,10 +42,10 @@ Experiments span **3 hardware platforms**, **5 GPU models**, and **7 text datase
 from datasets import load_dataset
 
 # Load all experiments
-ds = load_dataset("elementalcollision/autoresearch-experiments")
+ds = load_dataset("davegraham/autoresearch-experiments")
 
 # Load hardware reference table
-hw = load_dataset("elementalcollision/autoresearch-experiments", "hardware")
+hw = load_dataset("davegraham/autoresearch-experiments", "hardware")
 
 # Filter to a specific platform
 import pandas as pd
@@ -153,7 +153,7 @@ This dataset is released under [CC-BY-4.0](https://creativecommons.org/licenses/
   title={Autoresearch Cross-Platform Experiments},
   author={elementalcollision},
   year={2026},
-  url={https://huggingface.co/datasets/elementalcollision/autoresearch-experiments},
+  url={https://huggingface.co/datasets/davegraham/autoresearch-experiments},
   license={CC-BY-4.0}
 }
 ```

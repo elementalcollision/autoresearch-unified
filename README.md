@@ -15,12 +15,12 @@ This repo is the **single source of truth** for all Autoresearch experiment data
 
 ## Data Access
 
-**HuggingFace Dataset**: [elementalcollision/autoresearch-experiments](https://huggingface.co/datasets/elementalcollision/autoresearch-experiments)
+**HuggingFace Dataset**: [davegraham/autoresearch-experiments](https://huggingface.co/datasets/davegraham/autoresearch-experiments)
 
 ```python
 from datasets import load_dataset
 
-ds = load_dataset("elementalcollision/autoresearch-experiments")
+ds = load_dataset("davegraham/autoresearch-experiments")
 df = ds["train"].to_pandas()
 ```
 

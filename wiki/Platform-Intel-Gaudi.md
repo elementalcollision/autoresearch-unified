@@ -90,7 +90,7 @@ No experiment data is available yet. Once runs begin, data will appear under `pl
 
 ```python
 from datasets import load_dataset
-ds = load_dataset("elementalcollision/autoresearch-experiments")
+ds = load_dataset("davegraham/autoresearch-experiments")
 df = ds["train"].to_pandas()
 gaudi = df[df["platform"] == "intel_gaudi"]
 ```

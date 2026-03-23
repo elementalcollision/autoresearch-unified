@@ -96,7 +96,7 @@ See [Cross-Platform Overview](Cross-Platform-Overview) for the full comparison.
 
 ```python
 from datasets import load_dataset
-ds = load_dataset("elementalcollision/autoresearch-experiments")
+ds = load_dataset("davegraham/autoresearch-experiments")
 df = ds["train"].to_pandas()
 rocm = df[df["platform"] == "amd_rocm"]
 ```

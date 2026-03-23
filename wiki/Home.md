@@ -4,7 +4,7 @@ Consolidated documentation for the Autoresearch cross-platform hyperparameter op
 
 ## Quick Links
 
-- **[HuggingFace Dataset](https://huggingface.co/datasets/elementalcollision/autoresearch-experiments)** — All experiment data (Croissant-compliant)
+- **[HuggingFace Dataset](https://huggingface.co/datasets/davegraham/autoresearch-experiments)** — All experiment data (Croissant-compliant)
 - **[Cross-Platform Overview](Cross-Platform-Overview)** — Key findings and normalized comparisons
 - **[Data Access Guide](Data-Access)** — How to load and query the dataset
 
@@ -46,4 +46,4 @@ Consolidated documentation for the Autoresearch cross-platform hyperparameter op
 
 ## About
 
-This wiki consolidates documentation from 4 platform-specific wikis into a single, topic-organized resource. The structured experiment data lives on [HuggingFace](https://huggingface.co/datasets/elementalcollision/autoresearch-experiments) as a Croissant-compliant dataset. See [Data Access](Data-Access) for usage instructions.
+This wiki consolidates documentation from 4 platform-specific wikis into a single, topic-organized resource. The structured experiment data lives on [HuggingFace](https://huggingface.co/datasets/davegraham/autoresearch-experiments) as a Croissant-compliant dataset. See [Data Access](Data-Access) for usage instructions.

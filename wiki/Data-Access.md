@@ -4,7 +4,7 @@
 
 All experiment data is available as a Croissant-compliant dataset on HuggingFace:
 
-**[elementalcollision/autoresearch-experiments](https://huggingface.co/datasets/elementalcollision/autoresearch-experiments)**
+**[davegraham/autoresearch-experiments](https://huggingface.co/datasets/davegraham/autoresearch-experiments)**
 
 ### Loading in Python
 
@@ -12,11 +12,11 @@ All experiment data is available as a Croissant-compliant dataset on HuggingFace
 from datasets import load_dataset
 
 # Load all experiments
-ds = load_dataset("elementalcollision/autoresearch-experiments")
+ds = load_dataset("davegraham/autoresearch-experiments")
 df = ds["train"].to_pandas()
 
 # Load hardware reference table
-hw = load_dataset("elementalcollision/autoresearch-experiments", "hardware")
+hw = load_dataset("davegraham/autoresearch-experiments", "hardware")
 hw_df = hw["train"].to_pandas()
 ```
 
@@ -47,7 +47,7 @@ merged["cost_per_bpb"] = merged["cost_per_hour"] / merged["val_bpb"]
 import pandas as pd
 
 # Without the datasets library
-df = pd.read_parquet("hf://datasets/elementalcollision/autoresearch-experiments/data/experiments.parquet")
+df = pd.read_parquet("hf://datasets/davegraham/autoresearch-experiments/data/experiments.parquet")
 ```
 
 ## Croissant Metadata
@@ -55,7 +55,7 @@ df = pd.read_parquet("hf://datasets/elementalcollision/autoresearch-experiments/
 This dataset conforms to [MLCommons Croissant v1.0](https://mlcommons.org/croissant/). The metadata is available at:
 
 ```
-https://huggingface.co/api/datasets/elementalcollision/autoresearch-experiments/croissant
+https://huggingface.co/api/datasets/davegraham/autoresearch-experiments/croissant
 ```
 
 ### Validation
@@ -70,7 +70,7 @@ mlcroissant validate --jsonld croissant.json
 ```python
 import mlcroissant as mlc
 
-dataset = mlc.Dataset(jsonld="https://huggingface.co/api/datasets/elementalcollision/autoresearch-experiments/croissant")
+dataset = mlc.Dataset(jsonld="https://huggingface.co/api/datasets/davegraham/autoresearch-experiments/croissant")
 records = dataset.records("experiments")
 for record in records:
     print(record)

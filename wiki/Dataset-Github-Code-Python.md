@@ -11,7 +11,7 @@
 
 ```python
 from datasets import load_dataset
-ds = load_dataset("elementalcollision/autoresearch-experiments")
+ds = load_dataset("davegraham/autoresearch-experiments")
 df = ds["train"].to_pandas()
 subset = df[(df["dataset"] == "github-code-python") & (df["val_bpb"] > 0)]
 ```

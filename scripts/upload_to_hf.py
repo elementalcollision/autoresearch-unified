@@ -18,7 +18,7 @@ from pathlib import Path
 from huggingface_hub import HfApi, create_repo
 
 
-DEFAULT_REPO_ID = "elementalcollision/autoresearch-experiments"
+DEFAULT_REPO_ID = "davegraham/autoresearch-experiments"
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 

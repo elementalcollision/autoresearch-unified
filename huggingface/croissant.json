@@ -9,7 +9,7 @@
   "name": "autoresearch-experiments",
   "description": "Cross-platform hyperparameter optimization experiments from autonomous LLM-driven ML research. An LLM agent (Claude Sonnet) autonomously proposes hyperparameter modifications, trains a small language model for 5 minutes, evaluates validation bits-per-byte (val_bpb), and iterates. Experiments span Apple Metal (M5 Max), NVIDIA CUDA (RTX 4000 Ada, A100 40GB, RTX Pro 6000 Blackwell), and AMD ROCm (MI300X) hardware platforms across 7 text datasets.",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "url": "https://huggingface.co/datasets/elementalcollision/autoresearch-experiments",
+  "url": "https://huggingface.co/datasets/davegraham/autoresearch-experiments",
   "conformsTo": "http://mlcommons.org/croissant/1.0",
   "creator": {
     "@type": "sc:Organization",
