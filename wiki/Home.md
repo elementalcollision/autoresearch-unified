@@ -39,10 +39,11 @@ Consolidated documentation for the Autoresearch cross-platform hyperparameter op
 | SlimPajama | 4 GPUs | 1.015 | MI300X | [Dataset: SlimPajama](Dataset-SlimPajama) |
 | GitHub-Code-Python | 2 GPUs | 0.549 | A100 40GB | [Dataset: GitHub-Code-Python](Dataset-GitHub-Code-Python) |
 
-## Tools
+## Tools & Testing
 
 - [TUI Dashboard](Tools-TUI-Dashboard)
 - [Remote Orchestration](Tools-Remote-Orchestration)
+- [Sanity Testing](Sanity-Testing) — Integration test results for the unified codebase
 
 ## About
 
