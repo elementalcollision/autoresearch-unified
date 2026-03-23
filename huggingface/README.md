@@ -132,7 +132,7 @@ This is based on [Karpathy's autoresearch framework](https://github.com/karpathy
 
 ## Croissant Compliance
 
-This dataset conforms to the [MLCommons Croissant](https://mlcommons.org/croissant/) metadata standard (v1.0). The `croissant.json` file provides machine-readable dataset descriptions compatible with Google Dataset Search, HuggingFace, Kaggle, and other Croissant-aware platforms.
+This dataset conforms to the [MLCommons Croissant](https://mlcommons.org/croissant/) metadata standard (v1.1). The `croissant.json` file provides machine-readable dataset descriptions compatible with Google Dataset Search, HuggingFace, Kaggle, and other Croissant-aware platforms.
 
 ## Key Findings
 
