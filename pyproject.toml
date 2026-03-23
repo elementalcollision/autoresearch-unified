@@ -49,6 +49,11 @@ all-rocm = [
 all-metal = [
     "autoresearch[metal,agent,analysis]",
 ]
+runpod = [
+    "autoresearch[all-cuda]",
+    "runpod>=1.7.0",
+    "ipywidgets>=8.0.0",
+]
 all = [
     "torch>=2.6.0",
     "textual>=3.0.0",
@@ -66,4 +71,5 @@ packages = [
     "platforms.cuda",
     "platforms.rocm",
     "platforms.gaudi",
+    "platforms.runpod",
 ]
