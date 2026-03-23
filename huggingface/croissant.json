@@ -1,0 +1,309 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "cr": "http://mlcommons.org/croissant/",
+    "sc": "https://schema.org/",
+    "dct": "http://purl.org/dc/terms/"
+  },
+  "@type": "sc:Dataset",
+  "name": "autoresearch-experiments",
+  "description": "Cross-platform hyperparameter optimization experiments from autonomous LLM-driven ML research. An LLM agent (Claude Sonnet) autonomously proposes hyperparameter modifications, trains a small language model for 5 minutes, evaluates validation bits-per-byte (val_bpb), and iterates. Experiments span Apple Metal (M5 Max), NVIDIA CUDA (RTX 4000 Ada, A100 40GB, RTX Pro 6000 Blackwell), and AMD ROCm (MI300X) hardware platforms across 7 text datasets.",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "url": "https://huggingface.co/datasets/elementalcollision/autoresearch-experiments",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "creator": {
+    "@type": "sc:Organization",
+    "name": "elementalcollision",
+    "url": "https://github.com/elementalcollision"
+  },
+  "datePublished": "2026-03-23",
+  "keywords": [
+    "hyperparameter-optimization",
+    "autonomous-research",
+    "LLM-agent",
+    "GPU-benchmarks",
+    "cross-platform",
+    "Apple-Metal",
+    "NVIDIA-CUDA",
+    "AMD-ROCm",
+    "language-model-training",
+    "val_bpb"
+  ],
+  "version": "1.0.0",
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "experiments-parquet",
+      "name": "experiments.parquet",
+      "description": "Unified experiment results across all hardware platforms, GPUs, and datasets",
+      "contentUrl": "data/experiments.parquet",
+      "encodingFormat": "application/x-parquet"
+    },
+    {
+      "@type": "cr:FileObject",
+      "@id": "hardware-parquet",
+      "name": "hardware.parquet",
+      "description": "Hardware specifications reference table for all GPUs tested",
+      "contentUrl": "data/hardware.parquet",
+      "encodingFormat": "application/x-parquet"
+    }
+  ],
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "experiments",
+      "name": "experiments",
+      "description": "Individual hyperparameter experiment results. Each row is one 5-minute training run with a specific hyperparameter configuration proposed by an LLM agent.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "name": "experiment_id",
+          "description": "Globally unique identifier: {platform}_{gpu}_{dataset}_{run_id}_{exp}",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "experiment_id" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "platform",
+          "description": "Hardware platform: apple_metal, nvidia_cuda, or amd_rocm",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "platform" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "gpu_name",
+          "description": "GPU model name (e.g., M5 Max, RTX 4000 Ada, A100 40GB, MI300X)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "gpu_name" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "gpu_provider",
+          "description": "Cloud provider or local: digitalocean, vultr, runpod, local",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "gpu_provider" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "dataset",
+          "description": "Training dataset name (e.g., climbmix, fineweb-edu, cosmopedia-v2)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "dataset" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "agent_model",
+          "description": "LLM agent version used to propose hyperparameters: sonnet-4.0 or sonnet-4.6",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "agent_model" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "run_id",
+          "description": "Identifier for the experiment run within a platform/GPU combination",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "run_id" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "exp",
+          "description": "Experiment number within the run (e.g., exp0 is baseline)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "exp" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "description",
+          "description": "LLM agent's description of the hyperparameter modification attempted",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "description" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "val_bpb",
+          "description": "Validation bits-per-byte (lower is better). Primary metric. 0.0 indicates a crash.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "val_bpb" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "peak_mem_gb",
+          "description": "Peak GPU memory usage in gigabytes during training",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "peak_mem_gb" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "tok_sec",
+          "description": "Training throughput in tokens per second",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "tok_sec" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "mfu",
+          "description": "Model FLOPs Utilization as a percentage",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "mfu" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "steps",
+          "description": "Number of training steps completed in the 5-minute budget",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "steps" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "status",
+          "description": "Experiment outcome: baseline, keep (improved), discard (worse), or crash",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "status" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "notes",
+          "description": "LLM agent's reasoning and analysis of the experiment result",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "notes" }
+          }
+        }
+      ]
+    },
+    {
+      "@type": "cr:RecordSet",
+      "@id": "hardware",
+      "name": "hardware",
+      "description": "Hardware specifications for each GPU platform tested, including compute capabilities, memory, power, and cost.",
+      "field": [
+        {
+          "@type": "cr:Field",
+          "name": "gpu_name",
+          "description": "GPU model name (primary key)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "hardware-parquet" },
+            "extract": { "column": "gpu_name" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "platform",
+          "description": "Hardware platform: apple_metal, nvidia_cuda, amd_rocm, or intel_gaudi",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "hardware-parquet" },
+            "extract": { "column": "platform" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "architecture",
+          "description": "GPU architecture name (e.g., Ada Lovelace, CDNA 3, Apple GPU)",
+          "dataType": "sc:Text",
+          "source": {
+            "fileObject": { "@id": "hardware-parquet" },
+            "extract": { "column": "architecture" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "vram_gb",
+          "description": "GPU memory in gigabytes",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": { "@id": "hardware-parquet" },
+            "extract": { "column": "vram_gb" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "bf16_tflops",
+          "description": "bf16 compute performance in TFLOPS",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "hardware-parquet" },
+            "extract": { "column": "bf16_tflops" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "memory_bandwidth_gbps",
+          "description": "Memory bandwidth in GB/s",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "hardware-parquet" },
+            "extract": { "column": "memory_bandwidth_gbps" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "tdp_watts",
+          "description": "Thermal Design Power in watts",
+          "dataType": "sc:Integer",
+          "source": {
+            "fileObject": { "@id": "hardware-parquet" },
+            "extract": { "column": "tdp_watts" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "name": "cost_per_hour",
+          "description": "Cloud compute cost in USD per hour (0.0 for local hardware)",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "hardware-parquet" },
+            "extract": { "column": "cost_per_hour" }
+          }
+        }
+      ]
+    }
+  ]
+}
