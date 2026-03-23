@@ -33,5 +33,8 @@ if not os.path.exists(script_path):
 
 print(f"Backend: {get_display_name(backend)} -> {script_path}", flush=True)
 
+# Ensure project root is importable by the platform-specific script
+os.environ["PYTHONPATH"] = project_root + os.pathsep + os.environ.get("PYTHONPATH", "")
+
 # Replace this process with the platform-specific training script
 os.execv(sys.executable, [sys.executable, script_path] + sys.argv[1:])

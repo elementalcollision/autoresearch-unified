@@ -594,6 +594,9 @@ class ExperimentOrchestrator:
         env = os.environ.copy()
         env["PYTHONUNBUFFERED"] = "1"
         env["AUTORESEARCH_ORCHESTRATOR"] = "1"  # suppress standalone results writing
+        # Ensure repo root is importable (training scripts live under platforms/)
+        repo_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        env["PYTHONPATH"] = repo_root + os.pathsep + env.get("PYTHONPATH", "")
 
         try:
             with self._lock:
