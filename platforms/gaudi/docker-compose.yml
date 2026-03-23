@@ -1,0 +1,50 @@
+services:
+  train:
+    build: .
+    runtime: habana
+    environment:
+      - HABANA_VISIBLE_DEVICES=all
+      - OMPI_MCA_btl_vader_single_copy_mechanism=none
+    volumes:
+      - ~/.cache/autoresearch:/root/.cache/autoresearch
+      - ./results:/workspace/autoresearch/results
+    cap_add:
+      - SYS_NICE
+    ipc: host
+    # For agent mode, pass API key:
+    # ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+
+  # Prepare data (run once before training)
+  prepare:
+    build: .
+    runtime: habana
+    environment:
+      - HABANA_VISIBLE_DEVICES=all
+    volumes:
+      - ~/.cache/autoresearch:/root/.cache/autoresearch
+    command: ["python", "-u", "prepare.py"]
+
+  # Headless agent mode
+  agent:
+    build: .
+    runtime: habana
+    environment:
+      - HABANA_VISIBLE_DEVICES=all
+      - OMPI_MCA_btl_vader_single_copy_mechanism=none
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+    volumes:
+      - ~/.cache/autoresearch:/root/.cache/autoresearch
+      - ./results:/workspace/autoresearch/results
+      - .:/workspace/autoresearch
+    cap_add:
+      - SYS_NICE
+    ipc: host
+    command: ["python", "-m", "tui.headless", "--max", "80"]
+
+  # Verification script
+  verify:
+    build: .
+    runtime: habana
+    environment:
+      - HABANA_VISIBLE_DEVICES=all
+    command: ["python", "scripts/verify_hpu.py"]
