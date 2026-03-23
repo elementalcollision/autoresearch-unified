@@ -117,6 +117,7 @@ class ExperimentOrchestrator:
         self.crash_count = 0
         self.best_val_bpb = float("inf")
         self.best_experiment = "none"
+        self._baseline_sha: str | None = None  # commit SHA with zero HP changes
 
     # ------------------------------------------------------------------
     # Public API
@@ -313,6 +314,10 @@ class ExperimentOrchestrator:
 
             # Run baseline if this is a fresh start
             if start_exp == 0:
+                # Ensure the training script is at zero modifications before
+                # starting a new dataset run. This prevents HP optimizations
+                # from a previous dataset leaking into this one.
+                self._ensure_clean_baseline()
                 self._cb_status("baseline", "Running baseline (no modifications)...")
                 self._run_baseline()
                 start_exp = 1
@@ -346,11 +351,86 @@ class ExperimentOrchestrator:
             self._cb_status("stopped", "Experiment loop stopped")
 
     # ------------------------------------------------------------------
+    # Baseline enforcement
+    # ------------------------------------------------------------------
+
+    def _ensure_clean_baseline(self) -> None:
+        """Ensure the training script has zero HP modifications.
+
+        Called at the START of a new dataset run (before the baseline
+        experiment). This prevents optimizations from a previous dataset
+        run leaking into this one.
+
+        How it works:
+        - Reads the training script from the FIRST commit on the branch
+          that introduced it (i.e., the initial unmodified version)
+        - If the current working-tree copy differs from that version,
+          restores it and commits the reset
+
+        This is the cross-dataset isolation boundary. Within a single
+        dataset run, KEPT experiments accumulate as intended.
+        """
+        try:
+            # Get the original training script content from the branch point
+            # (the commit where the branch diverged from main, or the first
+            # commit that contains the training script).
+            script_path = self._training_script
+            original = self._git._run(
+                "show", f"main:{script_path}", check=False
+            )
+            if not original:
+                # Fallback: try the first commit that touched this file
+                log_output = self._git._run(
+                    "log", "--follow", "--diff-filter=A",
+                    "--format=%H", "--", script_path, check=False
+                ).strip()
+                first_commit = log_output.splitlines()[-1] if log_output else ""
+                if first_commit:
+                    original = self._git._run("show", f"{first_commit}:{script_path}")
+                else:
+                    self._cb_status("baseline",
+                        "Could not determine original training script — proceeding with current version")
+                    return
+
+            # Compare with current working tree
+            with open(script_path) as f:
+                current = f.read()
+
+            if current.strip() == original.strip():
+                self._cb_status("baseline", "Training script is clean (zero modifications)")
+                return
+
+            # Reset to clean state
+            self._cb_status("baseline",
+                f"Resetting {os.path.basename(script_path)} to unmodified state (cross-dataset isolation)")
+            with open(script_path, "w") as f:
+                f.write(original if original.endswith("\n") else original + "\n")
+
+            # Commit the reset so the git history is clear
+            self._git.commit_changes(
+                "Reset training script to zero modifications (new dataset run)",
+                [script_path],
+            )
+        except Exception as e:
+            self._cb_error(f"Baseline reset warning: {e} — proceeding with current state")
+
+    # ------------------------------------------------------------------
     # Baseline run
     # ------------------------------------------------------------------
 
     def _run_baseline(self) -> None:
-        """Run the training script without modifications to establish baseline."""
+        """Run the training script without modifications to establish baseline.
+
+        Records the current commit as the baseline SHA — the zero-modifications
+        state. This SHA is written into every experiment result for traceability.
+        Within the run, KEPT experiments accumulate on top of this baseline.
+        """
+        # Record the baseline commit AFTER _ensure_clean_baseline has run.
+        # This is the "zero optimizations" state of the training script.
+        self._baseline_sha = self._git.record_baseline()
+        self._cb_status("baseline",
+            f"Baseline commit: {self._baseline_sha[:7]} (training script at zero modifications)")
+
         self._cb_experiment_start(0, "baseline (no modifications)", "Establishing baseline with current defaults")
         self._update_heartbeat(0, "baseline")
 
@@ -368,6 +448,7 @@ class ExperimentOrchestrator:
                 status="baseline",
                 notes=f"depth={final.depth}, {final.chip}",
                 gpu_name=self._hw_info.get("chip_name", "unknown"),
+                baseline_sha=self._baseline_sha,
             )
             self.best_val_bpb = final.val_bpb
             self.best_experiment = "exp0 (baseline)"
@@ -379,6 +460,7 @@ class ExperimentOrchestrator:
                 mfu=0.0, steps=0, status="crash",
                 notes="baseline training failed",
                 gpu_name=self._hw_info.get("chip_name", "unknown"),
+                baseline_sha=self._baseline_sha,
             )
 
         append_result(self._results_path, result)
@@ -394,6 +476,14 @@ class ExperimentOrchestrator:
 
     def _run_experiment(self, exp_num: int, _pause_depth: int = 0) -> None:
         """Run a single experiment: LLM -> modify -> commit -> train -> evaluate.
+
+        Within a dataset run, KEPT experiments accumulate — the LLM builds on
+        previous successes to find the best HP combination for this dataset.
+        DISCARDED/CRASHED experiments are reverted to the last kept state.
+
+        The baseline SHA is tracked for traceability but is NOT reset between
+        experiments within the same run. Baseline reset happens at the START
+        of a new dataset run (see _ensure_clean_baseline).
 
         If the API is completely unavailable after retries, pauses for 10
         minutes and retries (up to 3 pause cycles to avoid infinite loops).
@@ -495,6 +585,7 @@ class ExperimentOrchestrator:
                 status=status,
                 notes=proposal.reasoning[:80],
                 gpu_name=self._hw_info.get("chip_name", "unknown"),
+                baseline_sha=self._baseline_sha or "",
             )
         else:
             # Crash
@@ -509,6 +600,7 @@ class ExperimentOrchestrator:
                 mfu=0.0, steps=0, status="crash",
                 notes="training crashed or timed out",
                 gpu_name=self._hw_info.get("chip_name", "unknown"),
+                baseline_sha=self._baseline_sha or "",
             )
 
         append_result(self._results_path, result)

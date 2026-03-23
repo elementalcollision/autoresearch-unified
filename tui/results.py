@@ -24,10 +24,12 @@ class ExperimentResult:
     status: str        # "baseline", "keep", "discard", "crash"
     notes: str         # extra notes
     gpu_name: str = "" # hardware fingerprint (e.g. "AMD Instinct MI300X OAM")
+    baseline_sha: str = ""  # commit SHA of the unmodified training script
 
 
-# TSV header matching the format used by characterization sessions
-HEADER = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\n"
+# TSV header — 11 columns. Column 11 (baseline_sha) ties every experiment
+# back to the exact commit where the training script had zero optimizations.
+HEADER = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\tbaseline_sha\n"
 
 
 def init_results_tsv(path: str = "results.tsv") -> None:
@@ -62,7 +64,8 @@ def append_result(path: str, result: ExperimentResult) -> None:
         f"{result.steps}\t"
         f"{result.status}\t"
         f"{result.notes}\t"
-        f"{result.gpu_name}\n"
+        f"{result.gpu_name}\t"
+        f"{result.baseline_sha}\n"
     )
     atomic_append(path, line)
 
@@ -90,7 +93,8 @@ def load_results(path: str = "results.tsv") -> list[ExperimentResult]:
                     steps=int(row.get("steps", 0)),
                     status=row.get("status", ""),
                     notes=row.get("notes", ""),
-                    gpu_name=row.get("gpu_name", ""),  # backward-compat: empty for legacy TSVs
+                    gpu_name=row.get("gpu_name", ""),
+                    baseline_sha=row.get("baseline_sha", ""),  # backward-compat: empty for legacy TSVs
                 ))
             except (ValueError, TypeError):
                 continue

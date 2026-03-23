@@ -56,7 +56,7 @@ def atomic_append(path: str, line: str) -> None:
 # TSV validation
 # ---------------------------------------------------------------------------
 
-EXPECTED_FIELDS = 10  # exp, description, val_bpb, peak_mem_gb, tok_sec, mfu, steps, status, notes, gpu_name
+EXPECTED_FIELDS = 11  # exp, description, val_bpb, peak_mem_gb, tok_sec, mfu, steps, status, notes, gpu_name, baseline_sha
 
 def validate_results_tsv(path: str) -> tuple[bool, list[str]]:
     """Validate a results.tsv file and fix minor corruption.
@@ -107,8 +107,9 @@ def validate_results_tsv(path: str) -> tuple[bool, list[str]]:
         if not line.strip():
             continue
         fields = line.split("\t")
-        if len(fields) != EXPECTED_FIELDS:
-            warnings.append(f"Line {i}: expected {EXPECTED_FIELDS} fields, got {len(fields)}")
+        # Accept 10-column (legacy, no baseline_sha) or 11-column (current) rows
+        if len(fields) < EXPECTED_FIELDS - 1 or len(fields) > EXPECTED_FIELDS:
+            warnings.append(f"Line {i}: expected {EXPECTED_FIELDS - 1}-{EXPECTED_FIELDS} fields, got {len(fields)}")
             continue
         # Validate numeric fields
         try:

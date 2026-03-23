@@ -13,6 +13,7 @@ class GitManager:
 
     def __init__(self, repo_path: str = "."):
         self._repo = Path(repo_path).resolve()
+        self._baseline_sha: str | None = None
 
     def _run(self, *args: str, check: bool = True) -> str:
         """Run a git command and return stdout."""
@@ -92,3 +93,43 @@ class GitManager:
     def head_commit_message(self) -> str:
         """Get the commit message of HEAD."""
         return self._run("log", "--format=%s", "-1")
+
+    # ------------------------------------------------------------------
+    # Baseline tracking
+    # ------------------------------------------------------------------
+
+    def record_baseline(self) -> str:
+        """Record the current HEAD as the baseline commit (zero HP changes).
+
+        Should be called AFTER the baseline training run completes,
+        before any experiment modifications. Returns the full SHA.
+        """
+        self._baseline_sha = self._run("rev-parse", "HEAD")
+        return self._baseline_sha
+
+    @property
+    def baseline_sha(self) -> str | None:
+        """Return the recorded baseline commit SHA, or None if not set."""
+        return self._baseline_sha
+
+    def restore_baseline_file(self, file_path: str) -> None:
+        """Restore a single file to its baseline state (zero HP modifications).
+
+        Uses `git show <baseline_sha>:<path>` to read the original content
+        and writes it to the working tree. This ensures every experiment
+        starts from the same unmodified training script.
+        """
+        if not self._baseline_sha:
+            raise RuntimeError(
+                "No baseline commit recorded. Call record_baseline() "
+                "after the baseline training run."
+            )
+        # Get the repo-relative path for git show
+        abs_path = (self._repo / file_path).resolve()
+        try:
+            rel_path = abs_path.relative_to(self._repo)
+        except ValueError:
+            rel_path = Path(file_path)
+
+        content = self._run("show", f"{self._baseline_sha}:{rel_path}")
+        abs_path.write_text(content + "\n" if not content.endswith("\n") else content)
