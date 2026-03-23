@@ -352,6 +352,13 @@ def suggest_hyperparameters(hw_info=None):
             "eval_tokens_multiplier": 10,
         }
     elif tier == "professional":
+        if mem_gb < 24:
+            return {
+                "depth": 8,
+                "device_batch_size": 16,
+                "total_batch_size": 2**15,  # 32K tokens
+                "eval_tokens_multiplier": 10,
+            }
         return {
             "depth": 10,
             "device_batch_size": 32,
