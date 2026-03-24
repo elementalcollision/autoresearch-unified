@@ -40,16 +40,20 @@ def atomic_write(path: str, content: str) -> None:
 
 
 def atomic_append(path: str, line: str) -> None:
-    """Append a line to a file atomically (read + append + atomic write).
+    """Append a line to a file with fsync for durability.
 
-    Slower than bare append but crash-safe. Acceptable for results.tsv
-    which gets one append per ~5-minute experiment.
+    Uses direct append + fsync rather than read-all/write-all/rename.
+    The old read+atomic_write pattern had a race condition: if the file
+    was modified between the read and the rename, data would be lost.
+    Direct append is safe because:
+    - Single writer (orchestrator is single-threaded)
+    - fsync ensures the append hits disk
+    - Partial line from a crash is detectable by validate_results_tsv()
     """
-    existing = ""
-    if os.path.exists(path):
-        with open(path) as f:
-            existing = f.read()
-    atomic_write(path, existing + line)
+    with open(path, "a") as f:
+        f.write(line)
+        f.flush()
+        os.fsync(f.fileno())
 
 
 # ---------------------------------------------------------------------------
