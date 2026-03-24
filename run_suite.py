@@ -520,6 +520,20 @@ def run_agent(dataset_name, tag, max_experiments=80, model=None):
     # Write deployment manifest for hardware provenance
     _write_deployment_manifest(results_dir, run_tag)
 
+    # Ensure git is configured for auto-push on new branches.
+    # Each dataset gets its own branch (autoresearch/<tag>-<dataset>),
+    # created by the orchestrator. Without autoSetupRemote, the sync
+    # script's `git push` silently fails on new branches — a recurring
+    # data loss issue across every RunPod deployment.
+    try:
+        import subprocess
+        subprocess.run(
+            ["git", "config", "push.autoSetupRemote", "true"],
+            capture_output=True, timeout=5,
+        )
+    except Exception:
+        pass
+
     backend = detect_backend()
     script = get_training_script(backend)
 
