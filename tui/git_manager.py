@@ -64,8 +64,34 @@ class GitManager:
         return self.current_commit()
 
     def revert_last_commit(self) -> None:
-        """Hard-reset to the previous commit (discard last experiment)."""
-        self._run("reset", "--hard", "HEAD~1")
+        """Revert the last commit's file changes without a blanket hard reset.
+
+        Previously used `git reset --hard HEAD~1` which reverted ALL tracked
+        files — including results TSVs that may have been committed by the
+        sync script. This caused data loss: experiment results would be wiped
+        whenever a discard/crash triggered a revert.
+
+        Now: soft-reset HEAD, then restore only the files that were changed
+        in the reverted commit. Unrelated files (results, heartbeat, sync
+        artifacts) are untouched.
+        """
+        # Get the list of files changed in HEAD commit
+        changed_files = self._run(
+            "diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD"
+        ).strip().splitlines()
+
+        # Soft reset to remove the commit but keep working tree
+        self._run("reset", "--soft", "HEAD~1")
+
+        # Restore only the experiment's changed files to their pre-commit state
+        for f in changed_files:
+            try:
+                self._run("checkout", "HEAD", "--", f)
+            except RuntimeError:
+                # File may not exist in HEAD (was newly added) — remove it
+                full_path = self._repo / f
+                if full_path.exists():
+                    full_path.unlink()
 
     def read_file(self, path: str) -> str:
         """Read a file from the working tree."""
