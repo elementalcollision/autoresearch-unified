@@ -31,16 +31,6 @@ def atomic_write(path: str, content: str) -> None:
     either fully written or not changed at all. No corruption from
     mid-write crashes.
     """
-    import sys, traceback
-    content_lines = content.count('\n')
-    print(f"  [ATOMIC_WRITE] {path}: writing {len(content)} bytes ({content_lines} lines)",
-          file=sys.stderr, flush=True)
-    if content_lines <= 1 and os.path.exists(path):
-        existing_size = os.path.getsize(path)
-        if existing_size > len(content):
-            print(f"  [ATOMIC_WRITE] WARNING: overwriting {existing_size}B file with {len(content)}B!",
-                  file=sys.stderr, flush=True)
-            traceback.print_stack(file=sys.stderr)
     tmp_path = path + ".tmp"
     with open(tmp_path, "w") as f:
         f.write(content)
@@ -60,26 +50,10 @@ def atomic_append(path: str, line: str) -> None:
     - fsync ensures the append hits disk
     - Partial line from a crash is detectable by validate_results_tsv()
     """
-    import sys
-    # Debug: log file state before and after append
-    before_size = os.path.getsize(path) if os.path.exists(path) else -1
-    before_lines = 0
-    if os.path.exists(path):
-        with open(path) as _f:
-            before_lines = sum(1 for _ in _f)
-
     with open(path, "a") as f:
         f.write(line)
         f.flush()
         os.fsync(f.fileno())
-
-    after_size = os.path.getsize(path)
-    after_lines = 0
-    with open(path) as _f:
-        after_lines = sum(1 for _ in _f)
-    exp_id = line.split('\t')[0] if '\t' in line else '?'
-    print(f"  [APPEND] {exp_id} → {path}: {before_lines}→{after_lines} lines, {before_size}→{after_size} bytes",
-          file=sys.stderr, flush=True)
 
 
 # ---------------------------------------------------------------------------
