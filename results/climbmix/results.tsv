@@ -54,3 +54,4 @@ exp51	Decrease SCALAR_LR from 0.4 to 0.35	1.088157	64.6	247666	6.8	567	keep	The 
 exp52	Decrease SCALAR_LR from 0.35 to 0.3	1.088390	64.6	247254	6.8	567	discard	The trend shows consistent improvement as SCALAR_LR decreases from 0.5 to 0.4 to	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
 exp53	Decrease WARMDOWN_RATIO from 0.5 to 0.4	1.089790	64.6	247003	6.8	566	discard	The current best configuration has been refined through many small learning rate	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
 exp54	Decrease FINAL_LR_FRAC from 0.05 to 0.03	1.088616	64.6	247666	6.8	567	discard	The current best configuration has been fine-tuned on most hyperparameters, but 	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp55	Increase FINAL_LR_FRAC from 0.05 to 0.08	1.087943	64.6	247336	6.8	567	keep	The current best configuration has FINAL_LR_FRAC=0.05. Recent experiments showed	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
