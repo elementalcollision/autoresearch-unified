@@ -277,6 +277,9 @@ class ExperimentOrchestrator:
                 return
             self._cb_status("initializing", "API credentials validated")
 
+            # Ensure new branches auto-track remote (prevents sync failures)
+            self._git.ensure_auto_push_remote()
+
             # Set up branch
             branch_name = f"autoresearch/{self._run_tag}"
             current = self._git.current_branch()

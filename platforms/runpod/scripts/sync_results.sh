@@ -70,6 +70,9 @@ if [ -z "$BRANCH" ]; then
     exit 0
 fi
 
+# Ensure new branches auto-track remote on push (prevents silent push failures)
+git config push.autoSetupRemote true 2>/dev/null
+
 # Stage results and heartbeat
 git add "${RESULTS_FILES[@]}" 2>/dev/null || true
 git add .runner_status.json 2>/dev/null || true

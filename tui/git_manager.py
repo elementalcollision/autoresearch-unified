@@ -31,6 +31,16 @@ class GitManager:
             )
         return result.stdout.strip()
 
+    def ensure_auto_push_remote(self) -> None:
+        """Configure git to auto-set upstream on push for new branches.
+
+        Without this, new per-dataset experiment branches created by the
+        orchestrator have no upstream tracking, causing the sync script's
+        `git push` to silently fail. This was a recurring data loss issue
+        across every RunPod deployment.
+        """
+        self._run("config", "push.autoSetupRemote", "true", check=False)
+
     def current_branch(self) -> str:
         """Get the current branch name."""
         return self._run("rev-parse", "--abbrev-ref", "HEAD")

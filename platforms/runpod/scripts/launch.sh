@@ -166,6 +166,7 @@ success "Repo: $(git log --oneline -1)"
 # Git config for experiment commits
 git config user.email "autoresearch@runpod.local"
 git config user.name "autoresearch-bot"
+git config push.autoSetupRemote true
 
 # GitHub auth for sync (if token provided)
 if [ -n "$GH_TOKEN" ]; then
