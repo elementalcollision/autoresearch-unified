@@ -4,3 +4,5 @@ exp1	Decrease DEVICE_BATCH_SIZE from default to increase gradient steps within t
 exp2	Increase MATRIX_LR from 0.04 to 0.05	1.126006	89.2	155252	8.0	356	discard	The baseline performed better than the smaller batch size experiment, suggesting	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp3	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.125791	89.2	155201	8.0	356	discard	The baseline achieved the best val_bpb so far, suggesting the current hyperparam	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp4	Increase EMBEDDING_LR from 0.6 to 0.8	1.129512	89.2	155000	7.9	355	discard	The embedding parameters are crucial for the model's ability to represent tokens	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
+exp5	Decrease SCALAR_LR from 0.5 to 0.3	1.125081	89.2	155407	8.0	356	discard	The scalar learning rate of 0.5 might be too aggressive for the per-layer scalar	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
+exp6	Increase DEPTH from default to 20	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
