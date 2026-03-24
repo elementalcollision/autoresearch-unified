@@ -1,1 +1,3 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
+exp0	baseline (no modifications)	1.077205	17.1	253497	28.3	1161	baseline	depth=10, NVIDIA RTX PRO 6000 Blackwell Server Edition	NVIDIA RTX PRO 6000 Blackwell Server Edition	dacda452b828482990bb83a976e53ae2b3129308
+exp1	Reduce TOTAL_BATCH_SIZE from default to 32768 to increase gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	dacda452b828482990bb83a976e53ae2b3129308
