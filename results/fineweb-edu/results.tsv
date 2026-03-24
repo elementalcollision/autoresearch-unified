@@ -2,3 +2,5 @@ exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	base
 exp0	baseline (no modifications)	1.124404	89.2	155355	8.0	356	baseline	depth=12, AMD Instinct MI300X	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp1	Decrease DEVICE_BATCH_SIZE from default to increase gradient steps within time budget	1.131591	45.6	147371	7.5	338	discard	The baseline achieved only 356 steps in 5 minutes. Since maximizing gradient ste	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp2	Increase MATRIX_LR from 0.04 to 0.05	1.126006	89.2	155252	8.0	356	discard	The baseline performed better than the smaller batch size experiment, suggesting	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
+exp3	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.125791	89.2	155201	8.0	356	discard	The baseline achieved the best val_bpb so far, suggesting the current hyperparam	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
+exp4	Increase EMBEDDING_LR from 0.6 to 0.8	1.129512	89.2	155000	7.9	355	discard	The embedding parameters are crucial for the model's ability to represent tokens	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
