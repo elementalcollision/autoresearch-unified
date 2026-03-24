@@ -5,3 +5,4 @@ exp2	Increase MATRIX_LR from 0.04 to 0.06	1.124451	89.2	155407	8.0	356	discard	T
 exp3	Decrease TOTAL_BATCH_SIZE to increase gradient steps within time budget	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
 exp4	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.125907	89.2	154690	7.9	355	discard	The baseline is performing best so far, suggesting the current hyperparameters a	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
 exp5	Increase EMBEDDING_LR from 0.6 to 0.8	1.129527	89.2	154690	7.9	355	discard	The embedding layer is crucial for the model's ability to represent tokens effec	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp6	Increase SCALAR_LR from 0.5 to 0.7	1.134099	89.2	154793	7.9	355	discard	The scalar learning rate controls per-layer scaling parameters which are critica	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
