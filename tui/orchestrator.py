@@ -240,7 +240,7 @@ class ExperimentOrchestrator:
                 if exp_num not in recorded:
                     self._cb_status("initializing",
                         f"Reverting orphaned commit: {head_msg[:60]}")
-                    self._git.revert_last_commit()
+                    self._git.revert_last_experiment()
         except Exception as e:
             self._cb_error(f"Orphan commit check failed: {e}")
 
@@ -572,7 +572,7 @@ class ExperimentOrchestrator:
                 self.discarded_count += 1
                 self._cb_status("evaluating",
                     f"DISCARD -- val_bpb {final.val_bpb:.4f} >= best {self.best_val_bpb:.4f}")
-                self._git.revert_last_commit()
+                self._git.revert_last_experiment()
 
             result = ExperimentResult(
                 exp=f"exp{exp_num}",
@@ -591,7 +591,7 @@ class ExperimentOrchestrator:
             # Crash
             self.crash_count += 1
             self._cb_status("evaluating", "CRASH -- training failed")
-            self._git.revert_last_commit()
+            self._git.revert_last_experiment()
 
             result = ExperimentResult(
                 exp=f"exp{exp_num}",

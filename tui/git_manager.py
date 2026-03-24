@@ -63,35 +63,73 @@ class GitManager:
         self._run("commit", "-m", message)
         return self.current_commit()
 
-    def revert_last_commit(self) -> None:
-        """Revert the last commit's file changes without a blanket hard reset.
+    def revert_last_experiment(self) -> None:
+        """Revert the most recent experiment commit without touching other files.
 
-        Previously used `git reset --hard HEAD~1` which reverted ALL tracked
-        files — including results TSVs that may have been committed by the
-        sync script. This caused data loss: experiment results would be wiped
-        whenever a discard/crash triggered a revert.
+        Finds the most recent commit matching the pattern 'expN: ...' and
+        reverts only the files it changed. Skips over any intervening sync
+        commits (from sync_results.sh) that may have landed between the
+        experiment commit and the crash/discard evaluation.
 
-        Now: soft-reset HEAD, then restore only the files that were changed
-        in the reverted commit. Unrelated files (results, heartbeat, sync
-        artifacts) are untouched.
+        Previous approaches failed because:
+        - `git reset --hard HEAD~1` wiped ALL files including results TSVs
+        - Soft reset + restore from HEAD assumed HEAD was the experiment
+          commit, but the sync script could push a commit in between,
+          making HEAD a sync commit whose diff includes the results TSV
         """
-        # Get the list of files changed in HEAD commit
-        changed_files = self._run(
-            "diff-tree", "--no-commit-id", "--name-only", "-r", "HEAD"
+        import re as _re
+
+        # Walk back from HEAD to find the experiment commit
+        # (format: "expN: description")
+        log_lines = self._run(
+            "log", "--oneline", "-10"
         ).strip().splitlines()
 
-        # Soft reset to remove the commit but keep working tree
-        self._run("reset", "--soft", "HEAD~1")
+        exp_sha = None
+        for line in log_lines:
+            sha, _, msg = line.partition(" ")
+            if _re.match(r"exp\d+:", msg):
+                exp_sha = sha
+                break
 
-        # Restore only the experiment's changed files to their pre-commit state
+        if not exp_sha:
+            # No experiment commit found — nothing to revert
+            return
+
+        # Get files changed in the experiment commit
+        changed_files = self._run(
+            "diff-tree", "--no-commit-id", "--name-only", "-r", exp_sha
+        ).strip().splitlines()
+
+        # Restore each file to its state BEFORE the experiment commit
+        # (i.e., the parent of the experiment commit)
+        parent = exp_sha + "~1"
         for f in changed_files:
             try:
-                self._run("checkout", "HEAD", "--", f)
+                self._run("show", f"{parent}:{f}")  # verify it exists
+                self._run("checkout", parent, "--", f)
             except RuntimeError:
-                # File may not exist in HEAD (was newly added) — remove it
+                # File didn't exist before this commit — remove it
                 full_path = self._repo / f
                 if full_path.exists():
                     full_path.unlink()
+
+        # Stage the restored files and commit the revert
+        # (keeps git history linear and clean)
+        for f in changed_files:
+            try:
+                self._run("add", f)
+            except RuntimeError:
+                pass
+
+        try:
+            self._run(
+                "commit", "--allow-empty", "-m",
+                f"Revert {exp_sha[:7]} (discard/crash)"
+            )
+        except RuntimeError:
+            # Nothing to commit (files unchanged) — that's fine
+            pass
 
     def read_file(self, path: str) -> str:
         """Read a file from the working tree."""
