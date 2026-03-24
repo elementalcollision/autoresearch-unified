@@ -308,8 +308,8 @@ class GPT(nn.Module):
 # ---------------------------------------------------------------------------
 
 # Auto-detect hardware and set defaults
-# _hw_info = get_hardware_info()
-# _hp_defaults = suggest_hyperparameters(_hw_info)
+_hw_info = get_hardware_info()
+_hp_defaults = suggest_hyperparameters(_hw_info)
 
 # Model architecture
 ASPECT_RATIO = 64       # model_dim = depth * ASPECT_RATIO
@@ -317,7 +317,7 @@ HEAD_DIM = 128          # target head dimension for attention
 WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
 
 # Optimization
-TOTAL_BATCH_SIZE = 32
+TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
 EMBEDDING_LR = 0.6      # learning rate for token embeddings (Adam)
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.04        # learning rate for matrix parameters (Muon)
@@ -329,8 +329,8 @@ WARMDOWN_RATIO = 0.5    # fraction of time budget for LR warmdown
 FINAL_LR_FRAC = 0.0     # final LR as fraction of initial
 
 # Model size
-DEPTH = 8
-DEVICE_BATCH_SIZE = 4
+DEPTH = _hp_defaults['depth']
+DEVICE_BATCH_SIZE = _hp_defaults['device_batch_size']
 
 # ---------------------------------------------------------------------------
 # Setup: tokenizer, model, optimizer, dataloader
