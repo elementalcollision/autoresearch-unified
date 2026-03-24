@@ -329,8 +329,8 @@ WARMDOWN_RATIO = 0.5    # fraction of time budget for LR warmdown
 FINAL_LR_FRAC = 0.0     # final LR as fraction of initial
 
 # Model size
-DEPTH = 6
-DEVICE_BATCH_SIZE = 8
+DEPTH = _hp_defaults['depth']
+DEVICE_BATCH_SIZE = _hp_defaults['device_batch_size']
 
 # ---------------------------------------------------------------------------
 # Setup: tokenizer, model, optimizer, dataloader
