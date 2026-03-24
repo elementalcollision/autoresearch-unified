@@ -31,3 +31,4 @@ exp28	Decrease ASPECT_RATIO from 40 to 38	1.090221	64.6	247254	6.8	567	keep	The 
 exp29	Decrease ASPECT_RATIO from 38 to 36	1.090443	64.6	247003	6.8	566	discard	The trend shows consistent improvement as ASPECT_RATIO decreases from 64 to 38, 	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
 exp30	Increase MATRIX_LR from 0.04 to 0.045	1.090613	64.6	247419	6.8	567	discard	With ASPECT_RATIO at 38 giving the best result so far, I should now optimize the	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
 exp31	Decrease EMBEDDING_LR from 0.6 to 0.4	1.090365	64.6	247419	6.8	567	discard	With ASPECT_RATIO optimized at 38, we should revisit learning rate tuning. The e	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp32	Decrease WEIGHT_DECAY from 0.2 to 0.15	1.090212	64.6	247003	6.8	566	keep	With the optimal ASPECT_RATIO=38 established, we should revisit weight decay opt	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
