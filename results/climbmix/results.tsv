@@ -1,0 +1,13 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
+exp0	baseline (no modifications)	0.000000	0.0	0	0.0	0	crash	baseline training failed	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp1	Set WARMUP_RATIO from 0.0 to 0.1	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp2	Reduce DEVICE_BATCH_SIZE from default to 4 to maximize gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp3	Set TOTAL_BATCH_SIZE to 32 to override hardware defaults and enable smaller batches	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp4	Set DEVICE_BATCH_SIZE to 1 to maximize gradient steps within the 5-minute budget	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp5	Reduce DEPTH from default to 8 to decrease model size and enable faster training	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp6	Set TOTAL_BATCH_SIZE to 16 to ensure gradient accumulation works with small device batches	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp7	Set TOTAL_BATCH_SIZE to 8 to enable even more aggressive gradient accumulation	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp8	Set EMBEDDING_LR from 0.6 to 0.1 to use more conservative learning rates	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp9	Set DEPTH to 4 to create a very small model that can definitely fit and run	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp10	Set ASPECT_RATIO from 64 to 32 to reduce model width and potentially fix initialization issues	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
+exp11	Set HEAD_DIM from 128 to 64 to reduce memory per attention head and potentially fix model initialization issues	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	dacda452b828482990bb83a976e53ae2b3129308
