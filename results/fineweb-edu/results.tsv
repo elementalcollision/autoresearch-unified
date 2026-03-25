@@ -17,3 +17,4 @@ exp14	Decrease ASPECT_RATIO from 64 to 56	1.124458	89.2	155407	8.0	356	discard	T
 exp15	Change WINDOW_PATTERN from "SSSL" to "SSSS"	1.130216	89.2	150930	7.5	346	discard	The current pattern "SSSL" uses one full attention layer per 4 layers, which is 	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp16	Decrease HEAD_DIM from 128 to 144	1.143654	98.4	121675	7.6	279	discard	Previous experiments showed that decreasing HEAD_DIM to 96 hurt performance (exp	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp17	Decrease HEAD_DIM from 128 to 112	1.165474	90.7	117509	6.2	269	discard	The baseline is still the best performer, and experiments with HEAD_DIM changes 	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
+exp18	Increase DEPTH from default to 18	1.286417	180.6	71119	10.7	163	discard	Many small changes to learning rates and other hyperparameters haven't improved 	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
