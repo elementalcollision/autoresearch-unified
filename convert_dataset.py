@@ -128,6 +128,15 @@ DATASETS = {
         "min_score": None,
         "est_source_size_gb": 0.28,  # per file (~280 MB × 52 = ~14.6 GB total)
     },
+    "pmc-fulltext": {
+        "description": "PMC Open Access (Markdown): 521K full-text biomedical papers from PubMed Central (CC BY 4.0)",
+        "base_url": "https://huggingface.co/datasets/casperhansen/pmc-oa-markdown/resolve/refs%2Fconvert%2Fparquet/default/train",
+        "source_files": [f"{i:04d}.parquet" for i in range(49)],
+        "text_column": "text",
+        "extra_columns": [],
+        "min_score": None,
+        "est_source_size_gb": 0.35,  # per file (~350 MB × 49 = ~17 GB total)
+    },
     "slimpajama-627b": {
         "description": "SlimPajama-627B: full deduplicated RedPajama (627B tokens, 7 sources)",
         "base_url": "https://huggingface.co/datasets/gmongaras/SlimPajama-627B_Reupload/resolve/refs%2Fconvert%2Fparquet/default/train",

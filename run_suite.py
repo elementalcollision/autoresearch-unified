@@ -65,6 +65,7 @@ DATASET_ORDER = [
     "fineweb",
     "github-code-python",
     "pubmed-abstract",
+    "pmc-fulltext",
     # "slimpajama-627b",  # 300 GB download — enable manually if desired
 ]
 
