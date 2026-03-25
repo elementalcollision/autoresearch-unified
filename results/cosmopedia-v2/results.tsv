@@ -38,3 +38,4 @@ exp35	Increase WARMDOWN_RATIO from 0.7 to 0.8	1.113187	89.2	155407	8.0	356	disca
 exp36	Decrease WARMDOWN_RATIO from 0.7 to 0.65	1.113014	89.2	155201	7.9	356	discard	The warmdown ratio shows a clear pattern - increasing from 0.5 to 0.6 to 0.7 ste	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp37	Increase WARMDOWN_RATIO from 0.7 to 0.75	1.112839	89.2	155407	8.0	356	keep	The warmdown ratio has shown consistent improvement from 0.5 to 0.6 to 0.7, with	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp38	Increase WARMDOWN_RATIO from 0.75 to 0.8	1.113798	89.2	155000	8.0	355	discard	The experiments show a clear trend of improvement as WARMDOWN_RATIO increases (e	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp39	Decrease SCALAR_LR from 0.5 to 0.4	1.128110	89.2	155355	8.0	356	discard	The SCALAR_LR has only been tested once (exp7) where increasing it hurt performa	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
