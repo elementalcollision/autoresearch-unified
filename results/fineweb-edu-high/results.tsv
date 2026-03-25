@@ -7,3 +7,4 @@ exp4	Decrease DEVICE_BATCH_SIZE to 8 to increase gradient steps	1.160832	12.7	11
 exp5	Decrease MATRIX_LR from 0.06 to 0.05	1.125868	89.2	155252	8.0	356	discard	The current best result came from increasing MATRIX_LR from 0.04 to 0.06, but th	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp6	Increase SCALAR_LR from 0.5 to 0.7	1.128779	89.2	155355	8.0	356	discard	The scalar learning rate controls per-layer scaling parameters which can be crit	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp7	Decrease UNEMBEDDING_LR from 0.004 to 0.003	1.125093	89.2	155459	8.0	356	discard	The current best result comes from increasing MATRIX_LR, suggesting the optimize	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
+exp8	Decrease WEIGHT_DECAY from 0.2 to 0.15	1.124339	89.2	155459	8.0	356	discard	The current best result came from increasing MATRIX_LR, suggesting that matrix p	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
