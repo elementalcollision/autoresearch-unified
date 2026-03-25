@@ -2,6 +2,8 @@
 
 Autonomous LLM-driven GPU pretraining research -- unified across NVIDIA, AMD, Intel, and Apple platforms.
 
+> **[Take the Interactive Course](https://elementalcollision.github.io/autoresearch-unified/)** — Learn how this entire codebase works through animated diagrams, code walkthroughs, and interactive quizzes. No CS background needed.
+
 ## What Is This?
 
 An autonomous experiment loop where **Claude proposes hyperparameter changes, trains a GPT-2-scale language model for 5 minutes, evaluates val_bpb (validation bits-per-byte), and decides to keep or discard** -- repeating across hundreds of experiments to find optimal configurations on each hardware platform.
@@ -151,6 +153,8 @@ df = ds["train"].to_pandas()
 - 10-column TSV: exp, description, val_bpb, peak_mem_gb, tok_sec, mfu, steps, status, notes, gpu_name
 
 ## Documentation
+
+**[Interactive Course](https://elementalcollision.github.io/autoresearch-unified/)** — A visual, scroll-based walkthrough of the entire codebase with animated data flows, code-to-English translations, and quizzes. Great for onboarding or understanding the architecture.
 
 See the [wiki](https://github.com/elementalcollision/autoresearch-unified/wiki) for:
 - [Cross-Platform Overview](https://github.com/elementalcollision/autoresearch-unified/wiki/Cross-Platform-Overview) -- Key findings and normalized comparisons
