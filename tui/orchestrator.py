@@ -259,7 +259,7 @@ class ExperimentOrchestrator:
             # Initialize LLM backend
             self._cb_status("initializing", "Connecting to LLM backend...")
             try:
-                self._llm = get_llm_backend()
+                self._llm = get_llm_backend(model=self._model_override)
                 self._cb_status("initializing", f"LLM: {self._llm.name()}")
             except Exception as e:
                 self._cb_error(f"LLM backend error: {e}")
@@ -711,12 +711,17 @@ class ExperimentOrchestrator:
                 err_type = type(e).__name__
 
                 # Fatal errors that will never recover -- stop immediately
+                # Covers Anthropic, OpenAI, and Azure OpenAI error patterns
                 if "credit balance" in err_str or "insufficient_quota" in err_str:
                     self._cb_error(f"FATAL: API billing error -- stopping agent. {e}")
                     self._stop_event.set()
                     return None
-                if "authentication" in err_str and "401" in err_str:
+                if "invalid_api_key" in err_str or ("authentication" in err_str and "401" in err_str):
                     self._cb_error(f"FATAL: API authentication failed -- stopping agent. {e}")
+                    self._stop_event.set()
+                    return None
+                if "deploymentnotfound" in err_str or "deployment" in err_str and "not found" in err_str:
+                    self._cb_error(f"FATAL: Azure deployment not found -- stopping agent. {e}")
                     self._stop_event.set()
                     return None
 

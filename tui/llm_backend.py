@@ -259,7 +259,168 @@ class ClaudeBackend(LLMBackend):
 
 
 # ---------------------------------------------------------------------------
-# Ollama Backend (Option B -- placeholder)
+# OpenAI Backend
+# ---------------------------------------------------------------------------
+
+class OpenAIBackend(LLMBackend):
+    """OpenAI API backend (GPT-4.1, GPT-5.1, etc.)."""
+
+    DEFAULT_MODEL = "gpt-4.1"
+
+    def __init__(self, model: str | None = None):
+        try:
+            from openai import OpenAI
+        except ImportError:
+            raise ImportError(
+                "openai package not installed. Run: pip install openai"
+            )
+
+        api_key = os.environ.get("OPENAI_API_KEY")
+        if not api_key:
+            raise RuntimeError("OPENAI_API_KEY environment variable not set")
+
+        self._client = OpenAI(api_key=api_key)
+        self._model = model or os.environ.get("OPENAI_MODEL") or self.DEFAULT_MODEL
+
+    def name(self) -> str:
+        return f"OpenAI ({self._model})"
+
+    def validate(self) -> bool:
+        """Test the API key with a minimal request."""
+        try:
+            from openai import AuthenticationError
+            self._client.chat.completions.create(
+                model=self._model,
+                max_tokens=5,
+                messages=[{"role": "user", "content": "Say OK"}],
+            )
+            return True
+        except AuthenticationError:
+            return False
+
+    def generate_experiment(
+        self,
+        current_code: str,
+        results_history: str,
+        best_val_bpb: float,
+        best_experiment: str,
+        hw_info: dict,
+    ) -> ExperimentProposal:
+        user_prompt = USER_PROMPT_TEMPLATE.format(
+            current_code=current_code,
+            results_history=results_history if results_history else "No experiments yet -- this will be the first modification after baseline.",
+            chip_name=hw_info.get("chip_name", "Unknown"),
+            memory_gb=hw_info.get("memory_gb", 0),
+            gpu_cores=hw_info.get("gpu_cores", 0),
+            peak_tflops=hw_info.get("peak_tflops", 0),
+            best_val_bpb=best_val_bpb,
+            best_experiment=best_experiment,
+        )
+
+        response = self._client.chat.completions.create(
+            model=self._model,
+            max_tokens=2048,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_prompt},
+            ],
+        )
+
+        response_text = response.choices[0].message.content
+        return parse_llm_response(response_text)
+
+
+# ---------------------------------------------------------------------------
+# Azure OpenAI Backend
+# ---------------------------------------------------------------------------
+
+class AzureOpenAIBackend(LLMBackend):
+    """Azure OpenAI Service backend.
+
+    Requires:
+        AZURE_OPENAI_API_KEY     - API key for the Azure resource
+        AZURE_OPENAI_ENDPOINT    - Resource endpoint (e.g. https://my-resource.openai.azure.com)
+        AZURE_OPENAI_DEPLOYMENT  - Deployment name (default: gpt-4.1)
+        AZURE_OPENAI_API_VERSION - API version (default: 2024-12-01-preview)
+    """
+
+    DEFAULT_DEPLOYMENT = "gpt-4.1"
+    DEFAULT_API_VERSION = "2024-12-01-preview"
+
+    def __init__(self, model: str | None = None):
+        try:
+            from openai import AzureOpenAI
+        except ImportError:
+            raise ImportError(
+                "openai package not installed. Run: pip install openai"
+            )
+
+        api_key = os.environ.get("AZURE_OPENAI_API_KEY")
+        endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT")
+        if not api_key:
+            raise RuntimeError("AZURE_OPENAI_API_KEY environment variable not set")
+        if not endpoint:
+            raise RuntimeError("AZURE_OPENAI_ENDPOINT environment variable not set")
+
+        api_version = os.environ.get("AZURE_OPENAI_API_VERSION") or self.DEFAULT_API_VERSION
+        self._client = AzureOpenAI(
+            api_key=api_key,
+            azure_endpoint=endpoint,
+            api_version=api_version,
+        )
+        self._deployment = model or os.environ.get("AZURE_OPENAI_DEPLOYMENT") or self.DEFAULT_DEPLOYMENT
+        self._endpoint = endpoint
+
+    def name(self) -> str:
+        return f"Azure OpenAI ({self._deployment}) via {self._endpoint}"
+
+    def validate(self) -> bool:
+        """Test the API key and deployment with a minimal request."""
+        try:
+            from openai import AuthenticationError
+            self._client.chat.completions.create(
+                model=self._deployment,
+                max_tokens=5,
+                messages=[{"role": "user", "content": "Say OK"}],
+            )
+            return True
+        except AuthenticationError:
+            return False
+
+    def generate_experiment(
+        self,
+        current_code: str,
+        results_history: str,
+        best_val_bpb: float,
+        best_experiment: str,
+        hw_info: dict,
+    ) -> ExperimentProposal:
+        user_prompt = USER_PROMPT_TEMPLATE.format(
+            current_code=current_code,
+            results_history=results_history if results_history else "No experiments yet -- this will be the first modification after baseline.",
+            chip_name=hw_info.get("chip_name", "Unknown"),
+            memory_gb=hw_info.get("memory_gb", 0),
+            gpu_cores=hw_info.get("gpu_cores", 0),
+            peak_tflops=hw_info.get("peak_tflops", 0),
+            best_val_bpb=best_val_bpb,
+            best_experiment=best_experiment,
+        )
+
+        response = self._client.chat.completions.create(
+            model=self._deployment,
+            max_tokens=2048,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_prompt},
+            ],
+        )
+
+        response_text = response.choices[0].message.content
+        return parse_llm_response(response_text)
+
+
+# ---------------------------------------------------------------------------
+# Ollama Backend (placeholder)
 # ---------------------------------------------------------------------------
 
 class OllamaBackend(LLMBackend):
@@ -295,25 +456,42 @@ def get_llm_backend(model: str | None = None) -> LLMBackend:
 
     Priority:
     1. OLLAMA_MODEL env var -> OllamaBackend (local, placeholder)
-    2. Claude API via credential resolver
-    3. Error with setup instructions
+    2. AZURE_OPENAI_API_KEY + AZURE_OPENAI_ENDPOINT -> AzureOpenAIBackend
+    3. OPENAI_API_KEY -> OpenAIBackend
+    4. Anthropic credentials (env/keychain/file) -> ClaudeBackend
+    5. Error with setup instructions for all providers
     """
+    # 1. Ollama (local)
     if os.environ.get("OLLAMA_MODEL"):
         return OllamaBackend()
 
+    # 2. Azure OpenAI (check before OpenAI — more specific env vars)
+    if os.environ.get("AZURE_OPENAI_API_KEY") and os.environ.get("AZURE_OPENAI_ENDPOINT"):
+        return AzureOpenAIBackend(model=model)
+
+    # 3. OpenAI
+    if os.environ.get("OPENAI_API_KEY"):
+        return OpenAIBackend(model=model)
+
+    # 4. Anthropic Claude (default)
     try:
         return ClaudeBackend(model=model)
-    except RuntimeError:
-        raise RuntimeError(
-            "No LLM backend configured. Set up credentials:\n"
-            "\n"
-            "  Option 1 -- Store in macOS Keychain (macOS only, recommended):\n"
-            "    python dashboard.py --setup-key\n"
-            "\n"
-            "  Option 2 -- Environment variable:\n"
-            "    export ANTHROPIC_API_KEY=sk-ant-...\n"
-            "\n"
-            "  Option 3 -- File-based store (Linux):\n"
-            "    mkdir -p ~/.config/autoresearch\n"
-            "    echo 'sk-ant-...' > ~/.config/autoresearch/api_key\n"
-        )
+    except (RuntimeError, ImportError):
+        pass
+
+    raise RuntimeError(
+        "No LLM backend configured. Set up credentials for one of:\n"
+        "\n"
+        "  Anthropic Claude (recommended):\n"
+        "    export ANTHROPIC_API_KEY=sk-ant-...\n"
+        "\n"
+        "  OpenAI:\n"
+        "    export OPENAI_API_KEY=sk-...\n"
+        "\n"
+        "  Azure OpenAI:\n"
+        "    export AZURE_OPENAI_API_KEY=...\n"
+        "    export AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com\n"
+        "\n"
+        "  Ollama (local, experimental):\n"
+        "    export OLLAMA_MODEL=llama3.3\n"
+    )
