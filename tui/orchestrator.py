@@ -720,7 +720,7 @@ class ExperimentOrchestrator:
                     self._cb_error(f"FATAL: API authentication failed -- stopping agent. {e}")
                     self._stop_event.set()
                     return None
-                if "deploymentnotfound" in err_str or "deployment" in err_str and "not found" in err_str:
+                if "deploymentnotfound" in err_str or ("deployment" in err_str and "not found" in err_str):
                     self._cb_error(f"FATAL: Azure deployment not found -- stopping agent. {e}")
                     self._stop_event.set()
                     return None
