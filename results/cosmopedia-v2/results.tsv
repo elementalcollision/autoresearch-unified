@@ -47,3 +47,4 @@ exp44	Decrease SCALAR_LR from 0.5 to 0.45	1.116057	89.2	154536	7.9	355	discard	T
 exp45	Increase SCALAR_LR from 0.5 to 0.55	1.113442	89.2	155000	7.9	355	discard	The current best configuration has WARMDOWN_RATIO optimized at 0.73. Recent expe	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp46	Decrease WEIGHT_DECAY from 0.1 to 0.08	1.113683	89.2	155252	8.0	356	discard	The current best configuration has finely tuned the warmdown ratio and other lea	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp47	Increase SCALAR_LR from 0.5 to 0.52	1.114688	89.2	155459	8.0	356	discard	The current best configuration has finely tuned WARMDOWN_RATIO at 0.73, and rece	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp48	Increase WEIGHT_DECAY from 0.1 to 0.12	1.113759	89.2	154896	7.9	355	discard	The current best configuration has WEIGHT_DECAY=0.1, and exp46 showed that decre	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
