@@ -68,3 +68,4 @@ exp65	Decrease EMBEDDING_LR from 0.6 to 0.58	1.091287	52.4	315894	5.3	723	discar
 exp66	Increase MATRIX_LR from 0.046 to 0.0462	1.091242	52.4	315684	5.3	723	discard	The current best configuration uses MATRIX_LR=0.046 and UNEMBEDDING_LR=0.0045. S	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp67	Decrease SCALAR_LR from 0.5 to 0.45	1.094533	52.4	315894	5.3	723	discard	The current best configuration has finely tuned MATRIX_LR and UNEMBEDDING_LR, bu	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp68	Decrease MATRIX_LR from 0.046 to 0.0459	1.091064	52.4	316017	5.3	724	discard	The current best result has MATRIX_LR=0.046 and UNEMBEDDING_LR=0.0045. Previous 	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp69	Decrease MATRIX_LR from 0.046 to 0.0458	1.094250	52.4	315789	5.3	723	discard	The learning rate tuning is showing diminishing returns around 0.046. Exp68 trie	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
