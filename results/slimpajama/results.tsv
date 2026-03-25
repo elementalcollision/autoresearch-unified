@@ -35,3 +35,4 @@ exp32	Increase UNEMBEDDING_LR from 0.004 to 0.006	1.096643	52.4	310229	5.1	710	d
 exp33	Decrease WEIGHT_DECAY from 0.2 to 0.15	1.092319	52.4	310229	5.1	710	keep	With the current optimal configuration (ASPECT_RATIO=24, MATRIX_LR=0.05), the mo	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp34	Decrease WEIGHT_DECAY from 0.15 to 0.1	1.092364	52.4	310356	5.1	711	discard	The current best result came from reducing weight decay from 0.2 to 0.15, which 	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp35	Decrease WEIGHT_DECAY from 0.15 to 0.12	1.092622	52.4	309920	5.1	710	discard	The trend shows that reducing weight decay has been beneficial - we went from 0.	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp36	Increase WEIGHT_DECAY from 0.15 to 0.18	1.092573	52.4	310252	5.1	711	discard	The weight decay experiments show a clear pattern - decreasing from 0.2 to 0.15 	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
