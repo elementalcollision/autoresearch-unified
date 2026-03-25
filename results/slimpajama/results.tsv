@@ -25,3 +25,4 @@ exp22	Decrease ASPECT_RATIO from 28 to 24	1.096329	52.4	310126	5.1	710	keep	The 
 exp23	Decrease ASPECT_RATIO from 24 to 20	1.109641	40.3	431856	3.8	989	discard	The consistent pattern shows that decreasing ASPECT_RATIO continues to improve v	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp24	Decrease ASPECT_RATIO from 24 to 22	1.096520	52.4	310229	5.1	710	discard	The trend shows consistent improvement as ASPECT_RATIO decreases from 64 to 24, 	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp25	Increase MATRIX_LR from 0.04 to 0.045	1.094827	52.4	310023	5.1	710	keep	With the optimal ASPECT_RATIO of 24 found, we should now optimize the learning r	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp26	Increase MATRIX_LR from 0.045 to 0.05	1.093520	52.4	310229	5.1	710	keep	The current best result (exp25) came from increasing MATRIX_LR to 0.045, improvi	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
