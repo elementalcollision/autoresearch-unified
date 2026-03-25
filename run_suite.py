@@ -384,13 +384,15 @@ def _model_slug(model: str | None) -> str | None:
         "claude-sonnet-4-20250514"  → None  (default)
         "claude-opus-4-6"           → "opus-4-6"
         "claude-haiku-4-5-20251001" → "haiku-4-5-20251001"
+        "gpt-4.1"                   → "gpt-4.1"
+        "gpt-5.1"                   → "gpt-5.1"
     """
     if model is None or model == DEFAULT_MODEL:
         return None
-    # Strip "claude-" prefix for shorter directory names
+    # Strip common provider prefixes for shorter directory names
     slug = model.removeprefix("claude-")
     # Sanitize for filesystem safety
-    slug = slug.replace("/", "-").replace("\\", "-").strip("-")
+    slug = slug.replace("/", "-").replace("\\", "-").replace(":", "-").strip("-")
     return slug or None
 
 

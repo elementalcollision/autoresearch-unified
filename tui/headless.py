@@ -173,7 +173,8 @@ def main():
     parser.add_argument("--training-script", default=None, help="Training script path (auto-detected if omitted)")
     parser.add_argument("--results", default="results.tsv", help="Results TSV path")
     parser.add_argument("--dataset", type=str, default="", help="Dataset name (for heartbeat/logging)")
-    parser.add_argument("--model", type=str, default=None, help="Claude model override (e.g. 'claude-opus-4-6')")
+    parser.add_argument("--model", type=str, default=None,
+                        help="Model override (e.g. 'claude-opus-4-6', 'gpt-4.1'). Provider auto-detected from API key env vars.")
     args = parser.parse_args()
 
     # PID lock -- prevent duplicate experiment runs
