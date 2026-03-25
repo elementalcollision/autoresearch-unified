@@ -96,8 +96,10 @@ class ExperimentOrchestrator:
         self._dataset_name = dataset_name
 
         self._git = GitManager()
+        self._git.ensure_auto_push_remote()  # prevent silent push failures on new branches
         self._hw_info = get_hardware_summary()
         self._llm: LLMBackend | None = None  # lazy init
+        self._last_sync_time = 0.0  # epoch time of last git push
 
         # Heartbeat for external monitors
         heartbeat_dir = os.path.dirname(os.path.abspath(results_path)) if results_path else "."
@@ -351,6 +353,7 @@ class ExperimentOrchestrator:
         finally:
             self._running = False
             self._update_heartbeat(status="stopped")
+            self._maybe_sync_results(force=True)  # final sync before exit
             self._cb_status("stopped", "Experiment loop stopped")
 
     # ------------------------------------------------------------------
@@ -611,6 +614,68 @@ class ExperimentOrchestrator:
         self._cb_experiment_complete(result)
         self._cb_stats_update()
         self._update_heartbeat(exp_num, "completed")
+
+        # Sync results to GitHub every 10 minutes (built-in, no external loop needed)
+        self._maybe_sync_results()
+
+    # ------------------------------------------------------------------
+    # Built-in results sync
+    # ------------------------------------------------------------------
+
+    def _maybe_sync_results(self, force: bool = False) -> None:
+        """Push results to GitHub if 10+ minutes since last sync.
+
+        This replaces the fragile background sync loop (which kept dying).
+        Runs inline after each experiment — takes <5s, negligible overhead
+        compared to the 5-min training cycle.
+        """
+        SYNC_INTERVAL = 600  # 10 minutes
+        now = time.time()
+        if not force and (now - self._last_sync_time) < SYNC_INTERVAL:
+            return
+
+        try:
+            # Stage results and heartbeat
+            results_files = [self._results_path]
+            heartbeat = os.path.join(
+                os.path.dirname(os.path.abspath(self._results_path)),
+                ".runner_status.json"
+            )
+            if os.path.exists(heartbeat):
+                results_files.append(heartbeat)
+
+            for f in results_files:
+                try:
+                    self._git._run("add", f, check=False)
+                except Exception:
+                    pass
+
+            # Only commit if there are staged changes
+            diff = self._git._run("diff", "--cached", "--quiet", check=False)
+            if diff is not None:  # non-zero exit = there are changes
+                try:
+                    summary = (
+                        f"exp{self.total_runs} | kept={self.kept_count} "
+                        f"disc={self.discarded_count} crash={self.crash_count} | "
+                        f"best={self.best_val_bpb:.4f}"
+                    )
+                    self._git._run(
+                        "commit", "-m",
+                        f"Sync results ({time.strftime('%H:%M', time.gmtime())} UTC) — {summary}",
+                        check=False
+                    )
+                except Exception:
+                    pass
+
+            # Push (silently — don't block on network errors)
+            try:
+                self._git._run("push", check=False)
+            except Exception:
+                pass
+
+            self._last_sync_time = now
+        except Exception:
+            pass  # sync is best-effort, never crash the experiment loop
 
     # ------------------------------------------------------------------
     # LLM call with exponential backoff
