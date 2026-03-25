@@ -710,6 +710,16 @@ class ExperimentOrchestrator:
                 err_str = str(e).lower()
                 err_type = type(e).__name__
 
+                # Fatal errors that will never recover -- stop immediately
+                if "credit balance" in err_str or "insufficient_quota" in err_str:
+                    self._cb_error(f"FATAL: API billing error -- stopping agent. {e}")
+                    self._stop_event.set()
+                    return None
+                if "authentication" in err_str and "401" in err_str:
+                    self._cb_error(f"FATAL: API authentication failed -- stopping agent. {e}")
+                    self._stop_event.set()
+                    return None
+
                 # Classify the error and determine backoff
                 if "rate" in err_str or "429" in err_str:
                     wait = min(60 * (2 ** attempt), 600)
