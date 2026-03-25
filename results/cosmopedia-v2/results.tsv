@@ -29,3 +29,4 @@ exp26	Increase ASPECT_RATIO from 64 to 72	1.119581	101.5	134973	9.0	310	discard	
 exp27	Increase EMBEDDING_LR from 0.6 to 0.7	1.114656	89.2	155562	8.0	356	keep	The current best experiments have focused on matrix and unembedding learning rat	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp28	Increase EMBEDDING_LR from 0.7 to 0.8	1.115069	89.2	155562	8.0	356	discard	The current best result came from increasing EMBEDDING_LR to 0.7, and exp5 showe	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp29	Decrease HEAD_DIM from 128 to 96	1.122813	89.2	150930	7.7	346	discard	The current HEAD_DIM=128 may be oversized for this model scale, causing unnecess	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp30	Decrease ASPECT_RATIO from 64 to 56	1.114743	89.2	155459	8.0	356	discard	With the current best configuration achieving 1.1147 val_bpb, I need to explore 	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
