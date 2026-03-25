@@ -29,3 +29,4 @@ exp26	Increase MATRIX_LR from 0.045 to 0.05	1.093520	52.4	310229	5.1	710	keep	Th
 exp27	Increase MATRIX_LR from 0.05 to 0.055	1.094061	52.4	310126	5.1	710	discard	The trend from experiments 25-26 shows consistent improvement in val_bpb as MATR	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp28	Decrease SCALAR_LR from 0.5 to 0.4	1.099812	52.4	310229	5.1	710	discard	The current best experiment (exp26) has MATRIX_LR=0.05 working well. Since scala	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp29	Increase EMBEDDING_LR from 0.6 to 0.7	1.094756	52.4	310126	5.1	710	discard	With MATRIX_LR optimized at 0.05, the embedding layer learning rate might benefi	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp30	Increase SCALAR_LR from 0.5 to 0.6	1.098526	52.4	310126	5.1	710	discard	The current best configuration has MATRIX_LR=0.05 which worked well, but SCALAR_	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
