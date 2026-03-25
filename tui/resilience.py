@@ -27,7 +27,7 @@ from typing import Callable, Optional
 def atomic_write(path: str, content: str) -> None:
     """Write content to a file atomically via tmp + rename.
 
-    On a single Mac filesystem, os.rename() is atomic — so the file is
+    os.replace() is atomic on both POSIX and Windows — the file is
     either fully written or not changed at all. No corruption from
     mid-write crashes.
     """
@@ -36,7 +36,7 @@ def atomic_write(path: str, content: str) -> None:
         f.write(content)
         f.flush()
         os.fsync(f.fileno())
-    os.rename(tmp_path, path)
+    os.replace(tmp_path, path)
 
 
 def atomic_append(path: str, line: str) -> None:

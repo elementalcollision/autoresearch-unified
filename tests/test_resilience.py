@@ -14,11 +14,6 @@ class TestAtomicWrite:
         atomic_write(path, "hello world")
         assert open(path).read() == "hello world"
 
-    @pytest.mark.xfail(
-        condition=os.name == "nt",
-        reason="atomic_write uses os.rename() which fails on Windows when target exists. Should use os.replace().",
-        strict=True,
-    )
     def test_overwrite(self, tmp_path):
         path = str(tmp_path / "test.txt")
         atomic_write(path, "first")
@@ -83,11 +78,6 @@ class TestValidateResultsTsv:
         assert valid is True
         assert len(warnings) == 0
 
-    @pytest.mark.xfail(
-        condition=os.name == "nt",
-        reason="Depends on atomic_write which uses os.rename() -- fails on Windows.",
-        strict=True,
-    )
     def test_truncated_line_removed(self, tmp_path):
         """Simulate a crash mid-write -- partial line with no trailing newline."""
         path = str(tmp_path / "results.tsv")
@@ -119,11 +109,6 @@ class TestHeartbeat:
         assert data["status"] == "training"
         assert data["alive"] is True
 
-    @pytest.mark.xfail(
-        condition=os.name == "nt",
-        reason="Heartbeat.close() calls atomic_write which fails on Windows (os.rename).",
-        strict=True,
-    )
     def test_close_marks_not_alive(self, tmp_path):
         path = str(tmp_path / "status.json")
         hb = Heartbeat(path)
@@ -133,11 +118,6 @@ class TestHeartbeat:
         assert data["alive"] is False
         assert data["status"] == "stopped"
 
-    @pytest.mark.xfail(
-        condition=os.name == "nt",
-        reason="Heartbeat.update() calls atomic_write which fails on Windows (os.rename).",
-        strict=True,
-    )
     def test_update_overwrites(self, tmp_path):
         path = str(tmp_path / "status.json")
         hb = Heartbeat(path)
