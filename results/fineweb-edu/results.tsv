@@ -50,3 +50,4 @@ exp47	Decrease WEIGHT_DECAY from 0.1 to 0.07	1.119759	89.2	155614	8.0	356	discar
 exp48	Increase EMBEDDING_LR from 0.70 to 0.75	1.120553	89.2	155585	8.0	357	discard	The current best result has EMBEDDING_LR=0.70 and SCALAR_LR=0.8, which improved 	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp49	Decrease WEIGHT_DECAY from 0.1 to 0.05	1.120380	89.2	155636	8.0	357	discard	The current best configuration has SCALAR_LR=0.8, EMBEDDING_LR=0.70, MATRIX_LR=0	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp50	Increase MATRIX_LR from 0.10 to 0.11	1.120474	89.2	155636	8.0	357	discard	The current best configuration has MATRIX_LR=0.10, EMBEDDING_LR=0.70, UNEMBEDDIN	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
+exp51	Decrease SCALAR_LR from 0.8 to 0.9	1.121309	89.2	155585	8.0	357	discard	The best result so far was achieved by increasing SCALAR_LR to 0.8, and exp46 sh	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
