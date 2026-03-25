@@ -33,3 +33,4 @@ exp30	Decrease ASPECT_RATIO from 64 to 56	1.114743	89.2	155459	8.0	356	discard	W
 exp31	Decrease ADAM_BETAS[0] from 0.75 to 0.70	1.116037	89.2	155511	8.0	356	discard	The current best configuration has ADAM_BETAS=(0.75, 0.97). Previous experiments	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp32	Decrease WARMDOWN_RATIO from 0.5 to 0.4	1.117463	89.2	155511	8.0	356	discard	The current best configuration has been systematically improved through learning	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp33	Increase WARMDOWN_RATIO from 0.5 to 0.6	1.113153	89.2	155459	8.0	356	keep	The current best configuration has achieved 1.1147 val_bpb. Since we've optimize	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp34	Increase WARMDOWN_RATIO from 0.6 to 0.7	1.112840	89.2	155511	8.0	356	keep	The last experiment (exp33) improved val_bpb by increasing WARMDOWN_RATIO from 0	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
