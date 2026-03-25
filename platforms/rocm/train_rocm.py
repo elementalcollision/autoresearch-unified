@@ -329,7 +329,7 @@ WARMDOWN_RATIO = 0.5    # fraction of time budget for LR warmdown
 FINAL_LR_FRAC = 0.0     # final LR as fraction of initial
 
 # Model size
-DEPTH = _hp_defaults['depth']
+DEPTH = _hp_defaults['depth'] + 2
 DEVICE_BATCH_SIZE = _hp_defaults['device_batch_size']
 
 # ---------------------------------------------------------------------------
