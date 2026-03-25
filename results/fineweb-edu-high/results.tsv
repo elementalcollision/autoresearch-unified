@@ -10,3 +10,4 @@ exp7	Decrease UNEMBEDDING_LR from 0.004 to 0.003	1.125093	89.2	155459	8.0	356	di
 exp8	Decrease WEIGHT_DECAY from 0.2 to 0.15	1.124339	89.2	155459	8.0	356	discard	The current best result came from increasing MATRIX_LR, suggesting that matrix p	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp9	Increase MATRIX_LR from 0.06 to 0.08	1.124552	89.2	155562	8.0	356	discard	The current best result came from increasing MATRIX_LR from 0.04 to 0.06, but su	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp10	Decrease WARMDOWN_RATIO from 0.5 to 0.3	1.130533	89.2	155614	8.0	356	discard	The current best result uses MATRIX_LR=0.06, which is higher than the original 0	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
+exp11	Decrease SCALAR_LR from 0.5 to 0.3	1.131388	89.2	155614	8.0	356	discard	The baseline SCALAR_LR of 0.5 might be too aggressive for the per-layer scalars.	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
