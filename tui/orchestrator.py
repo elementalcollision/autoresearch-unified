@@ -16,6 +16,7 @@ based on the detected or configured backend.
 
 import os
 import re
+import select
 import subprocess
 import sys
 import threading
@@ -724,6 +725,13 @@ class ExperimentOrchestrator:
                     self._proc.wait()
                     return None
 
+                # Use select() with 1s timeout so the deadline check above
+                # actually fires when the process hangs (e.g. stuck in eval
+                # compilation). Without this, read(1) blocks indefinitely and
+                # the timeout never triggers.
+                ready, _, _ = select.select([self._proc.stdout], [], [], 1.0)
+                if not ready:
+                    continue  # No data -- loop back to check deadline/stop
                 byte = self._proc.stdout.read(1)
                 if not byte:
                     break
