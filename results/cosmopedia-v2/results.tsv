@@ -7,3 +7,4 @@ exp4	Increase MATRIX_LR from 0.04 to 0.06	1.124237	89.2	155459	8.0	356	keep	The 
 exp5	Increase EMBEDDING_LR from 0.6 to 0.8	1.125024	89.2	155304	8.0	356	discard	Since increasing MATRIX_LR from 0.04 to 0.06 gave a small improvement, the model	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp6	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.123267	89.2	155511	8.0	356	keep	The current best experiment (exp4) increased MATRIX_LR from 0.04 to 0.06, which 	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp7	Increase SCALAR_LR from 0.5 to 0.7	1.127996	89.2	155407	8.0	356	discard	The scalar learning rate affects per-layer scaling parameters which can signific	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp8	Increase UNEMBEDDING_LR from 0.004 to 0.006	1.120575	89.2	155355	8.0	356	keep	The unembedding layer (lm_head) maps from hidden states to vocabulary logits, ma	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
