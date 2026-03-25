@@ -1,50 +1,70 @@
 # Autoresearch Unified Wiki
 
-Consolidated documentation for the Autoresearch cross-platform hyperparameter optimization project.
+Autonomous LLM-driven hyperparameter optimization across GPU platforms. Claude proposes hyperparameter changes, trains a GPT model for 5 minutes, evaluates val_bpb, keeps or discards, repeats.
 
 ## Quick Links
 
-- **[HuggingFace Dataset](https://huggingface.co/datasets/davegraham/autoresearch-experiments)** — All experiment data (Croissant-compliant)
-- **[Cross-Platform Overview](Cross-Platform-Overview)** — Key findings and normalized comparisons
+- **[Cross-Platform Overview](Cross-Platform-Overview)** — Current results, environment details, and analysis
+- **[HuggingFace Dataset](https://huggingface.co/datasets/davegraham/autoresearch-experiments)** — Structured experiment data (Croissant-compliant)
 - **[Data Access Guide](Data-Access)** — How to load and query the dataset
 
-## Experiment Summary
+## Current Run: Unified Codebase v2
+
+> Running since March 24, 2026 on commit `dacda45` from `autoresearch-unified`. All platforms use identical code, identical LLM (Claude Sonnet 4), and 11-column TSV with `baseline_sha` traceability.
 
 | Stat | Value |
 |------|-------|
-| **Total experiments** | 2,637 |
-| **Platforms** | 3 (Apple Metal, NVIDIA CUDA, AMD ROCm) |
-| **GPU models** | 5 |
-| **Datasets** | 7 |
+| **Active platforms** | 2 (NVIDIA CUDA, AMD ROCm) |
+| **Active GPUs** | RTX PRO 6000 Blackwell, MI300X |
+| **Datasets in queue** | 8 (ClimbMix through PubMed-Abstract) |
+| **Experiments per dataset** | 80 |
+| **Total target** | 1,280 experiments (8 datasets x 2 GPUs x 80 each) |
 | **Primary metric** | val_bpb (validation bits-per-byte, lower = better) |
+| **Codebase** | [autoresearch-unified](https://github.com/elementalcollision/autoresearch-unified) |
+
+### Progress
+
+| Dataset | RTX PRO 6000 | MI300X |
+|---------|-------------|--------|
+| **ClimbMix** | 79/80 (best: **1.057**) | 80/80 (best: **1.086**) |
+| **FineWeb-Edu** | _in progress_ | _in progress_ |
+| Cosmopedia-v2 | queued | queued |
+| SlimPajama | queued | queued |
+| FineWeb-Edu-High | queued | queued |
+| FineWeb | queued | queued |
+| GitHub-Code-Python | queued | queued |
+| PubMed-Abstract | queued | queued |
 
 ## By Platform
 
-| Platform | Experiments | GPUs | Page |
-|----------|-------------|------|------|
-| Apple Metal (MLX/MPS) | 713 | M5 Max | [Platform: Apple Metal](Platform-Apple-Metal) |
-| NVIDIA CUDA | 1,602 | RTX 4000 Ada, A100 40GB, RTX Pro 6000 Blackwell | [Platform: NVIDIA CUDA](Platform-NVIDIA-CUDA) |
-| AMD ROCm | 322 | MI300X | [Platform: AMD ROCm](Platform-AMD-ROCm) |
-| Intel Gaudi | 0 (pending) | Gaudi 3 | [Platform: Intel Gaudi](Platform-Intel-Gaudi) |
+| Platform | Status | GPUs | Page |
+|----------|--------|------|------|
+| NVIDIA CUDA | Active | RTX PRO 6000 Blackwell (102 GB) | [Platform: NVIDIA CUDA](Platform-NVIDIA-CUDA) |
+| AMD ROCm | Active | MI300X (192 GB) | [Platform: AMD ROCm](Platform-AMD-ROCm) |
+| Apple Metal (MLX/MPS) | Planned | M5 Max | [Platform: Apple Metal](Platform-Apple-Metal) |
+| Intel Gaudi | Blocked (IBM quota) | Gaudi 3 | [Platform: Intel Gaudi](Platform-Intel-Gaudi) |
 
 ## By Dataset
 
-| Dataset | Platforms Tested | Best val_bpb | Best GPU | Page |
-|---------|-----------------|--------------|----------|------|
-| ClimbMix | 4 GPUs | 1.036 | MI300X | [Dataset: ClimbMix](Dataset-Climbmix) |
-| Cosmopedia-v2 | 4 GPUs | 0.697 | A100 40GB | [Dataset: Cosmopedia-v2](Dataset-Cosmopedia-v2) |
-| FineWeb-Edu | 4 GPUs | 1.015 | MI300X | [Dataset: FineWeb-Edu](Dataset-FineWeb-Edu) |
-| FineWeb-Edu-High | 3 GPUs | 1.099 | RTX Pro 6000 | [Dataset: FineWeb-Edu-High](Dataset-FineWeb-Edu-High) |
-| FineWeb | 3 GPUs | 1.231 | A100 40GB | [Dataset: FineWeb](Dataset-FineWeb) |
-| SlimPajama | 4 GPUs | 1.015 | MI300X | [Dataset: SlimPajama](Dataset-SlimPajama) |
-| GitHub-Code-Python | 2 GPUs | 0.549 | A100 40GB | [Dataset: GitHub-Code-Python](Dataset-GitHub-Code-Python) |
+| Dataset | GPUs Tested | Best val_bpb | Best GPU | Page |
+|---------|------------|--------------|----------|------|
+| ClimbMix | 2 | **1.057** | RTX PRO 6000 | [Dataset: ClimbMix](Dataset-Climbmix) |
+| FineWeb-Edu | 2 | _running_ | — | [Dataset: FineWeb-Edu](Dataset-FineWeb-Edu) |
+| Cosmopedia-v2 | — | _queued_ | — | [Dataset: Cosmopedia-v2](Dataset-Cosmopedia-v2) |
+| SlimPajama | — | _queued_ | — | [Dataset: SlimPajama](Dataset-SlimPajama) |
+| FineWeb-Edu-High | — | _queued_ | — | [Dataset: FineWeb-Edu-High](Dataset-FineWeb-Edu-High) |
+| FineWeb | — | _queued_ | — | [Dataset: FineWeb](Dataset-FineWeb) |
+| GitHub-Code-Python | — | _queued_ | — | [Dataset: GitHub-Code-Python](Dataset-GitHub-Code-Python) |
+| PubMed-Abstract | — | _queued_ | — | — |
 
 ## Tools & Testing
 
-- [TUI Dashboard](Tools-TUI-Dashboard)
-- [Remote Orchestration](Tools-Remote-Orchestration)
-- [Sanity Testing](Sanity-Testing) — Integration test results for the unified codebase
+- [Sanity Testing](Sanity-Testing) — Integration test results and data integrity validation
+- [Data Access Guide](Data-Access) — How to load experiment data from HuggingFace
+- [Archive: Cross-Platform Overview v1](Archive-Cross-Platform-Overview-v1) — Pre-unification results (4 separate repos)
 
 ## About
 
-This wiki consolidates documentation from 4 platform-specific wikis into a single, topic-organized resource. The structured experiment data lives on [HuggingFace](https://huggingface.co/datasets/davegraham/autoresearch-experiments) as a Croissant-compliant dataset. See [Data Access](Data-Access) for usage instructions.
+This project uses an autonomous LLM agent (Claude) to optimize hyperparameters for a GPT-style language model across multiple GPU platforms and datasets. Each experiment runs for exactly 5 minutes, producing a val_bpb score. The agent learns from previous results to propose better hyperparameters.
+
+The unified codebase replaced 4 separate platform-specific repositories in March 2026. Key improvements include cross-dataset baseline isolation, `baseline_sha` traceability, atomic result writes, and automated GitHub sync.

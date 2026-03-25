@@ -1,5 +1,7 @@
 # Platform: AMD ROCm
 
+> **v1 DATA (Pre-Unification)**: Analysis below is from the old separate repositories. The unified codebase (`autoresearch-unified`) now handles all platforms from a single repo. See the [Cross-Platform Overview](Cross-Platform-Overview) for current results.
+
 AMD ROCm platform running on a single MI300X (192 GB HBM3) via RunPod cloud. Uses `torch.compile` with AMD Triton and CK-based FlashAttention for autonomous LLM-driven hyperparameter optimization.
 
 ## Summary

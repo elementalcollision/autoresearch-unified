@@ -1,5 +1,7 @@
 # Platform: Intel Gaudi
 
+> **v1 DATA (Pre-Unification)**: Analysis below is from the old separate repositories. The unified codebase (`autoresearch-unified`) now handles all platforms from a single repo. See the [Cross-Platform Overview](Cross-Platform-Overview) for current results.
+
 Intel Gaudi 3 HPU platform -- pre-production, with training infrastructure deployed but no autonomous experiment runs completed yet. The port targets IBM Cloud Gaudi 3 instances with SynapseAI and a custom Habana PyTorch build.
 
 ## Summary

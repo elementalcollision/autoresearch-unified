@@ -1,5 +1,7 @@
 # Platform: NVIDIA CUDA
 
+> **v1 DATA (Pre-Unification)**: Analysis below is from the old separate repositories. The unified codebase (`autoresearch-unified`) now handles all platforms from a single repo. See the [Cross-Platform Overview](Cross-Platform-Overview) for current results.
+
 NVIDIA CUDA platform spanning three GPU architectures (Ada Lovelace, Ampere, Blackwell) across three cloud providers. Uses `torch.compile` with CUDA graphs and FlashAttention-2 for autonomous LLM-driven hyperparameter optimization.
 
 ## Summary

@@ -1,5 +1,7 @@
 # Platform: Apple Metal
 
+> **v1 DATA (Pre-Unification)**: Analysis below is from the old separate repositories. The unified codebase (`autoresearch-unified`) now handles all platforms from a single repo. See the [Cross-Platform Overview](Cross-Platform-Overview) for current results.
+
 Apple Silicon platform using a dual-backend architecture (MLX + PyTorch MPS) for autonomous LLM-driven hyperparameter optimization on local Mac hardware. All experiments run on unified CPU/GPU memory with no cloud dependency.
 
 ## Summary

@@ -1,5 +1,7 @@
 # Dataset: cosmopedia-v2
 
+> **v1 DATA (Pre-Unification)**: Results below are from the old separate repositories (autoresearch, autoresearch-cuda, autoresearch-rocm, autoresearch-gaudi) which had known data loss bugs. See the [Cross-Platform Overview](Cross-Platform-Overview) for validated unified codebase results.
+
 ## Cross-Platform Results
 
 | GPU | Platform | Provider | Best val_bpb | Experiments | Keep Rate | Crash Rate |
