@@ -16,7 +16,7 @@
 | **Driver** | 570.195.03 | ROCm 6.1.0-82 |
 | **CUDA / HIP** | CUDA 12.8 | HIP 6.3.42131 |
 | **PyTorch** | 2.8.0.dev+cu128 | 2.8.0+rocm6.3 |
-| **torch.compile** | Enabled (default mode) | DISABLED (Inductor crash on CDNA3) |
+| **torch.compile** | Enabled (default mode) | DISABLED in v2 suite (Inductor crash on CDNA3 with PyTorch 2.8.0 — see [fix/rocm-torch-compile-mi300x](https://github.com/elementalcollision/autoresearch-unified/pull/) for remediation) |
 | **RunPod Image** | pytorch:2.8.0-py3.11-cuda12.8.1 | pytorch:2.4.0-py3.10-rocm6.1.0 |
 | **Container Disk** | 80 GB | 80 GB |
 | **Cost** | $1.69/hr | $1.99/hr ($0.50 secure) |
@@ -88,6 +88,8 @@ Bold = best result for that dataset. Table updates as datasets complete.
 ### 1. torch.compile Is the Dominant Variable
 
 The RTX PRO 6000 achieves better absolute val_bpb (1.057 vs 1.086) despite having 3.4x fewer theoretical FLOPS. The difference is **torch.compile**: enabled on CUDA (33.7% MFU), disabled on ROCm due to an Inductor backend crash (7.1% MFU). This 4.7x MFU gap means the RTX PRO 6000 effectively trains ~4.7x faster per step, allowing deeper models and more training steps per experiment.
+
+> **Remediation in progress**: Branch `fix/rocm-torch-compile-mi300x` adds a tiered compile fallback chain (Inductor → aot_eager → eager) and recommends upgrading to PyTorch 2.9.1+rocm6.3 which is expected to fix the Inductor shape inference bug on CDNA3. Target MFU after fix: 15-25%.
 
 ### 2. Platform Constraints Drive Different Optimization Strategies
 
