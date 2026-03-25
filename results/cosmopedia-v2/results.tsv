@@ -12,3 +12,4 @@ exp9	Increase UNEMBEDDING_LR from 0.006 to 0.008	1.120052	89.2	155407	8.0	356	ke
 exp10	Increase UNEMBEDDING_LR from 0.008 to 0.010	1.124040	89.2	155407	8.0	356	discard	The trend shows consistent improvement as UNEMBEDDING_LR increased from 0.004 to	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp11	Increase MATRIX_LR from 0.06 to 0.08	1.117678	89.2	155511	8.0	356	keep	The current best result comes from increasing UNEMBEDDING_LR to 0.008, and we pr	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp12	Increase MATRIX_LR from 0.08 to 0.10	1.125038	89.2	155614	8.0	356	discard	The trend shows consistent improvement as MATRIX_LR increased from 0.04 → 0.06 →	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp13	Decrease WEIGHT_DECAY from 0.1 to 0.05	1.118733	89.2	155355	8.0	356	discard	With the optimal MATRIX_LR now at 0.08, reducing weight decay further could allo	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
