@@ -13,3 +13,4 @@ exp10	Increase DEPTH from default to reduce per-layer computation and potentiall
 exp11	Increase ASPECT_RATIO from 64 to 80	1.161671	113.9	117549	9.9	269	discard	The baseline remains best after 10 experiments focusing on learning rates and ot	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp12	Decrease HEAD_DIM from 128 to 96	1.132950	89.2	150616	7.7	345	discard	The baseline is still the best performer despite trying various learning rate an	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp13	Increase UNEMBEDDING_LR from 0.004 to 0.005	1.126570	89.2	155355	8.0	356	discard	The unembedding layer is critical for final token predictions and may benefit fr	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp14	Increase WARMUP_RATIO from 0.0 to 0.1	1.130752	89.2	154948	7.9	355	discard	The baseline has no learning rate warmup, which can lead to unstable early train	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
