@@ -74,3 +74,4 @@ exp71	Decrease ADAM_BETAS[0] from 0.75 to 0.73	1.114722	89.2	155511	8.0	356	disc
 exp72	Increase ADAM_BETAS[0] from 0.75 to 0.78	1.115359	89.2	155511	8.0	356	discard	The current best configuration has ADAM_BETAS at (0.75, 0.96). Recent experiment	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp73	Decrease EMBEDDING_LR from 0.7 to 0.69	1.112636	89.2	155614	8.0	356	discard	The current best configuration has EMBEDDING_LR=0.7, but we've seen that decreas	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp74	Decrease EMBEDDING_LR from 0.7 to 0.68	1.112532	89.2	155459	8.0	356	discard	The current best configuration has EMBEDDING_LR=0.7, and recent experiments show	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp75	Increase MATRIX_LR from 0.08 to 0.085	1.112471	89.2	155562	8.0	356	discard	The current best configuration has MATRIX_LR at 0.08, and we've seen that increa	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
