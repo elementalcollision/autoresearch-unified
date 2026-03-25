@@ -23,3 +23,4 @@ exp20	Decrease ASPECT_RATIO from 40 to 32	1.096524	52.4	310023	5.1	710	keep	The 
 exp21	Decrease ASPECT_RATIO from 32 to 28	1.096361	52.4	310252	5.1	711	keep	The trend shows consistent improvement as ASPECT_RATIO decreases (1.1243 → 1.106	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp22	Decrease ASPECT_RATIO from 28 to 24	1.096329	52.4	310126	5.1	710	keep	The consistent improvement trend from decreasing ASPECT_RATIO (1.1060 → 1.0978 →	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp23	Decrease ASPECT_RATIO from 24 to 20	1.109641	40.3	431856	3.8	989	discard	The consistent pattern shows that decreasing ASPECT_RATIO continues to improve v	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp24	Decrease ASPECT_RATIO from 24 to 22	1.096520	52.4	310229	5.1	710	discard	The trend shows consistent improvement as ASPECT_RATIO decreases from 64 to 24, 	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
