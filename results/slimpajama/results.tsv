@@ -43,3 +43,4 @@ exp40	Increase MATRIX_LR from 0.05 to 0.06	1.097514	52.4	316227	5.3	724	discard	
 exp41	Decrease MATRIX_LR from 0.05 to 0.048	1.092075	52.4	315912	5.3	724	discard	The current best configuration uses MATRIX_LR=0.05 with val_bpb=1.0919. Previous	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp42	Decrease MATRIX_LR from 0.05 to 0.047	1.091535	52.4	316017	5.3	724	keep	The current best configuration has MATRIX_LR=0.05, and exp41 showed that a sligh	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp43	Decrease MATRIX_LR from 0.047 to 0.046	1.091643	52.4	315789	5.3	723	discard	The trend shows consistent improvement as MATRIX_LR decreased from 0.05 to 0.047	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp44	Decrease MATRIX_LR from 0.047 to 0.045	1.091765	52.4	316122	5.3	724	discard	The experiments show a clear trend where decreasing MATRIX_LR has been beneficia	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
