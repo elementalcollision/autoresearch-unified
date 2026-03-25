@@ -17,3 +17,4 @@ exp14	Decrease UNEMBEDDING_LR from 0.004 to 0.002	1.144545	89.2	155636	8.0	357	d
 exp15	Increase HEAD_DIM from 128 to 160	1.129731	92.2	136530	7.5	313	discard	The current architecture uses HEAD_DIM=128, but increasing head dimension can im	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp16	Increase MATRIX_LR from 0.06 to 0.07	1.123051	89.2	155533	8.0	357	keep	The current best result (exp13) combined decreased EMBEDDING_LR with the previou	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp17	Increase MATRIX_LR from 0.07 to 0.08	1.125470	89.2	155792	8.0	357	discard	The current best result came from increasing MATRIX_LR to 0.07, and exp9 showed 	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
+exp18	Increase UNEMBEDDING_LR from 0.004 to 0.005	1.121093	89.2	155636	8.0	357	keep	The current best configuration has MATRIX_LR=0.07 and EMBEDDING_LR=0.4. The UNEM	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
