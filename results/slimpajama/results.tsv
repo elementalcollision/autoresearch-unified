@@ -20,3 +20,4 @@ exp17	Decrease HEAD_DIM from 128 to 112	1.151268	80.0	138676	5.6	318	discard	Exp
 exp18	Decrease HEAD_DIM from 128 to 104	1.150306	75.4	147224	5.3	338	discard	The current best experiment (exp15) reduced ASPECT_RATIO to 48, improving val_bp	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp19	Decrease ASPECT_RATIO from 48 to 40	1.097850	64.6	235176	6.1	539	keep	The current best experiment (exp15) achieved 1.1060 val_bpb by reducing ASPECT_R	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp20	Decrease ASPECT_RATIO from 40 to 32	1.096524	52.4	310023	5.1	710	keep	The trend shows that decreasing ASPECT_RATIO from 64→48→40 has consistently impr	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp21	Decrease ASPECT_RATIO from 32 to 28	1.096361	52.4	310252	5.1	711	keep	The trend shows consistent improvement as ASPECT_RATIO decreases (1.1243 → 1.106	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
