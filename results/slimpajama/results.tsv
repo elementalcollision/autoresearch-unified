@@ -5,3 +5,4 @@ exp2	Increase MATRIX_LR from 0.04 to 0.05	1.125473	89.2	155407	8.0	356	discard	T
 exp3	Reduce TOTAL_BATCH_SIZE to increase gradient steps within time budget	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp4	Increase SCALAR_LR from 0.5 to 0.7	1.134114	89.2	154845	7.9	355	discard	The scalar learning rate controls per-layer scaling parameters which can signifi	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp5	Decrease MATRIX_LR from 0.04 to 0.03	1.126781	89.2	154948	7.9	355	discard	The baseline performed best so far, and increasing MATRIX_LR to 0.05 in exp2 sli	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp6	Reduce WEIGHT_DECAY from 0.2 to 0.1	1.125696	89.2	155304	8.0	356	discard	The baseline is still performing best, suggesting that aggressive optimization c	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
