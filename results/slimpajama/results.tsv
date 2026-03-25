@@ -15,3 +15,4 @@ exp12	Decrease HEAD_DIM from 128 to 96	1.132950	89.2	150616	7.7	345	discard	The 
 exp13	Increase UNEMBEDDING_LR from 0.004 to 0.005	1.126570	89.2	155355	8.0	356	discard	The unembedding layer is critical for final token predictions and may benefit fr	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp14	Increase WARMUP_RATIO from 0.0 to 0.1	1.130752	89.2	154948	7.9	355	discard	The baseline has no learning rate warmup, which can lead to unstable early train	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp15	Decrease ASPECT_RATIO from 64 to 48	1.105969	76.9	187624	7.0	430	keep	Since increasing ASPECT_RATIO to 80 hurt performance significantly (exp11), goin	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp16	Increase HEAD_DIM from 128 to 160	1.107195	76.9	182878	6.9	419	discard	The successful aspect ratio reduction in exp15 achieved better performance by ch	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
