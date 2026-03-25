@@ -26,3 +26,4 @@ exp23	Decrease FINAL_LR_FRAC from 0.0 to -0.1	1.202730	89.2	155304	8.0	356	disca
 exp24	Increase MATRIX_LR from 0.04 to 0.10	1.124147	89.2	155636	8.0	357	keep	The pattern shows that moderate increases in MATRIX_LR (to 0.05, 0.06, 0.08) all	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp25	Increase MATRIX_LR from 0.10 to 0.12	1.133895	89.2	155740	8.0	357	discard	The experiment history shows a clear trend where increasing MATRIX_LR has been b	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
 exp26	Increase MATRIX_LR from 0.10 to 0.14	1.141504	89.2	155844	8.0	357	discard	Experiment 24 achieved the best validation score so far by increasing MATRIX_LR 	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
+exp27	Decrease EMBEDDING_LR from 0.6 to 0.4	1.138547	89.2	155459	8.0	356	discard	The current best result used MATRIX_LR=0.10, but EMBEDDING_LR=0.6 might be too h	AMD Instinct MI300X	607cf39faa343d1254b93a0a5345b83d054f4ef9
