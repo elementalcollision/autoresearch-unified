@@ -3,3 +3,4 @@ exp0	baseline (no modifications)	1.124295	89.2	155201	7.9	356	baseline	depth=12,
 exp1	Reduce DEVICE_BATCH_SIZE from default to increase gradient steps	1.131582	45.6	147371	7.5	338	discard	The baseline achieved only 356 steps in 5 minutes. Since maximizing gradient ste	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp2	Increase MATRIX_LR from 0.04 to 0.05	1.125473	89.2	155407	8.0	356	discard	The baseline achieved the best val_bpb so far, and matrix parameters (weights) a	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp3	Reduce TOTAL_BATCH_SIZE to increase gradient steps within time budget	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp4	Increase SCALAR_LR from 0.5 to 0.7	1.134114	89.2	154845	7.9	355	discard	The scalar learning rate controls per-layer scaling parameters which can signifi	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
