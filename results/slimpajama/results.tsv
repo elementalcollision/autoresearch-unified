@@ -38,3 +38,4 @@ exp35	Decrease WEIGHT_DECAY from 0.15 to 0.12	1.092622	52.4	309920	5.1	710	disca
 exp36	Increase WEIGHT_DECAY from 0.15 to 0.18	1.092573	52.4	310252	5.1	711	discard	The weight decay experiments show a clear pattern - decreasing from 0.2 to 0.15 	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp37	Change WINDOW_PATTERN from "SSSL" to "SSL"	1.091937	52.4	316017	5.3	724	keep	With ASPECT_RATIO at 24 and other hyperparameters well-tuned, reducing the windo	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp38	Increase MATRIX_LR from 0.05 to 0.055	1.095875	52.4	316017	5.3	724	discard	The current best configuration (exp37) uses MATRIX_LR=0.05, which was optimal in	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp39	Increase WARMDOWN_RATIO from 0.5 to 0.6	1.091855	52.4	315684	5.3	723	keep	The current best configuration achieves good performance with WINDOW_PATTERN="SS	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
