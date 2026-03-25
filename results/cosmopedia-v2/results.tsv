@@ -35,3 +35,4 @@ exp32	Decrease WARMDOWN_RATIO from 0.5 to 0.4	1.117463	89.2	155511	8.0	356	disca
 exp33	Increase WARMDOWN_RATIO from 0.5 to 0.6	1.113153	89.2	155459	8.0	356	keep	The current best configuration has achieved 1.1147 val_bpb. Since we've optimize	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp34	Increase WARMDOWN_RATIO from 0.6 to 0.7	1.112840	89.2	155511	8.0	356	keep	The last experiment (exp33) improved val_bpb by increasing WARMDOWN_RATIO from 0	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp35	Increase WARMDOWN_RATIO from 0.7 to 0.8	1.113187	89.2	155407	8.0	356	discard	The trend shows consistent improvement as WARMDOWN_RATIO increased from 0.5 to 0	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp36	Decrease WARMDOWN_RATIO from 0.7 to 0.65	1.113014	89.2	155201	7.9	356	discard	The warmdown ratio shows a clear pattern - increasing from 0.5 to 0.6 to 0.7 ste	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
