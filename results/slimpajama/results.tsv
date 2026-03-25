@@ -71,3 +71,4 @@ exp68	Decrease MATRIX_LR from 0.046 to 0.0459	1.091064	52.4	316017	5.3	724	disca
 exp69	Decrease MATRIX_LR from 0.046 to 0.0458	1.094250	52.4	315789	5.3	723	discard	The learning rate tuning is showing diminishing returns around 0.046. Exp68 trie	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp70	Increase SCALAR_LR from 0.5 to 0.52	1.093445	52.4	315789	5.3	723	discard	The current best configuration has SCALAR_LR=0.5, and we've seen that decreasing	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
 exp71	Decrease WARMDOWN_RATIO from 0.6 to 0.55	1.091071	52.4	316227	5.3	724	discard	The current best configuration has been refined through many small learning rate	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
+exp72	Increase EMBEDDING_LR from 0.6 to 0.62	1.092101	52.4	315789	5.3	723	discard	The current best configuration has UNEMBEDDING_LR=0.0045 and MATRIX_LR=0.046. Re	AMD Instinct MI300X	32d77c625c408997a62b1cd33787022a5f8767dd
