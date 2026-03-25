@@ -95,7 +95,10 @@ class CausalSelfAttention(nn.Module):
         k = k.transpose(1, 2)
         v = v.transpose(1, 2)
 
-        # SDPA — on CUDA this auto-dispatches to FlashAttention-2 when is_causal=True
+        # SDPA auto-dispatches to the best available kernel:
+        # - FlashAttention-2 on Ampere/Ada (SM 8.x)
+        # - Memory-efficient or math kernel on Blackwell (SM 12.0, no FA3 prebuilt)
+        # - Hopper uses FlashAttention-2 via SDPA (SM 9.0)
         window = window_size[0] if isinstance(window_size, (tuple, list)) else window_size
         if window > 0 and window < T:
             # Sliding window: create causal mask with window limit
@@ -379,12 +382,21 @@ device_type = "cuda"
 # bf16 autocast — native on H100/H200
 autocast_ctx = torch.amp.autocast(device_type="cuda", dtype=torch.bfloat16)
 
-# Log flash attention status
-flash_sdp = torch.backends.cuda.flash_sdp_enabled()
-print(f"FlashAttention via SDPA: {'enabled' if flash_sdp else 'disabled'}")
+# Log attention backend status
+_cc = _hw_info.get("compute_capability", (0, 0))
+_cc_str = f"{_cc[0]}.{_cc[1]}" if isinstance(_cc, tuple) else str(_cc)
+_flash_sdp = torch.backends.cuda.flash_sdp_enabled()
+_mem_sdp = torch.backends.cuda.mem_efficient_sdp_enabled()
+if _gpu_arch == "blackwell" and not _flash_sdp:
+    # Blackwell SM 12.0: flash-attn has no prebuilt kernels, SDPA uses math/mem-efficient path
+    print(f"Attention: SDPA (FlashAttention unavailable on SM {_cc_str} — using memory-efficient kernel)")
+elif _flash_sdp:
+    print(f"Attention: SDPA → FlashAttention-2 (SM {_cc_str})")
+else:
+    print(f"Attention: SDPA (flash={'on' if _flash_sdp else 'off'}, mem_efficient={'on' if _mem_sdp else 'off'})")
 
 PEAK_FLOPS = get_peak_flops(_hw_info)
-print(f"Backend: CUDA ({_hw_info['chip_name']}, {_hw_info.get('gpu_arch', 'unknown')}, cc {_hw_info.get('compute_capability', '?')})")
+print(f"Backend: CUDA ({_hw_info['chip_name']}, {_gpu_arch}, SM {_cc_str})")
 print(f"VRAM: {_hw_info['memory_gb']:.0f} GB, SMs: {_hw_info.get('gpu_cores', '?')}")
 print(f"Peak bf16 FLOPS: {PEAK_FLOPS:.2e}")
 if ACTIVATION_CHECKPOINTING:

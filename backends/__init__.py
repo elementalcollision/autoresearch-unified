@@ -193,6 +193,24 @@ def get_hardware_info():
             info["memory_gb"] = props.total_memory / (1024 ** 3)
             info["gpu_cores"] = props.multi_processor_count
 
+            # Compute capability and architecture classification
+            cc_major, cc_minor = props.major, props.minor
+            info["compute_capability"] = (cc_major, cc_minor)
+
+            # Map SM version to architecture name
+            _sm_to_arch = {
+                7: "volta",      # V100
+                8: "ampere",     # A100, RTX 30xx, A40, etc.  (8.0=datacenter, 8.6=consumer, 8.9=ada)
+                9: "hopper",     # H100, H200
+                10: "blackwell", # B200, B300, RTX PRO 6000
+                12: "blackwell", # RTX 5090/5080/5070 (consumer Blackwell = SM 12.0)
+            }
+            # SM 8.9 is Ada Lovelace (RTX 40xx), not Ampere
+            if cc_major == 8 and cc_minor >= 9:
+                info["gpu_arch"] = "ada"
+            else:
+                info["gpu_arch"] = _sm_to_arch.get(cc_major, "unknown")
+
             name_lower = props.name.lower()
 
             # AMD Instinct / Radeon Pro / Radeon RX
