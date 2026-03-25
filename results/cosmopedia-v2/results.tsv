@@ -49,3 +49,4 @@ exp46	Decrease WEIGHT_DECAY from 0.1 to 0.08	1.113683	89.2	155252	8.0	356	discar
 exp47	Increase SCALAR_LR from 0.5 to 0.52	1.114688	89.2	155459	8.0	356	discard	The current best configuration has finely tuned WARMDOWN_RATIO at 0.73, and rece	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp48	Increase WEIGHT_DECAY from 0.1 to 0.12	1.113759	89.2	154896	7.9	355	discard	The current best configuration has WEIGHT_DECAY=0.1, and exp46 showed that decre	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp49	Decrease ADAM_BETAS[1] from 0.97 to 0.96	1.112286	89.2	155511	8.0	356	keep	The recent experiments have been fine-tuning around the optimal warmdown ratio o	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp50	Decrease ADAM_BETAS[1] from 0.96 to 0.95	1.113293	89.2	155511	8.0	356	discard	The last experiment (exp49) improved val_bpb by decreasing ADAM_BETAS[1] from 0.	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
