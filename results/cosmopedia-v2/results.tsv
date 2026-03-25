@@ -16,3 +16,4 @@ exp13	Decrease WEIGHT_DECAY from 0.1 to 0.05	1.118733	89.2	155355	8.0	356	discar
 exp14	Increase WARMUP_RATIO from 0.0 to 0.05	1.125646	89.2	155562	8.0	356	discard	The current best configuration has no learning rate warmup, which can lead to tr	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp15	Decrease WARMDOWN_RATIO from 0.5 to 0.3	1.124706	89.2	155304	8.0	356	discard	The current best result uses MATRIX_LR=0.08 with WARMDOWN_RATIO=0.5, meaning the	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
 exp16	Increase ADAM_BETAS[1] from 0.95 to 0.97	1.117085	89.2	155511	8.0	356	keep	The current best results come from increased MATRIX_LR values, but further incre	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
+exp17	Increase ADAM_BETAS[0] from 0.8 to 0.85	1.119246	89.2	155562	8.0	356	discard	The previous experiment improved val_bpb by increasing ADAM_BETAS[1] to 0.97. Si	AMD Instinct MI300X	f607bf03e1a8806a2e6ca57fef10231b7b9baa44
