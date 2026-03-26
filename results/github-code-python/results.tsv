@@ -59,3 +59,4 @@ exp56	Increase MATRIX_LR from 0.05 to 0.052	1.108830	89.1	162287	8.7	372	keep	Th
 exp57	Increase MATRIX_LR from 0.052 to 0.054	1.109896	89.1	162287	8.7	372	discard	The trend shows consistent improvement as MATRIX_LR was adjusted from 0.06 down 	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp58	Decrease MATRIX_LR from 0.052 to 0.051	1.109104	89.1	162450	8.7	372	discard	The recent experiments show that MATRIX_LR = 0.052 (val_bpb = 1.1088) outperform	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp59	Increase EMBEDDING_LR from 0.7 to 0.72	1.109293	89.1	161838	8.7	371	discard	The current best configuration has MATRIX_LR=0.052, EMBEDDING_LR=0.7, SCALAR_LR=	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
+exp60	Decrease EMBEDDING_LR from 0.7 to 0.68	1.108719	89.1	162234	8.7	372	keep	Previous experiments show that fine-tuning embedding learning rates around 0.7 h	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
