@@ -482,6 +482,9 @@ class ExperimentOrchestrator:
                 notes=f"depth={final.depth}, {final.chip}",
                 gpu_name=self._hw_info.get("chip_name", "unknown"),
                 baseline_sha=self._baseline_sha,
+                watts=final.avg_watts,
+                joules_per_token=final.joules_per_token,
+                total_energy_joules=final.total_energy_j,
             )
             self.best_val_bpb = final.val_bpb
             self.best_experiment = "exp0 (baseline)"
@@ -619,6 +622,9 @@ class ExperimentOrchestrator:
                 notes=proposal.reasoning[:80],
                 gpu_name=self._hw_info.get("chip_name", "unknown"),
                 baseline_sha=self._baseline_sha or "",
+                watts=final.avg_watts,
+                joules_per_token=final.joules_per_token,
+                total_energy_joules=final.total_energy_j,
             )
         else:
             # Crash

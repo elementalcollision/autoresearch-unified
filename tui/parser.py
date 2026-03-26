@@ -30,6 +30,9 @@ class FinalMetrics:
     depth: int = 0
     backend: str = ""
     chip: str = ""
+    avg_watts: float = 0.0
+    joules_per_token: float = 0.0
+    total_energy_j: float = 0.0
 
 
 # Matches: step 00192 (62.3%) | loss: 4.168331 | lrm: 0.66 | dt: 1001ms | tok/sec: 32,737 | mfu: 23.0% | epoch: 1 | remaining: 118s
@@ -56,6 +59,7 @@ class OutputParser:
         self.in_final_block = False
         self._final_data: dict[str, str] = {}
         self.final: FinalMetrics | None = None
+        self._final_emitted = False
 
     def parse_line(self, raw_line: str) -> list[StepMetrics | str]:
         """Parse a line of output. Returns list of StepMetrics and/or log strings.
@@ -85,10 +89,14 @@ class OutputParser:
                 m = FINAL_RE.match(segment)
                 if m:
                     self._final_data[m.group(1)] = m.group(2)
-                    # Check if we have all fields
+                    # Rebuild final metrics once we have chip (minimum complete set).
+                    # Keep rebuilding on subsequent lines (energy fields come after chip)
+                    # but only emit the formatted summary string once.
                     if 'chip' in self._final_data:
                         self.final = self._build_final()
-                        results.append(self._format_final())
+                        if not self._final_emitted:
+                            self._final_emitted = True
+                            results.append(self._format_final())
                 continue
 
             # Try to parse as step metrics
@@ -129,6 +137,9 @@ class OutputParser:
             depth=int(d.get('depth', 0)),
             backend=d.get('backend', ''),
             chip=d.get('chip', ''),
+            avg_watts=float(d.get('avg_watts', 0)),
+            joules_per_token=float(d.get('joules_per_token', 0)),
+            total_energy_j=float(d.get('total_energy_j', 0)),
         )
 
     def _format_final(self) -> str:

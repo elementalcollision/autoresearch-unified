@@ -60,7 +60,8 @@ def atomic_append(path: str, line: str) -> None:
 # TSV validation
 # ---------------------------------------------------------------------------
 
-EXPECTED_FIELDS = 11  # exp, description, val_bpb, peak_mem_gb, tok_sec, mfu, steps, status, notes, gpu_name, baseline_sha
+EXPECTED_FIELDS = 14  # exp, description, val_bpb, peak_mem_gb, tok_sec, mfu, steps, status, notes, gpu_name, baseline_sha, watts, joules_per_token, total_energy_joules
+ACCEPTED_FIELD_COUNTS = {10, 11, 14}  # 10=legacy (no baseline_sha), 11=pre-energy, 14=current
 
 def validate_results_tsv(path: str) -> tuple[bool, list[str]]:
     """Validate a results.tsv file and fix minor corruption.
@@ -91,7 +92,7 @@ def validate_results_tsv(path: str) -> tuple[bool, list[str]]:
     if content and not content.endswith("\n"):
         last_line = lines[-1]
         fields = last_line.split("\t")
-        if len(fields) < EXPECTED_FIELDS:
+        if len(fields) not in ACCEPTED_FIELD_COUNTS:
             warnings.append(f"Truncated trailing line removed: '{last_line[:60]}...'")
             lines = lines[:-1]
             # Rewrite without the corrupt line
@@ -111,9 +112,9 @@ def validate_results_tsv(path: str) -> tuple[bool, list[str]]:
         if not line.strip():
             continue
         fields = line.split("\t")
-        # Accept 10-column (legacy, no baseline_sha) or 11-column (current) rows
-        if len(fields) < EXPECTED_FIELDS - 1 or len(fields) > EXPECTED_FIELDS:
-            warnings.append(f"Line {i}: expected {EXPECTED_FIELDS - 1}-{EXPECTED_FIELDS} fields, got {len(fields)}")
+        # Accept legacy (10/11-column) and current (14-column) rows
+        if len(fields) not in ACCEPTED_FIELD_COUNTS:
+            warnings.append(f"Line {i}: expected one of {sorted(ACCEPTED_FIELD_COUNTS)} fields, got {len(fields)}")
             continue
         # Validate numeric fields
         try:

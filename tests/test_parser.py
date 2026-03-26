@@ -114,3 +114,88 @@ class TestFinalParsing:
         parser.parse_line("val_bpb:          1.234")
         assert parser.final is None
         assert parser.in_final_block is False
+
+
+class TestEnergyParsing:
+    """Test parsing of energy/power metrics in the final block."""
+
+    def test_full_final_block_with_energy(self):
+        """Parser captures energy metrics when training script emits them."""
+        parser = OutputParser()
+        lines = [
+            "---",
+            "val_bpb:          0.916588",
+            "training_seconds: 300.1",
+            "total_seconds:    340.2",
+            "peak_vram_mb:     5998.2",
+            "mfu_percent:      6.12",
+            "total_tokens_M:   76.3",
+            "num_steps:        2329",
+            "num_params_M:     50.3",
+            "depth:            8",
+            "backend:          cuda",
+            "chip:             NVIDIA GeForce RTX 5070 Ti",
+            "avg_watts:        350.5",
+            "joules_per_token: 0.001378",
+            "total_energy_j:   105210.5",
+        ]
+        for line in lines:
+            parser.parse_line(line)
+        assert parser.final is not None
+        assert parser.final.avg_watts == pytest.approx(350.5)
+        assert parser.final.joules_per_token == pytest.approx(0.001378)
+        assert parser.final.total_energy_j == pytest.approx(105210.5)
+
+    def test_backward_compat_no_energy_lines(self):
+        """Parser finalizes correctly when training script has no energy lines."""
+        parser = OutputParser()
+        lines = [
+            "---",
+            "val_bpb:          1.234",
+            "training_seconds: 200.0",
+            "total_seconds:    220.0",
+            "peak_vram_mb:     4096.0",
+            "mfu_percent:      5.0",
+            "total_tokens_M:   50.0",
+            "num_steps:        1000",
+            "num_params_M:     40.0",
+            "depth:            6",
+            "backend:          cuda",
+            "chip:             NVIDIA RTX 3090",
+        ]
+        for line in lines:
+            parser.parse_line(line)
+        assert parser.final is not None
+        assert parser.final.val_bpb == pytest.approx(1.234)
+        assert parser.final.avg_watts == 0.0
+        assert parser.final.joules_per_token == 0.0
+        assert parser.final.total_energy_j == 0.0
+
+    def test_format_final_emitted_only_once(self):
+        """The formatted summary string should be emitted once, not per-field after chip."""
+        parser = OutputParser()
+        all_results = []
+        lines = [
+            "---",
+            "val_bpb:          0.9",
+            "training_seconds: 100.0",
+            "total_seconds:    110.0",
+            "peak_vram_mb:     2048.0",
+            "mfu_percent:      4.0",
+            "total_tokens_M:   30.0",
+            "num_steps:        800",
+            "num_params_M:     35.0",
+            "depth:            5",
+            "backend:          rocm",
+            "chip:             AMD Instinct MI300X",
+            "avg_watts:        700.0",
+            "joules_per_token: 0.002",
+            "total_energy_j:   70000.0",
+        ]
+        for line in lines:
+            results = parser.parse_line(line)
+            all_results.extend(results)
+
+        # Count formatted summary strings (contain "Evaluation complete")
+        summary_count = sum(1 for r in all_results if isinstance(r, str) and "Evaluation complete" in r)
+        assert summary_count == 1

@@ -18,6 +18,7 @@ from mlx.utils import tree_flatten, tree_map
 import numpy as np
 
 from backends import get_hardware_info, suggest_hyperparameters, get_peak_flops, get_peak_memory_mb
+from backends.power import PowerMonitor
 from backends.muon_mlx import MuonAdamWMLX, build_param_groups
 from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
 
@@ -433,6 +434,9 @@ smooth_train_loss = 0
 total_training_time = 0
 step = 0
 
+_power = PowerMonitor(backend="mlx")
+_power.start()
+
 while True:
     t0 = time.time()
 
@@ -513,6 +517,8 @@ while True:
 print()
 
 total_tokens = step * TOTAL_BATCH_SIZE
+avg_watts, total_joules = _power.stop(training_seconds=total_training_time)
+joules_per_token = total_joules / total_tokens if total_tokens > 0 else 0.0
 
 # Final eval
 val_bpb = evaluate_bpb(model, tokenizer, DEVICE_BATCH_SIZE, backend="mlx")
@@ -534,3 +540,6 @@ print(f"num_params_M:     {num_params / 1e6:.1f}")
 print(f"depth:            {DEPTH}")
 print(f"backend:          mlx")
 print(f"chip:             {_hw_info['chip_name']}")
+print(f"avg_watts:        {avg_watts:.1f}")
+print(f"joules_per_token: {joules_per_token:.6f}")
+print(f"total_energy_j:   {total_joules:.1f}")

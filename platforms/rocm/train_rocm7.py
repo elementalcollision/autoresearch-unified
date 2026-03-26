@@ -17,6 +17,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from backends import get_hardware_info, suggest_hyperparameters, get_peak_flops, sync_device, get_peak_memory_mb, get_rocm_version
+from backends.power import PowerMonitor
 from backends.muon_rocm7 import MuonAdamW
 from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
 
@@ -451,6 +452,9 @@ smooth_train_loss = 0
 total_training_time = 0
 step = 0
 
+_power = PowerMonitor(backend="rocm")
+_power.start()
+
 while True:
     sync_device(device_type)
     t0 = time.time()
@@ -519,6 +523,8 @@ while True:
 print()  # newline after \r training log
 
 total_tokens = step * TOTAL_BATCH_SIZE
+avg_watts, total_joules = _power.stop(training_seconds=total_training_time)
+joules_per_token = total_joules / total_tokens if total_tokens > 0 else 0.0
 
 # Final eval
 model.eval()
@@ -543,6 +549,9 @@ print(f"num_params_M:     {num_params / 1e6:.1f}")
 print(f"depth:            {DEPTH}")
 print(f"backend:          rocm7")
 print(f"chip:             {_hw_info['chip_name']}")
+print(f"avg_watts:        {avg_watts:.1f}")
+print(f"joules_per_token: {joules_per_token:.6f}")
+print(f"total_energy_j:   {total_joules:.1f}")
 
 # Write results to TSV (standalone mode — orchestrator handles this when running via run_suite.py)
 if os.environ.get("AUTORESEARCH_ORCHESTRATOR") != "1":
@@ -564,7 +573,7 @@ if os.environ.get("AUTORESEARCH_ORCHESTRATOR") != "1":
                     except ValueError:
                         pass
 
-    header = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\n"
+    header = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\tbaseline_sha\twatts\tjoules_per_token\ttotal_energy_joules\n"
     if not os.path.exists(results_tsv):
         from tui.resilience import atomic_write
         atomic_write(results_tsv, header)
@@ -573,7 +582,8 @@ if os.environ.get("AUTORESEARCH_ORCHESTRATOR") != "1":
     row = (
         f"exp{exp_num}\tstandalone run\t{val_bpb:.6f}\t{peak_vram_mb / 1024:.1f}\t"
         f"{tok_sec}\t{steady_state_mfu:.1f}\t{step}\t{status}\t"
-        f"depth={DEPTH}, {rocm_str}\t{_hw_info['chip_name']}\n"
+        f"depth={DEPTH}, {rocm_str}\t{_hw_info['chip_name']}\t\t"
+        f"{avg_watts:.1f}\t{joules_per_token:.6f}\t{total_joules:.1f}\n"
     )
     from tui.resilience import atomic_append
     atomic_append(results_tsv, row)
