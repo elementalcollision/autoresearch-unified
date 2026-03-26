@@ -13,3 +13,4 @@ exp10	Increase DEVICE_BATCH_SIZE from default to 256 to optimize throughput whil
 exp11	Increase WARMUP_RATIO from 0.0 to 0.1	1.130962	89.2	154948	7.9	355	discard	The baseline has no warmup which may cause training instability early on. Adding	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp12	Increase SCALAR_LR from 0.5 to 0.7	1.133806	89.2	155000	7.9	355	discard	The scalar learning rate controls per-layer scale parameters, which are crucial 	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp13	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.125317	89.2	155252	8.0	356	discard	All learning rate adjustments have failed to improve upon baseline, suggesting t	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp14	Decrease UNEMBEDDING_LR from 0.004 to 0.002	1.133012	89.2	155459	8.0	356	discard	The unembedding layer is critical for final predictions and may be converging to	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
