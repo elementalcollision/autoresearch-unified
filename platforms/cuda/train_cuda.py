@@ -324,7 +324,7 @@ _hp_defaults = suggest_hyperparameters(_hw_info)
 ASPECT_RATIO = 56       # model_dim = depth * ASPECT_RATIO (decreased from 64)
 HEAD_DIM = 128          # target head dimension for attention
 WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
-MLP_RATIO = 3.3         # decreased from 3.5; controls FFN width
+MLP_RATIO = 3.5         # decreased from default (likely 4); controls FFN width
 
 # Optimization
 TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
