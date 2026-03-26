@@ -44,3 +44,4 @@ exp41	Decrease WEIGHT_DECAY from 0.15 to 0.1	1.078066	64.6	279387	8.5	640	keep	T
 exp42	Decrease WEIGHT_DECAY from 0.1 to 0.05	1.078217	64.6	279534	8.5	641	discard	The trend from exp40-41 shows that reducing weight decay from 0.2 to 0.15 to 0.1	AMD Instinct MI300X	c3182ef04f2b2ac03006f1013655a091a2d56c39
 exp43	Increase MATRIX_LR from 0.04 to 0.05	1.078750	64.6	279627	8.5	641	discard	The current best configuration has WEIGHT_DECAY=0.1 and ASPECT_RATIO=36, achievi	AMD Instinct MI300X	c3182ef04f2b2ac03006f1013655a091a2d56c39
 exp44	Decrease MATRIX_LR from 0.04 to 0.035	1.079087	64.6	279054	8.5	639	discard	The current best configuration has ASPECT_RATIO=36, WEIGHT_DECAY=0.1, and MATRIX	AMD Instinct MI300X	c3182ef04f2b2ac03006f1013655a091a2d56c39
+exp45	Increase SCALAR_LR from 0.5 to 0.6	1.078075	64.6	279387	8.5	640	discard	The current best configuration has optimized model size and weight decay, but sc	AMD Instinct MI300X	c3182ef04f2b2ac03006f1013655a091a2d56c39
