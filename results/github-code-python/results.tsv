@@ -72,3 +72,4 @@ exp69	Decrease FINAL_LR_FRAC from 0.1 to 0.08	1.108297	89.1	162234	8.7	372	keep	
 exp70	Decrease FINAL_LR_FRAC from 0.08 to 0.06	1.108614	89.1	162450	8.7	372	discard	The recent trend shows continued improvement by lowering FINAL_LR_FRAC: from 0.0	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp71	Increase WARMDOWN_RATIO from 0.5 to 0.6	1.107627	89.1	162341	8.7	372	keep	The current best result has FINAL_LR_FRAC=0.08, which means the learning rate de	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp72	Increase WARMDOWN_RATIO from 0.6 to 0.65	1.107555	89.1	162450	8.7	372	keep	The last experiment (exp71) achieved the best validation score by increasing WAR	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
+exp73	Increase WARMDOWN_RATIO from 0.65 to 0.7	1.107775	89.1	162450	8.7	372	discard	The last two experiments (exp71 and exp72) showed consistent improvement by incr	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
