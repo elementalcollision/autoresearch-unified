@@ -3,3 +3,4 @@ exp0	baseline (no modifications)	1.077380	17.1	253497	28.3	1161	baseline	depth=1
 exp1	Decrease TOTAL_BATCH_SIZE from default to 32768 to increase gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	f0451fd5a7966b4f112cb28b6de2b86727b74e41
 exp2	Decrease DEVICE_BATCH_SIZE from default to 64 to increase gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	f0451fd5a7966b4f112cb28b6de2b86727b74e41
 exp3	Decrease TOTAL_BATCH_SIZE from default to 16384 to increase gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	f0451fd5a7966b4f112cb28b6de2b86727b74e41
+exp4	Increase DEPTH from default to 32 to use more model capacity within time budget	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	f0451fd5a7966b4f112cb28b6de2b86727b74e41
