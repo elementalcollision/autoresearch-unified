@@ -32,3 +32,4 @@ exp29	Decrease SCALAR_LR from 0.5 to 0.4	1.116547	89.2	155407	8.0	356	keep	The c
 exp30	Decrease SCALAR_LR from 0.4 to 0.35	1.121791	89.2	155562	8.0	356	discard	The trend shows consistent improvement as we've decreased SCALAR_LR from 0.5 to 	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp31	Decrease SCALAR_LR from 0.4 to 0.3	1.117753	89.2	155562	8.0	356	discard	The trend shows consistent improvement as we decrease SCALAR_LR: 0.5→0.4 improve	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp32	Increase EMBEDDING_LR from 0.6 to 0.7	1.114627	89.2	155407	8.0	356	keep	The current best configuration has SCALAR_LR=0.4 and UNEMBEDDING_LR=0.007. Since	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
+exp33	Increase EMBEDDING_LR from 0.7 to 0.8	1.115019	89.2	155252	8.0	356	discard	The last experiment (exp32) showed continued improvement by increasing EMBEDDING	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
