@@ -12,3 +12,4 @@ exp9	Increase DEPTH from default to increase model capacity	1.134423	108.6	12629
 exp10	Increase DEVICE_BATCH_SIZE from default to 256 to optimize throughput while maintaining gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp11	Increase WARMUP_RATIO from 0.0 to 0.1	1.130962	89.2	154948	7.9	355	discard	The baseline has no warmup which may cause training instability early on. Adding	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp12	Increase SCALAR_LR from 0.5 to 0.7	1.133806	89.2	155000	7.9	355	discard	The scalar learning rate controls per-layer scale parameters, which are crucial 	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp13	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.125317	89.2	155252	8.0	356	discard	All learning rate adjustments have failed to improve upon baseline, suggesting t	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
