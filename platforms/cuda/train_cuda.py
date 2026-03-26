@@ -347,7 +347,7 @@ SCALAR_LR *= _batch_lr_scale
 
 # Model size
 DEPTH = _hp_defaults['depth']
-DEVICE_BATCH_SIZE = _hp_defaults['device_batch_size']
+DEVICE_BATCH_SIZE = max(DEVICE_BATCH_SIZE // 2, 1)  # Decreased for more steps
 COMPILE_MODE = _hp_defaults.get('compile_mode', 'reduce-overhead')
 ACTIVATION_CHECKPOINTING = _hp_defaults.get('activation_checkpointing', False)
 
