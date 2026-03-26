@@ -1,3 +1,6 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
 exp0	baseline (no modifications)	1.091965	5.9	289570	16.5	2653	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	fb9a1c40c278efb18d2ca0c35cce4d07be5fbb3d
 exp1	Reduce TOTAL_BATCH_SIZE from default to 32768 to increase gradient steps	1.091442	5.9	289570	16.5	2652	keep	The baseline shows we're only using 5.9GB of our 31GB memory capacity, suggestin	NVIDIA GeForce RTX 5090	fb9a1c40c278efb18d2ca0c35cce4d07be5fbb3d
+exp2	Reduce TOTAL_BATCH_SIZE from 32768 to 16384 to double gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	fb9a1c40c278efb18d2ca0c35cce4d07be5fbb3d
+exp3	Reduce TOTAL_BATCH_SIZE from 32768 to 24576 to increase gradient steps while avoiding the crash	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	fb9a1c40c278efb18d2ca0c35cce4d07be5fbb3d
+exp4	Reduce TOTAL_BATCH_SIZE from 32768 to 28672 to increase gradient steps while staying above crash threshold	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	fb9a1c40c278efb18d2ca0c35cce4d07be5fbb3d
