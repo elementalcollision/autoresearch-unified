@@ -28,3 +28,4 @@ exp25	Decrease ADAM_BETAS from (0.7, 0.95) to (0.7, 0.9) to reduce second moment
 exp26	Increase EMBEDDING_LR from 0.3 to 0.35 to boost embedding learning while maintaining stability	1.069512	17.1	253248	28.3	1160	discard	The embedding layer is crucial for token representation quality and we've succes	NVIDIA RTX PRO 6000 Blackwell Server Edition	
 exp27	Increase EMBEDDING_LR from 0.3 to 0.32 to boost embedding learning while maintaining stability	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	
 exp28	Increase SCALAR_LR from 0.6 to 0.65 to boost per-layer scalar parameter learning	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	
+exp29	Increase ASPECT_RATIO from 64 to 72 to improve model capacity while maintaining similar parameter count	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	
