@@ -1,0 +1,15 @@
+{
+  "pid": 1373285,
+  "alive": true,
+  "started_at": "2026-03-26T12:49:58.540733",
+  "last_updated": "2026-03-26T12:56:47.083614",
+  "experiment": 1,
+  "status": "completed",
+  "dataset": "fineweb-edu-high",
+  "model": "default",
+  "best_bpb": 1.077871,
+  "total": 2,
+  "kept": 1,
+  "discarded": 0,
+  "crashes": 1
+}
