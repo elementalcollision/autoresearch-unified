@@ -2,14 +2,14 @@
   "pid": 1613460,
   "alive": true,
   "started_at": "2026-03-26T20:07:51.509288",
-  "last_updated": "2026-03-26T22:48:35.837753",
-  "experiment": 58,
+  "last_updated": "2026-03-26T22:59:28.416549",
+  "experiment": 60,
   "status": "completed",
   "dataset": "fineweb-edu-high",
   "model": "default",
   "best_bpb": 1.060382,
-  "total": 59,
+  "total": 61,
   "kept": 18,
-  "discarded": 34,
+  "discarded": 36,
   "crashes": 7
 }
