@@ -31,3 +31,4 @@ exp28	Increase UNEMBEDDING_LR from 0.0055 to 0.006	1.120512	89.2	155636	8.0	357	
 exp29	Decrease SCALAR_LR from 0.5 to 0.4	1.122031	89.2	155614	8.0	356	discard	The current best configuration has MATRIX_LR=0.072 and UNEMBEDDING_LR=0.0055, bu	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp30	Increase MATRIX_LR from 0.072 to 0.075	1.118533	89.2	155636	8.0	357	keep	The current best result is at MATRIX_LR=0.072 (val_bpb=1.119). Experiment 23 tes	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp31	Increase UNEMBEDDING_LR from 0.0055 to 0.0057	1.119078	89.2	155511	8.0	356	discard	The current best configuration has MATRIX_LR at 0.075 and UNEMBEDDING_LR at 0.00	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
+exp32	Increase MATRIX_LR from 0.075 to 0.078	1.122593	89.2	155636	8.0	357	discard	The recent experiments show a clear trend of improving val_bpb as MATRIX_LR incr	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
