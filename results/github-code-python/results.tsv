@@ -42,3 +42,4 @@ exp39	Decrease MATRIX_LR from 0.055 to 0.05	1.113441	89.2	157509	8.2	361	keep	Th
 exp40	Decrease MATRIX_LR from 0.05 to 0.045	1.122599	89.2	157071	8.2	360	discard	The trend shows consistent improvement as MATRIX_LR decreases: 0.06 → 0.055 → 0.	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp41	Increase SCALAR_LR from 0.4 to 0.45	1.117899	89.2	157456	8.2	361	discard	The current best configuration has SCALAR_LR at 0.4, and previous experiments sh	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp42	Decrease SCALAR_LR from 0.4 to 0.38	1.116730	89.2	157561	8.2	361	discard	The current best configuration has SCALAR_LR=0.4, and recent experiments show th	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
+exp43	Decrease SCALAR_LR from 0.4 to 0.36	1.117794	89.2	157176	8.2	360	discard	The trend shows that decreasing SCALAR_LR has been beneficial (exp29: 0.5→0.4 im	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
