@@ -51,3 +51,4 @@ exp48	Decrease HEAD_DIM from 128 to 112 to reduce memory per attention head	1.16
 exp49	Decrease WEIGHT_DECAY from 0.1 to 0.08	1.114040	89.2	157404	8.2	361	discard	The current best configuration has MATRIX_LR=0.05, and weight decay directly int	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp50	Decrease WEIGHT_DECAY from 0.1 to 0.06	1.113987	89.2	157247	8.2	361	discard	The current best configuration uses MATRIX_LR=0.05, and we've seen that weight d	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp51	Increase WARMUP_RATIO from 0.0 to 0.05	1.121068	89.2	157614	8.2	361	discard	The current best configuration has no warmup, but a small amount of warmup might	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
+exp52	Increase FINAL_LR_FRAC from 0.1 to 0.15	1.114188	89.2	157351	8.2	361	discard	The current best configuration has FINAL_LR_FRAC=0.1, and exp20 showed that 0.2 	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
