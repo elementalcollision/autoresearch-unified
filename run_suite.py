@@ -271,14 +271,14 @@ def list_profiles():
             if meta_path.exists():
                 with open(meta_path) as f:
                     meta = json.load(f)
-            fp = meta.get("fingerprint", {})
+            fp = meta.get("fingerprint") or {}
             valid = _validate_fingerprint(d, d.name) if fp else False
             profiles.append({
                 "name": d.name,
                 "shards": meta.get("shards", "?"),
                 "created": meta.get("created", "unknown"),
-                "fingerprint": fp.get("hash", "none"),
-                "sample": fp.get("sample", "")[:60],
+                "fingerprint": fp.get("hash", "none") if isinstance(fp, dict) else "none",
+                "sample": (fp.get("sample", "") if isinstance(fp, dict) else "")[:60],
                 "valid": valid,
             })
     return profiles
