@@ -265,18 +265,44 @@ class ExperimentOrchestrator:
                 self._cb_error(f"LLM backend error: {e}")
                 return
 
-            # Validate credentials with a preflight API call
+            # Validate credentials with a preflight API call (with retry).
+            # A single-shot validate() caused issue #9: a transient API 529
+            # during validation abandoned the entire dataset run.
             self._cb_status("initializing", "Validating API credentials...")
-            try:
-                if not self._llm.validate():
-                    source = getattr(self._llm, '_cred_source', 'unknown')
-                    self._cb_error(
-                        f"API credential validation failed (source: {source}). "
-                        f"Run: python dashboard.py --setup-key"
-                    )
-                    return
-            except Exception as e:
-                self._cb_error(f"API validation error: {e}")
+            validated = False
+            for attempt in range(5):
+                try:
+                    if self._llm.validate():
+                        validated = True
+                        break
+                    else:
+                        # validate() returned False — credentials are bad (not transient)
+                        source = getattr(self._llm, '_cred_source', 'unknown')
+                        self._cb_error(
+                            f"API credential validation failed (source: {source}). "
+                            f"Run: python dashboard.py --setup-key"
+                        )
+                        return
+                except Exception as e:
+                    err_str = str(e).lower()
+                    # Fatal auth/billing errors — don't retry
+                    if any(k in err_str for k in [
+                        "authentication", "401", "invalid_api_key",
+                        "credit balance", "insufficient_quota",
+                    ]):
+                        self._cb_error(f"API credential error (fatal): {e}")
+                        return
+                    # Transient errors (529, 5xx, connection) — retry with backoff
+                    wait = min(15 * (2 ** attempt), 120)
+                    self._cb_status("initializing",
+                        f"API validation error (attempt {attempt+1}/5, retrying in {wait}s): {e}")
+                    for _ in range(max(1, wait // 5)):
+                        if self._stop_event.is_set():
+                            return
+                        time.sleep(5)
+
+            if not validated:
+                self._cb_error("API validation failed after 5 attempts — aborting")
                 return
             self._cb_status("initializing", "API credentials validated")
 
@@ -668,9 +694,19 @@ class ExperimentOrchestrator:
                 except Exception:
                     pass
 
-            # Push (silently — don't block on network errors)
+            # Push to remote. Use `push -u` to set upstream tracking on
+            # the first push of a new branch — `push.autoSetupRemote=true`
+            # is unreliable across pod restarts and git checkouts.
             try:
-                self._git._run("push", check=False)
+                branch = self._git._run("rev-parse", "--abbrev-ref", "HEAD", check=False)
+                has_upstream = bool(self._git._run(
+                    "rev-parse", "--abbrev-ref", f"{branch}@{{u}}", check=False
+                ))
+                if has_upstream:
+                    self._git._run("push", check=False)
+                else:
+                    # First push — set upstream explicitly
+                    self._git._run("push", "-u", "origin", branch, check=False)
             except Exception:
                 pass
 
