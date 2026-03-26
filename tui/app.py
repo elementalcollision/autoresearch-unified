@@ -1,6 +1,7 @@
 """Main Textual Application for the autoresearch dashboard (AMD ROCm / MI300x)."""
 
 import os
+import select
 import subprocess
 import sys
 import threading
@@ -168,6 +169,9 @@ class DashboardApp(App):
         buffer = ""
         try:
             while True:
+                ready, _, _ = select.select([proc.stdout], [], [], 1.0)
+                if not ready:
+                    continue  # No data — loop back (daemon thread exits with app)
                 byte = proc.stdout.read(1)
                 if not byte:
                     break
