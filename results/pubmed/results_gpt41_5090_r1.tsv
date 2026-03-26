@@ -1,3 +1,5 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
 exp0	baseline (no modifications)	1.090311	5.9	298900	17.0	2736	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	3296a77d448a3027ead5767cd9e29cb3587af052
 exp1	Decrease DEVICE_BATCH_SIZE to increase gradient step count per fixed time.	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	3296a77d448a3027ead5767cd9e29cb3587af052
+exp2	Decrease ASPECT_RATIO from 64 to 48	1.093616	4.5	426524	15.3	3906	discard	Reducing ASPECT_RATIO lowers the model's width (model_dim), thus uses less memor	NVIDIA GeForce RTX 5090	3296a77d448a3027ead5767cd9e29cb3587af052
+exp3	Decrease MATRIX_LR from 0.04 to 0.03	1.087346	5.9	299000	17.0	2736	keep	The relatively high MATRIX_LR may cause less stable or suboptimal updates to the	NVIDIA GeForce RTX 5090	3296a77d448a3027ead5767cd9e29cb3587af052
