@@ -1,1 +1,2 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
+exp0	baseline (no modifications)	1.124638	89.2	154793	7.9	355	baseline	depth=12, AMD Instinct MI300X	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
