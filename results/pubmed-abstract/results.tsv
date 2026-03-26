@@ -18,3 +18,4 @@ exp15	Increase UNEMBEDDING_LR from 0.004 to 0.008	1.129477	89.2	154896	7.9	355	d
 exp16	Increase HEAD_DIM from 128 to 256	1.143792	89.1	132578	6.8	304	discard	The current model uses HEAD_DIM=128, which may be suboptimal for attention compu	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp17	Increase ASPECT_RATIO from 64 to 96	1.177967	126.3	102461	10.6	235	discard	The baseline remains the best performer, suggesting the default hyperparameters 	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp18	Decrease HEAD_DIM from 128 to 64	1.144048	89.3	151797	7.8	348	discard	The experiment with HEAD_DIM=256 (exp16) showed significantly worse performance,	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp19	Change WINDOW_PATTERN from "SSSL" to "SSSS"	1.129751	89.2	151031	7.5	346	discard	The current pattern "SSSL" includes one full-context layer (L) which is computat	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
