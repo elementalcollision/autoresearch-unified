@@ -381,18 +381,25 @@ def _model_slug(model: str | None) -> str | None:
     Non-default models get results/<slug>/<dataset>/.
 
     Examples:
-        "claude-sonnet-4-20250514"  → None  (default)
-        "claude-opus-4-6"           → "opus-4-6"
-        "claude-haiku-4-5-20251001" → "haiku-4-5-20251001"
-        "gpt-4.1"                   → "gpt-4.1"
-        "gpt-5.1"                   → "gpt-5.1"
+        "claude-sonnet-4-20250514"          → None  (default)
+        "claude-opus-4-6"                   → "opus-4-6"
+        "claude-haiku-4-5-20251001"         → "haiku-4-5-20251001"
+        "gpt-4.1"                           → "gpt-4.1"
+        "gpt-5.1"                           → "gpt-5.1"
+        "anthropic/claude-sonnet-4.6"       → "claude-sonnet-4.6"  (OpenRouter)
+        "meta-llama/llama-4-maverick"       → "llama-4-maverick"   (OpenRouter)
+        "openai/gpt-4.1"                    → "gpt-4.1"            (OpenRouter)
     """
     if model is None or model == DEFAULT_MODEL:
         return None
+    slug = model
+    # OpenRouter uses provider/model format — strip the provider prefix
+    if "/" in slug:
+        slug = slug.split("/", 1)[1]
     # Strip common provider prefixes for shorter directory names
-    slug = model.removeprefix("claude-")
+    slug = slug.removeprefix("claude-")
     # Sanitize for filesystem safety
-    slug = slug.replace("/", "-").replace("\\", "-").replace(":", "-").strip("-")
+    slug = slug.replace("\\", "-").replace(":", "-").strip("-")
     return slug or None
 
 
