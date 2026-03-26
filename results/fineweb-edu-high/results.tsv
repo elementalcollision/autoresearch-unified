@@ -43,3 +43,4 @@ exp40	Increase FINAL_LR_FRAC from 0.05 to 0.1	1.116979	89.2	154948	7.9	355	disca
 exp41	Decrease WARMDOWN_RATIO from 0.5 to 0.4	1.118836	89.2	155614	8.0	356	discard	The current best result (exp38) came from adjusting the LR schedule by setting F	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp42	Increase WARMDOWN_RATIO from 0.5 to 0.6	1.115573	89.2	155636	8.0	357	keep	The current best result (exp38) shows that adjusting the learning rate schedule 	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp43	Increase WARMDOWN_RATIO from 0.6 to 0.7	1.115868	89.2	155562	8.0	356	discard	The recent improvement from increasing WARMDOWN_RATIO to 0.6 (exp42) suggests th	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
+exp44	Increase MATRIX_LR from 0.076 to 0.078	1.119838	89.2	155562	8.0	356	discard	The current best result uses MATRIX_LR=0.076 and WARMDOWN_RATIO=0.6. Experiment 	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
