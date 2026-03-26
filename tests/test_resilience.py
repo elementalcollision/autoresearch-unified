@@ -59,6 +59,9 @@ class TestValidateResultsTsv:
     HEADER = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\tbaseline_sha\n"
     VALID_ROW = "1\tbaseline\t1.234\t6.0\t100000\t5.0\t500\tkeep\t\tRTX 5070 Ti\tabc1234\n"
 
+    HEADER_14 = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\tbaseline_sha\twatts\tjoules_per_token\ttotal_energy_joules\n"
+    VALID_ROW_14 = "1\tbaseline\t1.234\t6.0\t100000\t5.0\t500\tkeep\t\tRTX 5070 Ti\tabc1234\t350.5\t0.001378\t105210.5\n"
+
     def test_empty_file(self, tmp_path):
         path = str(tmp_path / "results.tsv")
         with open(path, "w") as f:
@@ -89,6 +92,34 @@ class TestValidateResultsTsv:
         # After fix, the truncated line should be gone
         content = open(path).read()
         assert "incomplete" not in content
+
+    def test_valid_14col_file(self, tmp_path):
+        """14-column files (with energy data) validate cleanly."""
+        path = str(tmp_path / "results.tsv")
+        with open(path, "w") as f:
+            f.write(self.HEADER_14 + self.VALID_ROW_14)
+        valid, warnings = validate_results_tsv(path)
+        assert valid is True
+        assert len(warnings) == 0
+
+    def test_legacy_11col_still_valid(self, tmp_path):
+        """11-column files (pre-energy) must still validate as OK."""
+        path = str(tmp_path / "results.tsv")
+        with open(path, "w") as f:
+            f.write(self.HEADER + self.VALID_ROW)
+        valid, warnings = validate_results_tsv(path)
+        assert valid is True
+        assert len(warnings) == 0
+
+    def test_wrong_column_count_rejected(self, tmp_path):
+        """12-column rows are not valid (neither legacy nor current)."""
+        path = str(tmp_path / "results.tsv")
+        with open(path, "w") as f:
+            f.write(self.HEADER_14)
+            f.write("1\tbaseline\t1.234\t6.0\t100000\t5.0\t500\tkeep\t\tRTX\tabc\t350\n")  # 12 cols
+        valid, warnings = validate_results_tsv(path)
+        assert not valid
+        assert any("expected" in w.lower() for w in warnings)
 
 
 class TestHeartbeat:

@@ -25,11 +25,14 @@ class ExperimentResult:
     notes: str         # extra notes
     gpu_name: str = "" # hardware fingerprint (e.g. "AMD Instinct MI300X OAM")
     baseline_sha: str = ""  # commit SHA of the unmodified training script
+    watts: float = 0.0              # average power draw during training (W)
+    joules_per_token: float = 0.0   # energy per token (J/tok)
+    total_energy_joules: float = 0.0  # total energy for the experiment (J)
 
 
-# TSV header — 11 columns. Column 11 (baseline_sha) ties every experiment
-# back to the exact commit where the training script had zero optimizations.
-HEADER = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\tbaseline_sha\n"
+# TSV header — 14 columns. Columns 12-14 (watts, joules_per_token, total_energy_joules)
+# track power/energy instrumentation for MLCommons/MLPerf Power analysis.
+HEADER = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\tbaseline_sha\twatts\tjoules_per_token\ttotal_energy_joules\n"
 
 
 def init_results_tsv(path: str = "results.tsv") -> None:
@@ -65,7 +68,10 @@ def append_result(path: str, result: ExperimentResult) -> None:
         f"{result.status}\t"
         f"{result.notes}\t"
         f"{result.gpu_name}\t"
-        f"{result.baseline_sha}\n"
+        f"{result.baseline_sha}\t"
+        f"{result.watts:.1f}\t"
+        f"{result.joules_per_token:.6f}\t"
+        f"{result.total_energy_joules:.1f}\n"
     )
     atomic_append(path, line)
 
@@ -95,6 +101,9 @@ def load_results(path: str = "results.tsv") -> list[ExperimentResult]:
                     notes=row.get("notes", ""),
                     gpu_name=row.get("gpu_name", ""),
                     baseline_sha=row.get("baseline_sha", ""),  # backward-compat: empty for legacy TSVs
+                    watts=float(row.get("watts", 0) or 0),
+                    joules_per_token=float(row.get("joules_per_token", 0) or 0),
+                    total_energy_joules=float(row.get("total_energy_joules", 0) or 0),
                 ))
             except (ValueError, TypeError):
                 continue
