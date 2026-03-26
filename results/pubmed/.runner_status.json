@@ -1,0 +1,15 @@
+{
+  "pid": 1349,
+  "alive": true,
+  "started_at": "2026-03-26T15:17:39.565529",
+  "last_updated": "2026-03-26T15:21:56.035098",
+  "experiment": 0,
+  "status": "stopped",
+  "dataset": "pubmed",
+  "model": "openai/gpt-4.1",
+  "best_bpb": null,
+  "total": 0,
+  "kept": 0,
+  "discarded": 0,
+  "crashes": 0
+}
