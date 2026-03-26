@@ -11,3 +11,4 @@ exp8	Decrease MATRIX_LR from 0.06 to 0.05	1.125494	89.2	155407	8.0	356	discard	T
 exp9	Increase EMBEDDING_LR from 0.6 to 0.8	1.124932	89.2	155355	8.0	356	discard	The current best experiment (exp4) showed that increasing MATRIX_LR from 0.04 to	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp10	Increase SCALAR_LR from 0.5 to 0.7	1.128607	89.2	155511	8.0	356	discard	The matrix learning rate increase from 0.04 to 0.06 improved performance slightl	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp11	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.123302	89.2	155459	8.0	356	keep	The current best experiment (exp4) improved val_bpb by increasing MATRIX_LR to 0	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
+exp12	Increase WARMUP_RATIO from 0.0 to 0.1	1.128251	89.2	155000	7.9	355	discard	The current setup has no warmup (WARMUP_RATIO = 0.0), which means the model star	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
