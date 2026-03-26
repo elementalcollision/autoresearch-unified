@@ -64,3 +64,4 @@ exp61	Increase ADAM_BETAS from (0.8, 0.95) to (0.8, 0.98)	1.117244	89.2	155000	8
 exp62	Decrease WEIGHT_DECAY from 0.05 to 0.04	1.116090	89.2	155562	8.0	356	discard	The current best configuration has achieved good results with optimized learning	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp63	Increase EMBEDDING_LR from 0.4 to 0.42	1.115717	89.2	155511	8.0	356	discard	The current best configuration has strong learning rates for matrix parameters (	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp64	Decrease WEIGHT_DECAY from 0.05 to 0.045	1.115199	89.2	155585	8.0	357	keep	The current best configuration has WEIGHT_DECAY=0.05, and we've seen that decrea	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
+exp65	Increase EMBEDDING_LR from 0.4 to 0.41	1.115372	89.2	155688	8.0	357	discard	The best configuration has WEIGHT_DECAY=0.045, and we've seen that small adjustm	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
