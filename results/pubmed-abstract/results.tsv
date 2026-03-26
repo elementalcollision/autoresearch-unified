@@ -6,3 +6,4 @@ exp3	Increase MATRIX_LR from 0.04 to 0.06	1.124722	89.2	155459	8.0	356	discard	T
 exp4	Decrease MATRIX_LR from 0.04 to 0.03	1.127014	89.2	155000	7.9	355	discard	The increase to 0.06 in exp3 barely improved over baseline, suggesting we may ha	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp5	Increase EMBEDDING_LR from 0.6 to 0.8	1.129648	89.2	154793	7.9	355	discard	The embedding layer learns token representations and often benefits from higher 	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp6	Decrease EMBEDDING_LR from 0.6 to 0.4	1.124808	89.2	154639	7.9	355	discard	The baseline achieved the best performance so far, and exp5 showed that increasi	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp7	Decrease WARMDOWN_RATIO from 0.5 to 0.3	1.129193	89.2	154845	7.9	355	discard	The baseline is currently the best performing configuration, suggesting the lear	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
