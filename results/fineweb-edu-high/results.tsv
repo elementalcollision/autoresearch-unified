@@ -20,3 +20,4 @@ exp17	Increase MATRIX_LR from 0.07 to 0.08	1.125470	89.2	155792	8.0	357	discard	
 exp18	Increase UNEMBEDDING_LR from 0.004 to 0.005	1.121093	89.2	155636	8.0	357	keep	The current best configuration has MATRIX_LR=0.07 and EMBEDDING_LR=0.4. The UNEM	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp19	Increase SCALAR_LR from 0.5 to 0.6	1.125468	89.2	155562	8.0	356	discard	The current best configuration has UNEMBEDDING_LR=0.005 and MATRIX_LR=0.07, both	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp20	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.119838	89.2	154948	7.9	355	keep	The current best configuration has MATRIX_LR=0.07 and UNEMBEDDING_LR=0.005, but 	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
+exp21	Increase UNEMBEDDING_LR from 0.005 to 0.006	1.120694	89.2	155407	8.0	356	discard	The last three improvements (exp13, exp16, exp20) involved tuning embedding/unem	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
