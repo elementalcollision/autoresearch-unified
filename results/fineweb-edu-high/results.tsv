@@ -22,3 +22,4 @@ exp19	Increase SCALAR_LR from 0.5 to 0.6	1.125468	89.2	155562	8.0	356	discard	Th
 exp20	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.119838	89.2	154948	7.9	355	keep	The current best configuration has MATRIX_LR=0.07 and UNEMBEDDING_LR=0.005, but 	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp21	Increase UNEMBEDDING_LR from 0.005 to 0.006	1.120694	89.2	155407	8.0	356	discard	The last three improvements (exp13, exp16, exp20) involved tuning embedding/unem	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
 exp22	Decrease WEIGHT_DECAY from 0.1 to 0.05	1.119590	89.2	155407	8.0	356	keep	The weight decay reduction from 0.2 to 0.1 in exp20 gave our best result so far 	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
+exp23	Increase MATRIX_LR from 0.07 to 0.075	1.120093	89.2	155304	8.0	356	discard	The trend shows MATRIX_LR improvements from 0.04→0.06→0.07, with each increase i	AMD Instinct MI300X	6d95d3429b36eae6f345554a5b86ef883c9741f3
