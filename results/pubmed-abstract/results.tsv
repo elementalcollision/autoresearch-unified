@@ -2,3 +2,4 @@ exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	base
 exp0	baseline (no modifications)	1.124638	89.2	154793	7.9	355	baseline	depth=12, AMD Instinct MI300X	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp1	Decrease DEVICE_BATCH_SIZE from default to 8 to increase gradient steps	1.161689	12.7	119174	6.0	273	discard	The baseline achieved 355 steps in 5 minutes. Since maximizing gradient steps is	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp2	Decrease TOTAL_BATCH_SIZE from default to 32 to increase gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp3	Increase MATRIX_LR from 0.04 to 0.06	1.124722	89.2	155459	8.0	356	discard	The baseline achieved good performance, and small batch sizes caused issues (exp	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
