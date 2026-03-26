@@ -328,7 +328,7 @@ MLP_RATIO = 3.5         # decreased from default (likely 4); controls FFN width
 
 # Optimization
 TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
-EMBEDDING_LR = 0.45     # learning rate for token embeddings (Adam) -- decreased
+EMBEDDING_LR = 0.35     # learning rate for token embeddings (Adam) -- decreased
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam) -- decreased
 MATRIX_LR = 0.03        # learning rate for matrix parameters (Muon) - decreased
 SCALAR_LR = 0.35        # decreased learning rate for per-layer scalars (Adam)
