@@ -5,3 +5,4 @@ exp2	Decrease DEVICE_BATCH_SIZE from default to 16 to increase gradient steps	1.
 exp3	Increase MATRIX_LR from 0.04 to 0.06	1.124780	89.2	154587	7.9	355	discard	The baseline performed best so far, suggesting the default batch sizes are well-	AMD Instinct MI300X	c3182ef04f2b2ac03006f1013655a091a2d56c39
 exp4	Decrease MATRIX_LR from 0.04 to 0.02	1.139904	89.2	154896	7.9	355	discard	The baseline performed best so far, and increasing MATRIX_LR to 0.06 hurt perfor	AMD Instinct MI300X	c3182ef04f2b2ac03006f1013655a091a2d56c39
 exp5	Increase SCALAR_LR from 0.5 to 0.7	1.134084	89.2	154742	7.9	355	discard	The baseline performed best so far, suggesting the current hyperparameters are w	AMD Instinct MI300X	c3182ef04f2b2ac03006f1013655a091a2d56c39
+exp6	Decrease EMBEDDING_LR from 0.6 to 0.4	1.124881	89.2	155252	8.0	356	discard	The embedding layer is critical for token representation learning, and the curre	AMD Instinct MI300X	c3182ef04f2b2ac03006f1013655a091a2d56c39
