@@ -7,3 +7,4 @@ exp4	Increase MATRIX_LR from 0.04 to 0.06	1.124033	89.2	155459	8.0	356	keep	The 
 exp5	Decrease DEVICE_BATCH_SIZE from 256 to 224 to increase gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp6	Decrease TOTAL_BATCH_SIZE from 512 to 384 to increase gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp7	Increase MATRIX_LR from 0.06 to 0.08	1.124758	89.2	155562	8.0	356	discard	The previous increase in MATRIX_LR from 0.04 to 0.06 improved val_bpb slightly (	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
+exp8	Decrease MATRIX_LR from 0.06 to 0.05	1.125494	89.2	155407	8.0	356	discard	The current best result is at MATRIX_LR=0.06, but increasing to 0.08 degraded pe	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
