@@ -21,3 +21,4 @@ exp18	Increase WARMDOWN_RATIO from 0.5 to 0.7	1.123567	89.2	155304	8.0	356	disca
 exp19	Increase FINAL_LR_FRAC from 0.0 to 0.1	1.121102	89.2	155407	8.0	356	keep	The current best experiment (exp11) has WARMDOWN_RATIO=0.5, meaning the learning	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp20	Increase FINAL_LR_FRAC from 0.1 to 0.2	1.123019	89.2	155355	8.0	356	discard	The recent improvement from increasing FINAL_LR_FRAC from 0.0 to 0.1 suggests th	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp21	Decrease FINAL_LR_FRAC from 0.1 to 0.05	1.121210	89.2	155407	8.0	356	discard	The best result so far was achieved by increasing FINAL_LR_FRAC from 0.0 to 0.1,	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
+exp22	Increase UNEMBEDDING_LR from 0.004 to 0.005	1.120232	89.2	155355	8.0	356	keep	The unembedding layer is crucial for final token predictions. Exp15 showed that 	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
