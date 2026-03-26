@@ -420,6 +420,93 @@ class AzureOpenAIBackend(LLMBackend):
 
 
 # ---------------------------------------------------------------------------
+# OpenRouter Backend
+# ---------------------------------------------------------------------------
+
+class OpenRouterBackend(LLMBackend):
+    """OpenRouter API backend — unified access to 200+ models via OpenAI-compatible API.
+
+    Uses the same openai SDK with a custom base_url. One API key provides
+    access to Claude, GPT, Gemini, Llama, Mistral, and more.
+
+    Env vars:
+        OPENROUTER_API_KEY: API key from openrouter.ai (required)
+        OPENROUTER_MODEL:   Model ID in provider/model format (default: anthropic/claude-sonnet-4.6)
+    """
+
+    DEFAULT_MODEL = "anthropic/claude-sonnet-4.6"
+
+    def __init__(self, model: str | None = None):
+        try:
+            from openai import OpenAI
+        except ImportError:
+            raise ImportError(
+                "openai package not installed. Run: pip install openai"
+            )
+
+        api_key = os.environ.get("OPENROUTER_API_KEY")
+        if not api_key:
+            raise RuntimeError("OPENROUTER_API_KEY environment variable not set")
+
+        self._client = OpenAI(
+            api_key=api_key,
+            base_url="https://openrouter.ai/api/v1",
+            default_headers={
+                "HTTP-Referer": "https://github.com/elementalcollision/autoresearch-unified",
+                "X-Title": "autoresearch-unified",
+            },
+        )
+        self._model = model or os.environ.get("OPENROUTER_MODEL") or self.DEFAULT_MODEL
+
+    def name(self) -> str:
+        return f"OpenRouter ({self._model})"
+
+    def validate(self) -> bool:
+        """Test the API key with a minimal request."""
+        try:
+            from openai import AuthenticationError
+            self._client.chat.completions.create(
+                model=self._model,
+                max_tokens=5,
+                messages=[{"role": "user", "content": "Say OK"}],
+            )
+            return True
+        except AuthenticationError:
+            return False
+
+    def generate_experiment(
+        self,
+        current_code: str,
+        results_history: str,
+        best_val_bpb: float,
+        best_experiment: str,
+        hw_info: dict,
+    ) -> ExperimentProposal:
+        user_prompt = USER_PROMPT_TEMPLATE.format(
+            current_code=current_code,
+            results_history=results_history if results_history else "No experiments yet -- this will be the first modification after baseline.",
+            chip_name=hw_info.get("chip_name", "Unknown"),
+            memory_gb=hw_info.get("memory_gb", 0),
+            gpu_cores=hw_info.get("gpu_cores", 0),
+            peak_tflops=hw_info.get("peak_tflops", 0),
+            best_val_bpb=best_val_bpb,
+            best_experiment=best_experiment,
+        )
+
+        response = self._client.chat.completions.create(
+            model=self._model,
+            max_tokens=2048,
+            messages=[
+                {"role": "system", "content": SYSTEM_PROMPT},
+                {"role": "user", "content": user_prompt},
+            ],
+        )
+
+        response_text = response.choices[0].message.content
+        return parse_llm_response(response_text)
+
+
+# ---------------------------------------------------------------------------
 # Ollama Backend (placeholder)
 # ---------------------------------------------------------------------------
 
@@ -456,24 +543,30 @@ def get_llm_backend(model: str | None = None) -> LLMBackend:
 
     Priority:
     1. OLLAMA_MODEL env var -> OllamaBackend (local, placeholder)
-    2. AZURE_OPENAI_API_KEY + AZURE_OPENAI_ENDPOINT -> AzureOpenAIBackend
-    3. OPENAI_API_KEY -> OpenAIBackend
-    4. Anthropic credentials (env/keychain/file) -> ClaudeBackend
-    5. Error with setup instructions for all providers
+    2. OPENROUTER_API_KEY -> OpenRouterBackend (unified multi-model router)
+    3. AZURE_OPENAI_API_KEY + AZURE_OPENAI_ENDPOINT -> AzureOpenAIBackend
+    4. OPENAI_API_KEY -> OpenAIBackend
+    5. Anthropic credentials (env/keychain/file) -> ClaudeBackend
+    6. Error with setup instructions for all providers
     """
     # 1. Ollama (local)
     if os.environ.get("OLLAMA_MODEL"):
         return OllamaBackend()
 
-    # 2. Azure OpenAI (check before OpenAI — more specific env vars)
+    # 2. OpenRouter (unified router — before direct providers because if
+    # someone sets OPENROUTER_API_KEY, they want traffic routed through it)
+    if os.environ.get("OPENROUTER_API_KEY"):
+        return OpenRouterBackend(model=model)
+
+    # 3. Azure OpenAI (check before OpenAI — more specific env vars)
     if os.environ.get("AZURE_OPENAI_API_KEY") and os.environ.get("AZURE_OPENAI_ENDPOINT"):
         return AzureOpenAIBackend(model=model)
 
-    # 3. OpenAI
+    # 4. OpenAI
     if os.environ.get("OPENAI_API_KEY"):
         return OpenAIBackend(model=model)
 
-    # 4. Anthropic Claude (default)
+    # 5. Anthropic Claude (default)
     try:
         return ClaudeBackend(model=model)
     except (RuntimeError, ImportError):
@@ -484,6 +577,10 @@ def get_llm_backend(model: str | None = None) -> LLMBackend:
         "\n"
         "  Anthropic Claude (recommended):\n"
         "    export ANTHROPIC_API_KEY=sk-ant-...\n"
+        "\n"
+        "  OpenRouter (200+ models, one API key):\n"
+        "    export OPENROUTER_API_KEY=sk-or-...\n"
+        "    export OPENROUTER_MODEL=anthropic/claude-sonnet-4.6  # optional\n"
         "\n"
         "  OpenAI:\n"
         "    export OPENAI_API_KEY=sk-...\n"

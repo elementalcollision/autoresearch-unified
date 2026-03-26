@@ -760,6 +760,10 @@ class ExperimentOrchestrator:
                     self._cb_error(f"FATAL: Azure deployment not found -- stopping agent. {e}")
                     self._stop_event.set()
                     return None
+                if "model_not_found" in err_str or "insufficient_credits" in err_str or "payment_required" in err_str:
+                    self._cb_error(f"FATAL: OpenRouter error -- stopping agent. {e}")
+                    self._stop_event.set()
+                    return None
 
                 # Classify the error and determine backoff
                 if "rate" in err_str or "429" in err_str:
