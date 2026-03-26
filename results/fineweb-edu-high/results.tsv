@@ -29,3 +29,4 @@ exp26	Increase EMBEDDING_LR from 0.3 to 0.35 to boost embedding learning while m
 exp27	Increase EMBEDDING_LR from 0.3 to 0.32 to boost embedding learning while maintaining stability	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	
 exp28	Increase SCALAR_LR from 0.6 to 0.65 to boost per-layer scalar parameter learning	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	
 exp29	Increase ASPECT_RATIO from 64 to 72 to improve model capacity while maintaining similar parameter count	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX PRO 6000 Blackwell Server Edition	
+exp30	Increase HEAD_DIM from 128 to 144 to improve attention capacity	1.081321	19.2	202198	27.6	926	discard	The current best results come from momentum reduction (Adam betas), suggesting t	NVIDIA RTX PRO 6000 Blackwell Server Edition	

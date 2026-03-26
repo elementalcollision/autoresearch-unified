@@ -1,15 +1,15 @@
 {
-  "pid": 1613019,
+  "pid": 1613460,
   "alive": true,
-  "started_at": "2026-03-26T19:51:40.071262",
-  "last_updated": "2026-03-26T19:51:40.265448",
-  "experiment": 0,
-  "status": "stopped",
+  "started_at": "2026-03-26T20:07:51.509288",
+  "last_updated": "2026-03-26T20:14:14.247927",
+  "experiment": 30,
+  "status": "completed",
   "dataset": "fineweb-edu-high",
   "model": "default",
-  "best_bpb": null,
-  "total": 0,
-  "kept": 0,
-  "discarded": 0,
-  "crashes": 0
+  "best_bpb": 1.068915,
+  "total": 31,
+  "kept": 10,
+  "discarded": 14,
+  "crashes": 7
 }
