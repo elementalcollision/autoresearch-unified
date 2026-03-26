@@ -223,7 +223,7 @@ def load_profile(name):
     loaded_fp = _fingerprint_data_dir(DATA_DIR)
     with open(profile_dir / "meta.json") as f:
         meta = json.load(f)
-    stored_fp = meta.get("fingerprint", {})
+    stored_fp = meta.get("fingerprint") or {}
 
     if loaded_fp and stored_fp and loaded_fp["hash"] == stored_fp["hash"]:
         print(f"  Loaded profile '{name}' ✓ (verified: {loaded_fp['hash']})")
@@ -271,14 +271,14 @@ def list_profiles():
             if meta_path.exists():
                 with open(meta_path) as f:
                     meta = json.load(f)
-            fp = meta.get("fingerprint", {})
+            fp = meta.get("fingerprint") or {}
             valid = _validate_fingerprint(d, d.name) if fp else False
             profiles.append({
                 "name": d.name,
                 "shards": meta.get("shards", "?"),
                 "created": meta.get("created", "unknown"),
-                "fingerprint": fp.get("hash", "none"),
-                "sample": fp.get("sample", "")[:60],
+                "fingerprint": fp.get("hash", "none") if isinstance(fp, dict) else "none",
+                "sample": (fp.get("sample", "") if isinstance(fp, dict) else "")[:60],
                 "valid": valid,
             })
     return profiles
