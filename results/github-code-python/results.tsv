@@ -62,3 +62,4 @@ exp59	Increase EMBEDDING_LR from 0.7 to 0.72	1.109293	89.1	161838	8.7	371	discar
 exp60	Decrease EMBEDDING_LR from 0.7 to 0.68	1.108719	89.1	162234	8.7	372	keep	Previous experiments show that fine-tuning embedding learning rates around 0.7 h	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp61	Decrease EMBEDDING_LR from 0.68 to 0.66	1.108916	89.1	162558	8.7	372	discard	The recent experiments show a clear trend of improving val_bpb by decreasing EMB	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
 exp62	Increase SCALAR_LR from 0.4 to 0.42	1.108835	89.1	162450	8.7	372	discard	The current best configuration has EMBEDDING_LR=0.68, MATRIX_LR=0.052, UNEMBEDDI	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
+exp63	Decrease SCALAR_LR from 0.4 to 0.38	1.115432	89.1	162341	8.7	372	discard	The current best configuration has SCALAR_LR at 0.4, and previous experiments sh	AMD Instinct MI300X	97b35099a61c046d3d080b66a7a0b9396ddc05bd
