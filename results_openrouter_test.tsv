@@ -1,0 +1,3 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
+exp0	baseline (no modifications)	0.000000	0.0	0	0.0	0	crash	baseline training failed	NVIDIA GeForce RTX 5090	b7923f3b86712eee99b30e61e751d66a96036ec3
+exp1	Set DEPTH=8 and DEVICE_BATCH_SIZE=32 with explicit values to fix crash	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	b7923f3b86712eee99b30e61e751d66a96036ec3

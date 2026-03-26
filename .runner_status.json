@@ -1,0 +1,15 @@
+{
+  "pid": 640,
+  "alive": true,
+  "started_at": "2026-03-26T14:13:03.005866",
+  "last_updated": "2026-03-26T14:13:27.297075",
+  "experiment": 1,
+  "status": "completed",
+  "dataset": "climbmix",
+  "model": "default",
+  "best_bpb": null,
+  "total": 2,
+  "kept": 0,
+  "discarded": 0,
+  "crashes": 1
+}
