@@ -1,0 +1,120 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
+exp0	baseline	1.096577	6.0	0	0.0	0	baseline	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp1	Switch LR warmdown to cosine schedule instead of linear for smoother decay. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp2		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp3	Apply more aggressive warmdown: set WARMDOWN_RATIO=0.75 to spend more of the budget decaying LR. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp4		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp5	Add weight decay to value embeddings parameter group, increasing to 0.003 for potentially stronger regularization.	1.087267	6.0	0	0.0	0	keep	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp6	Halve TOTAL_BATCH_SIZE for ~2x more optimizer steps (more updates in same time, common BPB win).	0.970430	6.0	0	0.0	0	keep	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp7	Switch MLP activation from relu^2 to GELU (more effective, smoother gradients). [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp8		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp9	Apply z-loss only during early training (progress < 0.7), to avoid regularization late when overfitting is less likely. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp10		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp11	Increase Adam beta2 to 0.98 for more stable long-term parameter updates.	1.085488	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp12	Reduce weight decay for Muon optimizer to 0.05 to allow parameters to learn more freely	1.096290	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp13	Increase adaptive gradient clipping strength: lower max_norm to range [0.2, 1.0] (was [0.3, 1.0])	1.081364	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp14	Increase softcap from 12 to 16 in output logits tanh to allow higher logit magnitude, potentially improving expressivity. []	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp15	Increase EMA smoothing of train loss for more stable logging and potentially more consistent schedule adaptation.	1.085288	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp16	Increase the MLP hidden size multiplier from 4x to 6x to boost model capacity without changing depth or batch size. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp17		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp18	Increase EMA smoothing for train loss logging to 0.98 for more stable loss tracking, which may help with schedule adaptation. []	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp19	Increase the value embedding parameter group weight decay to 0.003 for stronger regularization.	1.085119	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp20	Increase HEAD_DIM from 128 to 160 to allow more attention heads (potentially improving model expressivity and throughput). []	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp21	Increase the MLP hidden size multiplier from 4x to 5x for more capacity without changing normalization. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp22		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp23	Increase softcap in output logits tanh from 12 to 14 to allow higher logit magnitude and potentially improve expressivity. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp24		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp25	Increase the short attention window size from half to three-quarters of the context for more context per layer.	1.085177	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp26	Increase the short attention window size from half to three-quarters of the context for more context per layer. [^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp27		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp28	Switch to using torch.inference_mode instead of torch.no_grad during final eval for potentially faster and more memory-efficient validation.	1.081008	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp29	Increase the short attention window size from half to seven-eighths of the context for more context per layer.	1.081184	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp30	Increase MLP hidden size multiplier from 4x to 4.5x for more capacity without changing normalization.	1.092802	6.3	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp31	Increase weight decay on value embedding parameter group to 0.002 for slightly stronger regularization.	1.081997	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp32	Switch to torch.inference_mode (instead of torch.no_grad) during final eval for potentially faster and more memory-efficient validation.	1.086910	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp33	Increase the short attention window size from half to five-eighths of the context for more context per layer.	0.929527	5.9	0	0.0	0	keep	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp34	Add small weight decay (0.001) to the value embedding parameter group for stronger regularization.	0.921393	5.9	0	0.0	0	keep	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp35	Initialize all MLP c_proj weights with small normal noise instead of zeros for better gradient flow.	0.921902	5.9	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp36	Increase the MLP residual connection scaling factor from 1.0 to 1.2 to encourage stronger MLP updates.	0.916588	5.9	0	0.0	0	keep	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp37	Apply z-loss only in early training (progress < 0.7), to avoid over-regularization late. [_recursive_post_grad_passes(gm, is_inference=is_inference)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp38		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp39	SYNTAX: Introduce a small constant bias (0.01) to MLP c_fc weights for all layers during initialization to promote more active neuron outputs early in training, possibly improving early convergence. [	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp40	Add small weight decay (0.001) to Muon optimizer parameter groups for additional regularization.	0.923710	9.9	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp41	Set a small positive bias (0.01) for all MLP c_fc layers in init_weights, encouraging early neuron activation.	0.916729	5.9	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp42	Increase the number of optimizer steps by reducing the VRAM safety margin in GPU auto-detection, allowing more tokens to fit per batch if VRAM allows.	0.917131	5.9	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp43	Switch MLP activation from relu^2 to relu for potentially better gradient flow and less dead neurons.	1.110494	5.5	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp44	Increase the softcap in output logits tanh from 12 to 13 to allow slightly higher logit magnitude, potentially improving expressivity.	1.085506	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp45	Switch MLP activation from relu^2 to squared GELU for smoother gradients and potentially better learning dynamics. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp46		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp47	Increase the EMA smoothing factor for train loss logging to 0.95 for more stable loss tracking, which may help with schedule adaptation.	1.087548	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp48	Increase the tanh softcap in output logits from 12 to 15 to allow higher logit magnitude, potentially improving expressivity.	1.088111	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp49	Increase the number of gradient accumulation steps by halving DEVICE_BATCH_SIZE, enabling more updates per optimizer step (if VRAM allows).	1.086319	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp50	Increase the initial value of x0_lambdas from 0.1 to 0.2 to encourage more residual mixing from the input embedding at each layer. [^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp51		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp52	FAILED TO APPLY: Increase the MLP residual connection scaling factor from 1.2 (previous best) to 1.3 for even stronger MLP updates.	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp53	Switch MLP activation from relu^2 to swish (x * sigmoid(x)) for smoother gradients and potentially better learning dynamics. [^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp54		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp55	Add small amount of label smoothing (0.05) to the cross-entropy loss for improved generalization. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp56		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp57	Switch MLP hidden size multiplier from 4x to 3.5x for faster MLP throughput (potentially more training steps in same time budget). [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp58		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp59	Add gradient noise during training to encourage exploration and potentially improve generalization.	2.534675	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp60	Add gradient accumulation step skipping: if loss does not decrease compared to previous step, skip optimizer step to avoid updating on bad/noisy gradients. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VR	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp61		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp62	Increase the tanh softcap in output logits from 12 to 16 to allow higher logit magnitude, potentially improving expressivity. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp63		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp64	Add a small constant (0.01) to the MLP c_proj weights after zero initialization in init_weights for improved MLP gradient flow.	1.163766	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp65	Slightly increase the initial value of x0_lambdas from 0.1 to 0.15 to encourage more input residual mixing per layer.	1.076990	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp66	Increase the EMA smoothing factor for train loss logging to 0.95 for potentially more stable loss tracking and improved schedule adaptation. [step 00149 (87.6%) | loss: 3.538820 | lrm: 0.25 | dt: 1710	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp67	Increase the short attention window size from half to three-fifths of the context for more context per layer.	1.087138	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp68	Add gradient accumulation step skipping: if loss increases compared to previous step, skip optimizer step to avoid updating on noisy gradients.	1.410022	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp69	Increase the EMA smoothing for train loss logging to 0.95 for more stable loss tracking and potentially better schedule adaptation.	1.082678	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp70	Add a small positive bias (0.01) to all MLP c_proj weights after zero initialization in init_weights to encourage better MLP gradient flow.	1.161553	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp71	Add gradient accumulation step skipping if loss increases compared to previous step to avoid updating on noisy gradients.	1.414291	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp72	Increase the MLP hidden size multiplier from 4x to 4.25x for a small capacity boost without changing normalization or causing recompilation.	1.090968	6.1	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp73	Increase the residual connection scaling factor for the attention block from 1.0 to 1.2 to encourage stronger attention updates (mirroring the best MLP residual scaling win).	1.089762	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp74	Increase the floor in the Muon weight decay cosine schedule from 0.1 to 0.2, so weight decay remains higher throughout training for stronger regularization.	1.082465	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp75	Add small normal noise (std=0.01) to all MLP c_fc weights after uniform init to encourage better gradient flow and neuron activation.	1.092098	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp76	Increase the number of Nesterov steps in Muon optimizer from 5 to 7 for potentially better orthogonalization and optimization.	1.085049	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp77	Increase the initial value of x0_lambdas from 0.1 to 0.12 for slightly more input residual mixing per layer.	1.088258	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp78	Increase the tanh softcap in output logits from 12 to 13.5 for slightly higher logit magnitude, potentially improving expressivity. [GPU: NVIDIA GeForce RTX 5070 Ti (16303MB VRAM)	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp79		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp80	Increase the EMA smoothing factor for train loss logging to 0.98 for even more stable loss tracking, which may help with schedule adaptation.	1.082905	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp81	Increase the initial value of x0_lambdas from 0.1 to 0.2 to encourage more direct input residual mixing at each layer.	1.074916	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp82	Increase the variance of the token embedding initialization (std=1.2 instead of 1.0) to encourage more diverse initial representations.	1.079686	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp83	Increase the EMA smoothing factor for train loss logging from 0.9 to 0.93 for potentially more stable training loss tracking, which may help with adaptive schedules.	1.082258	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp84	Increase the EMA smoothing factor for train loss logging to 0.93 for more stable loss tracking and potentially better adaptive schedule response.	1.086772	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp85	Add a small amount of dropout (p=0.1) after the MLP activation to improve regularization.	1.092186	6.5	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp86	Switch to a linear warmdown schedule for the learning rate instead of cosine in get_lr_multiplier for a potentially smoother late training phase.	1.082820	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp87	Increase the MLP hidden size multiplier from 4x to 4.25x for slightly more capacity without changing normalization.	1.087120	6.1	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp88	Increase the initial value of x0_lambdas from 0.1 to 0.15 to encourage slightly more direct input residual mixing at each layer.	1.079513	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp89	Add gradient accumulation step skipping: if loss does not decrease compared to previous step, skip optimizer step to avoid updating on bad/noisy gradients.	1.410003	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp90	Increase the initial value of resid_lambdas from 1.0 to 1.1 to encourage slightly stronger residual mixing at each layer.	1.080696	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp91	Increase the softcap in output logits tanh from 12 to 18 to allow higher logit magnitude, potentially improving expressivity and gradient flow.	1.082455	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp92	Add a small constant (0.01) to all MLP c_fc weights after uniform initialization in init_weights to promote early gradient flow and neuron activation.	1.067623	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp93	Add small normal noise (std=0.01) to all MLP c_fc weights after uniform init to encourage better gradient flow and neuron activation.	1.091456	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp94	Increase the initial value of x0_lambdas from 0.1 to 0.25 to further encourage direct input residual mixing at each layer.	1.082255	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp95	Add small normal noise (std=0.01) to all MLP c_proj weights after zero initialization in init_weights to encourage better gradient flow.	1.125445	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp96	Add a small normal noise (std=0.01) to all MLP c_fc weights after uniform init in init_weights to encourage better gradient flow and neuron activation.	1.091513	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp97	Switch MLP activation from relu^2 to leaky_relu^2 for improved gradient flow and to reduce dead neurons.	1.084559	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp98	Add small weight decay (0.001) to the Muon optimizer parameter groups for additional regularization.	1.081425	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp99	Add small normal noise (std=0.01) to all MLP c_fc biases after zero initialization in init_weights to encourage better early neuron activation and gradient flow.	1.080777	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp100	Increase the MLP hidden size multiplier from 4x to 4.25x for more capacity without changing normalization.	1.089928	6.1	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp101	Increase the initial value of x0_lambdas from 0.1 to 0.18 for stronger input residual mixing per layer.	1.065999	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp102	Increase EMA smoothing factor for train loss logging from 0.9 to 0.92 for more stable loss tracking, which may help adaptive schedules.	1.086959	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp103	Increase the initial value of x0_lambdas to 0.12 for slightly more direct input residual mixing at each layer.	1.091767	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp104	Add small normal noise (std=0.01) to all MLP c_proj weights after zero initialization in init_weights to encourage better gradient flow.	1.119664	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp105	Add small normal noise (std=0.01) to all MLP c_fc biases after zero initialization in init_weights to encourage better early neuron activation and gradient flow. [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp106		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp107		0.000000	0.0	0	0.0	0	skip	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp108	Add small weight decay (0.001) to the x0_lambdas parameter group for additional regularization.	1.080401	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp109	Increase the MLP residual connection scaling factor from 1.2 (previous best) to 1.25 for potentially even stronger MLP updates.	1.101731	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp110	Increase the EMA smoothing factor for train loss logging to 0.96 for more stable loss tracking and potentially better adaptive schedule response.	1.081793	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp111	Increase MLP hidden size multiplier from 4x to 4.75x for more capacity without changing normalization.	1.098787	6.4	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp112	Add small normal noise (std=0.01) to all MLP c_fc weights after uniform init in init_weights to encourage better gradient flow and neuron activation.	1.096848	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp113	Increase the EMA smoothing factor for train loss logging to 0.94 for more stable loss tracking, which may help schedule adaptation.	1.081165	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp114	Increase the initial value of x0_lambdas from 0.1 to 0.2 for stronger input residual mixing at each layer.	1.079794	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp115	Increase the proportion of long attention layers by changing the window pattern from SSSL to SSL.	1.081883	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp116	Increase the MLP residual connection scaling factor from 1.2 (previous best) to 1.25 for even stronger MLP updates.	1.100828	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp117	Increase the MLP hidden size multiplier from 4x to 4.25x for increased capacity without changing normalization or causing recompilation.	1.088525	6.1	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
+exp118	Switch the MLP activation from relu^2 to squared leaky_relu (with negative_slope=0.01) for improved gradient flow and reduced dead neurons.	1.081889	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704
