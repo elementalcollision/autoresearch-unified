@@ -2,14 +2,14 @@
   "pid": 1505,
   "alive": true,
   "started_at": "2026-03-26T15:22:29.003736",
-  "last_updated": "2026-03-26T15:42:07.835371",
-  "experiment": 3,
+  "last_updated": "2026-03-26T15:53:30.900829",
+  "experiment": 6,
   "status": "completed",
   "dataset": "pubmed",
   "model": "openai/gpt-4.1",
-  "best_bpb": 1.087346,
-  "total": 4,
-  "kept": 2,
+  "best_bpb": 1.082465,
+  "total": 7,
+  "kept": 4,
   "discarded": 1,
-  "crashes": 1
+  "crashes": 2
 }
