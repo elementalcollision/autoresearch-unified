@@ -43,3 +43,4 @@ exp40	Increase EMBEDDING_LR from 0.6 to 0.8 to better optimize embeddings with t
 exp41	Increase UNEMBEDDING_LR from 0.012 to 0.016	1.084373	52.4	372542	7.3	853	discard	The current best configuration has ASPECT_RATIO=28 and UNEMBEDDING_LR=0.012. Pre	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp42	Decrease MATRIX_LR from 0.04 to 0.035	1.079254	52.4	371542	7.3	851	discard	The current configuration achieves excellent gradient step count (853 steps) wit	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp43	Decrease SCALAR_LR from 1.0 to 0.8	1.089577	52.4	371961	7.3	852	discard	The current best configuration has SCALAR_LR=1.0 from exp27, but we haven't expl	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp44	Decrease EMBEDDING_LR from 0.6 to 0.5	1.079582	52.4	371542	7.3	851	discard	The current best configuration achieves high gradient steps (853) with ASPECT_RA	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
