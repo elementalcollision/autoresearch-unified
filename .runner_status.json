@@ -1,0 +1,15 @@
+{
+  "pid": 44525,
+  "alive": true,
+  "started_at": "2026-03-27T14:33:52.186465",
+  "last_updated": "2026-03-27T14:33:52.186700",
+  "experiment": 0,
+  "status": "stopped",
+  "dataset": "pubmed",
+  "model": "default",
+  "best_bpb": null,
+  "total": 0,
+  "kept": 0,
+  "discarded": 0,
+  "crashes": 0
+}
