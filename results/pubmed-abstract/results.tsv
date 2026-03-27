@@ -55,3 +55,4 @@ exp52	Decrease MATRIX_LR from 0.04 to 0.03	1.079243	52.4	371419	7.3	851	discard	
 exp53	Increase EMBEDDING_LR from 0.6 to 0.7	1.078018	52.4	371961	7.3	852	keep	The current best configuration has WEIGHT_DECAY=0.08 and we've reached diminishi	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp54	Increase EMBEDDING_LR from 0.7 to 0.8	1.079249	52.4	372294	7.3	853	discard	The trend shows consistent improvement as we increased EMBEDDING_LR from 0.6 to 	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp55	Decrease EMBEDDING_LR from 0.7 to 0.65	1.078596	52.4	372085	7.3	852	discard	The last several experiments show that increasing EMBEDDING_LR from 0.6 to 0.7 i	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp56	Increase EMBEDDING_LR from 0.7 to 0.75	1.077965	52.4	371666	7.3	851	keep	The trend shows that increasing EMBEDDING_LR from 0.6 to 0.7 improved val_bpb fr	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
