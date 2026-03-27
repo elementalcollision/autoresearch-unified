@@ -1,0 +1,3 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
+exp0	baseline (no modifications)	1.090293	5.9	299233	17.0	2739	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
+exp1	Decrease DEVICE_BATCH_SIZE to half its original value to enable more gradient steps per epoch.	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
