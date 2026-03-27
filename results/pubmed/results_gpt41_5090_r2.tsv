@@ -1,0 +1,3 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
+exp0	baseline (no modifications)	1.090481	5.9	299333	17.0	2740	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	14e1f266a40c145cf5bfb2bae54d286b17b89a3c
+exp1	Decrease DEVICE_BATCH_SIZE from _hp_defaults['device_batch_size'] to half its value	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	14e1f266a40c145cf5bfb2bae54d286b17b89a3c

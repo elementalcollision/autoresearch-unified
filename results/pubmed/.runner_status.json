@@ -1,15 +1,15 @@
 {
-  "pid": 1505,
-  "alive": false,
-  "started_at": "2026-03-26T15:22:29.003736",
-  "last_updated": "2026-03-27T00:00:15.973972",
-  "experiment": 0,
-  "status": "stopped",
+  "pid": 1113386,
+  "alive": true,
+  "started_at": "2026-03-27T00:03:37.584209",
+  "last_updated": "2026-03-27T00:09:49.211290",
+  "experiment": 1,
+  "status": "completed",
   "dataset": "pubmed",
   "model": "openai/gpt-4.1",
-  "best_bpb": 1.063767,
-  "total": 100,
-  "kept": 21,
-  "discarded": 72,
-  "crashes": 7
+  "best_bpb": 1.090481,
+  "total": 2,
+  "kept": 1,
+  "discarded": 0,
+  "crashes": 1
 }
