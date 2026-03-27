@@ -66,3 +66,4 @@ exp63	Decrease HEAD_DIM from 128 to 96	1.081914	52.4	366300	7.2	839	discard	The 
 exp64	Increase WARMDOWN_RATIO from 0.5 to 0.6	1.078284	52.4	371542	7.3	851	discard	The current best configuration has achieved 1.0780 val_bpb with high gradient st	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp65	Increase FINAL_LR_FRAC from 0.0 to 0.1	1.077593	52.4	371542	7.3	851	keep	The current best configuration has achieved good performance with optimized lear	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp66	Increase FINAL_LR_FRAC from 0.1 to 0.2	1.079858	52.4	371666	7.3	851	discard	The last experiment showed improvement by increasing FINAL_LR_FRAC from 0.0 to 0	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp67	Decrease FINAL_LR_FRAC from 0.1 to 0.05	1.077269	52.4	371666	7.3	851	keep	The best result (1.0776) came from increasing FINAL_LR_FRAC from 0.0 to 0.1, but	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
