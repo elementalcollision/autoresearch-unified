@@ -322,7 +322,7 @@ _hp_defaults = suggest_hyperparameters(_hw_info)
 
 # Model architecture
 ASPECT_RATIO = 56       # model_dim = depth * ASPECT_RATIO (reduced from 64)
-HEAD_DIM = 128          # target head dimension for attention
+HEAD_DIM = 144          # target head dimension for attention (increased)
 WINDOW_PATTERN = "LLLL" # sliding window pattern: L=full, S=half context
 
 # Optimization
@@ -330,7 +330,7 @@ TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
 EMBEDDING_LR = 0.25     # learning rate for token embeddings (Adam) (increased)
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.015       # learning rate for matrix parameters (Muon) (lowered)
-SCALAR_LR = 0.10        # learning rate for per-layer scalars (Adam) (lowered)
+SCALAR_LR = 0.10        # learning rate for per-layer scalars (Adam)
 WEIGHT_DECAY = 0.09     # increased weight decay for Muon
 ADAM_BETAS = (0.8, 0.95) # Adam beta1, beta2
 WARMUP_RATIO = 0.0      # fraction of time budget for LR warmup
