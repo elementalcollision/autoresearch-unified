@@ -266,7 +266,12 @@ class PowerMonitor:
         return 0.0
 
     def _try_gaudi_sampler(self):
-        """Try hl-smi for Intel Gaudi power."""
+        """Try hl-smi for Intel Gaudi power.
+
+        NOTE: Gaudi power monitoring via hl-smi is implemented but UNTESTED
+        against live hardware. No Gaudi instances are currently available for
+        validation. Will gracefully degrade to (0.0, 0.0) until confirmed.
+        """
         try:
             result = subprocess.run(
                 ["hl-smi", "-q", "-d", "POWER"],

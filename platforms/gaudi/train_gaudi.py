@@ -439,6 +439,8 @@ smooth_train_loss = 0
 total_training_time = 0
 step = 0
 
+# NOTE: Gaudi power monitoring (hl-smi) is currently UNTESTED — no Gaudi
+# instances available for validation. Will gracefully degrade to (0.0, 0.0).
 _power = PowerMonitor(backend="hpu")
 _power.start()
 
