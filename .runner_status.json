@@ -2,14 +2,14 @@
   "pid": 44657,
   "alive": true,
   "started_at": "2026-03-27T14:35:04.861922",
-  "last_updated": "2026-03-27T14:58:16.351565",
-  "experiment": 3,
+  "last_updated": "2026-03-27T15:10:01.797585",
+  "experiment": 5,
   "status": "completed",
   "dataset": "pubmed",
   "model": "default",
   "best_bpb": 1.304135,
-  "total": 4,
+  "total": 6,
   "kept": 1,
-  "discarded": 3,
+  "discarded": 5,
   "crashes": 0
 }
