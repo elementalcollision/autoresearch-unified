@@ -59,3 +59,4 @@ exp56	Increase EMBEDDING_LR from 0.7 to 0.75	1.077965	52.4	371666	7.3	851	keep	T
 exp57	Increase SCALAR_LR from 1.0 to 1.2	1.078910	52.4	371542	7.3	851	discard	With the current best configuration achieving excellent gradient step count (851	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp58	Decrease SCALAR_LR from 1.0 to 0.9	1.090678	52.4	372294	7.3	853	discard	The current best configuration has EMBEDDING_LR=0.75, MATRIX_LR=0.04, UNEMBEDDIN	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp59	Increase WARMUP_RATIO from 0.0 to 0.05	1.085026	52.4	372085	7.3	852	discard	With the optimized learning rates (EMBEDDING_LR=0.75, UNEMBEDDING_LR=0.012, MATR	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp60	Decrease UNEMBEDDING_LR from 0.012 to 0.010	1.079686	52.4	372209	7.3	852	discard	The current best configuration has EMBEDDING_LR=0.75 and UNEMBEDDING_LR=0.012. S	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
