@@ -1,3 +1,6 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
 exp0	baseline (no modifications)	1.090375	5.9	298900	17.0	2737	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	950a228fa3f0b687b1dc8b9feb6c9d1849c0e7c9
 exp1	Decrease DEVICE_BATCH_SIZE from _hp_defaults['device_batch_size'] to half its value	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	950a228fa3f0b687b1dc8b9feb6c9d1849c0e7c9
+exp2	Decrease DEPTH from _hp_defaults['depth'] to one less than its current value	1.087382	5.3	345333	17.6	3161	keep	Since smaller batches were not possible due to a crash (likely OOM at even small	NVIDIA GeForce RTX 5090	950a228fa3f0b687b1dc8b9feb6c9d1849c0e7c9
+exp3	Decrease DEVICE_BATCH_SIZE from _hp_defaults['device_batch_size'] to one less than its current value	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	950a228fa3f0b687b1dc8b9feb6c9d1849c0e7c9
+exp4	Increase WARMDOWN_RATIO from 0.5 to 0.7	1.083532	5.3	345666	17.6	3164	keep	Increasing the warmdown ratio means the learning rate decays for a larger portio	NVIDIA GeForce RTX 5090	950a228fa3f0b687b1dc8b9feb6c9d1849c0e7c9
