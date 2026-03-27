@@ -329,8 +329,8 @@ WINDOW_PATTERN = "LLLL" # sliding window pattern: L=full, S=half context
 TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
 EMBEDDING_LR = 0.19     # learning rate for token embeddings (Adam) (increased)
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
-MATRIX_LR = 0.02        # learning rate for matrix parameters (Muon) (decreased)
-SCALAR_LR = 0.12        # learning rate for per-layer scalars (Adam) (decreased)
+MATRIX_LR = 0.021       # learning rate for matrix parameters (Muon) (increased)
+SCALAR_LR = 0.12        # learning rate for per-layer scalars (Adam)
 WEIGHT_DECAY = 0.075    # lowered weight decay for Muon (changed)
 ADAM_BETAS = (0.8, 0.95) # Adam beta1, beta2
 WARMUP_RATIO = 0.0      # fraction of time budget for LR warmup
