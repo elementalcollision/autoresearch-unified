@@ -1,0 +1,13 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name
+exp0	baseline (no modifications)	1.176734	8.1	106666	24.1	977	baseline	depth=8, NVIDIA RTX 4000 Ada Generation	NVIDIA RTX 4000 Ada Generation
+exp1	Decrease TOTAL_BATCH_SIZE from default to 32768 to increase gradient steps	1.176450	8.1	106666	24.1	978	keep	The baseline used the default batch size which limits gradient steps within the 	NVIDIA RTX 4000 Ada Generation
+exp2	Decrease TOTAL_BATCH_SIZE from 32768 to 16384	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX 4000 Ada Generation
+exp3	Increase TOTAL_BATCH_SIZE from 32768 to 49152	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX 4000 Ada Generation
+exp4	Increase MATRIX_LR from 0.04 to 0.05	1.177528	8.1	107226	24.1	982	discard	The matrix parameters are the core weights of the model and often benefit from h	NVIDIA RTX 4000 Ada Generation
+exp5	Decrease MATRIX_LR from 0.04 to 0.035	1.176944	8.1	106631	24.0	976	discard	The previous increase to 0.05 hurt performance, suggesting 0.04 may be too high.	NVIDIA RTX 4000 Ada Generation
+exp6	Increase EMBEDDING_LR from 0.6 to 0.8	1.176492	8.1	106893	24.1	979	discard	The embedding layer is crucial for learning good token representations, and the 	NVIDIA RTX 4000 Ada Generation
+exp7	Decrease UNEMBEDDING_LR from 0.004 to 0.003	1.176919	8.1	106964	24.1	979	discard	The unembedding layer (lm_head) is crucial for final predictions and may be sens	NVIDIA RTX 4000 Ada Generation
+exp8	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.175346	8.1	106666	24.0	976	keep	The current weight decay of 0.2 might be too aggressive and could be hampering t	NVIDIA RTX 4000 Ada Generation
+exp9	Decrease WEIGHT_DECAY from 0.1 to 0.05	1.175187	8.1	106560	24.1	978	keep	The weight decay reduction from 0.2 to 0.1 in exp8 gave the best val_bpb so far 	NVIDIA RTX 4000 Ada Generation
+exp10	Increase WARMDOWN_RATIO from 0.5 to 0.6	1.175330	8.1	106631	24.0	976	discard	The current best results come from optimizing weight decay, suggesting the model	NVIDIA RTX 4000 Ada Generation
+exp19	Increase DEPTH from 10 to 12	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA RTX 4000 Ada Generation
