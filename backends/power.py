@@ -9,6 +9,7 @@ and stop() returns (0.0, 0.0). Training never crashes due to power monitoring.
 """
 
 import json
+import os
 import re
 import subprocess
 import threading
@@ -200,47 +201,59 @@ class PowerMonitor:
         return 0.0
 
     def _try_metal_sampler(self):
-        """Try ioreg for Apple Silicon GPU power (no sudo needed)."""
+        """Try powermetrics for Apple Silicon GPU power.
+
+        Apple Silicon does not expose GPU power counters via unprivileged
+        ioreg queries. The only reliable source is `sudo powermetrics`,
+        which reads the SoC energy model counters.
+
+        Requires passwordless sudo for the powermetrics binary:
+            sudo visudo -f /etc/sudoers.d/powermetrics
+            %staff ALL=(root) NOPASSWD: /usr/bin/powermetrics
+
+        Set AUTORESEARCH_POWERMETRICS_SUDO=1 to enable (disabled by default
+        to avoid hanging on a sudo password prompt during training).
+        """
+        if not os.environ.get("AUTORESEARCH_POWERMETRICS_SUDO"):
+            return None
+
         try:
+            # Test that sudo powermetrics works without a password prompt
             result = subprocess.run(
-                ["ioreg", "-r", "-d", "1", "-w", "0", "-c", "IOReport"],
-                capture_output=True, text=True, timeout=5,
+                ["sudo", "-n", "powermetrics",
+                 "--samplers", "gpu_power", "-i", "1000", "-n", "1", "-f", "plist"],
+                capture_output=True, text=True, timeout=10,
             )
             if result.returncode == 0:
-                # Look for GPU-related power entries
-                power = self._parse_ioreg_gpu_power(result.stdout)
+                power = self._parse_powermetrics_gpu(result.stdout)
                 if power > 0:
-                    def _sample_ioreg():
+                    def _sample_powermetrics():
                         r = subprocess.run(
-                            ["ioreg", "-r", "-d", "1", "-w", "0", "-c", "IOReport"],
-                            capture_output=True, text=True, timeout=5,
+                            ["sudo", "-n", "powermetrics",
+                             "--samplers", "gpu_power", "-i", "1000", "-n", "1", "-f", "plist"],
+                            capture_output=True, text=True, timeout=10,
                         )
-                        return self._parse_ioreg_gpu_power(r.stdout)
-                    return _sample_ioreg
-        except Exception:
-            pass
-
-        # Alternative ioreg query for GPU power
-        try:
-            result = subprocess.run(
-                ["ioreg", "-r", "-n", "AGXAccelerator", "-w", "0"],
-                capture_output=True, text=True, timeout=5,
-            )
-            if result.returncode == 0 and "GPU" in result.stdout:
-                # On some Apple Silicon chips, ioreg reports are different
-                power = self._parse_agx_power(result.stdout)
-                if power > 0:
-                    def _sample_agx():
-                        r = subprocess.run(
-                            ["ioreg", "-r", "-n", "AGXAccelerator", "-w", "0"],
-                            capture_output=True, text=True, timeout=5,
-                        )
-                        return self._parse_agx_power(r.stdout)
-                    return _sample_agx
+                        return self._parse_powermetrics_gpu(r.stdout)
+                    return _sample_powermetrics
         except Exception:
             pass
 
         return None
+
+    @staticmethod
+    def _parse_powermetrics_gpu(output: str) -> float:
+        """Parse GPU power from powermetrics plist output (milliwatts -> watts)."""
+        # powermetrics plist includes <key>gpu_energy</key><integer>NNN</integer>
+        # where NNN is millijoules consumed during the sample interval
+        m = re.search(r"<key>gpu_energy</key>\s*<integer>(\d+)</integer>", output)
+        if m:
+            mj = float(m.group(1))
+            return mj / 1000.0  # millijoules per second = watts (1s interval)
+        # Fallback: look for gpu_power in newer powermetrics formats
+        m = re.search(r"<key>gpu_power</key>\s*<(?:integer|real)>([\d.]+)</(?:integer|real)>", output)
+        if m:
+            return float(m.group(1)) / 1000.0
+        return 0.0
 
     @staticmethod
     def _parse_ioreg_gpu_power(output: str) -> float:
