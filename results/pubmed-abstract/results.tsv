@@ -63,3 +63,4 @@ exp60	Decrease UNEMBEDDING_LR from 0.012 to 0.010	1.079686	52.4	372209	7.3	852	d
 exp61	Increase UNEMBEDDING_LR from 0.012 to 0.014	1.079293	52.4	372209	7.3	852	discard	The current best configuration has EMBEDDING_LR=0.75 and UNEMBEDDING_LR=0.012. S	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp62	Increase HEAD_DIM from 128 to 160	1.081298	61.5	293706	8.1	673	discard	The current best configuration achieves 851-853 gradient steps with efficient sm	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp63	Decrease HEAD_DIM from 128 to 96	1.081914	52.4	366300	7.2	839	discard	The current best configuration has ASPECT_RATIO=28 and HEAD_DIM=128. Exp62 showe	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp64	Increase WARMDOWN_RATIO from 0.5 to 0.6	1.078284	52.4	371542	7.3	851	discard	The current best configuration has achieved 1.0780 val_bpb with high gradient st	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
