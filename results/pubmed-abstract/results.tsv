@@ -53,3 +53,4 @@ exp50	Decrease WEIGHT_DECAY from 0.08 to 0.06	1.078340	52.4	372294	7.3	853	disca
 exp51	Increase MATRIX_LR from 0.04 to 0.045	1.078740	52.4	372085	7.3	852	discard	The current configuration achieves excellent gradient step count (~852 steps) wi	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp52	Decrease MATRIX_LR from 0.04 to 0.03	1.079243	52.4	371419	7.3	851	discard	The current best configuration has achieved 1.0783 val_bpb with WEIGHT_DECAY=0.0	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp53	Increase EMBEDDING_LR from 0.6 to 0.7	1.078018	52.4	371961	7.3	852	keep	The current best configuration has WEIGHT_DECAY=0.08 and we've reached diminishi	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp54	Increase EMBEDDING_LR from 0.7 to 0.8	1.079249	52.4	372294	7.3	853	discard	The trend shows consistent improvement as we increased EMBEDDING_LR from 0.6 to 	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
