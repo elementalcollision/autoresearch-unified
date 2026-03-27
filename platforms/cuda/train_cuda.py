@@ -321,7 +321,7 @@ _hw_info = get_hardware_info()
 _hp_defaults = suggest_hyperparameters(_hw_info)
 
 # Model architecture
-ASPECT_RATIO = 64       # model_dim = depth * ASPECT_RATIO
+ASPECT_RATIO = 48       # model_dim = depth * ASPECT_RATIO (changed from 64 to 48)
 HEAD_DIM = 128          # target head dimension for attention
 WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
 
