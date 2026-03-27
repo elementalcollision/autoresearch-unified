@@ -1,0 +1,3 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
+exp0	baseline (no modifications)	1.304135	13.7	54539	12.8	499	baseline	depth=8, Apple M5 Max	Apple M5 Max	d1db2c848a4b252528859fb73fea7ea8f626c085	20.8	0.000382	6242.7
+exp1	Increase DEVICE_BATCH_SIZE from 1 to 2	1.326231	13.5	46651	11.0	428	discard	The baseline achieves only 12.8% MFU with device batch size 1, indicating poor h	Apple M5 Max	d1db2c848a4b252528859fb73fea7ea8f626c085	9.5	0.000203	2843.7
