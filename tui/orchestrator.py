@@ -363,6 +363,15 @@ class ExperimentOrchestrator:
                 if self._stop_event.is_set():
                     break
 
+                # Hard gate: check actual TSV row count to prevent overshoot
+                # after crash/restart where lost rows reset start_exp lower.
+                current_count = len(load_results(self._results_path))
+                if current_count >= self._max_experiments:
+                    self._cb_status("stopped",
+                        f"Experiment limit reached: {current_count} rows "
+                        f">= {self._max_experiments} max")
+                    break
+
                 self._update_heartbeat(exp_num, "running")
                 self._run_experiment(exp_num)
 
