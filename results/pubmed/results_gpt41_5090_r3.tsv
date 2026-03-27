@@ -1,3 +1,7 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha
 exp0	baseline (no modifications)	1.090293	5.9	299233	17.0	2739	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
 exp1	Decrease DEVICE_BATCH_SIZE to half its original value to enable more gradient steps per epoch.	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
+exp2	Reduce TOTAL_BATCH_SIZE to half its original value to allow more gradient steps per fixed time.	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
+exp3	Lower MATRIX_LR from 0.02 to 0.015	1.037409	5.8	542819	35.8	4971	keep	MATRIX_LR controls the learning rate for matrix parameters, a crucial part of th	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
+exp4	Lower DEVICE_BATCH_SIZE to 75% of its current value to increase gradient steps per unit time.	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
+exp5	Decrease WEIGHT_DECAY from 0.075 to 0.05	1.038425	5.8	542666	35.8	4967	discard	Weight decay regularizes the model and prevents overfitting, but too high a valu	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
