@@ -326,7 +326,7 @@ HEAD_DIM = 128          # target head dimension for attention
 WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
 
 # Optimization
-TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
+TOTAL_BATCH_SIZE = int(0.9 * _hp_defaults['total_batch_size'])
 EMBEDDING_LR = 0.4      # learning rate for token embeddings (Adam) [was 0.6]
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.04        # learning rate for matrix parameters (Muon)
