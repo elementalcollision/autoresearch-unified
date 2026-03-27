@@ -322,7 +322,7 @@ _hp_defaults = suggest_hyperparameters(_hw_info)
 
 # Model architecture
 ASPECT_RATIO = 56       # model_dim = depth * ASPECT_RATIO (reduced from 64)
-HEAD_DIM = 128          # target head dimension for attention
+HEAD_DIM = 96           # target head dimension for attention (reduced from 128)
 WINDOW_PATTERN = "LLLL" # sliding window pattern: L=full, S=half context
 
 # Optimization
