@@ -68,3 +68,4 @@ exp65	Increase EMBEDDING_LR from 0.25 to 0.27	1.037455	5.8	542485	35.8	4968	disc
 exp66	Increase WARMDOWN_RATIO from 0.5 to 0.6	1.036691	5.8	542819	35.8	4971	discard	The val_bpb is currently plateauing with other hyperparameter changes, and previ	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
 exp67	Decrease SCALAR_LR from 0.10 to 0.095	1.037308	5.8	543000	35.8	4970	discard	SCALAR_LR tunes per-layer scalar parameters, and the most recent successful decr	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
 exp68	Increase MATRIX_LR from 0.015 to 0.02	1.037255	5.8	542666	35.8	4967	discard	Prior decreases or minor increases to MATRIX_LR did not yield consistent improve	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
+exp69	Increase MLP_RATIO from default (4) to 4.5	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	551054ba1198be11c2a63d768efb7fbf75e604d9
