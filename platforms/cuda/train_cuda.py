@@ -330,11 +330,11 @@ TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
 EMBEDDING_LR = 0.4      # learning rate for token embeddings (Adam) [was 0.6]
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.04        # learning rate for matrix parameters (Muon)
-SCALAR_LR = 0.4         # learning rate for per-layer scalars (Adam)
+SCALAR_LR = 0.4         # (CHANGED) learning rate for per-layer scalars (Adam)
 WEIGHT_DECAY = 0.1      # decreased weight decay for Muon
 ADAM_BETAS = (0.8, 0.95) # Adam beta1, beta2
 WARMUP_RATIO = 0.0      # fraction of time budget for LR warmup
-WARMDOWN_RATIO = 0.9    # fraction of time budget for LR warmdown
+WARMDOWN_RATIO = 0.8    # fraction of time budget for LR warmdown
 FINAL_LR_FRAC = 0.0     # final LR as fraction of initial
 
 # Scale LRs with batch size (sqrt scaling rule)
