@@ -50,3 +50,4 @@ exp47	Decrease WEIGHT_DECAY from 0.15 to 0.12	1.078543	52.4	372418	7.3	853	keep	
 exp48	Decrease WEIGHT_DECAY from 0.12 to 0.10	1.079065	52.4	371295	7.3	851	discard	The recent experiments show a consistent trend where reducing weight decay has i	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp49	Decrease WEIGHT_DECAY from 0.12 to 0.08	1.078284	52.4	372333	7.3	852	keep	The recent experiments show a clear trend where decreasing weight decay improves	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
 exp50	Decrease WEIGHT_DECAY from 0.08 to 0.06	1.078340	52.4	372294	7.3	853	discard	The consistent pattern shows that reducing weight decay has been steadily improv	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
+exp51	Increase MATRIX_LR from 0.04 to 0.045	1.078740	52.4	372085	7.3	852	discard	The current configuration achieves excellent gradient step count (~852 steps) wi	AMD Instinct MI300X	0b88ac260fdb36b28881a0724d5bc5bb910910ae
