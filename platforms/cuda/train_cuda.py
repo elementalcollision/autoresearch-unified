@@ -330,7 +330,7 @@ TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
 EMBEDDING_LR = 0.25     # learning rate for token embeddings (Adam) (increased)
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.015       # learning rate for matrix parameters (Muon) (lowered)
-SCALAR_LR = 0.10        # learning rate for per-layer scalars (Adam)
+SCALAR_LR = 0.10        # learning rate for per-layer scalars (Adam) (lowered)
 WEIGHT_DECAY = 0.09     # increased weight decay for Muon
 ADAM_BETAS = (0.8, 0.95) # Adam beta1, beta2
 WARMUP_RATIO = 0.0      # fraction of time budget for LR warmup
@@ -347,7 +347,7 @@ SCALAR_LR *= _batch_lr_scale
 
 # Model size
 DEPTH = _hp_defaults['depth']
-DEVICE_BATCH_SIZE = int(_hp_defaults['device_batch_size'] * 0.96)  # decrease by ~4%
+DEVICE_BATCH_SIZE = _hp_defaults['device_batch_size']
 COMPILE_MODE = _hp_defaults.get('compile_mode', 'reduce-overhead')
 ACTIVATION_CHECKPOINTING = _hp_defaults.get('activation_checkpointing', False)
 
