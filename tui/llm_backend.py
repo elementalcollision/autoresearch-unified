@@ -87,6 +87,14 @@ Rules:
 - The key insight from prior characterization: maximizing gradient steps within the fixed time budget is the dominant factor. Smaller batches = more steps = usually better, up to a point.
 - Platform-specific: {platform_notes} {memory_note}
 
+Strategy guidance (use the full repertoire, not just learning rate tuning):
+- Learning rates: MATRIX_LR, SCALAR_LR, EMBEDDING_LR, UNEMBEDDING_LR
+- Regularization: WEIGHT_DECAY, ADAM_BETAS (beta1, beta2)
+- Schedule shape: WARMUP_RATIO (try >0), WARMDOWN_RATIO, FINAL_LR_FRAC (try >0)
+- Architecture: DEPTH, ASPECT_RATIO, HEAD_DIM, MLP_RATIO, WINDOW_PATTERN
+- Throughput: TOTAL_BATCH_SIZE, DEVICE_BATCH_SIZE (halving batch = 2x steps = often big wins)
+- Untried levers: ACTIVATION_CHECKPOINTING (enables deeper models), COMPILE_MODE
+
 Respond in EXACTLY this format (no markdown fences around the whole response):
 
 DESCRIPTION: <one-line description, e.g. "Increase MATRIX_LR from 0.04 to 0.06">
