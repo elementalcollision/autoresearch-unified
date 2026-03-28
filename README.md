@@ -2,7 +2,7 @@
 
 Autonomous LLM-driven GPU pretraining research -- unified across NVIDIA, AMD, Intel, and Apple platforms.
 
-> **[Take the Interactive Course](https://elementalcollision.github.io/autoresearch-unified/)** — Learn how this entire codebase works through animated diagrams, code walkthroughs, and interactive quizzes. No CS background needed.
+> **[Take the Interactive Course](https://elementalcollision.github.io/autoresearch-unified/course/)** — Learn how this entire codebase works through animated diagrams, code walkthroughs, and interactive quizzes. No CS background needed.
 
 ## What Is This?
 
@@ -154,7 +154,7 @@ df = ds["train"].to_pandas()
 
 ## Documentation
 
-**[Interactive Course](https://elementalcollision.github.io/autoresearch-unified/)** — A visual, scroll-based walkthrough of the entire codebase with animated data flows, code-to-English translations, and quizzes. Great for onboarding or understanding the architecture.
+**[Interactive Course](https://elementalcollision.github.io/autoresearch-unified/course/)** — A visual, scroll-based walkthrough of the entire codebase with animated data flows, code-to-English translations, and quizzes. Great for onboarding or understanding the architecture.
 
 See the [wiki](https://github.com/elementalcollision/autoresearch-unified/wiki) for:
 - [Cross-Platform Overview](https://github.com/elementalcollision/autoresearch-unified/wiki/Cross-Platform-Overview) -- Key findings and normalized comparisons
