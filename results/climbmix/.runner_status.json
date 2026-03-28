@@ -1,0 +1,15 @@
+{
+  "pid": 1634533,
+  "alive": true,
+  "started_at": "2026-03-28T23:31:15.871479",
+  "last_updated": "2026-03-28T23:36:51.931395",
+  "experiment": 1,
+  "status": "completed",
+  "dataset": "climbmix",
+  "model": "openai/gpt-4.1",
+  "best_bpb": 1.089635,
+  "total": 2,
+  "kept": 1,
+  "discarded": 0,
+  "crashes": 1
+}
