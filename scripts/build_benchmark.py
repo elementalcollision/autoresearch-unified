@@ -279,6 +279,18 @@ def build_leaderboard():
     }
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    # Only write if data actually changed (ignore generated_at timestamp)
+    # This avoids spurious commits in CI when only the timestamp differs.
+    if OUTPUT_FILE.exists():
+        with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
+            existing = json.load(f)
+        existing_data = {k: v for k, v in existing.items() if k != "generated_at"}
+        new_data = {k: v for k, v in output.items() if k != "generated_at"}
+        if existing_data == new_data:
+            print(f"Benchmark data unchanged, skipping write: {OUTPUT_FILE}")
+            return
+
     with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(output, f, indent=2)
 
