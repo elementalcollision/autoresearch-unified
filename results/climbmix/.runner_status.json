@@ -2,14 +2,14 @@
   "pid": 1347032,
   "alive": true,
   "started_at": "2026-03-28T20:19:26.195276",
-  "last_updated": "2026-03-28T20:52:27.127147",
-  "experiment": 6,
+  "last_updated": "2026-03-28T21:03:45.653333",
+  "experiment": 8,
   "status": "completed",
   "dataset": "climbmix",
   "model": "openai/gpt-4.1",
   "best_bpb": 1.08319,
-  "total": 7,
+  "total": 9,
   "kept": 4,
-  "discarded": 2,
+  "discarded": 4,
   "crashes": 1
 }
