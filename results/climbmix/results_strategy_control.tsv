@@ -1,3 +1,6 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
 exp0	baseline (no modifications)	1.090071	5.9	299333	17.0	2742	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	7ebf27bd1d057c0c1e53ec90103f52734c8c7da6	464.8	0.001552	139475.3
 exp1	Decrease DEVICE_BATCH_SIZE to increase gradient steps within time budget	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	7ebf27bd1d057c0c1e53ec90103f52734c8c7da6	0.0	0.000000	0.0
+exp2	Decrease ASPECT_RATIO from 64 to 48	1.092992	4.5	426333	15.3	3903	discard	Reducing ASPECT_RATIO decreases the model's width, which will lower memory usage	NVIDIA GeForce RTX 5090	7ebf27bd1d057c0c1e53ec90103f52734c8c7da6	465.6	0.001092	139670.7
+exp3	Decrease TOTAL_BATCH_SIZE to increase the number of gradient steps within the fixed time budget.	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	7ebf27bd1d057c0c1e53ec90103f52734c8c7da6	0.0	0.000000	0.0
+exp4	Decrease WEIGHT_DECAY from 0.2 to 0.1	1.084282	5.9	299233	17.0	2740	keep	The current weight decay may be slightly too strong, potentially hindering the m	NVIDIA GeForce RTX 5090	7ebf27bd1d057c0c1e53ec90103f52734c8c7da6	468.5	0.001566	140588.7
