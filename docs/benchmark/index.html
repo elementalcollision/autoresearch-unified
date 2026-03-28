@@ -4,6 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Autoresearch Benchmark &mdash; LLM Autonomous ML Researcher Leaderboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../shared.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
 /* ============================================================
@@ -42,6 +46,7 @@ body {
   color: var(--text);
   line-height: 1.5;
   min-height: 100vh;
+  padding-top: 50px;
 }
 
 a { color: var(--accent); text-decoration: none; }
@@ -405,6 +410,16 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- Site Nav -->
+<nav class="site-nav" role="navigation" aria-label="Site navigation">
+  <a href="../" class="site-nav-brand">autoresearch</a>
+  <ul class="site-nav-links">
+    <li><a href="./" class="active">Benchmark</a></li>
+    <li><a href="../course/">Course</a></li>
+    <li><a href="https://github.com/elementalcollision/autoresearch-unified" target="_blank">GitHub</a></li>
+  </ul>
+</nav>
 
 <div class="container">
   <header>
@@ -806,6 +821,12 @@ document.querySelectorAll('thead th[data-key]').forEach(th => {
 // ============================================================
 loadData();
 </script>
+
+<footer class="site-footer">
+  <a href="https://github.com/elementalcollision/autoresearch-unified">GitHub</a>
+  <a href="https://huggingface.co/datasets/davegraham/autoresearch-experiments">HuggingFace</a>
+  <a href="https://github.com/elementalcollision/autoresearch-unified/wiki">Wiki</a>
+</footer>
 
 </body>
 </html>

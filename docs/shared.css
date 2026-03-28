@@ -1,0 +1,95 @@
+/* ============================================================
+   AUTORESEARCH-UNIFIED — Shared Site Chrome
+   Site navigation bar + footer used across all pages.
+   ============================================================ */
+
+/* ---- Site Nav ---- */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  height: 50px;
+  background: rgba(250, 247, 242, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid #E5DFD6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+}
+
+.site-nav-brand {
+  font-family: 'Bricolage Grotesque', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #2C2A28;
+  text-decoration: none;
+}
+.site-nav-brand:hover {
+  color: #2A7B9B;
+  text-decoration: none;
+}
+
+.site-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-nav-links a {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6B6560;
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+.site-nav-links a:hover,
+.site-nav-links a.active {
+  color: #2A7B9B;
+}
+.site-nav-links a.active {
+  border-bottom: 2px solid #2A7B9B;
+  padding-bottom: 2px;
+}
+
+/* External link icon */
+.site-nav-links a[target="_blank"]::after {
+  content: " \2197";
+  font-size: 0.7em;
+  vertical-align: super;
+}
+
+/* ---- Site Footer ---- */
+.site-footer {
+  border-top: 1px solid #E5DFD6;
+  background: #FAF7F2;
+  padding: 1.5rem 24px;
+  text-align: center;
+  font-family: 'DM Sans', -apple-system, sans-serif;
+  font-size: 0.8rem;
+  color: #9E9790;
+}
+.site-footer a {
+  color: #6B6560;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+.site-footer a:hover {
+  color: #2A7B9B;
+  text-decoration: underline;
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 600px) {
+  .site-nav { padding: 0 16px; }
+  .site-nav-brand { font-size: 1rem; }
+  .site-nav-links { gap: 0.75rem; }
+  .site-nav-links a { font-size: 0.8rem; }
+}
