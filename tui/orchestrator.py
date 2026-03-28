@@ -520,6 +520,63 @@ class ExperimentOrchestrator:
     # Stagnation detection
     # ------------------------------------------------------------------
 
+    def _is_near_duplicate(self, description: str) -> bool:
+        """Check if a very similar experiment was already attempted.
+
+        Catches exact duplicates and same-parameter-same-direction proposals
+        (e.g. "Decrease MATRIX_LR from 0.04 to 0.03" vs "Lower MATRIX_LR
+        from 0.04 to 0.03"). This prevents the LLM from wasting experiments
+        on proposals it has already tried.
+        """
+        results = load_results(self._results_path)
+        desc_lower = description.lower().strip()
+
+        for r in results:
+            existing = r.description.lower().strip()
+
+            # Exact match (case-insensitive)
+            if desc_lower == existing:
+                return True
+
+            # Same hyperparameter + same target value
+            # Extract param=value patterns like "MATRIX_LR to 0.03"
+            if self._same_param_same_value(desc_lower, existing):
+                return True
+
+        return False
+
+    @staticmethod
+    def _same_param_same_value(desc_a: str, desc_b: str) -> bool:
+        """Check if two descriptions modify the same param to the same value.
+
+        Matches patterns like "PARAM_NAME ... to 0.03". The param name must
+        contain an underscore (to avoid matching regular English words) and
+        the target value must follow "to".
+        """
+        import re as _re
+
+        def _extract_pairs(text: str) -> set[tuple[str, str]]:
+            """Extract (PARAM_NAME, target_value) pairs from a description."""
+            pairs: set[tuple[str, str]] = set()
+            # Find all HP-style param names (must contain underscore)
+            params = _re.finditer(r'\b([A-Z][A-Z0-9]*_[A-Z0-9_]+)\b', text, _re.IGNORECASE)
+            for m in params:
+                param = m.group(1).upper()
+                # Look for "to <number>" after the param name in the text
+                after = text[m.end():]
+                val_match = _re.search(r'\bto\s+([0-9]+\.?[0-9]*)', after)
+                if val_match:
+                    pairs.add((param, val_match.group(1)))
+            return pairs
+
+        pairs_a = _extract_pairs(desc_a)
+        pairs_b = _extract_pairs(desc_b)
+
+        if not pairs_a or not pairs_b:
+            return False
+
+        return bool(pairs_a & pairs_b)
+
     def _detect_stagnation(self) -> str | None:
         """Detect if the LLM is stuck in a narrow strategy space.
 
@@ -604,6 +661,26 @@ class ExperimentOrchestrator:
             else:
                 self._cb_error(f"Skipping exp{exp_num} -- API unavailable after 30 min of retries")
                 return
+
+        # Check for near-duplicate proposals and re-query if needed (max 2 retries)
+        for _dup_attempt in range(2):
+            if not self._is_near_duplicate(proposal.description):
+                break
+            self._cb_status("thinking",
+                f"Duplicate detected: '{proposal.description[:60]}...' — re-querying LLM")
+            nudge_dup = (
+                f"\n\nIMPORTANT: Your proposal '{proposal.description}' is a near-duplicate "
+                "of a previous experiment. Please propose a DIFFERENT modification "
+                "that has not been tried before. Check the history carefully."
+            )
+            proposal = self._call_llm_with_backoff(
+                current_code, results_history + nudge_dup, exp_num
+            )
+            if proposal is None:
+                return
+        else:
+            # Still a duplicate after retries — proceed anyway rather than skip
+            self._cb_status("thinking", "Duplicate persists after retries — proceeding")
 
         self._cb_experiment_start(exp_num, proposal.description, proposal.reasoning)
         self._update_heartbeat(exp_num, "committing")
