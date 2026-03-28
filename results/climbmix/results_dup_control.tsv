@@ -1,3 +1,6 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
 exp0	baseline (no modifications)	1.089635	5.9	299233	17.0	2740	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	f79496bfb00906d5038fff8a7464247004207159	462.1	0.001544	138671.2
 exp1	Halve DEVICE_BATCH_SIZE to increase gradient steps per fixed time.	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	f79496bfb00906d5038fff8a7464247004207159	0.0	0.000000	0.0
+exp2	Halve TOTAL_BATCH_SIZE to increase gradient steps within the time budget.	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	f79496bfb00906d5038fff8a7464247004207159	0.0	0.000000	0.0
+exp3	Increase WARMUP_RATIO from 0.0 to 0.05	1.088317	5.9	299233	17.0	2739	keep	A nonzero warmup period can help stabilize training in the early phase, especial	NVIDIA GeForce RTX 5090	f79496bfb00906d5038fff8a7464247004207159	465.2	0.001556	139612.8
+exp4	Increase WARMDOWN_RATIO from 0.5 to 0.8	1.085584	5.9	299000	17.0	2738	keep	A longer warmdown period allows the learning rate to decrease more gradually tow	NVIDIA GeForce RTX 5090	f79496bfb00906d5038fff8a7464247004207159	468.0	0.001565	140421.5
