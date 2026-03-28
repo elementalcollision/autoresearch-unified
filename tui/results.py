@@ -145,8 +145,55 @@ def next_experiment_number(path: str = "results.tsv") -> int:
     return max_num + 1
 
 
+def classify_experiment(description: str) -> str:
+    """Classify an experiment description into a strategy category.
+
+    Returns a short category label based on which hyperparameter was changed.
+    Used for strategy summaries in the LLM prompt.
+    """
+    desc = description.lower()
+
+    # Order matters: check more specific patterns first
+    if any(k in desc for k in ["batch_size", "batch size", "total_batch"]):
+        return "batch_size"
+    if any(k in desc for k in ["depth", "head_dim", "window_pattern",
+                                "window pattern", "mlp_ratio", "aspect_ratio"]):
+        return "architecture"
+    if any(k in desc for k in ["warmup", "warmdown", "final_lr_frac",
+                                "schedule", "cooldown"]):
+        return "schedule"
+    if any(k in desc for k in ["weight_decay", "weight decay", "adam_beta",
+                                "regularization"]):
+        return "regularization"
+    if any(k in desc for k in ["_lr", "learning rate", "learning_rate",
+                                "matrix_lr", "scalar_lr", "embedding_lr"]):
+        return "learning_rate"
+    if any(k in desc for k in ["activation_checkpointing", "compile_mode",
+                                "compile mode"]):
+        return "infrastructure"
+
+    return "other"
+
+
+def categorize_experiments(
+    results: list[ExperimentResult],
+) -> dict[str, int]:
+    """Count experiments per strategy category."""
+    counts: dict[str, int] = {}
+    for r in results:
+        if r.status == "baseline":
+            continue
+        cat = classify_experiment(r.description)
+        counts[cat] = counts.get(cat, 0) + 1
+    return counts
+
+
 def format_history_for_prompt(path: str = "results.tsv") -> str:
-    """Format results as a readable table for the LLM prompt."""
+    """Format results as a readable table for the LLM prompt.
+
+    Includes a strategy summary footer so the LLM can see which
+    categories have been explored and which are underrepresented.
+    """
     results = load_results(path)
     if not results:
         return "No experiments yet."
@@ -161,5 +208,17 @@ def format_history_for_prompt(path: str = "results.tsv") -> str:
             f"{r.exp:<6} {r.status:<9} {bpb_str:>8} {r.peak_mem_gb:>7.1f} "
             f"{r.tok_sec:>8} {r.mfu:>5.1f}% {r.steps:>6}  {r.description}"
         )
+
+    # Strategy summary footer
+    categories = categorize_experiments(results)
+    if categories:
+        lines.append("")
+        lines.append("Strategy summary (category: tried / kept):")
+        for cat, count in sorted(categories.items()):
+            kept = sum(
+                1 for r in results
+                if r.status == "keep" and classify_experiment(r.description) == cat
+            )
+            lines.append(f"  {cat}: {count} tried, {kept} kept")
 
     return "\n".join(lines)

@@ -32,6 +32,7 @@ from tui.resilience import Heartbeat
 from tui.results import (
     ExperimentResult,
     append_result,
+    classify_experiment,
     format_history_for_prompt,
     get_best_result,
     init_results_tsv,
@@ -516,6 +517,45 @@ class ExperimentOrchestrator:
         self._cb_stats_update()
 
     # ------------------------------------------------------------------
+    # Stagnation detection
+    # ------------------------------------------------------------------
+
+    def _detect_stagnation(self) -> str | None:
+        """Detect if the LLM is stuck in a narrow strategy space.
+
+        Looks at the last 15 experiments. If very few were kept and
+        most were learning rate changes, returns a nudge message to
+        append to the prompt. Otherwise returns None.
+        """
+        results = load_results(self._results_path)
+        if len(results) < 15:
+            return None
+
+        recent = results[-15:]
+        recent_keeps = sum(1 for r in recent if r.status == "keep")
+
+        if recent_keeps > 1:
+            return None
+
+        # Count how many recent experiments were learning rate changes
+        lr_count = sum(
+            1 for r in recent
+            if r.status != "baseline"
+            and classify_experiment(r.description) == "learning_rate"
+        )
+
+        if lr_count >= 8:
+            return (
+                "\n\nIMPORTANT: The last 15 experiments have yielded only "
+                f"{recent_keeps} improvement(s), and {lr_count} were learning rate changes. "
+                "Learning rate tuning appears exhausted. Try a fundamentally different "
+                "approach: batch size changes, architectural modifications (DEPTH, "
+                "WINDOW_PATTERN, HEAD_DIM), or schedule shape changes (WARMUP_RATIO>0, "
+                "FINAL_LR_FRAC>0, ADAM_BETAS)."
+            )
+        return None
+
+    # ------------------------------------------------------------------
     # Single experiment
     # ------------------------------------------------------------------
 
@@ -540,6 +580,11 @@ class ExperimentOrchestrator:
 
         current_code = self._extract_hp_block()
         results_history = format_history_for_prompt(self._results_path)
+
+        # Append stagnation nudge if the LLM is stuck in a narrow strategy space
+        nudge = self._detect_stagnation()
+        if nudge:
+            results_history += nudge
 
         proposal = self._call_llm_with_backoff(
             current_code, results_history, exp_num
