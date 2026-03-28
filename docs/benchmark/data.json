@@ -1,0 +1,6037 @@
+{
+  "generated_at": "2026-03-27T22:09:36.550098+00:00",
+  "total_runs": 11,
+  "filters": {
+    "datasets": [
+      "climbmix",
+      "fineweb-edu",
+      "pubmed"
+    ],
+    "model_families": [
+      "Claude",
+      "OpenAI"
+    ],
+    "hardware": [
+      "AMD Instinct MI300X",
+      "NVIDIA GeForce RTX 5070 Ti",
+      "NVIDIA RTX 4000 Ada Generation",
+      "NVIDIA RTX PRO 6000 Blackwell Server Edition"
+    ]
+  },
+  "leaderboard": [
+    {
+      "dataset": "climbmix",
+      "model": "Sonnet 4",
+      "model_slug": "sonnet4",
+      "model_family": "Claude",
+      "gpu_name": "NVIDIA RTX 4000 Ada Generation",
+      "gpu_slug": "rtx4000ada",
+      "contributor": "elementalcollision",
+      "runs": 1,
+      "provisional": true,
+      "keep_rate_mean": 27.3,
+      "keep_rate_sd": null,
+      "crash_rate_mean": 27.3,
+      "crash_rate_sd": null,
+      "best_bpb": 1.175187,
+      "total_exps_sum": 11,
+      "total_keeps_sum": 3,
+      "total_crashes_sum": 3,
+      "run_details": [
+        {
+          "file": "data/results/climbmix/elementalcollision-rtx4000ada/results_sonnet4_r1.tsv",
+          "dataset": "climbmix",
+          "model_slug": "sonnet4",
+          "model": "Sonnet 4",
+          "model_family": "Claude",
+          "contributor": "elementalcollision",
+          "gpu_slug": "rtx4000ada",
+          "gpu_name": "NVIDIA RTX 4000 Ada Generation",
+          "total_exps": 11,
+          "keeps": 3,
+          "crashes": 3,
+          "discards": 5,
+          "skips": 0,
+          "keep_rate": 27.27272727272727,
+          "crash_rate": 27.27272727272727,
+          "best_bpb": 1.175187,
+          "baseline_bpb": 1.176734,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.176734,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 1.17645,
+              "status": "keep"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.177528,
+              "status": "discard"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.176944,
+              "status": "discard"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.176492,
+              "status": "discard"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.176919,
+              "status": "discard"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.175346,
+              "status": "keep"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.175187,
+              "status": "keep"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.17533,
+              "status": "discard"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 0.0,
+              "status": "crash"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp1",
+              "val_bpb": 1.17645,
+              "description": "Decrease TOTAL_BATCH_SIZE from default to 32768 to increase gradient steps"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.175346,
+              "description": "Decrease WEIGHT_DECAY from 0.2 to 0.1"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.175187,
+              "description": "Decrease WEIGHT_DECAY from 0.1 to 0.05"
+            }
+          ]
+        }
+      ],
+      "rank": 1
+    },
+    {
+      "dataset": "fineweb-edu",
+      "model": "Sonnet 4",
+      "model_slug": "sonnet4",
+      "model_family": "Claude",
+      "gpu_name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_slug": "rtxpro6000",
+      "contributor": "elementalcollision",
+      "runs": 1,
+      "provisional": true,
+      "keep_rate_mean": 17.9,
+      "keep_rate_sd": null,
+      "crash_rate_mean": 3.8,
+      "crash_rate_sd": null,
+      "best_bpb": 1.053036,
+      "total_exps_sum": 78,
+      "total_keeps_sum": 14,
+      "total_crashes_sum": 3,
+      "run_details": [
+        {
+          "file": "data/results/fineweb-edu/elementalcollision-rtxpro6000/results_sonnet4_r1.tsv",
+          "dataset": "fineweb-edu",
+          "model_slug": "sonnet4",
+          "model": "Sonnet 4",
+          "model_family": "Claude",
+          "contributor": "elementalcollision",
+          "gpu_slug": "rtxpro6000",
+          "gpu_name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+          "total_exps": 78,
+          "keeps": 14,
+          "crashes": 3,
+          "discards": 61,
+          "skips": 0,
+          "keep_rate": 17.94871794871795,
+          "crash_rate": 3.8461538461538463,
+          "best_bpb": 1.053036,
+          "baseline_bpb": 1.077687,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.077687,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 1.077564,
+              "status": "keep"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.078564,
+              "status": "discard"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.074712,
+              "status": "keep"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.072205,
+              "status": "keep"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.07245,
+              "status": "discard"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.075007,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.075063,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.072373,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.077847,
+              "status": "discard"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.076998,
+              "status": "discard"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 1.075027,
+              "status": "discard"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.072073,
+              "status": "keep"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.073358,
+              "status": "discard"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.073313,
+              "status": "discard"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 1.086112,
+              "status": "discard"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 1.075102,
+              "status": "discard"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.086452,
+              "status": "discard"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 1.072874,
+              "status": "discard"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.062753,
+              "status": "keep"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.064655,
+              "status": "discard"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.057139,
+              "status": "keep"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.055371,
+              "status": "keep"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 1.056221,
+              "status": "discard"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 1.054878,
+              "status": "keep"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.058189,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 1.055936,
+              "status": "discard"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 1.056663,
+              "status": "discard"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 1.056357,
+              "status": "discard"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.057589,
+              "status": "discard"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 1.055371,
+              "status": "discard"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 1.05531,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 1.060383,
+              "status": "discard"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 1.054127,
+              "status": "keep"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 1.058468,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.054639,
+              "status": "discard"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 1.054646,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.054122,
+              "status": "keep"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 1.055457,
+              "status": "discard"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 1.05857,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.05328,
+              "status": "keep"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 1.055214,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.053143,
+              "status": "keep"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 1.054377,
+              "status": "discard"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 1.057454,
+              "status": "discard"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 1.053152,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.056259,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 1.054013,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.055632,
+              "status": "discard"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 1.054114,
+              "status": "discard"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 1.053398,
+              "status": "discard"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 1.054568,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.053083,
+              "status": "keep"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 1.06047,
+              "status": "discard"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 1.054129,
+              "status": "discard"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 1.057131,
+              "status": "discard"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 1.053036,
+              "status": "keep"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 1.053689,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.053757,
+              "status": "discard"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 1.055141,
+              "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 1.054365,
+              "status": "discard"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.053307,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 1.054563,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 1.055454,
+              "status": "discard"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.053444,
+              "status": "discard"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 1.053701,
+              "status": "discard"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.05368,
+              "status": "discard"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.053049,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.053864,
+              "status": "discard"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 1.053264,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 1.053767,
+              "status": "discard"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 1.053951,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.055695,
+              "status": "discard"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.05785,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 1.05727,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 1.061272,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp2",
+              "val_bpb": 1.077564,
+              "description": "Decrease DEVICE_BATCH_SIZE from default to 32 to increase gradient steps"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.074712,
+              "description": "Decrease MATRIX_LR from 0.04 to 0.035"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.072205,
+              "description": "Decrease MATRIX_LR from 0.035 to 0.030 to continue exploring lower learning rates"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.072073,
+              "description": "Decrease MATRIX_LR from 0.030 to 0.028"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.062753,
+              "description": "Change WINDOW_PATTERN from \"SSSL\" to \"SSLL\" to modify attention pattern"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.057139,
+              "description": "Change WINDOW_PATTERN from \"SSLL\" to \"LLSS\" to explore reversed attention pattern"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.055371,
+              "description": "Decrease MATRIX_LR from 0.028 to 0.024 to explore lower learning rates with the improved LLSS window pattern"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 1.054878,
+              "description": "Decrease MATRIX_LR from 0.024 to 0.020"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 1.054127,
+              "description": "Increase WARMDOWN_RATIO from 0.5 to 0.7 to reduce learning rates more gradually"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.054122,
+              "description": "Increase FINAL_LR_FRAC from 0.0 to 0.1 to maintain some learning rate at the end of training"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.05328,
+              "description": "Decrease FINAL_LR_FRAC from 0.1 to 0.05"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.053143,
+              "description": "Decrease FINAL_LR_FRAC from 0.05 to 0.03"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.053083,
+              "description": "Change WINDOW_PATTERN from \"LLSS\" to \"LSLS\" to explore alternating attention pattern"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 1.053036,
+              "description": "Increase MATRIX_LR from 0.020 to 0.022 with the optimized LSLS pattern"
+            }
+          ]
+        }
+      ],
+      "rank": 2
+    },
+    {
+      "dataset": "climbmix",
+      "model": "Sonnet 4",
+      "model_slug": "sonnet4",
+      "model_family": "Claude",
+      "gpu_name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+      "gpu_slug": "rtxpro6000",
+      "contributor": "elementalcollision",
+      "runs": 1,
+      "provisional": true,
+      "keep_rate_mean": 16.7,
+      "keep_rate_sd": null,
+      "crash_rate_mean": 5.1,
+      "crash_rate_sd": null,
+      "best_bpb": 1.057228,
+      "total_exps_sum": 78,
+      "total_keeps_sum": 13,
+      "total_crashes_sum": 4,
+      "run_details": [
+        {
+          "file": "data/results/climbmix/elementalcollision-rtxpro6000/results_sonnet4_r1.tsv",
+          "dataset": "climbmix",
+          "model_slug": "sonnet4",
+          "model": "Sonnet 4",
+          "model_family": "Claude",
+          "contributor": "elementalcollision",
+          "gpu_slug": "rtxpro6000",
+          "gpu_name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+          "total_exps": 78,
+          "keeps": 13,
+          "crashes": 4,
+          "discards": 61,
+          "skips": 0,
+          "keep_rate": 16.666666666666664,
+          "crash_rate": 5.128205128205128,
+          "best_bpb": 1.057228,
+          "baseline_bpb": 1.077205,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.077205,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 1.076473,
+              "status": "keep"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.078007,
+              "status": "discard"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.074802,
+              "status": "keep"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.072617,
+              "status": "keep"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.07281,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.146251,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.073999,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.074551,
+              "status": "discard"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.074301,
+              "status": "discard"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 1.074783,
+              "status": "discard"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.075245,
+              "status": "discard"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.072139,
+              "status": "keep"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.072813,
+              "status": "discard"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 1.07551,
+              "status": "discard"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 1.07269,
+              "status": "discard"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.075438,
+              "status": "discard"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 1.07492,
+              "status": "discard"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.073434,
+              "status": "discard"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.077165,
+              "status": "discard"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.086672,
+              "status": "discard"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.076925,
+              "status": "discard"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.078411,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 1.074199,
+              "status": "discard"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.072892,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 1.075384,
+              "status": "discard"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 1.07595,
+              "status": "discard"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 1.062938,
+              "status": "keep"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.062863,
+              "status": "keep"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 1.060987,
+              "status": "keep"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 1.062978,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 1.060999,
+              "status": "discard"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 1.062,
+              "status": "discard"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 1.061336,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.062502,
+              "status": "discard"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 1.061659,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.062266,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 1.060375,
+              "status": "keep"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 1.061742,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.060067,
+              "status": "keep"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 1.060445,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.059911,
+              "status": "keep"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 1.060318,
+              "status": "discard"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 1.060582,
+              "status": "discard"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 1.061904,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.062248,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 1.060387,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.058773,
+              "status": "keep"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 1.059251,
+              "status": "discard"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 1.060218,
+              "status": "discard"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 1.059478,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.059989,
+              "status": "discard"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 1.05993,
+              "status": "discard"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 1.05965,
+              "status": "discard"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 1.059026,
+              "status": "discard"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 1.059253,
+              "status": "discard"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 1.06047,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.05971,
+              "status": "discard"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 1.059415,
+              "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 1.061469,
+              "status": "discard"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.058586,
+              "status": "keep"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 1.060298,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 1.059819,
+              "status": "discard"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.05986,
+              "status": "discard"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 1.060313,
+              "status": "discard"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.060424,
+              "status": "discard"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.059976,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.061537,
+              "status": "discard"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 1.060038,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 1.059547,
+              "status": "discard"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 1.059537,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.057228,
+              "status": "keep"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.057777,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 1.058596,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 1.059918,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp2",
+              "val_bpb": 1.076473,
+              "description": "Reduce DEVICE_BATCH_SIZE from default to 32 to increase gradient steps within time budget"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.074802,
+              "description": "Reduce MATRIX_LR from 0.04 to 0.035"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.072617,
+              "description": "Reduce MATRIX_LR from 0.035 to 0.03"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.072139,
+              "description": "Reduce MATRIX_LR from 0.03 to 0.028"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 1.062938,
+              "description": "Change WINDOW_PATTERN from \"SSSL\" to \"SSLL\" to potentially improve attention efficiency"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.062863,
+              "description": "Reduce MATRIX_LR from 0.028 to 0.025 with the improved SSLL window pattern"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 1.060987,
+              "description": "Reduce MATRIX_LR from 0.025 to 0.022 to continue optimizing with the SSLL window pattern"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 1.060375,
+              "description": "Reduce WEIGHT_DECAY from 0.2 to 0.15 to potentially improve convergence with the optimized MATRIX_LR and SSLL pattern"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.060067,
+              "description": "Increase WARMDOWN_RATIO from 0.5 to 0.6 to allow more gradual learning rate decay with the current best configuration"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.059911,
+              "description": "Increase WARMDOWN_RATIO from 0.6 to 0.7 to further extend the gradual learning rate decay period"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.058773,
+              "description": "Reduce SCALAR_LR from 0.5 to 0.35 to better balance learning rates with optimized MATRIX_LR"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.058586,
+              "description": "Reduce MATRIX_LR from 0.022 to 0.021 to fine-tune around the optimal value with current best configuration"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.057228,
+              "description": "Reduce FINAL_LR_FRAC from 0.0 to 0.1 to maintain some learning rate at the end of training"
+            }
+          ]
+        }
+      ],
+      "rank": 3
+    },
+    {
+      "dataset": "climbmix",
+      "model": "Sonnet 4",
+      "model_slug": "sonnet4",
+      "model_family": "Claude",
+      "gpu_name": "AMD Instinct MI300X",
+      "gpu_slug": "mi300x",
+      "contributor": "elementalcollision",
+      "runs": 2,
+      "provisional": true,
+      "keep_rate_mean": 16.5,
+      "keep_rate_sd": null,
+      "crash_rate_mean": 50.6,
+      "crash_rate_sd": null,
+      "best_bpb": 1.085843,
+      "total_exps_sum": 147,
+      "total_keeps_sum": 26,
+      "total_crashes_sum": 69,
+      "run_details": [
+        {
+          "file": "data/results/climbmix/elementalcollision-mi300x/results_sonnet4_r1.tsv",
+          "dataset": "climbmix",
+          "model_slug": "sonnet4",
+          "model": "Sonnet 4",
+          "model_family": "Claude",
+          "contributor": "elementalcollision",
+          "gpu_slug": "mi300x",
+          "gpu_name": "AMD Instinct MI300X",
+          "total_exps": 68,
+          "keeps": 0,
+          "crashes": 68,
+          "discards": 0,
+          "skips": 0,
+          "keep_rate": 0.0,
+          "crash_rate": 100.0,
+          "best_bpb": null,
+          "baseline_bpb": null,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 0.0,
+              "status": "crash"
+            }
+          ],
+          "kept_improvements": []
+        },
+        {
+          "file": "data/results/climbmix/elementalcollision-mi300x/results_sonnet4_r2.tsv",
+          "dataset": "climbmix",
+          "model_slug": "sonnet4",
+          "model": "Sonnet 4",
+          "model_family": "Claude",
+          "contributor": "elementalcollision",
+          "gpu_slug": "mi300x",
+          "gpu_name": "AMD Instinct MI300X",
+          "total_exps": 79,
+          "keeps": 26,
+          "crashes": 1,
+          "discards": 52,
+          "skips": 0,
+          "keep_rate": 32.91139240506329,
+          "crash_rate": 1.2658227848101267,
+          "best_bpb": 1.085843,
+          "baseline_bpb": 1.124305,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.124305,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 1.131506,
+              "status": "discard"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 1.124451,
+              "status": "discard"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.125907,
+              "status": "discard"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.129527,
+              "status": "discard"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.134099,
+              "status": "discard"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.140089,
+              "status": "discard"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.128849,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.128045,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.131195,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.122293,
+              "status": "keep"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.124325,
+              "status": "discard"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 1.123986,
+              "status": "discard"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.122143,
+              "status": "keep"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.131634,
+              "status": "discard"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.162928,
+              "status": "discard"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 1.129885,
+              "status": "discard"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 1.117273,
+              "status": "keep"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.116958,
+              "status": "keep"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 1.118939,
+              "status": "discard"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.116732,
+              "status": "keep"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.09876,
+              "status": "keep"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.090242,
+              "status": "keep"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.090701,
+              "status": "discard"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.109285,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 1.09163,
+              "status": "discard"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 1.090418,
+              "status": "discard"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.090221,
+              "status": "keep"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 1.090443,
+              "status": "discard"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 1.090613,
+              "status": "discard"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 1.090365,
+              "status": "discard"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.090212,
+              "status": "keep"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 1.090029,
+              "status": "keep"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 1.09046,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 1.089021,
+              "status": "keep"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 1.09002,
+              "status": "discard"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 1.089525,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.088857,
+              "status": "keep"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 1.089552,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.090847,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 1.088934,
+              "status": "discard"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 1.088696,
+              "status": "keep"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.088367,
+              "status": "keep"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 1.088316,
+              "status": "keep"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.089621,
+              "status": "discard"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 1.090471,
+              "status": "discard"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 1.089725,
+              "status": "discard"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 1.088696,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.093963,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 1.088763,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.088157,
+              "status": "keep"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 1.08839,
+              "status": "discard"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 1.08979,
+              "status": "discard"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 1.088616,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.087943,
+              "status": "keep"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 1.088012,
+              "status": "discard"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 1.089395,
+              "status": "discard"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 1.088828,
+              "status": "discard"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 1.088033,
+              "status": "discard"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 1.089893,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.087675,
+              "status": "keep"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 1.087647,
+              "status": "keep"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 1.087562,
+              "status": "keep"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.087948,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 1.087892,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 1.08736,
+              "status": "keep"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.087353,
+              "status": "keep"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 1.087808,
+              "status": "discard"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.086158,
+              "status": "keep"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.086148,
+              "status": "keep"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.08642,
+              "status": "discard"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 1.086242,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 1.086734,
+              "status": "discard"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 1.086405,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.085901,
+              "status": "keep"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.086271,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 1.086881,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 1.085843,
+              "status": "keep"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 1.086027,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp11",
+              "val_bpb": 1.122293,
+              "description": "Increase FINAL_LR_FRAC from 0.0 to 0.1"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.122143,
+              "description": "Decrease FINAL_LR_FRAC from 0.1 to 0.05"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 1.117273,
+              "description": "Change WINDOW_PATTERN from \"SSSL\" to \"SSLL\""
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.116958,
+              "description": "Change WINDOW_PATTERN from \"SSLL\" to \"SLSL\""
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.116732,
+              "description": "Decrease ASPECT_RATIO from 64 to 56"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.09876,
+              "description": "Decrease ASPECT_RATIO from 56 to 48"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.090242,
+              "description": "Decrease ASPECT_RATIO from 48 to 40"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.090221,
+              "description": "Decrease ASPECT_RATIO from 40 to 38"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.090212,
+              "description": "Decrease WEIGHT_DECAY from 0.2 to 0.15"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 1.090029,
+              "description": "Decrease WEIGHT_DECAY from 0.15 to 0.1"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 1.089021,
+              "description": "Increase UNEMBEDDING_LR from 0.004 to 0.008"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.088857,
+              "description": "Decrease SCALAR_LR from 0.5 to 0.4"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 1.088696,
+              "description": "Decrease EMBEDDING_LR from 0.6 to 0.5"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.088367,
+              "description": "Decrease EMBEDDING_LR from 0.5 to 0.4"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 1.088316,
+              "description": "Decrease EMBEDDING_LR from 0.4 to 0.35"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.088157,
+              "description": "Decrease SCALAR_LR from 0.4 to 0.35"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.087943,
+              "description": "Increase FINAL_LR_FRAC from 0.05 to 0.08"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.087675,
+              "description": "Decrease ADAM_BETAS from (0.8, 0.95) to (0.75, 0.95)"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 1.087647,
+              "description": "Decrease ADAM_BETAS from (0.75, 0.95) to (0.7, 0.95)"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 1.087562,
+              "description": "Decrease ADAM_BETAS from (0.7, 0.95) to (0.65, 0.95)"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 1.08736,
+              "description": "Change ADAM_BETAS second component from 0.95 to 0.92"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.087353,
+              "description": "Change ADAM_BETAS second component from 0.92 to 0.90"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.086158,
+              "description": "Change WINDOW_PATTERN from \"SLSL\" to \"LLSS\""
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.086148,
+              "description": "Increase MATRIX_LR from 0.04 to 0.042"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.085901,
+              "description": "Decrease EMBEDDING_LR from 0.35 to 0.30"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 1.085843,
+              "description": "Decrease WEIGHT_DECAY from 0.1 to 0.08"
+            }
+          ]
+        }
+      ],
+      "rank": 4
+    },
+    {
+      "dataset": "pubmed",
+      "model": "Sonnet 4.6",
+      "model_slug": "sonnet46",
+      "model_family": "Claude",
+      "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+      "gpu_slug": "rtx5070ti",
+      "contributor": "bmdhodl",
+      "runs": 3,
+      "provisional": false,
+      "keep_rate_mean": 9.2,
+      "keep_rate_sd": 4.0,
+      "crash_rate_mean": 23.7,
+      "crash_rate_sd": 1.6,
+      "best_bpb": 0.939983,
+      "total_exps_sum": 333,
+      "total_keeps_sum": 31,
+      "total_crashes_sum": 79,
+      "run_details": [
+        {
+          "file": "data/results/pubmed/bmdhodl-rtx5070ti/results_sonnet46_r1.tsv",
+          "dataset": "pubmed",
+          "model_slug": "sonnet46",
+          "model": "Sonnet 4.6",
+          "model_family": "Claude",
+          "contributor": "bmdhodl",
+          "gpu_slug": "rtx5070ti",
+          "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+          "total_exps": 114,
+          "keeps": 7,
+          "crashes": 29,
+          "discards": 63,
+          "skips": 15,
+          "keep_rate": 6.140350877192982,
+          "crash_rate": 25.438596491228072,
+          "best_bpb": 0.94393,
+          "baseline_bpb": 1.094587,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.094587,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.96919,
+              "status": "keep"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 0.97594,
+              "status": "discard"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 1.199902,
+              "status": "discard"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.099939,
+              "status": "discard"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.090444,
+              "status": "discard"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.060696,
+              "status": "discard"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.075709,
+              "status": "discard"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.131963,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.112724,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.093893,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.203233,
+              "status": "discard"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.118427,
+              "status": "discard"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 0.970443,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 0.969349,
+              "status": "discard"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 0.969263,
+              "status": "discard"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 0.97314,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 0.970988,
+              "status": "discard"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 0.981113,
+              "status": "discard"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 0.968803,
+              "status": "keep"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 0.969598,
+              "status": "discard"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 0.981896,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 0.973328,
+              "status": "discard"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 0.96894,
+              "status": "discard"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 0.948051,
+              "status": "keep"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 0.948141,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.077835,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 0.955567,
+              "status": "discard"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 0.948563,
+              "status": "discard"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 0.949265,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 0.948254,
+              "status": "discard"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.947785,
+              "status": "keep"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 0.95009,
+              "status": "discard"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 0.950393,
+              "status": "discard"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 0.947098,
+              "status": "keep"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 0.94999,
+              "status": "discard"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 1.121438,
+              "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 0.954406,
+              "status": "discard"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 0.94545,
+              "status": "keep"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 0.947663,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 0.950069,
+              "status": "discard"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 0.946355,
+              "status": "discard"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 0.947393,
+              "status": "discard"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 0.946151,
+              "status": "discard"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 0.947594,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 0.946389,
+              "status": "discard"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 0.950362,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 0.946455,
+              "status": "discard"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 0.946566,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 0.94393,
+              "status": "keep"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 0.954899,
+              "status": "discard"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp85",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 0.944443,
+              "status": "discard"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 1.079947,
+              "status": "discard"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 0.944413,
+              "status": "discard"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 0.944979,
+              "status": "discard"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 0.944401,
+              "status": "discard"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 0.948115,
+              "status": "discard"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 0.952315,
+              "status": "discard"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 0.944311,
+              "status": "discard"
+            },
+            {
+              "exp": "exp100",
+              "val_bpb": 0.946009,
+              "status": "discard"
+            },
+            {
+              "exp": "exp101",
+              "val_bpb": 0.946002,
+              "status": "discard"
+            },
+            {
+              "exp": "exp102",
+              "val_bpb": 0.944924,
+              "status": "discard"
+            },
+            {
+              "exp": "exp103",
+              "val_bpb": 0.946138,
+              "status": "discard"
+            },
+            {
+              "exp": "exp104",
+              "val_bpb": 0.948372,
+              "status": "discard"
+            },
+            {
+              "exp": "exp105",
+              "val_bpb": 0.94667,
+              "status": "discard"
+            },
+            {
+              "exp": "exp106",
+              "val_bpb": 0.946244,
+              "status": "discard"
+            },
+            {
+              "exp": "exp107",
+              "val_bpb": 0.945095,
+              "status": "discard"
+            },
+            {
+              "exp": "exp108",
+              "val_bpb": 0.946535,
+              "status": "discard"
+            },
+            {
+              "exp": "exp109",
+              "val_bpb": 0.945981,
+              "status": "discard"
+            },
+            {
+              "exp": "exp110",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp111",
+              "val_bpb": 0.94589,
+              "status": "discard"
+            },
+            {
+              "exp": "exp112",
+              "val_bpb": 0.944303,
+              "status": "discard"
+            },
+            {
+              "exp": "exp113",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp114",
+              "val_bpb": 0.0,
+              "status": "skip"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp1",
+              "val_bpb": 0.96919,
+              "description": "Halve TOTAL_BATCH_SIZE to get 2x more optimizer steps within the 5-minute budget, which typically improves final val_bpb significantly"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 0.968803,
+              "description": "Use TOTAL_BATCH_SIZE=2**18 and MATRIX_LR=0.045 (proven near-miss combo) with slightly increased EMBEDDING_LR=0.65 to allow faster embedding adaptation with the smaller batch size"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 0.948051,
+              "description": "Try TOTAL_BATCH_SIZE=2**17 (8x more optimizer steps than baseline, 2x more than current best) with MATRIX_LR=0.035 to compensate for even smaller batch size - more gradient updates in 5 minutes should"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.947785,
+              "description": "Combine EMBEDDING_LR=0.55 and UNEMBEDDING_LR=0.010 with current best TOTAL_BATCH_SIZE=2**17 and MATRIX_LR=0.035 - both individually nearly matched baseline and the unembedding LR of 0.010 showed +0.00"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 0.947098,
+              "description": "Speed up Muon momentum warmup from 500 to 300 steps so full momentum is reached earlier, giving more training steps at optimal momentum with the small batch size TOTAL_BATCH_SIZE=2**17"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 0.94545,
+              "description": "Use fixed gradient clip norm of 0.5 instead of adaptive cosine schedule from 1.0 to 0.3 - with TOTAL_BATCH_SIZE=2**17 and many more steps, the adaptive clip may be suboptimal and a moderate fixed valu"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 0.94393,
+              "description": "Apply proven best settings (TOTAL_BATCH_SIZE=2**17, MATRIX_LR=0.035, fixed clip norm 0.5, Muon momentum warmup 300 steps) plus reduce peak Muon momentum from 0.95 to 0.93 - slightly less aggressive mo"
+            }
+          ]
+        },
+        {
+          "file": "data/results/pubmed/bmdhodl-rtx5070ti/results_sonnet46_r2.tsv",
+          "dataset": "pubmed",
+          "model_slug": "sonnet46",
+          "model": "Sonnet 4.6",
+          "model_family": "Claude",
+          "contributor": "bmdhodl",
+          "gpu_slug": "rtx5070ti",
+          "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+          "total_exps": 103,
+          "keeps": 8,
+          "crashes": 24,
+          "discards": 67,
+          "skips": 4,
+          "keep_rate": 7.766990291262135,
+          "crash_rate": 23.300970873786408,
+          "best_bpb": 0.944684,
+          "baseline_bpb": 1.09013,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.09013,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 0.970227,
+              "status": "keep"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 0.971622,
+              "status": "discard"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.108308,
+              "status": "discard"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.418474,
+              "status": "discard"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.13615,
+              "status": "discard"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.127362,
+              "status": "discard"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.077918,
+              "status": "discard"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.080295,
+              "status": "discard"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 1.081666,
+              "status": "discard"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.089704,
+              "status": "discard"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.069281,
+              "status": "discard"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.084594,
+              "status": "discard"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 0.970822,
+              "status": "discard"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 0.970985,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 0.949786,
+              "status": "keep"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 0.948276,
+              "status": "keep"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 0.951207,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 0.950772,
+              "status": "discard"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 0.946392,
+              "status": "keep"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 0.946333,
+              "status": "keep"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 0.953111,
+              "status": "discard"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 0.953588,
+              "status": "discard"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 0.950364,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 0.952673,
+              "status": "discard"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 0.96123,
+              "status": "discard"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 0.950072,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 0.949089,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 0.95546,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 0.950581,
+              "status": "discard"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 0.955316,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 0.950298,
+              "status": "discard"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 0.950525,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 0.949776,
+              "status": "discard"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 0.956341,
+              "status": "discard"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 0.946355,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 0.948472,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 0.948441,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 0.9467,
+              "status": "discard"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 0.947053,
+              "status": "discard"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 0.94596,
+              "status": "keep"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 0.948266,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.948711,
+              "status": "discard"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 0.944992,
+              "status": "keep"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 0.95142,
+              "status": "discard"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 0.953333,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 0.947066,
+              "status": "discard"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 0.947405,
+              "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 0.947111,
+              "status": "discard"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 0.946441,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 0.956375,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 0.947873,
+              "status": "discard"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 0.947542,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 0.944684,
+              "status": "keep"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 0.945096,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 0.947146,
+              "status": "discard"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 0.955326,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 0.954736,
+              "status": "discard"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 0.948884,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 0.94733,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 0.953766,
+              "status": "discard"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 0.945254,
+              "status": "discard"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 0.960089,
+              "status": "discard"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 0.962267,
+              "status": "discard"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 0.955615,
+              "status": "discard"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp85",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 0.946257,
+              "status": "discard"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 0.946792,
+              "status": "discard"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 0.95514,
+              "status": "discard"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 0.97512,
+              "status": "discard"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 0.956384,
+              "status": "discard"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 0.947039,
+              "status": "discard"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 0.946909,
+              "status": "discard"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 0.953978,
+              "status": "discard"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 0.949257,
+              "status": "discard"
+            },
+            {
+              "exp": "exp100",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp101",
+              "val_bpb": 0.971815,
+              "status": "discard"
+            },
+            {
+              "exp": "exp102",
+              "val_bpb": 0.977852,
+              "status": "discard"
+            },
+            {
+              "exp": "exp103",
+              "val_bpb": 0.0,
+              "status": "crash"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp2",
+              "val_bpb": 0.970227,
+              "description": "Halve TOTAL_BATCH_SIZE to 2^18 for 2x more optimizer steps in the same time budget, enabling better convergence"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 0.949786,
+              "description": "Reduce TOTAL_BATCH_SIZE to 2^17 for ~4x more optimizer steps than baseline (2x more than the best 2^18 result), trading batch noise for more gradient updates in the 5-minute budget"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 0.948276,
+              "description": "With TOTAL_BATCH_SIZE=2^17 giving 4x more steps, increase WARMDOWN_RATIO to 0.55 so more of the training budget is spent in the productive cooldown phase - this combination hasn't been tested (0.55 wa"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 0.946392,
+              "description": "Increase EMBEDDING_LR from 0.6 to 1.0 with the proven 2^17 batch size - more optimizer steps means embeddings can benefit from more aggressive learning rate, and embedding LR hasn't been tuned with th"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 0.946333,
+              "description": "Set FINAL_LR_FRAC=0.03 to prevent LR from dropping to zero at end of training - a small non-zero final LR floor can improve convergence with the current 2^17 batch + 0.55 warmdown settings"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 0.94596,
+              "description": "Restore proven best settings (2^17 batch, 0.55 warmdown, 0.03 final LR, 1.0 embedding LR, 0.006 unembedding LR) and use fixed low weight decay of 0.05 instead of cosine-decaying from 0.2 - the cosine"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 0.944992,
+              "description": "Restore ALL proven best settings: TOTAL_BATCH_SIZE=2^17, WARMDOWN_RATIO=0.55, FINAL_LR_FRAC=0.03, EMBEDDING_LR=1.0, UNEMBEDDING_LR=0.006, and fixed WEIGHT_DECAY=0.05 (no cosine decay). Also try Adam b"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 0.944684,
+              "description": "Apply all proven best settings (2^17 batch, 0.55 warmdown, 0.03 final LR, 1.0 embedding LR, 0.006 unembedding LR, fixed WD=0.05, beta2=0.98) and try WARMDOWN_RATIO=0.57 - a specific value between the"
+            }
+          ]
+        },
+        {
+          "file": "data/results/pubmed/bmdhodl-rtx5070ti/results_sonnet46_r3.tsv",
+          "dataset": "pubmed",
+          "model_slug": "sonnet46",
+          "model": "Sonnet 4.6",
+          "model_family": "Claude",
+          "contributor": "bmdhodl",
+          "gpu_slug": "rtx5070ti",
+          "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+          "total_exps": 116,
+          "keeps": 16,
+          "crashes": 26,
+          "discards": 57,
+          "skips": 17,
+          "keep_rate": 13.793103448275861,
+          "crash_rate": 22.413793103448278,
+          "best_bpb": 0.939983,
+          "baseline_bpb": 1.168152,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.168152,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.98291,
+              "status": "keep"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 0.976568,
+              "status": "keep"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 1.061479,
+              "status": "discard"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.115077,
+              "status": "discard"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 0.976822,
+              "status": "discard"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.089605,
+              "status": "discard"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.137133,
+              "status": "discard"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.106075,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.163522,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.118741,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.121378,
+              "status": "discard"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.24032,
+              "status": "discard"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 0.976188,
+              "status": "keep"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.272939,
+              "status": "discard"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 0.97727,
+              "status": "discard"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 0.978477,
+              "status": "discard"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 1.129986,
+              "status": "discard"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 0.97327,
+              "status": "keep"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 0.946867,
+              "status": "keep"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 0.947016,
+              "status": "discard"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 0.952559,
+              "status": "discard"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 0.945071,
+              "status": "keep"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 0.948304,
+              "status": "discard"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 0.945738,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 0.947775,
+              "status": "discard"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 0.947537,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 0.944937,
+              "status": "keep"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 0.947408,
+              "status": "discard"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 1.083227,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 0.944753,
+              "status": "keep"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 0.945613,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 0.94825,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 0.942424,
+              "status": "keep"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 0.950218,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 0.942549,
+              "status": "discard"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 0.94445,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 0.941914,
+              "status": "keep"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 0.941778,
+              "status": "keep"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 0.944428,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 0.952575,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 0.946658,
+              "status": "discard"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 0.947239,
+              "status": "discard"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 0.946055,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 0.943371,
+              "status": "discard"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.941953,
+              "status": "discard"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 0.942449,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 0.943618,
+              "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 0.942376,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 0.942662,
+              "status": "discard"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 0.944398,
+              "status": "discard"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 0.945107,
+              "status": "discard"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 0.942445,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 0.941412,
+              "status": "keep"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 0.952791,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 0.940924,
+              "status": "keep"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 0.941071,
+              "status": "discard"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 0.941298,
+              "status": "discard"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 1.073245,
+              "status": "discard"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 0.941743,
+              "status": "discard"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 0.941667,
+              "status": "discard"
+            },
+            {
+              "exp": "exp85",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 0.943014,
+              "status": "discard"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 0.943817,
+              "status": "discard"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 0.941058,
+              "status": "discard"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 0.940933,
+              "status": "discard"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 0.940711,
+              "status": "keep"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 0.941121,
+              "status": "discard"
+            },
+            {
+              "exp": "exp100",
+              "val_bpb": 0.940816,
+              "status": "discard"
+            },
+            {
+              "exp": "exp101",
+              "val_bpb": 0.940576,
+              "status": "keep"
+            },
+            {
+              "exp": "exp102",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp103",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp104",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp105",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp106",
+              "val_bpb": 0.941297,
+              "status": "discard"
+            },
+            {
+              "exp": "exp107",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp108",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp109",
+              "val_bpb": 0.943579,
+              "status": "discard"
+            },
+            {
+              "exp": "exp110",
+              "val_bpb": 0.939983,
+              "status": "keep"
+            },
+            {
+              "exp": "exp111",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp112",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp113",
+              "val_bpb": 0.944398,
+              "status": "discard"
+            },
+            {
+              "exp": "exp114",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp115",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp116",
+              "val_bpb": 0.941843,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp1",
+              "val_bpb": 0.98291,
+              "description": "Halve TOTAL_BATCH_SIZE to 2^18 for 2x more optimizer steps within the 5-minute budget, which typically improves final val_bpb by allowing more weight updates"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 0.976568,
+              "description": "Increase WARMDOWN_RATIO to 0.75 so more of the training budget is spent in LR cooldown phase, which helps the model converge to a better minimum"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 0.976188,
+              "description": "Restore WARMDOWN_RATIO=0.75 (proven best: 0.9766) and also set TOTAL_BATCH_SIZE=2^18 for 2x more optimizer steps - the near-miss combination that was +0.0003 from baseline, now applied cleanly to curr"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 0.97327,
+              "description": "Set TOTAL_BATCH_SIZE=2^18 for 2x more optimizer steps AND WARMDOWN_RATIO=0.70 for aggressive LR cooldown - a fresh combination point between the 0.75 near-miss and the 0.5 baseline"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 0.946867,
+              "description": "Try TOTAL_BATCH_SIZE=2^17 for 4x more optimizer steps within the 5-minute budget, combined with current best WARMDOWN_RATIO=0.70. More frequent weight updates may improve final convergence."
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 0.945071,
+              "description": "Keep best settings (TOTAL_BATCH_SIZE=2^17, WARMDOWN_RATIO=0.70) and try slightly lower MATRIX_LR=0.035 to reduce overshooting with the higher step count (more steps means each step should be slightly"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 0.944937,
+              "description": "Try WARMDOWN_RATIO=0.69 as new interpolation point between 0.68 (+0.0007 gap) and 0.70 (best baseline), keeping proven best settings TOTAL_BATCH_SIZE=2^17 and MATRIX_LR=0.035"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 0.944753,
+              "description": "Set fixed gradient clip norm of 0.5 (instead of cosine schedule 1.0->0.3) with proven best settings WARMDOWN_RATIO=0.69, TOTAL_BATCH_SIZE=2^17, MATRIX_LR=0.035. A moderate fixed clip may outperform th"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 0.942424,
+              "description": "Reduce z-loss coefficient from 1e-4 to 5e-5 to reduce logit over-regularization while keeping training stable, combined with best known settings (WARMDOWN_RATIO=0.69, TOTAL_BATCH_SIZE=2^17, MATRIX_LR="
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 0.941914,
+              "description": "Restore proven best settings (TOTAL_BATCH_SIZE=2^17, WARMDOWN_RATIO=0.69, MATRIX_LR=0.035, fixed grad clip 0.4) and reduce z-loss from 5e-5 to 2e-5 to further reduce logit over-regularization"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 0.941778,
+              "description": "Apply all proven best settings together: TOTAL_BATCH_SIZE=2^17, WARMDOWN_RATIO=0.69, MATRIX_LR=0.035, z-loss=2e-5, fixed gradient clip=0.4"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 0.941412,
+              "description": "Restore all proven best settings (TOTAL_BATCH_SIZE=2^17, WARMDOWN_RATIO=0.69, MATRIX_LR=0.035, z-loss=2e-5, fixed grad clip=0.4) and try SCALAR_LR=0.3 (lower than baseline 0.5) since per-layer scalars"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 0.940924,
+              "description": "Combine WARMDOWN_RATIO=0.71 (near-miss +0.0005) with Muon weight_decay=0.15 (near-miss +0.0007) plus all other proven best settings: TOTAL_BATCH_SIZE=2^17, MATRIX_LR=0.035, z-loss=2e-5, fixed grad cli"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 0.940711,
+              "description": "Try WARMDOWN_RATIO=0.74 as new interpolation between 0.71 (near-miss +0.0001) and 0.75, combined with all proven best settings: TOTAL_BATCH_SIZE=2^17, WEIGHT_DECAY=0.15, SCALAR_LR=0.3, MATRIX_LR=0.035"
+            },
+            {
+              "exp": "exp101",
+              "val_bpb": 0.940576,
+              "description": "Initialize x0_lambdas to 0.2 instead of 0.1 to strengthen the input highway connection, providing better gradient flow from embeddings to all layers"
+            },
+            {
+              "exp": "exp110",
+              "val_bpb": 0.939983,
+              "description": "Apply all proven best settings (TOTAL_BATCH_SIZE=2^17, WARMDOWN_RATIO=0.74, WEIGHT_DECAY=0.15, SCALAR_LR=0.3, MATRIX_LR=0.035, z-loss=2e-5, fixed grad clip=0.4) with x0_lambdas initialized to 0.2 - th"
+            }
+          ]
+        }
+      ],
+      "rank": 5
+    },
+    {
+      "dataset": "pubmed",
+      "model": "GPT-4.1",
+      "model_slug": "gpt41",
+      "model_family": "OpenAI",
+      "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+      "gpu_slug": "rtx5070ti",
+      "contributor": "bmdhodl",
+      "runs": 3,
+      "provisional": false,
+      "keep_rate_mean": 1.9,
+      "keep_rate_sd": 2.0,
+      "crash_rate_mean": 28.8,
+      "crash_rate_sd": 7.4,
+      "best_bpb": 0.916588,
+      "total_exps_sum": 375,
+      "total_keeps_sum": 7,
+      "total_crashes_sum": 109,
+      "run_details": [
+        {
+          "file": "data/results/pubmed/bmdhodl-rtx5070ti/results_gpt41_r1.tsv",
+          "dataset": "pubmed",
+          "model_slug": "gpt41",
+          "model": "GPT-4.1",
+          "model_family": "OpenAI",
+          "contributor": "bmdhodl",
+          "gpu_slug": "rtx5070ti",
+          "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+          "total_exps": 118,
+          "keeps": 5,
+          "crashes": 24,
+          "discards": 70,
+          "skips": 19,
+          "keep_rate": 4.23728813559322,
+          "crash_rate": 20.33898305084746,
+          "best_bpb": 0.916588,
+          "baseline_bpb": 1.096577,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.096577,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.087267,
+              "status": "keep"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 0.97043,
+              "status": "keep"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.085488,
+              "status": "discard"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.09629,
+              "status": "discard"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 1.081364,
+              "status": "discard"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.085288,
+              "status": "discard"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.085119,
+              "status": "discard"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.085177,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.081008,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 1.081184,
+              "status": "discard"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 1.092802,
+              "status": "discard"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 1.081997,
+              "status": "discard"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.08691,
+              "status": "discard"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 0.929527,
+              "status": "keep"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 0.921393,
+              "status": "keep"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 0.921902,
+              "status": "discard"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 0.916588,
+              "status": "keep"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 0.92371,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 0.916729,
+              "status": "discard"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 0.917131,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.110494,
+              "status": "discard"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 1.085506,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 1.087548,
+              "status": "discard"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 1.088111,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.086319,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 2.534675,
+              "status": "discard"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.163766,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 1.07699,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.087138,
+              "status": "discard"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 1.410022,
+              "status": "discard"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.082678,
+              "status": "discard"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.161553,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.414291,
+              "status": "discard"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 1.090968,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 1.089762,
+              "status": "discard"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 1.082465,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.092098,
+              "status": "discard"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.085049,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 1.088258,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 1.082905,
+              "status": "discard"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 1.074916,
+              "status": "discard"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 1.079686,
+              "status": "discard"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 1.082258,
+              "status": "discard"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 1.086772,
+              "status": "discard"
+            },
+            {
+              "exp": "exp85",
+              "val_bpb": 1.092186,
+              "status": "discard"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 1.08282,
+              "status": "discard"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 1.08712,
+              "status": "discard"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 1.079513,
+              "status": "discard"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 1.410003,
+              "status": "discard"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 1.080696,
+              "status": "discard"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 1.082455,
+              "status": "discard"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 1.067623,
+              "status": "discard"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 1.091456,
+              "status": "discard"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 1.082255,
+              "status": "discard"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 1.125445,
+              "status": "discard"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 1.091513,
+              "status": "discard"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 1.084559,
+              "status": "discard"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 1.081425,
+              "status": "discard"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 1.080777,
+              "status": "discard"
+            },
+            {
+              "exp": "exp100",
+              "val_bpb": 1.089928,
+              "status": "discard"
+            },
+            {
+              "exp": "exp101",
+              "val_bpb": 1.065999,
+              "status": "discard"
+            },
+            {
+              "exp": "exp102",
+              "val_bpb": 1.086959,
+              "status": "discard"
+            },
+            {
+              "exp": "exp103",
+              "val_bpb": 1.091767,
+              "status": "discard"
+            },
+            {
+              "exp": "exp104",
+              "val_bpb": 1.119664,
+              "status": "discard"
+            },
+            {
+              "exp": "exp105",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp106",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp107",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp108",
+              "val_bpb": 1.080401,
+              "status": "discard"
+            },
+            {
+              "exp": "exp109",
+              "val_bpb": 1.101731,
+              "status": "discard"
+            },
+            {
+              "exp": "exp110",
+              "val_bpb": 1.081793,
+              "status": "discard"
+            },
+            {
+              "exp": "exp111",
+              "val_bpb": 1.098787,
+              "status": "discard"
+            },
+            {
+              "exp": "exp112",
+              "val_bpb": 1.096848,
+              "status": "discard"
+            },
+            {
+              "exp": "exp113",
+              "val_bpb": 1.081165,
+              "status": "discard"
+            },
+            {
+              "exp": "exp114",
+              "val_bpb": 1.079794,
+              "status": "discard"
+            },
+            {
+              "exp": "exp115",
+              "val_bpb": 1.081883,
+              "status": "discard"
+            },
+            {
+              "exp": "exp116",
+              "val_bpb": 1.100828,
+              "status": "discard"
+            },
+            {
+              "exp": "exp117",
+              "val_bpb": 1.088525,
+              "status": "discard"
+            },
+            {
+              "exp": "exp118",
+              "val_bpb": 1.081889,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp5",
+              "val_bpb": 1.087267,
+              "description": "Add weight decay to value embeddings parameter group, increasing to 0.003 for potentially stronger regularization."
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 0.97043,
+              "description": "Halve TOTAL_BATCH_SIZE for ~2x more optimizer steps (more updates in same time, common BPB win)."
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 0.929527,
+              "description": "Increase the short attention window size from half to five-eighths of the context for more context per layer."
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 0.921393,
+              "description": "Add small weight decay (0.001) to the value embedding parameter group for stronger regularization."
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 0.916588,
+              "description": "Increase the MLP residual connection scaling factor from 1.0 to 1.2 to encourage stronger MLP updates."
+            }
+          ]
+        },
+        {
+          "file": "data/results/pubmed/bmdhodl-rtx5070ti/results_gpt41_r2.tsv",
+          "dataset": "pubmed",
+          "model_slug": "gpt41",
+          "model": "GPT-4.1",
+          "model_family": "OpenAI",
+          "contributor": "bmdhodl",
+          "gpu_slug": "rtx5070ti",
+          "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+          "total_exps": 132,
+          "keeps": 1,
+          "crashes": 43,
+          "discards": 55,
+          "skips": 33,
+          "keep_rate": 0.7575757575757576,
+          "crash_rate": 32.57575757575758,
+          "best_bpb": 1.064306,
+          "baseline_bpb": 1.079296,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.079296,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 1.140782,
+              "status": "discard"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 1.088068,
+              "status": "discard"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.088307,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.082775,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.200512,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.121868,
+              "status": "discard"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.064306,
+              "status": "keep"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 1.068646,
+              "status": "discard"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.084021,
+              "status": "discard"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.080841,
+              "status": "discard"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.095703,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 1.080354,
+              "status": "discard"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.085844,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.085549,
+              "status": "discard"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 1.090791,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.082787,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.07916,
+              "status": "discard"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.080447,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 1.08504,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.082003,
+              "status": "discard"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 1.080714,
+              "status": "discard"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 1.084637,
+              "status": "discard"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 1.084172,
+              "status": "discard"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 1.083008,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.083303,
+              "status": "discard"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.080554,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.080254,
+              "status": "discard"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.086225,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 1.09109,
+              "status": "discard"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.089633,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 1.087195,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 1.079633,
+              "status": "discard"
+            },
+            {
+              "exp": "exp85",
+              "val_bpb": 1.084005,
+              "status": "discard"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 1.075704,
+              "status": "discard"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 1.080944,
+              "status": "discard"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 1.080282,
+              "status": "discard"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 1.081747,
+              "status": "discard"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 1.087779,
+              "status": "discard"
+            },
+            {
+              "exp": "exp100",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp101",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp102",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp103",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp104",
+              "val_bpb": 1.078923,
+              "status": "discard"
+            },
+            {
+              "exp": "exp105",
+              "val_bpb": 1.079211,
+              "status": "discard"
+            },
+            {
+              "exp": "exp106",
+              "val_bpb": 1.079422,
+              "status": "discard"
+            },
+            {
+              "exp": "exp107",
+              "val_bpb": 1.083653,
+              "status": "discard"
+            },
+            {
+              "exp": "exp108",
+              "val_bpb": 1.083914,
+              "status": "discard"
+            },
+            {
+              "exp": "exp109",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp110",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp111",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp112",
+              "val_bpb": 1.079017,
+              "status": "discard"
+            },
+            {
+              "exp": "exp113",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp114",
+              "val_bpb": 1.07942,
+              "status": "discard"
+            },
+            {
+              "exp": "exp115",
+              "val_bpb": 1.11774,
+              "status": "discard"
+            },
+            {
+              "exp": "exp116",
+              "val_bpb": 1.08573,
+              "status": "discard"
+            },
+            {
+              "exp": "exp117",
+              "val_bpb": 1.081168,
+              "status": "discard"
+            },
+            {
+              "exp": "exp118",
+              "val_bpb": 1.082148,
+              "status": "discard"
+            },
+            {
+              "exp": "exp119",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp120",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp121",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp122",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp123",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp124",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp125",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp126",
+              "val_bpb": 1.07893,
+              "status": "discard"
+            },
+            {
+              "exp": "exp127",
+              "val_bpb": 1.089,
+              "status": "discard"
+            },
+            {
+              "exp": "exp128",
+              "val_bpb": 1.074801,
+              "status": "discard"
+            },
+            {
+              "exp": "exp129",
+              "val_bpb": 1.092295,
+              "status": "discard"
+            },
+            {
+              "exp": "exp130",
+              "val_bpb": 1.091437,
+              "status": "discard"
+            },
+            {
+              "exp": "exp131",
+              "val_bpb": 1.086904,
+              "status": "discard"
+            },
+            {
+              "exp": "exp132",
+              "val_bpb": 1.089053,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp16",
+              "val_bpb": 1.064306,
+              "description": "Increase Adam epsilon for lm_head (unembedding) parameter group from 1e-8 to 1e-6 for improved numerical stability and potentially faster training."
+            }
+          ]
+        },
+        {
+          "file": "data/results/pubmed/bmdhodl-rtx5070ti/results_gpt41_r3.tsv",
+          "dataset": "pubmed",
+          "model_slug": "gpt41",
+          "model": "GPT-4.1",
+          "model_family": "OpenAI",
+          "contributor": "bmdhodl",
+          "gpu_slug": "rtx5070ti",
+          "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+          "total_exps": 125,
+          "keeps": 1,
+          "crashes": 42,
+          "discards": 56,
+          "skips": 26,
+          "keep_rate": 0.8,
+          "crash_rate": 33.6,
+          "best_bpb": 0.96995,
+          "baseline_bpb": 1.09741,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.09741,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 1.10807,
+              "status": "discard"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 1.098137,
+              "status": "discard"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 0.96995,
+              "status": "keep"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.076006,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.119829,
+              "status": "discard"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.116309,
+              "status": "discard"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 1.118798,
+              "status": "discard"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.148529,
+              "status": "discard"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.325783,
+              "status": "discard"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.270531,
+              "status": "discard"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 1.095503,
+              "status": "discard"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 1.04255,
+              "status": "discard"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.098424,
+              "status": "discard"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 1.407588,
+              "status": "discard"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.085275,
+              "status": "discard"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.023707,
+              "status": "discard"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.088435,
+              "status": "discard"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.084697,
+              "status": "discard"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.117217,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 1.081506,
+              "status": "discard"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 1.08115,
+              "status": "discard"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.08402,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 1.11189,
+              "status": "discard"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.08298,
+              "status": "discard"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 1.108922,
+              "status": "discard"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 1.135291,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.118339,
+              "status": "discard"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 1.086107,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.083958,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 1.085254,
+              "status": "discard"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 1.082309,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.082699,
+              "status": "discard"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 1.095708,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.069352,
+              "status": "discard"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.091594,
+              "status": "discard"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.083448,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 1.075246,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 1.082374,
+              "status": "discard"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.084471,
+              "status": "discard"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.082193,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 1.116316,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 1.081227,
+              "status": "discard"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 1.077634,
+              "status": "discard"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 1.07982,
+              "status": "discard"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp85",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 1.079604,
+              "status": "discard"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 1.077547,
+              "status": "discard"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 1.080897,
+              "status": "discard"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 1.077907,
+              "status": "discard"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 1.120188,
+              "status": "discard"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 1.099596,
+              "status": "discard"
+            },
+            {
+              "exp": "exp100",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp101",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp102",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp103",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp104",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp105",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp106",
+              "val_bpb": 1.078591,
+              "status": "discard"
+            },
+            {
+              "exp": "exp107",
+              "val_bpb": 1.084372,
+              "status": "discard"
+            },
+            {
+              "exp": "exp108",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp109",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp110",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp111",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp112",
+              "val_bpb": 1.080084,
+              "status": "discard"
+            },
+            {
+              "exp": "exp113",
+              "val_bpb": 1.088611,
+              "status": "discard"
+            },
+            {
+              "exp": "exp114",
+              "val_bpb": 1.08497,
+              "status": "discard"
+            },
+            {
+              "exp": "exp115",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp116",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp117",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp118",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp119",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp120",
+              "val_bpb": 1.640205,
+              "status": "discard"
+            },
+            {
+              "exp": "exp121",
+              "val_bpb": 1.083529,
+              "status": "discard"
+            },
+            {
+              "exp": "exp122",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp123",
+              "val_bpb": 0.0,
+              "status": "skip"
+            },
+            {
+              "exp": "exp124",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp125",
+              "val_bpb": 0.0,
+              "status": "skip"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp3",
+              "val_bpb": 0.96995,
+              "description": "Halve TOTAL_BATCH_SIZE for 2x more training steps (same GPU batch size, more frequent updates)"
+            }
+          ]
+        }
+      ],
+      "rank": 6
+    }
+  ]
+}

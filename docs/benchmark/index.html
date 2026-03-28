@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Autoresearch Benchmark &mdash; LLM Autonomous ML Researcher Leaderboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+/* ============================================================
+   RESET & VARIABLES
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0d1117;
+  --bg-surface: #161b22;
+  --bg-elevated: #1c2128;
+  --bg-hover: #21262d;
+  --border: #30363d;
+  --border-light: #21262d;
+  --text: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --accent: #58a6ff;
+  --accent-hover: #79c0ff;
+  --green: #3fb950;
+  --green-bg: rgba(63, 185, 80, 0.1);
+  --red: #f85149;
+  --red-bg: rgba(248, 81, 73, 0.1);
+  --yellow: #d29922;
+  --yellow-bg: rgba(210, 153, 34, 0.1);
+  --purple: #bc8cff;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --radius: 6px;
+  --radius-lg: 12px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { color: var(--accent-hover); text-decoration: underline; }
+
+/* ============================================================
+   LAYOUT
+   ============================================================ */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 32px 0 24px;
+}
+
+header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+header h1 span { color: var(--accent); }
+
+header p {
+  color: var(--text-secondary);
+  font-size: 15px;
+  max-width: 700px;
+}
+
+.header-meta {
+  display: flex;
+  gap: 24px;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.header-meta .stat {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.header-meta .stat-value {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ============================================================
+   FILTERS
+   ============================================================ */
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+}
+
+.filter-group select {
+  background: var(--bg-surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px 28px 6px 10px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238b949e' d='M6 8.5L1.5 4h9z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.filter-group select:hover { border-color: var(--text-muted); }
+.filter-group select:focus { border-color: var(--accent); outline: none; }
+
+/* ============================================================
+   TABLE
+   ============================================================ */
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead th {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+
+thead th:hover { color: var(--text-secondary); }
+thead th.sorted-asc::after { content: ' \25B2'; font-size: 10px; }
+thead th.sorted-desc::after { content: ' \25BC'; font-size: 10px; }
+
+tbody tr {
+  border-bottom: 1px solid var(--border-light);
+  cursor: pointer;
+  transition: background 0.1s;
+}
+
+tbody tr:hover { background: var(--bg-hover); }
+tbody tr.expanded { background: var(--bg-surface); }
+
+td {
+  padding: 10px 12px;
+  white-space: nowrap;
+}
+
+td.rank {
+  font-weight: 700;
+  color: var(--text-muted);
+  width: 48px;
+  text-align: center;
+}
+
+td.rank .medal { font-size: 16px; }
+
+td.model { font-weight: 600; }
+
+td.number {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-align: right;
+}
+
+.badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge-provisional {
+  background: var(--yellow-bg);
+  color: var(--yellow);
+}
+
+.badge-verified {
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+.keep-rate { color: var(--green); }
+.crash-rate { color: var(--red); }
+.bpb-value { color: var(--accent); }
+.pm { color: var(--text-muted); font-size: 11px; }
+
+/* ============================================================
+   EXPANDED ROW / RUN DETAILS
+   ============================================================ */
+.detail-row td {
+  padding: 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.detail-content {
+  padding: 16px 24px 20px;
+  background: var(--bg-surface);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .detail-grid { grid-template-columns: 1fr; }
+}
+
+.detail-section h3 {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.run-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.run-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  padding: 10px 14px;
+  font-size: 13px;
+}
+
+.run-card .run-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.run-card .run-file {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.run-card .run-stats {
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.kept-list {
+  list-style: none;
+  font-size: 13px;
+}
+
+.kept-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  gap: 8px;
+}
+
+.kept-list li:last-child { border-bottom: none; }
+
+.kept-list .exp-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--green);
+  flex-shrink: 0;
+  min-width: 48px;
+}
+
+.kept-list .exp-bpb {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  flex-shrink: 0;
+  min-width: 60px;
+}
+
+.kept-list .exp-desc {
+  color: var(--text-secondary);
+  white-space: normal;
+  word-break: break-word;
+}
+
+.chart-container {
+  position: relative;
+  height: 250px;
+  margin-top: 12px;
+}
+
+/* ============================================================
+   CONTRIBUTE SECTION
+   ============================================================ */
+.contribute {
+  margin: 48px 0;
+  padding: 32px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.contribute h2 {
+  font-size: 20px;
+  margin-bottom: 16px;
+}
+
+.contribute ol {
+  padding-left: 20px;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 2;
+}
+
+.contribute code {
+  background: var(--bg-elevated);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text);
+}
+
+.contribute .note {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: var(--bg-elevated);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  margin-top: 48px;
+  font-size: 13px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 640px) {
+  header h1 { font-size: 22px; }
+  .header-meta { flex-wrap: wrap; gap: 12px; }
+  .filters { flex-direction: column; }
+  td, th { padding: 8px 6px; }
+  .contribute { padding: 20px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1><span>Autoresearch</span> Benchmark</h1>
+    <p>Open benchmark for evaluating LLMs as autonomous ML researchers.
+       Models are scored on their ability to iteratively improve a neural network's validation loss
+       through code modifications, measured by <strong>keep rate</strong> (fraction of experiments that improve the baseline).</p>
+    <div class="header-meta">
+      <div class="stat">Runs: <span class="stat-value" id="meta-runs">-</span></div>
+      <div class="stat">Models: <span class="stat-value" id="meta-models">-</span></div>
+      <div class="stat">Datasets: <span class="stat-value" id="meta-datasets">-</span></div>
+      <div class="stat">Updated: <span class="stat-value" id="meta-updated">-</span></div>
+    </div>
+  </header>
+
+  <div class="filters" id="filters">
+    <div class="filter-group">
+      <label>Dataset</label>
+      <select id="filter-dataset"><option value="">All</option></select>
+    </div>
+    <div class="filter-group">
+      <label>Model Family</label>
+      <select id="filter-family"><option value="">All</option></select>
+    </div>
+    <div class="filter-group">
+      <label>Hardware</label>
+      <select id="filter-hardware"><option value="">All</option></select>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th data-key="rank" class="sorted-asc">#</th>
+          <th data-key="model">Model</th>
+          <th data-key="gpu_name">Hardware</th>
+          <th data-key="dataset">Dataset</th>
+          <th data-key="keep_rate_mean">Keep Rate</th>
+          <th data-key="crash_rate_mean">Crash Rate</th>
+          <th data-key="best_bpb">Best val_bpb</th>
+          <th data-key="runs">Runs</th>
+          <th data-key="contributor">Contributor</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="leaderboard-body"></tbody>
+    </table>
+  </div>
+
+  <section class="contribute">
+    <h2>How to contribute</h2>
+    <ol>
+      <li>Fork <a href="https://github.com/elementalcollision/autoresearch-unified">elementalcollision/autoresearch-unified</a></li>
+      <li>Run autoresearch with any LLM on any GPU</li>
+      <li>Place results TSV in <code>data/results/{dataset}/{your-github-handle}-{gpu}/</code></li>
+      <li>Open a pull request &mdash; the leaderboard rebuilds on merge</li>
+    </ol>
+    <div class="note">
+      <strong>TSV format:</strong> 14 columns &mdash;
+      <code>exp, description, val_bpb, peak_mem_gb, tok_sec, mfu, steps, status, notes, gpu_name, baseline_sha, watts, joules_per_token, total_energy_joules</code>.
+      Status must be one of: <code>baseline</code>, <code>keep</code>, <code>discard</code>, <code>crash</code>, <code>skip</code>.
+      Filename pattern: <code>results_{model}_{rN}.tsv</code> (e.g. <code>results_sonnet46_r1.tsv</code>).
+    </div>
+  </section>
+</div>
+
+<footer>
+  <div class="container">
+    <a href="https://github.com/elementalcollision/autoresearch-unified">GitHub</a>
+    &nbsp;&middot;&nbsp;
+    Autoresearch &mdash; an open benchmark for LLMs as autonomous ML researchers
+  </div>
+</footer>
+
+<script>
+// ============================================================
+// DATA LOADING & STATE
+// ============================================================
+let DATA = null;
+let sortKey = 'rank';
+let sortAsc = true;
+let expandedIdx = null;
+
+async function loadData() {
+  const resp = await fetch('data.json');
+  DATA = await resp.json();
+  populateFilters();
+  renderMeta();
+  renderTable();
+}
+
+function populateFilters() {
+  const addOpts = (id, values) => {
+    const sel = document.getElementById(id);
+    values.forEach(v => {
+      const opt = document.createElement('option');
+      opt.value = v;
+      opt.textContent = v;
+      sel.appendChild(opt);
+    });
+    sel.addEventListener('change', renderTable);
+  };
+  addOpts('filter-dataset', DATA.filters.datasets);
+  addOpts('filter-family', DATA.filters.model_families);
+  addOpts('filter-hardware', DATA.filters.hardware);
+}
+
+function renderMeta() {
+  document.getElementById('meta-runs').textContent = DATA.total_runs;
+  document.getElementById('meta-models').textContent = DATA.leaderboard.length;
+  document.getElementById('meta-datasets').textContent = DATA.filters.datasets.length;
+  const d = new Date(DATA.generated_at);
+  document.getElementById('meta-updated').textContent = d.toLocaleDateString('en-US', {
+    year: 'numeric', month: 'short', day: 'numeric'
+  });
+}
+
+// ============================================================
+// FILTERING & SORTING
+// ============================================================
+function getFiltered() {
+  const ds = document.getElementById('filter-dataset').value;
+  const fam = document.getElementById('filter-family').value;
+  const hw = document.getElementById('filter-hardware').value;
+
+  let entries = DATA.leaderboard;
+  if (ds) entries = entries.filter(e => e.dataset === ds);
+  if (fam) entries = entries.filter(e => e.model_family === fam);
+  if (hw) entries = entries.filter(e => e.gpu_name === hw);
+
+  entries = [...entries].sort((a, b) => {
+    let va = a[sortKey], vb = b[sortKey];
+    if (va == null) va = sortAsc ? Infinity : -Infinity;
+    if (vb == null) vb = sortAsc ? Infinity : -Infinity;
+    if (typeof va === 'string') {
+      return sortAsc ? va.localeCompare(vb) : vb.localeCompare(va);
+    }
+    return sortAsc ? va - vb : vb - va;
+  });
+
+  // Re-rank after filter
+  entries.forEach((e, i) => e._displayRank = i + 1);
+  return entries;
+}
+
+// ============================================================
+// RENDERING
+// ============================================================
+function fmtRate(mean, sd) {
+  if (sd != null) return `${mean.toFixed(1)}% <span class="pm">\u00B1 ${sd.toFixed(1)}%</span>`;
+  return `${mean.toFixed(1)}%`;
+}
+
+function fmtBpb(v) {
+  return v != null ? v.toFixed(4) : '&mdash;';
+}
+
+function medal(rank) {
+  if (rank === 1) return '<span class="medal">&#x1F947;</span>';
+  if (rank === 2) return '<span class="medal">&#x1F948;</span>';
+  if (rank === 3) return '<span class="medal">&#x1F949;</span>';
+  return rank;
+}
+
+function shortGpu(name) {
+  return name.replace('NVIDIA GeForce ', '').replace('NVIDIA ', '');
+}
+
+function renderTable() {
+  const entries = getFiltered();
+  const tbody = document.getElementById('leaderboard-body');
+  tbody.innerHTML = '';
+  expandedIdx = null;
+
+  entries.forEach((entry, idx) => {
+    const tr = document.createElement('tr');
+    tr.dataset.idx = idx;
+    tr.innerHTML = `
+      <td class="rank">${medal(entry._displayRank)}</td>
+      <td class="model">${entry.model}</td>
+      <td>${shortGpu(entry.gpu_name)}</td>
+      <td>${entry.dataset}</td>
+      <td class="number keep-rate">${fmtRate(entry.keep_rate_mean, entry.keep_rate_sd)}</td>
+      <td class="number crash-rate">${fmtRate(entry.crash_rate_mean, entry.crash_rate_sd)}</td>
+      <td class="number bpb-value">${fmtBpb(entry.best_bpb)}</td>
+      <td class="number">${entry.runs}</td>
+      <td><a href="https://github.com/${entry.contributor}" target="_blank">${entry.contributor}</a></td>
+      <td>${entry.provisional
+        ? '<span class="badge badge-provisional">Provisional</span>'
+        : '<span class="badge badge-verified">n\u2265' + entry.runs + '</span>'}</td>
+    `;
+    tr.addEventListener('click', () => toggleDetail(idx, entries));
+    tbody.appendChild(tr);
+  });
+
+  // Store entries ref for detail toggling
+  tbody._entries = entries;
+}
+
+function toggleDetail(idx, entries) {
+  const tbody = document.getElementById('leaderboard-body');
+  const existing = tbody.querySelector(`.detail-row[data-for="${idx}"]`);
+
+  // Collapse previous
+  tbody.querySelectorAll('.detail-row').forEach(r => r.remove());
+  tbody.querySelectorAll('tr.expanded').forEach(r => r.classList.remove('expanded'));
+
+  if (existing) {
+    expandedIdx = null;
+    return;
+  }
+
+  expandedIdx = idx;
+  const entry = entries[idx];
+  const sourceRow = tbody.querySelector(`tr[data-idx="${idx}"]`);
+  sourceRow.classList.add('expanded');
+
+  const detailTr = document.createElement('tr');
+  detailTr.className = 'detail-row';
+  detailTr.dataset.for = idx;
+
+  const allKept = entry.run_details.flatMap(r => r.kept_improvements || []);
+  allKept.sort((a, b) => a.val_bpb - b.val_bpb);
+
+  const keptHtml = allKept.length > 0
+    ? `<ul class="kept-list">${allKept.slice(0, 15).map(k =>
+        `<li>
+          <span class="exp-tag">${k.exp}</span>
+          <span class="exp-bpb">${k.val_bpb.toFixed(4)}</span>
+          <span class="exp-desc">${escHtml(k.description)}</span>
+        </li>`
+      ).join('')}</ul>${allKept.length > 15 ? `<div style="color:var(--text-muted);font-size:12px;margin-top:8px">+ ${allKept.length - 15} more</div>` : ''}`
+    : '<div style="color:var(--text-muted);font-size:13px">No kept improvements</div>';
+
+  detailTr.innerHTML = `
+    <td colspan="10">
+      <div class="detail-content">
+        <div class="detail-grid">
+          <div class="detail-section">
+            <h3>Individual Runs</h3>
+            <div class="run-cards">
+              ${entry.run_details.map(r => `
+                <div class="run-card">
+                  <div class="run-header">
+                    <span class="run-file">${r.file.split('/').pop()}</span>
+                  </div>
+                  <div class="run-stats">
+                    <span class="keep-rate">${r.keep_rate.toFixed(1)}% keep</span>
+                    <span class="crash-rate">${r.crash_rate.toFixed(1)}% crash</span>
+                    <span class="bpb-value">best ${r.best_bpb != null ? r.best_bpb.toFixed(4) : '-'}</span>
+                    <span>${r.total_exps} exps</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+
+            <h3 style="margin-top:20px">Best Kept Improvements</h3>
+            ${keptHtml}
+          </div>
+          <div class="detail-section">
+            <h3>val_bpb Trajectory (Run 1)</h3>
+            <div class="chart-container">
+              <canvas id="chart-${idx}"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  `;
+
+  sourceRow.after(detailTr);
+  renderChart(idx, entry.run_details[0]);
+}
+
+function escHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+// ============================================================
+// CHART
+// ============================================================
+function renderChart(idx, run) {
+  const canvas = document.getElementById(`chart-${idx}`);
+  if (!canvas) return;
+
+  const traj = run.bpb_trajectory || [];
+  const labels = traj.map(t => t.exp);
+  const values = traj.map(t => t.val_bpb);
+  const colors = traj.map(t => {
+    switch (t.status) {
+      case 'keep': return '#3fb950';
+      case 'crash': return '#f85149';
+      case 'discard': return '#6e7681';
+      case 'skip': return '#d29922';
+      case 'baseline': return '#58a6ff';
+      default: return '#8b949e';
+    }
+  });
+
+  // Build running-best line (only from keeps + baseline)
+  let currentBest = null;
+  const bestLine = traj.map(t => {
+    if (t.status === 'baseline' || t.status === 'keep') {
+      if (t.val_bpb > 0 && (currentBest === null || t.val_bpb < currentBest)) {
+        currentBest = t.val_bpb;
+      }
+    }
+    return currentBest;
+  });
+
+  new Chart(canvas, {
+    type: 'scatter',
+    data: {
+      datasets: [
+        {
+          label: 'val_bpb',
+          data: labels.map((l, i) => ({ x: i, y: values[i] })),
+          pointBackgroundColor: colors,
+          pointBorderColor: colors,
+          pointRadius: 3,
+          pointHoverRadius: 5,
+          showLine: false,
+        },
+        {
+          label: 'Running best',
+          data: labels.map((l, i) => ({ x: i, y: bestLine[i] })),
+          borderColor: '#58a6ff',
+          borderWidth: 2,
+          pointRadius: 0,
+          showLine: true,
+          fill: false,
+          borderDash: [4, 4],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      animation: { duration: 300 },
+      scales: {
+        x: {
+          title: { display: true, text: 'Experiment', color: '#6e7681' },
+          ticks: { color: '#6e7681', maxTicksLimit: 20, callback: (v) => `exp${v}` },
+          grid: { color: '#21262d' },
+        },
+        y: {
+          title: { display: true, text: 'val_bpb', color: '#6e7681' },
+          ticks: { color: '#6e7681' },
+          grid: { color: '#21262d' },
+          // Filter out zero/crash values from scale
+          min: Math.min(...values.filter(v => v > 0)) * 0.95,
+          max: Math.max(...values.filter(v => v > 0)) * 1.05,
+        },
+      },
+      plugins: {
+        legend: { display: true, labels: { color: '#8b949e', boxWidth: 12 } },
+        tooltip: {
+          callbacks: {
+            label: (ctx) => {
+              const i = ctx.dataIndex;
+              if (ctx.datasetIndex === 0) {
+                return `${traj[i].exp}: ${values[i].toFixed(4)} (${traj[i].status})`;
+              }
+              return `Best: ${bestLine[i] != null ? bestLine[i].toFixed(4) : '-'}`;
+            }
+          }
+        },
+      },
+    },
+  });
+}
+
+// ============================================================
+// COLUMN SORTING
+// ============================================================
+document.querySelectorAll('thead th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const key = th.dataset.key;
+    if (sortKey === key) {
+      sortAsc = !sortAsc;
+    } else {
+      sortKey = key;
+      // Default sort direction per column type
+      sortAsc = ['rank', 'best_bpb', 'crash_rate_mean'].includes(key);
+    }
+    document.querySelectorAll('thead th').forEach(t => {
+      t.classList.remove('sorted-asc', 'sorted-desc');
+    });
+    th.classList.add(sortAsc ? 'sorted-asc' : 'sorted-desc');
+    renderTable();
+  });
+});
+
+// ============================================================
+// INIT
+// ============================================================
+loadData();
+</script>
+
+</body>
+</html>
