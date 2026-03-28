@@ -221,7 +221,7 @@ class ClaudeBackend(LLMBackend):
             import anthropic
             self._client.messages.create(
                 model=self._model,
-                max_tokens=5,
+                max_tokens=16,
                 messages=[{"role": "user", "content": "Say OK"}],
             )
             return True
@@ -291,7 +291,7 @@ class OpenAIBackend(LLMBackend):
             from openai import AuthenticationError
             self._client.chat.completions.create(
                 model=self._model,
-                max_tokens=5,
+                max_tokens=16,
                 messages=[{"role": "user", "content": "Say OK"}],
             )
             return True
@@ -380,7 +380,7 @@ class AzureOpenAIBackend(LLMBackend):
             from openai import AuthenticationError
             self._client.chat.completions.create(
                 model=self._deployment,
-                max_tokens=5,
+                max_tokens=16,
                 messages=[{"role": "user", "content": "Say OK"}],
             )
             return True
@@ -467,7 +467,7 @@ class OpenRouterBackend(LLMBackend):
             from openai import AuthenticationError
             self._client.chat.completions.create(
                 model=self._model,
-                max_tokens=5,
+                max_tokens=16,
                 messages=[{"role": "user", "content": "Say OK"}],
             )
             return True
