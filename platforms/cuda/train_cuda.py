@@ -336,7 +336,7 @@ WEIGHT_DECAY = 0.15     # cautious weight decay for Muon (decreased from 0.2)
 ADAM_BETAS = (0.8, 0.95) # Adam beta1, beta2
 WARMUP_RATIO = 0.05     # fraction of time budget for LR warmup (was 0.0)
 WARMDOWN_RATIO = 0.95   # fraction of time budget for LR warmdown (was 0.5)
-FINAL_LR_FRAC = 0.05    # final LR as fraction of initial
+FINAL_LR_FRAC = 0.1     # final LR as fraction of initial (increased from 0.05)
 
 # Scale LRs with batch size (sqrt scaling rule)
 # Reference batch: 2^16 (Ada/Ampere default). Scale=1.0 for them.
