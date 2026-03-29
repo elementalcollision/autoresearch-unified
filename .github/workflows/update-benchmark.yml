@@ -1,0 +1,29 @@
+name: Update benchmark leaderboard
+
+on:
+  push:
+    branches: [main]
+    paths: ['data/results/**/*.tsv']
+
+permissions:
+  contents: write
+
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Rebuild benchmark data.json
+        run: python scripts/build_benchmark.py
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs/benchmark/data.json
+          git diff --staged --quiet || (git commit -m 'Auto-rebuild benchmark data.json [skip ci]' && git push)
