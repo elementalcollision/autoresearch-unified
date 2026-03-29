@@ -338,9 +338,6 @@ FINAL_LR_FRAC = 0.0
 DEPTH = _hp_defaults['depth']
 DEVICE_BATCH_SIZE = 1
 
-# Compilation
-COMPILE_MODE = "reduce-overhead"
-
 # ---------------------------------------------------------------------------
 # Setup
 # ---------------------------------------------------------------------------
