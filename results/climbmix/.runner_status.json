@@ -2,14 +2,14 @@
   "pid": 58972,
   "alive": true,
   "started_at": "2026-03-29T11:31:32.968729",
-  "last_updated": "2026-03-29T14:44:46.256783",
-  "experiment": 33,
+  "last_updated": "2026-03-29T14:56:14.033245",
+  "experiment": 35,
   "status": "completed",
   "dataset": "climbmix",
   "model": "default",
   "best_bpb": 1.299255,
-  "total": 34,
+  "total": 36,
   "kept": 3,
-  "discarded": 25,
+  "discarded": 27,
   "crashes": 6
 }
