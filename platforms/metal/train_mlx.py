@@ -319,7 +319,7 @@ _hp_defaults = suggest_hyperparameters(_hw_info)
 
 # Model architecture
 ASPECT_RATIO = 32
-HEAD_DIM = 128
+HEAD_DIM = 192
 WINDOW_PATTERN = "SSSL"
 
 # Optimization
