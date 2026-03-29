@@ -333,7 +333,6 @@ ADAM_BETAS = (0.8, 0.95)
 WARMUP_RATIO = 0.0
 WARMDOWN_RATIO = 0.5
 FINAL_LR_FRAC = 0.0
-COMPILE_MODE = True
 
 # Model size
 DEPTH = _hp_defaults['depth']
