@@ -1,3 +1,5 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
 exp0	baseline (no modifications)	1.299047	13.7	56628	13.4	520	baseline	depth=8, Apple M5 Max	Apple M5 Max	6c3ee2eeb0bea54dc386a596ba89489cc0815b30	0.0	0.000000	0.0
 exp1	Halve DEVICE_BATCH_SIZE from 1 to 0.5	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	Apple M5 Max	6c3ee2eeb0bea54dc386a596ba89489cc0815b30	0.0	0.000000	0.0
+exp2	Double TOTAL_BATCH_SIZE from default to increase gradient steps per time budget	1.369888	26.3	50249	11.5	230	discard	The current experiment history shows that halving DEVICE_BATCH_SIZE crashed (lik	Apple M5 Max	6c3ee2eeb0bea54dc386a596ba89489cc0815b30	0.0	0.000000	0.0
+exp3	Halve TOTAL_BATCH_SIZE to double gradient steps within time budget	1.311399	7.4	47301	11.2	866	discard	The baseline achieved 520 steps in 5 minutes. Halving the total batch size shoul	Apple M5 Max	6c3ee2eeb0bea54dc386a596ba89489cc0815b30	0.0	0.000000	0.0
