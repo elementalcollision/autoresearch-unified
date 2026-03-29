@@ -2,14 +2,13 @@
 
 Provides a background thread that polls GPU/accelerator power draw during
 training. Supports NVIDIA (pynvml / nvidia-smi), AMD ROCm (amdsmi / rocm-smi),
-Apple Silicon (ioreg), and Intel Gaudi (hl-smi).
+Apple Silicon (powermetrics), and Intel Gaudi (hl-smi).
 
 Graceful degradation: if no power API is available, start()/stop() are no-ops
 and stop() returns (0.0, 0.0). Training never crashes due to power monitoring.
 """
 
 import json
-import os
 import re
 import subprocess
 import threading
@@ -204,21 +203,20 @@ class PowerMonitor:
         """Try powermetrics for Apple Silicon GPU power.
 
         Apple Silicon does not expose GPU power counters via unprivileged
-        ioreg queries. The only reliable source is `sudo powermetrics`,
+        ioreg queries. The only reliable source is ``sudo powermetrics``,
         which reads the SoC energy model counters.
 
-        Requires passwordless sudo for the powermetrics binary:
+        Auto-detects whether passwordless sudo is available using
+        ``sudo -n`` (non-interactive mode).  If sudo requires a password,
+        the probe fails immediately and power monitoring silently degrades
+        to (0.0, 0.0).
+
+        To enable, configure passwordless sudo for powermetrics::
+
             sudo visudo -f /etc/sudoers.d/powermetrics
             %staff ALL=(root) NOPASSWD: /usr/bin/powermetrics
-
-        Set AUTORESEARCH_POWERMETRICS_SUDO=1 to enable (disabled by default
-        to avoid hanging on a sudo password prompt during training).
         """
-        if not os.environ.get("AUTORESEARCH_POWERMETRICS_SUDO"):
-            return None
-
         try:
-            # Test that sudo powermetrics works without a password prompt
             result = subprocess.run(
                 ["sudo", "-n", "powermetrics",
                  "--samplers", "gpu_power", "-i", "1000", "-n", "1", "-f", "plist"],
@@ -251,29 +249,6 @@ class PowerMonitor:
             return mj / 1000.0  # millijoules per second = watts (1s interval)
         # Fallback: look for gpu_power in newer powermetrics formats
         m = re.search(r"<key>gpu_power</key>\s*<(?:integer|real)>([\d.]+)</(?:integer|real)>", output)
-        if m:
-            return float(m.group(1)) / 1000.0
-        return 0.0
-
-    @staticmethod
-    def _parse_ioreg_gpu_power(output: str) -> float:
-        """Parse GPU power from ioreg output (milliwatts -> watts)."""
-        # Look for GPU power patterns in ioreg output
-        for pattern in [
-            r'"GPU Power"\s*=\s*(\d+)',
-            r'"gpu-power"\s*=\s*(\d+)',
-            r'"GPUPower"\s*=\s*(\d+)',
-        ]:
-            m = re.search(pattern, output, re.IGNORECASE)
-            if m:
-                mw = float(m.group(1))
-                return mw / 1000.0  # milliwatts to watts
-        return 0.0
-
-    @staticmethod
-    def _parse_agx_power(output: str) -> float:
-        """Parse power from AGXAccelerator ioreg node."""
-        m = re.search(r'"device-power"\s*=\s*(\d+)', output)
         if m:
             return float(m.group(1)) / 1000.0
         return 0.0
