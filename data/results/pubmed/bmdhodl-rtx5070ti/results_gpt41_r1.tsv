@@ -118,3 +118,4 @@ exp115	Increase the proportion of long attention layers by changing the window p
 exp116	Increase the MLP residual connection scaling factor from 1.2 (previous best) to 1.25 for even stronger MLP updates.	1.100828	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.0	0.0
 exp117	Increase the MLP hidden size multiplier from 4x to 4.25x for increased capacity without changing normalization or causing recompilation.	1.088525	6.1	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.0	0.0
 exp118	Switch the MLP activation from relu^2 to squared leaky_relu (with negative_slope=0.01) for improved gradient flow and reduced dead neurons.	1.081889	6.0	0	0.0	0	discard	gpt41-r1-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.0	0.0
+# test trigger — verify CI workflow fires
