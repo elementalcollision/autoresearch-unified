@@ -321,6 +321,7 @@ _hp_defaults = suggest_hyperparameters(_hw_info)
 ASPECT_RATIO = 16
 HEAD_DIM = 256
 WINDOW_PATTERN = "SSSL"
+MLP_RATIO = 4
 
 # Optimization
 TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
