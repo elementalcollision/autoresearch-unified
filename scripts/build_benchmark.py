@@ -282,19 +282,21 @@ def build_leaderboard():
 
     # Only write if data actually changed (ignore generated_at timestamp)
     # This avoids spurious commits in CI when only the timestamp differs.
+    skip_write = False
     if OUTPUT_FILE.exists():
         with open(OUTPUT_FILE, "r", encoding="utf-8") as f:
             existing = json.load(f)
         existing_data = {k: v for k, v in existing.items() if k != "generated_at"}
         new_data = {k: v for k, v in output.items() if k != "generated_at"}
-        if existing_data == new_data:
-            print(f"Benchmark data unchanged, skipping write: {OUTPUT_FILE}")
-            return
+        skip_write = existing_data == new_data
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
-        json.dump(output, f, indent=2)
+    if skip_write:
+        print(f"Benchmark data unchanged, skipping write: {OUTPUT_FILE}")
+    else:
+        with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+            json.dump(output, f, indent=2)
+        print(f"Built benchmark data: {OUTPUT_FILE}")
 
-    print(f"Built benchmark data: {OUTPUT_FILE}")
     print(f"  Datasets: {len(datasets)}")
     print(f"  Leaderboard entries: {len(leaderboard)}")
     print(f"  Total runs: {len(all_runs)}")
