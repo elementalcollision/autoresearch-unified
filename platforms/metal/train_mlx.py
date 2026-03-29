@@ -337,7 +337,6 @@ FINAL_LR_FRAC = 0.0
 # Model size
 DEPTH = _hp_defaults['depth']
 DEVICE_BATCH_SIZE = 1
-ACTIVATION_CHECKPOINTING = True
 
 # ---------------------------------------------------------------------------
 # Setup
