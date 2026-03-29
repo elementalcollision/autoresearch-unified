@@ -335,7 +335,7 @@ WARMDOWN_RATIO = 0.5
 FINAL_LR_FRAC = 0.0
 
 # Model size
-DEPTH = 24
+DEPTH = _hp_defaults['depth']
 DEVICE_BATCH_SIZE = 1
 
 # ---------------------------------------------------------------------------
