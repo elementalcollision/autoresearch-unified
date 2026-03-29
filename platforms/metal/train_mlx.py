@@ -318,7 +318,7 @@ _hw_info = get_hardware_info()
 _hp_defaults = suggest_hyperparameters(_hw_info)
 
 # Model architecture
-ASPECT_RATIO = 32
+ASPECT_RATIO = 16
 HEAD_DIM = 128
 WINDOW_PATTERN = "SSSL"
 
