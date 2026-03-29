@@ -102,10 +102,10 @@ def compute_run_stats(rows: list[dict]) -> dict:
     kept_improvements = []
 
     for row in rows:
-        status = row.get("status", "").strip().lower()
-        val_bpb_str = row.get("val_bpb", "0").strip()
-        exp = row.get("exp", "").strip()
-        description = row.get("description", "").strip()
+        status = (row.get("status") or "").strip().lower()
+        val_bpb_str = (row.get("val_bpb") or "0").strip()
+        exp = (row.get("exp") or "").strip()
+        description = (row.get("description") or "").strip()
 
         try:
             val_bpb = float(val_bpb_str)
