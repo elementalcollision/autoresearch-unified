@@ -1,0 +1,3 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
+exp0	baseline (no modifications)	1.320340	13.7	48601	11.4	446	baseline	depth=8, Apple M5 Max	Apple M5 Max	d8b003abc70d731871d981ef0060cb3ae084a958	16.3	0.000335	4894.6
+exp1	Halve TOTAL_BATCH_SIZE to double gradient steps within time budget	1.325090	7.4	42319	10.1	776	discard	The baseline shows low MFU (11.4%) and only 446 steps in 5 minutes, suggesting t	Apple M5 Max	d8b003abc70d731871d981ef0060cb3ae084a958	10.0	0.000235	2989.4
