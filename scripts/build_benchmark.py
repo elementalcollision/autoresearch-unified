@@ -36,6 +36,7 @@ MODEL_NAMES = {
     "o4mini": "o4-mini",
     "gemini25pro": "Gemini 2.5 Pro",
     "deepseek": "DeepSeek V3",
+    "kimik25": "Kimi K2.5",
 }
 
 # Map contributor handles to provider context where known
