@@ -1,3 +1,6 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
 exp0	baseline (no modifications)	1.088797	5.9	300000	17.1	2747	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	d9035da2912d9df9b3856eb38e7907ec6da51bf4	482.3	0.001608	144703.4
 exp1	Reduce TOTAL_BATCH_SIZE from auto-default to 256 to increase gradient steps	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	d9035da2912d9df9b3856eb38e7907ec6da51bf4	0.0	0.000000	0.0
+exp2	Reduce TOTAL_BATCH_SIZE from auto-default to 512 to increase gradient steps (more conservative than crashed exp1)	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	d9035da2912d9df9b3856eb38e7907ec6da51bf4	0.0	0.000000	0.0
+exp3	Add learning rate warmup by changing WARMUP_RATIO from 0.0 to 0.1	1.056852	5.9	428999	27.0	3928	keep	The baseline has WARMUP_RATIO=0.0, meaning no warmup period. Most modern LLM tra	NVIDIA GeForce RTX 5090	d9035da2912d9df9b3856eb38e7907ec6da51bf4	512.7	0.001195	153830.9
+exp4	Reduce WARMDOWN_RATIO from 0.58 to 0.40 to extend high-learning-rate training phase	1.058336	5.9	428523	27.0	3926	discard	With warmup already added (exp3), we should optimize the schedule shape. Reducin	NVIDIA GeForce RTX 5090	d9035da2912d9df9b3856eb38e7907ec6da51bf4	515.4	0.001202	154646.8
