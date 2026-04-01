@@ -1,0 +1,3 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
+exp0	baseline (no modifications)	1.089310	5.9	301000	17.1	2755	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	1666bb5c223d000512afb21b1a09f15c69494df9	471.6	0.001568	141510.2
+exp1	Halve DEVICE_BATCH_SIZE to increase gradient steps within the 5-minute budget	1.099782	3.2	284666	16.2	5212	discard	The key insight is that maximizing gradient steps is the dominant factor for imp	NVIDIA GeForce RTX 5090	1666bb5c223d000512afb21b1a09f15c69494df9	418.0	0.001469	125404.6
