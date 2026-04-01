@@ -1,3 +1,4 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
 exp0	baseline (no modifications)	1.088962	5.9	300000	17.1	2746	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	e3466eb9f7b5b55b7ba0991a870963adf86bf35c	394.8	0.001316	118445.4
 exp1	Halve TOTAL_BATCH_SIZE from default to 2**15 to double gradient steps	1.124872	5.9	205529	11.7	1884	discard	The key insight is that maximizing gradient steps within the fixed time budget i	NVIDIA GeForce RTX 5090	e3466eb9f7b5b55b7ba0991a870963adf86bf35c	466.9	0.002270	140158.1
+exp1	Halve TOTAL_BATCH_SIZE from default (2^16) to 2^15 to increase gradient steps	1.135979	5.9	164666	9.3	1507	discard	The key insight is that maximizing gradient steps within the fixed time budget i	NVIDIA GeForce RTX 5090		475.8	0.002891	142753.2
