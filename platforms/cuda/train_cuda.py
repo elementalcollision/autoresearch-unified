@@ -324,19 +324,19 @@ _hp_defaults = suggest_hyperparameters(_hw_info)
 # Model architecture
 ASPECT_RATIO = 64       # model_dim = depth * ASPECT_RATIO
 HEAD_DIM = 128          # target head dimension for attention
-WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
+WINDOW_PATTERN = "LLSL" # sliding window pattern: L=full, S=half context
 
 # Optimization
-TOTAL_BATCH_SIZE = 256  # Reduced from auto-default to increase gradient steps
+TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
 EMBEDDING_LR = 0.6      # learning rate for token embeddings (Adam)
-UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
-MATRIX_LR = 0.04        # learning rate for matrix parameters (Muon)
-SCALAR_LR = 0.5         # learning rate for per-layer scalars (Adam)
-WEIGHT_DECAY = 0.2      # cautious weight decay for Muon
-ADAM_BETAS = (0.8, 0.95) # Adam beta1, beta2
+UNEMBEDDING_LR = 0.003  # learning rate for lm_head (Adam)
+MATRIX_LR = 0.027       # learning rate for matrix parameters (Muon)
+SCALAR_LR = 0.3         # learning rate for per-layer scalars (Adam)
+WEIGHT_DECAY = 0.05     # cautious weight decay for Muon
+ADAM_BETAS = (0.75, 0.975) # Adam beta1, beta2
 WARMUP_RATIO = 0.0      # fraction of time budget for LR warmup
-WARMDOWN_RATIO = 0.5    # fraction of time budget for LR warmdown
-FINAL_LR_FRAC = 0.0     # final LR as fraction of initial
+WARMDOWN_RATIO = 0.58    # fraction of time budget for LR warmdown
+FINAL_LR_FRAC = 0.06    # final LR as fraction of initial
 
 # Scale LRs with batch size (sqrt scaling rule)
 # Reference batch: 2^16 (Ada/Ampere default). Scale=1.0 for them.
