@@ -2,14 +2,14 @@
   "pid": 1138648,
   "alive": true,
   "started_at": "2026-04-01T15:16:32.231203",
-  "last_updated": "2026-04-01T23:40:06.013162",
-  "experiment": 92,
+  "last_updated": "2026-04-01T23:51:46.963348",
+  "experiment": 94,
   "status": "completed",
   "dataset": "pubmed",
   "model": "qwen/qwen3.5-397b-a17b",
   "best_bpb": 1.036478,
-  "total": 90,
+  "total": 92,
   "kept": 11,
-  "discarded": 70,
+  "discarded": 72,
   "crashes": 9
 }
