@@ -322,7 +322,7 @@ _hw_info = get_hardware_info()
 _hp_defaults = suggest_hyperparameters(_hw_info)
 
 # Model architecture
-ASPECT_RATIO = 56       # model_dim = depth * ASPECT_RATIO
+ASPECT_RATIO = 64       # model_dim = depth * ASPECT_RATIO
 HEAD_DIM = 128          # target head dimension for attention
 WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
 
@@ -349,7 +349,7 @@ SCALAR_LR *= _batch_lr_scale
 # Model size
 DEPTH = _hp_defaults['depth']
 DEVICE_BATCH_SIZE = _hp_defaults['device_batch_size']
-COMPILE_MODE = 'max-autotune'
+COMPILE_MODE = _hp_defaults.get('compile_mode', 'reduce-overhead')
 ACTIVATION_CHECKPOINTING = _hp_defaults.get('activation_checkpointing', False)
 
 # ---------------------------------------------------------------------------
