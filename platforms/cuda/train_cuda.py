@@ -335,22 +335,7 @@ SCALAR_LR = 0.35        # learning rate for per-layer scalars (Adam)
 WEIGHT_DECAY = 0.05     # cautious weight decay for Muon
 ADAM_BETAS = (0.85, 0.99) # Adam beta1, beta2
 WARMUP_RATIO = 0.1      # fraction of time budget for LR warmup
-WARMDOWN_RATIO = 0.58    # fraction of time budget for LR warmdown
-FINAL_LR_FRAC = 0.06    # final LR as fraction of initial
-
-# Scale LRs with batch size (sqrt scaling rule)
-# Reference batch: 2^16 (Ada/Ampere default). Scale=1.0 for them.
-_batch_lr_scale = (TOTAL_BATCH_SIZE / 2**16) ** 0.5
-EMBEDDING_LR *= _batch_lr_scale
-UNEMBEDDING_LR *= _batch_lr_scale
-MATRIX_LR *= _batch_lr_scale
-SCALAR_LR *= _batch_lr_scale
-
-# Model size
-DEPTH = _hp_defaults['depth']
-DEVICE_BATCH_SIZE = _hp_defaults['device_batch_size']
-COMPILE_MODE = _hp_defaults.get('compile_mode', 'reduce-overhead')
-ACTIVATION_CHECKPOINTING = _hp_defaults.get('activation_checkpointing', False)
+WARMDOWN_RATIO = 0.58    # fraction of time
 
 # ---------------------------------------------------------------------------
 # Setup: tokenizer, model, optimizer, dataloader
