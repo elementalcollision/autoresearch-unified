@@ -1,15 +1,15 @@
 {
-  "pid": 56120,
-  "alive": false,
-  "started_at": "2026-04-01T04:32:35.446370",
-  "last_updated": "2026-04-01T15:16:29.342440",
-  "experiment": 0,
-  "status": "stopped",
+  "pid": 1138648,
+  "alive": true,
+  "started_at": "2026-04-01T15:16:32.231203",
+  "last_updated": "2026-04-01T15:22:15.730616",
+  "experiment": 1,
+  "status": "completed",
   "dataset": "pubmed",
   "model": "qwen/qwen3.5-397b-a17b",
-  "best_bpb": 1.050453,
-  "total": 98,
-  "kept": 18,
-  "discarded": 77,
-  "crashes": 3
+  "best_bpb": 1.088797,
+  "total": 2,
+  "kept": 1,
+  "discarded": 0,
+  "crashes": 1
 }
