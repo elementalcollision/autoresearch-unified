@@ -82,11 +82,20 @@ for RUN in $(seq 1 "$N_RUNS"); do
     RUN_START=$(date +%s)
 
     # Reset training script to clean baseline (no HP modifications)
-    echo "  Resetting $TRAIN_SCRIPT to baseline..."
+    if ! git diff --quiet -- "$TRAIN_SCRIPT" 2>/dev/null; then
+        echo "  WARNING: $TRAIN_SCRIPT has uncommitted changes — resetting to baseline"
+    fi
     git checkout main -- "$TRAIN_SCRIPT"
 
-    # Remove stale PID lock from previous run
-    rm -f .suite.pid
+    # Check for active runner before removing PID lock
+    if [ -f .suite.pid ]; then
+        OLD_PID=$(cat .suite.pid)
+        if kill -0 "$OLD_PID" 2>/dev/null; then
+            echo "ERROR: Another runner is active (PID $OLD_PID). Kill it first." >&2
+            exit 1
+        fi
+        rm -f .suite.pid
+    fi
 
     RESULTS_FILE="results_${SLUG}_r${RUN}.tsv"
     echo "  Results: $RESULTS_FILE"

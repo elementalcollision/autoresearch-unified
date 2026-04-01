@@ -308,9 +308,9 @@ info "  Branch: $BRANCH"
 echo
 
 # Build model argument if OPENROUTER_MODEL is set
-MODEL_ARG=""
+MODEL_ARGS=()
 if [ -n "${OPENROUTER_MODEL:-}" ]; then
-    MODEL_ARG="--model $OPENROUTER_MODEL"
+    MODEL_ARGS+=(--model "$OPENROUTER_MODEL")
 fi
 
 python -m tui.headless \
@@ -318,7 +318,7 @@ python -m tui.headless \
     --max "$MAX_EXPERIMENTS" \
     --results "$RESULTS_FILE" \
     --dataset "$DATASET" \
-    $MODEL_ARG \
+    "${MODEL_ARGS[@]}" \
     2>&1 | tee /tmp/agent_run.log
 
 # Final sync
