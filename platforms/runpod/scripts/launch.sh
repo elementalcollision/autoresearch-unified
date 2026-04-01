@@ -43,15 +43,18 @@ Options:
   --tag=TAG          Run tag (default: date)
   --dataset=NAME     Dataset (default: climbmix)
   --shards=N         Data shards (default: 10)
+  --model=MODEL      Model override (e.g. 'qwen/qwen3.5-397b-a17b' for OpenRouter)
   --gh-token=TOKEN   GitHub token for result sync
   --skip-agent       Stop after install + data prep (no experiments)
   --help             Show this help
 
 Environment variables:
-  ANTHROPIC_API_KEY  Required for autonomous agent
-  GH_TOKEN           GitHub token for result sync (or use --gh-token)
-  MAX_EXPERIMENTS    Same as --max
-  TAG                Same as --tag
+  ANTHROPIC_API_KEY    API key for Anthropic (direct)
+  OPENROUTER_API_KEY   API key for OpenRouter (alternative to Anthropic)
+  OPENROUTER_MODEL     Model ID for OpenRouter (or use --model)
+  GH_TOKEN             GitHub token for result sync (or use --gh-token)
+  MAX_EXPERIMENTS      Same as --max
+  TAG                  Same as --tag
 HELP
             exit 0 ;;
         --skip-agent)       SKIP_AGENT=true ;;
@@ -59,6 +62,7 @@ HELP
         --shards=*)         NUM_SHARDS="${arg#*=}" ;;
         --tag=*)            TAG="${arg#*=}" ;;
         --dataset=*)        DATASET="${arg#*=}" ;;
+        --model=*)          OPENROUTER_MODEL="${arg#*=}"; export OPENROUTER_MODEL ;;
         --gh-token=*)       GH_TOKEN="${arg#*=}" ;;
         *)                  echo "Unknown: $arg (try --help)"; exit 1 ;;
     esac
@@ -131,16 +135,20 @@ else
     fi
 fi
 
-# Check API key
-if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
-    warn "ANTHROPIC_API_KEY not set — agent will not run"
+# Check API key (Anthropic direct OR OpenRouter)
+if [ -n "${OPENROUTER_API_KEY:-}" ]; then
+    success "OPENROUTER_API_KEY: set (${#OPENROUTER_API_KEY} chars)"
+    [ -n "${OPENROUTER_MODEL:-}" ] && success "OPENROUTER_MODEL: $OPENROUTER_MODEL"
+elif [ -n "${ANTHROPIC_API_KEY:-}" ]; then
+    success "ANTHROPIC_API_KEY: set (${#ANTHROPIC_API_KEY} chars)"
+else
+    warn "No API key set — agent will not run"
+    warn "Set ANTHROPIC_API_KEY or OPENROUTER_API_KEY"
     if ! $SKIP_AGENT; then
         echo -n "  Enter Anthropic API key (or press Enter to skip agent): "
         read -r ANTHROPIC_API_KEY
         [ -z "$ANTHROPIC_API_KEY" ] && SKIP_AGENT=true || export ANTHROPIC_API_KEY
     fi
-else
-    success "ANTHROPIC_API_KEY: set (${#ANTHROPIC_API_KEY} chars)"
 fi
 
 info "Backend: $BACKEND | GPU: $GPU_NAME | Tag: $TAG | Max: $MAX_EXPERIMENTS"
@@ -255,9 +263,9 @@ if $SKIP_AGENT; then
     exit 0
 fi
 
-if [ -z "${ANTHROPIC_API_KEY:-}" ]; then
+if [ -z "${ANTHROPIC_API_KEY:-}" ] && [ -z "${OPENROUTER_API_KEY:-}" ]; then
     phase "3" "SKIPPED (no API key)"
-    warn "Set ANTHROPIC_API_KEY to run experiments"
+    warn "Set ANTHROPIC_API_KEY or OPENROUTER_API_KEY to run experiments"
     elapsed
     exit 0
 fi
@@ -299,11 +307,18 @@ info "  Results: $RESULTS_FILE"
 info "  Branch: $BRANCH"
 echo
 
+# Build model argument if OPENROUTER_MODEL is set
+MODEL_ARG=""
+if [ -n "${OPENROUTER_MODEL:-}" ]; then
+    MODEL_ARG="--model $OPENROUTER_MODEL"
+fi
+
 python -m tui.headless \
     --tag "$TAG" \
     --max "$MAX_EXPERIMENTS" \
     --results "$RESULTS_FILE" \
     --dataset "$DATASET" \
+    $MODEL_ARG \
     2>&1 | tee /tmp/agent_run.log
 
 # Final sync
