@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-01T16:55:10.354946+00:00",
+  "generated_at": "2026-04-01T19:36:53.387183+00:00",
   "total_runs": 13,
   "filters": {
     "datasets": [
@@ -2102,13 +2102,13 @@
       "contributor": "bmdhodl",
       "runs": 2,
       "provisional": true,
-      "keep_rate_mean": 9.6,
+      "keep_rate_mean": 10.6,
       "keep_rate_sd": null,
       "crash_rate_mean": 8.6,
       "crash_rate_sd": null,
-      "best_bpb": 0.957069,
+      "best_bpb": 0.92195,
       "total_exps_sum": 198,
-      "total_keeps_sum": 19,
+      "total_keeps_sum": 21,
       "total_crashes_sum": 17,
       "run_details": [
         {
@@ -2669,13 +2669,13 @@
           "gpu_slug": "rtx5070ti",
           "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
           "total_exps": 99,
-          "keeps": 14,
+          "keeps": 16,
           "crashes": 11,
-          "discards": 70,
-          "skips": 4,
-          "keep_rate": 14.14141414141414,
+          "discards": 72,
+          "skips": 0,
+          "keep_rate": 16.161616161616163,
           "crash_rate": 11.11111111111111,
-          "best_bpb": 0.957069,
+          "best_bpb": 0.92195,
           "baseline_bpb": 1.124477,
           "bpb_trajectory": [
             {
@@ -2825,188 +2825,188 @@
             },
             {
               "exp": "exp29",
-              "val_bpb": 0.0,
-              "status": "skip"
-            },
-            {
-              "exp": "exp30",
-              "val_bpb": 0.0,
-              "status": "skip"
-            },
-            {
-              "exp": "exp31",
               "val_bpb": 1.095307,
               "status": "discard"
             },
             {
-              "exp": "exp32",
+              "exp": "exp30",
               "val_bpb": 1.095424,
               "status": "discard"
             },
             {
-              "exp": "exp33",
+              "exp": "exp31",
               "val_bpb": 1.095995,
               "status": "discard"
             },
             {
-              "exp": "exp34",
+              "exp": "exp32",
               "val_bpb": 0.0,
               "status": "crash"
             },
             {
-              "exp": "exp35",
-              "val_bpb": 0.0,
-              "status": "skip"
-            },
-            {
-              "exp": "exp36",
+              "exp": "exp33",
               "val_bpb": 1.09587,
               "status": "discard"
             },
             {
-              "exp": "exp37",
+              "exp": "exp34",
               "val_bpb": 1.097398,
               "status": "discard"
             },
             {
-              "exp": "exp38",
+              "exp": "exp35",
               "val_bpb": 1.09139,
               "status": "discard"
             },
             {
-              "exp": "exp39",
+              "exp": "exp36",
               "val_bpb": 1.047155,
               "status": "keep"
             },
             {
-              "exp": "exp40",
+              "exp": "exp37",
               "val_bpb": 1.002179,
               "status": "keep"
             },
             {
-              "exp": "exp41",
+              "exp": "exp38",
               "val_bpb": 0.9673,
               "status": "keep"
             },
             {
-              "exp": "exp42",
+              "exp": "exp39",
               "val_bpb": 1.006807,
               "status": "discard"
             },
             {
-              "exp": "exp43",
+              "exp": "exp40",
               "val_bpb": 1.18974,
               "status": "discard"
             },
             {
-              "exp": "exp44",
+              "exp": "exp41",
               "val_bpb": 0.0,
               "status": "crash"
             },
             {
-              "exp": "exp45",
+              "exp": "exp42",
               "val_bpb": 1.082508,
               "status": "discard"
             },
             {
-              "exp": "exp46",
+              "exp": "exp43",
               "val_bpb": 1.102107,
               "status": "discard"
             },
             {
-              "exp": "exp47",
+              "exp": "exp44",
               "val_bpb": 1.154321,
               "status": "discard"
             },
             {
-              "exp": "exp48",
+              "exp": "exp45",
               "val_bpb": 1.086142,
               "status": "discard"
             },
             {
-              "exp": "exp49",
+              "exp": "exp46",
               "val_bpb": 0.965294,
               "status": "keep"
             },
             {
-              "exp": "exp50",
+              "exp": "exp47",
               "val_bpb": 0.965193,
               "status": "keep"
             },
             {
-              "exp": "exp51",
+              "exp": "exp48",
               "val_bpb": 0.970039,
               "status": "discard"
             },
             {
-              "exp": "exp52",
+              "exp": "exp49",
               "val_bpb": 1.083771,
               "status": "discard"
             },
             {
-              "exp": "exp53",
+              "exp": "exp50",
               "val_bpb": 0.967283,
               "status": "discard"
             },
             {
-              "exp": "exp54",
+              "exp": "exp51",
               "val_bpb": 1.065916,
               "status": "discard"
             },
             {
-              "exp": "exp55",
+              "exp": "exp52",
               "val_bpb": 1.082781,
               "status": "discard"
             },
             {
-              "exp": "exp56",
+              "exp": "exp53",
               "val_bpb": 0.966846,
               "status": "discard"
             },
             {
-              "exp": "exp57",
+              "exp": "exp54",
               "val_bpb": 1.089234,
               "status": "discard"
             },
             {
-              "exp": "exp58",
+              "exp": "exp55",
               "val_bpb": 2.10053,
               "status": "discard"
             },
             {
-              "exp": "exp59",
+              "exp": "exp56",
               "val_bpb": 0.976928,
               "status": "discard"
             },
             {
-              "exp": "exp60",
+              "exp": "exp57",
               "val_bpb": 0.968728,
               "status": "discard"
             },
             {
-              "exp": "exp61",
+              "exp": "exp58",
               "val_bpb": 0.0,
               "status": "crash"
             },
             {
-              "exp": "exp62",
+              "exp": "exp59",
               "val_bpb": 1.187187,
               "status": "discard"
             },
             {
-              "exp": "exp63",
+              "exp": "exp60",
               "val_bpb": 0.965003,
               "status": "keep"
             },
             {
-              "exp": "exp64",
+              "exp": "exp61",
               "val_bpb": 0.96335,
               "status": "keep"
             },
             {
-              "exp": "exp65",
+              "exp": "exp62",
               "val_bpb": 0.993433,
               "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.081982,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 0.962258,
+              "status": "keep"
             },
             {
               "exp": "exp66",
@@ -3015,72 +3015,72 @@
             },
             {
               "exp": "exp67",
-              "val_bpb": 1.081982,
-              "status": "discard"
-            },
-            {
-              "exp": "exp68",
-              "val_bpb": 0.962258,
-              "status": "keep"
-            },
-            {
-              "exp": "exp69",
-              "val_bpb": 0.0,
-              "status": "crash"
-            },
-            {
-              "exp": "exp70",
               "val_bpb": 0.959492,
               "status": "keep"
             },
             {
-              "exp": "exp71",
+              "exp": "exp68",
               "val_bpb": 0.958955,
               "status": "keep"
             },
             {
-              "exp": "exp72",
+              "exp": "exp69",
               "val_bpb": 0.957069,
               "status": "keep"
             },
             {
-              "exp": "exp73",
+              "exp": "exp70",
               "val_bpb": 0.96197,
               "status": "discard"
             },
             {
-              "exp": "exp74",
+              "exp": "exp71",
               "val_bpb": 1.089091,
               "status": "discard"
             },
             {
-              "exp": "exp75",
+              "exp": "exp72",
               "val_bpb": 1.08352,
               "status": "discard"
             },
             {
-              "exp": "exp76",
+              "exp": "exp73",
               "val_bpb": 1.056204,
               "status": "discard"
             },
             {
-              "exp": "exp77",
+              "exp": "exp74",
               "val_bpb": 1.054131,
               "status": "discard"
             },
             {
-              "exp": "exp78",
+              "exp": "exp75",
               "val_bpb": 1.085145,
               "status": "discard"
             },
             {
-              "exp": "exp79",
+              "exp": "exp76",
               "val_bpb": 0.96496,
               "status": "discard"
             },
             {
-              "exp": "exp80",
+              "exp": "exp77",
               "val_bpb": 1.081209,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 1.090523,
+              "status": "discard"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 1.083882,
               "status": "discard"
             },
             {
@@ -3090,17 +3090,17 @@
             },
             {
               "exp": "exp82",
-              "val_bpb": 0.0,
-              "status": "skip"
+              "val_bpb": 1.07575,
+              "status": "discard"
             },
             {
               "exp": "exp83",
-              "val_bpb": 1.090523,
+              "val_bpb": 0.997218,
               "status": "discard"
             },
             {
               "exp": "exp84",
-              "val_bpb": 1.083882,
+              "val_bpb": 1.151683,
               "status": "discard"
             },
             {
@@ -3110,72 +3110,72 @@
             },
             {
               "exp": "exp86",
-              "val_bpb": 1.07575,
-              "status": "discard"
-            },
-            {
-              "exp": "exp87",
-              "val_bpb": 0.997218,
-              "status": "discard"
-            },
-            {
-              "exp": "exp88",
-              "val_bpb": 1.151683,
-              "status": "discard"
-            },
-            {
-              "exp": "exp89",
-              "val_bpb": 0.0,
-              "status": "crash"
-            },
-            {
-              "exp": "exp90",
               "val_bpb": 1.088285,
               "status": "discard"
             },
             {
-              "exp": "exp91",
+              "exp": "exp87",
               "val_bpb": 1.266619,
               "status": "discard"
             },
             {
-              "exp": "exp92",
+              "exp": "exp88",
               "val_bpb": 1.080102,
               "status": "discard"
             },
             {
-              "exp": "exp93",
+              "exp": "exp89",
               "val_bpb": 1.083916,
               "status": "discard"
             },
             {
-              "exp": "exp94",
+              "exp": "exp90",
               "val_bpb": 1.188016,
               "status": "discard"
             },
             {
-              "exp": "exp95",
+              "exp": "exp91",
               "val_bpb": 1.094298,
               "status": "discard"
             },
             {
-              "exp": "exp96",
+              "exp": "exp92",
               "val_bpb": 0.963668,
               "status": "discard"
             },
             {
-              "exp": "exp97",
+              "exp": "exp93",
               "val_bpb": 1.060014,
               "status": "discard"
             },
             {
-              "exp": "exp98",
+              "exp": "exp94",
               "val_bpb": 1.107938,
               "status": "discard"
             },
             {
-              "exp": "exp99",
+              "exp": "exp95",
               "val_bpb": 1.080931,
+              "status": "discard"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 1.107465,
+              "status": "discard"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 0.927295,
+              "status": "keep"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 0.92195,
+              "status": "keep"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 0.935846,
               "status": "discard"
             }
           ],
@@ -3196,59 +3196,69 @@
               "description": "Remove z-loss regularization to allow sharper predictions after softcap increase"
             },
             {
-              "exp": "exp39",
+              "exp": "exp36",
               "val_bpb": 1.047155,
               "description": "Reduce MLP expansion ratio from 4x to 3x to decrease FLOPs and allow more training steps within the 5-minute budget"
             },
             {
-              "exp": "exp40",
+              "exp": "exp37",
               "val_bpb": 1.002179,
               "description": "Reduce ASPECT_RATIO from 64 to 48 to decrease model width from 768 to 640 dims, reducing FLOPs per step by ~30% to allow significantly more training steps within the 5-minute budget"
             },
             {
-              "exp": "exp41",
+              "exp": "exp38",
               "val_bpb": 0.9673,
               "description": "Further reduce ASPECT_RATIO from 48 to 32 to decrease model width from 640 to 384 dims, reducing FLOPs per step by ~42% to allow significantly more training steps within the 5-minute budget"
             },
             {
-              "exp": "exp49",
+              "exp": "exp46",
               "val_bpb": 0.965294,
               "description": "Combine optimal ASPECT_RATIO=32 (384 dims) with 3x MLP expansion to maximize training steps while maintaining sufficient model capacity"
             },
             {
-              "exp": "exp50",
+              "exp": "exp47",
               "val_bpb": 0.965193,
               "description": "Change window pattern to SS to reduce long attention layers from 3 to 1, allowing ~15% more training steps within the 5-minute budget while maintaining minimal global context via the final forced long"
             },
             {
-              "exp": "exp63",
+              "exp": "exp60",
               "val_bpb": 0.965003,
               "description": "Apply optimal narrow configuration (ASPECT_RATIO=32, 3x MLP expansion, SS window) with reduced embedding weight decay of 0.0005 for less aggressive regularization on the narrower model's embeddings"
             },
             {
-              "exp": "exp64",
+              "exp": "exp61",
               "val_bpb": 0.96335,
               "description": "Remove z-loss regularization to simplify the loss function and potentially allow slightly sharper predictions with the current softcap of 12"
             },
             {
-              "exp": "exp68",
+              "exp": "exp65",
               "val_bpb": 0.962258,
               "description": "Combine optimal narrow configuration (ASPECT_RATIO=32, 3x MLP expansion, SS window) with z-loss removal for maximum training throughput and sharper predictions"
             },
             {
-              "exp": "exp70",
+              "exp": "exp67",
               "val_bpb": 0.959492,
               "description": "Optimal narrow configuration (ASPECT_RATIO=32, 3x MLP expansion, SS window pattern) without z-loss and using 10% final LR fraction to maintain small updates at convergence"
             },
             {
-              "exp": "exp71",
+              "exp": "exp68",
               "val_bpb": 0.958955,
               "description": "Align value embeddings AdamW betas with input embeddings using (0.8, 0.95) for faster adaptation of residual connections"
             },
             {
-              "exp": "exp72",
+              "exp": "exp69",
               "val_bpb": 0.957069,
               "description": "Remove deep residual connection by initializing x0_lambdas to 0.0 instead of 0.1, simplifying to standard Pre-LN residual path"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 0.927295,
+              "description": "Apply best configuration: remove deep residual connections (x0_lambdas=0.0) and disable z-loss regularization to reduce training penalty and simplify objective"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 0.92195,
+              "description": "Initialize resid_lambdas to 0.9 (weaker initial residual) and remove weight decay on residual scalars to allow them to adapt freely from this reduced starting point"
             }
           ]
         }
