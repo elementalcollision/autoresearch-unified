@@ -1,7 +1,7 @@
 """Cross-platform power monitoring for energy instrumentation.
 
 Provides a background thread that polls GPU/accelerator power draw during
-training. Supports NVIDIA (pynvml / nvidia-smi), AMD ROCm (amdsmi / rocm-smi),
+training. Supports NVIDIA (nvidia-ml-py / nvidia-smi), AMD ROCm (amdsmi / rocm-smi),
 Apple Silicon (powermetrics), and Intel Gaudi (hl-smi).
 
 Graceful degradation: if no power API is available, start()/stop() are no-ops
@@ -96,8 +96,8 @@ class PowerMonitor:
     # ------------------------------------------------------------------
 
     def _try_cuda_sampler(self):
-        """Try pynvml first, fall back to nvidia-smi."""
-        # Try pynvml (fast, in-process)
+        """Try nvidia-ml-py (pynvml) first, fall back to nvidia-smi."""
+        # Try nvidia-ml-py / pynvml (fast, in-process)
         try:
             import pynvml
             pynvml.nvmlInit()
@@ -105,9 +105,9 @@ class PowerMonitor:
             # Test read
             mw = pynvml.nvmlDeviceGetPowerUsage(handle)
             if mw > 0:
-                def _sample_pynvml():
+                def _sample_nvml():
                     return pynvml.nvmlDeviceGetPowerUsage(handle) / 1000.0
-                return _sample_pynvml
+                return _sample_nvml
         except Exception:
             pass
 
