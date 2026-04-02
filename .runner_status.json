@@ -1,15 +1,15 @@
 {
-  "pid": 159,
+  "pid": 1413,
   "alive": true,
-  "started_at": "2026-04-02T14:52:58.546779",
-  "last_updated": "2026-04-02T16:16:08.265029",
-  "experiment": 0,
-  "status": "stopped",
+  "started_at": "2026-04-02T17:56:47.605474",
+  "last_updated": "2026-04-02T18:06:43.708547",
+  "experiment": 1,
+  "status": "completed",
   "dataset": "pubmed",
-  "model": "qwen/qwen3.5-397b-a17b",
-  "best_bpb": 1.03977,
-  "total": 99,
-  "kept": 7,
-  "discarded": 80,
-  "crashes": 12
+  "model": "moonshotai/kimi-k2.5-0127",
+  "best_bpb": 1.089738,
+  "total": 2,
+  "kept": 1,
+  "discarded": 0,
+  "crashes": 1
 }
