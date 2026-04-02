@@ -1,3 +1,5 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
 exp0	baseline (no modifications)	1.088927	5.9	300333	17.1	2750	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	c91026d4da487405ae576d8232f2f344b482bd91	508.6	0.001693	152580.5
 exp1	Reduce TOTAL_BATCH_SIZE by half	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	c91026d4da487405ae576d8232f2f344b482bd91	0.0	0.000000	0.0
+exp2	Increase MATRIX_LR from 0.04 to 0.06	1.098767	5.9	300566	17.1	2752	discard	The baseline uses a relatively conservative learning rate for the matrix paramet	NVIDIA GeForce RTX 5090	c91026d4da487405ae576d8232f2f344b482bd91	512.4	0.001705	153761.2
+exp3	Set WARMUP_RATIO to 0.05	1.088907	5.9	299900	17.1	2748	keep	The baseline uses zero warmup, which can lead to early instability or suboptimal	NVIDIA GeForce RTX 5090	c91026d4da487405ae576d8232f2f344b482bd91	514.7	0.001715	154450.9
