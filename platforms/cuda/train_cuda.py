@@ -331,7 +331,7 @@ MLP_RATIO = 4.125       # MLP expansion ratio (hidden_dim = model_dim * MLP_RATI
 TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
 EMBEDDING_LR = 0.9      # learning rate for token embeddings (Adam)
 UNEMBEDDING_LR = 0.006  # learning rate for lm_head (Adam)
-MATRIX_LR = 0.0266      # learning rate for matrix parameters (Muon)
+MATRIX_LR = 0.030       # learning rate for matrix parameters (Muon)
 SCALAR_LR = 0.35        # learning rate for per-layer scalars (Adam)
 WEIGHT_DECAY = 0.05     # cautious weight decay for Muon
 ADAM_BETAS = (0.84, 0.988) # Adam beta1, beta2
