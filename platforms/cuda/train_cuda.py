@@ -327,7 +327,7 @@ HEAD_DIM = 128          # target head dimension for attention
 WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
 
 # Optimization
-TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
+TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size'] // 2
 EMBEDDING_LR = 0.6      # learning rate for token embeddings (Adam)
 UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.04        # learning rate for matrix parameters (Muon)
@@ -351,6 +351,7 @@ DEPTH = _hp_defaults['depth']
 DEVICE_BATCH_SIZE = _hp_defaults['device_batch_size']
 COMPILE_MODE = _hp_defaults.get('compile_mode', 'reduce-overhead')
 ACTIVATION_CHECKPOINTING = _hp_defaults.get('activation_checkpointing', False)
+# ---------------------------------------------------------------------------
 
 # ---------------------------------------------------------------------------
 # Setup: tokenizer, model, optimizer, dataloader
