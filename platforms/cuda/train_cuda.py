@@ -324,20 +324,19 @@ _hp_defaults = suggest_hyperparameters(_hw_info)
 # Model architecture
 ASPECT_RATIO = 64       # model_dim = depth * ASPECT_RATIO
 HEAD_DIM = 128          # target head dimension for attention
-WINDOW_PATTERN = "LLLL" # sliding window pattern: L=full, S=half context
-MLP_RATIO = 3.0         # MLP expansion ratio (hidden_dim = model_dim * MLP_RATIO)
+WINDOW_PATTERN = "SSSL" # sliding window pattern: L=full, S=half context
 
 # Optimization
-TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
-EMBEDDING_LR = 0.9      # learning rate for token embeddings (Adam)
-UNEMBEDDING_LR = 0.006  # learning rate for lm_head (Adam)
-MATRIX_LR = 0.0266      # learning rate for matrix parameters (Muon)
-SCALAR_LR = 0.35        # learning rate for per-layer scalars (Adam)
-WEIGHT_DECAY = 0.05     # cautious weight decay for Muon
-ADAM_BETAS = (0.84, 0.988) # Adam beta1, beta2
-WARMUP_RATIO = 0.1      # fraction of time budget for LR warmup
-WARMDOWN_RATIO = 0.58    # fraction of time budget for LR warmdown
-FINAL_LR_FRAC = 0.055    # final LR as fraction of initial
+TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size'] // 2  # Halved for more steps
+EMBEDDING_LR = 0.6      # learning rate for token embeddings (Adam)
+UNEMBEDDING_LR = 0.004  # learning rate for lm_head (Adam)
+MATRIX_LR = 0.04        # learning rate for matrix parameters (Muon)
+SCALAR_LR = 0.5         # learning rate for per-layer scalars (Adam)
+WEIGHT_DECAY = 0.2      # cautious weight decay for Muon
+ADAM_BETAS = (0.8, 0.95) # Adam beta1, beta2
+WARMUP_RATIO = 0.0      # fraction of time budget for LR warmup
+WARMDOWN_RATIO = 0.5    # fraction of time budget for LR warmdown
+FINAL_LR_FRAC = 0.0     # final LR as fraction of initial
 
 # Scale LRs with batch size (sqrt scaling rule)
 # Reference batch: 2^16 (Ada/Ampere default). Scale=1.0 for them.
