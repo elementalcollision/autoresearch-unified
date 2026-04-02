@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-01T19:36:53.387183+00:00",
-  "total_runs": 13,
+  "generated_at": "2026-04-02T14:34:33.767769+00:00",
+  "total_runs": 14,
   "filters": {
     "datasets": [
       "climbmix",
@@ -2100,16 +2100,16 @@
       "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
       "gpu_slug": "rtx5070ti",
       "contributor": "bmdhodl",
-      "runs": 2,
-      "provisional": true,
-      "keep_rate_mean": 10.6,
-      "keep_rate_sd": null,
-      "crash_rate_mean": 8.6,
-      "crash_rate_sd": null,
+      "runs": 3,
+      "provisional": false,
+      "keep_rate_mean": 12.1,
+      "keep_rate_sd": 6.1,
+      "crash_rate_mean": 8.8,
+      "crash_rate_sd": 2.5,
       "best_bpb": 0.92195,
-      "total_exps_sum": 198,
-      "total_keeps_sum": 21,
-      "total_crashes_sum": 17,
+      "total_exps_sum": 297,
+      "total_keeps_sum": 36,
+      "total_crashes_sum": 26,
       "run_details": [
         {
           "file": "data/results/pubmed/bmdhodl-rtx5070ti/results_kimik25_r1.tsv",
@@ -3259,6 +3259,604 @@
               "exp": "exp98",
               "val_bpb": 0.92195,
               "description": "Initialize resid_lambdas to 0.9 (weaker initial residual) and remove weight decay on residual scalars to allow them to adapt freely from this reduced starting point"
+            }
+          ]
+        },
+        {
+          "file": "data/results/pubmed/bmdhodl-rtx5070ti/results_kimik25_r3.tsv",
+          "dataset": "pubmed",
+          "model_slug": "kimik25",
+          "model": "Kimi K2.5",
+          "model_family": "Other",
+          "contributor": "bmdhodl",
+          "gpu_slug": "rtx5070ti",
+          "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+          "total_exps": 99,
+          "keeps": 15,
+          "crashes": 9,
+          "discards": 75,
+          "skips": 0,
+          "keep_rate": 15.151515151515152,
+          "crash_rate": 9.090909090909092,
+          "best_bpb": 0.945984,
+          "baseline_bpb": 1.152597,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.152597,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 1.198987,
+              "status": "discard"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 1.088085,
+              "status": "keep"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 1.092454,
+              "status": "discard"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.361798,
+              "status": "discard"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.089656,
+              "status": "discard"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.097502,
+              "status": "discard"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.134669,
+              "status": "discard"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.152644,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.128078,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.147484,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.118429,
+              "status": "discard"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.089653,
+              "status": "discard"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 1.108049,
+              "status": "discard"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.089291,
+              "status": "discard"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.08141,
+              "status": "keep"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.072322,
+              "status": "keep"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 1.101651,
+              "status": "discard"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 1.115209,
+              "status": "discard"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.117768,
+              "status": "discard"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 1.084327,
+              "status": "discard"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.064271,
+              "status": "keep"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.073661,
+              "status": "discard"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.085916,
+              "status": "discard"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.079136,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 1.086862,
+              "status": "discard"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 1.112826,
+              "status": "discard"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.08173,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 1.075239,
+              "status": "discard"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 1.11511,
+              "status": "discard"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.058563,
+              "status": "keep"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 1.059841,
+              "status": "discard"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 1.083707,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 1.083408,
+              "status": "discard"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 1.063824,
+              "status": "discard"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 1.073591,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.08624,
+              "status": "discard"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 1.075191,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.075337,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 1.08272,
+              "status": "discard"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 1.08188,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.040822,
+              "status": "keep"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 1.188055,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.039719,
+              "status": "keep"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 1.033731,
+              "status": "keep"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 1.089414,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.071116,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 1.080524,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.098812,
+              "status": "discard"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 1.404646,
+              "status": "discard"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 1.055422,
+              "status": "discard"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 1.082037,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.092605,
+              "status": "discard"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 1.081998,
+              "status": "discard"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 1.080288,
+              "status": "discard"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 1.084883,
+              "status": "discard"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 1.08585,
+              "status": "discard"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 1.075256,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.133953,
+              "status": "discard"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 1.083311,
+              "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 1.115361,
+              "status": "discard"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.067226,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 1.10787,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 1.075462,
+              "status": "discard"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.082544,
+              "status": "discard"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.087103,
+              "status": "discard"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.13157,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.004371,
+              "status": "keep"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 1.012927,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 0.991978,
+              "status": "keep"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 1.005079,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.004126,
+              "status": "discard"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.03756,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 0.993292,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 1.089555,
+              "status": "discard"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 1.086745,
+              "status": "discard"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 0.977059,
+              "status": "keep"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 0.972331,
+              "status": "keep"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 0.979754,
+              "status": "discard"
+            },
+            {
+              "exp": "exp85",
+              "val_bpb": 1.063666,
+              "status": "discard"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 1.087328,
+              "status": "discard"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 1.082663,
+              "status": "discard"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 0.96824,
+              "status": "keep"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 0.970632,
+              "status": "discard"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 0.957437,
+              "status": "keep"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 0.945984,
+              "status": "keep"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 1.099283,
+              "status": "discard"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 0.970378,
+              "status": "discard"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 0.965285,
+              "status": "discard"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 1.059736,
+              "status": "discard"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 1.089443,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp2",
+              "val_bpb": 1.088085,
+              "description": "Increase weight decay on embedding layers (wte, lm_head, value_embeds) from 0.001 to 0.003"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.08141,
+              "description": "Initialize x0_lambdas to 0.2 instead of 0.1 for stronger deep residual skip connections from input"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.072322,
+              "description": "Initialize resid_lambdas to 0.9 instead of 1.0 to reduce main residual path weight and complement strong x0 skip connections"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.064271,
+              "description": "Initialize resid_lambdas to 0.8 for stronger residual path reduction"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.058563,
+              "description": "Combine best residual config: init resid_lambdas to 0.8 (current best) and x0_lambdas to 0.2 (near-miss) for stronger deep skip connections with reduced main path"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.040822,
+              "description": "Combine best residual initialization (resid_lambdas=0.8, x0_lambdas=0.2) with temperature scaling of 0.8 on logits before softcap to sharpen predictions while maintaining strong deep skip connections"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.039719,
+              "description": "Combine best residual initialization (resid_lambdas=0.8, x0_lambdas=0.2) with logits temperature scaling (T=0.8) and small final LR fraction (0.01) to allow micro-updates at training end"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 1.033731,
+              "description": "Double the learning rate for value embeddings to accelerate their adaptation in the limited 5-minute training window, as they are high-dimensional sparse parameters that may benefit from faster update"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.004371,
+              "description": "Replace standard cross-entropy with focal loss (gamma=2.0) to focus training on hard-to-predict tokens, which may improve learning efficiency in the short 5-minute window by down-weighting easy exampl"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 0.991978,
+              "description": "Implement focal loss (gamma=2.0) for hard example mining and combine with optimal deep residual initialization (resid_lambdas=0.8, x0_lambdas=0.2) to accelerate convergence"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 0.977059,
+              "description": "Focal loss with gamma=2.5 and optimal residual initialization (resid_lambdas=0.8, x0_lambdas=0.2) to sharpen focus on hard examples while maintaining strong deep skip connections"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 0.972331,
+              "description": "Combine focal loss (gamma=2.5) with optimal residual initialization (resid_lambdas=0.8, x0_lambdas=0.2) and double learning rate for token embeddings (1.2) to maximize convergence speed"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 0.96824,
+              "description": "Combine focal loss (gamma=2.5) with optimal residual initialization (resid_lambdas=0.8, x0_lambdas=0.2), double learning rate for token embeddings (1.2), and initialize VE gate weights to 1.0 for mode"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 0.957437,
+              "description": "Implement focal loss (gamma=2.5) with temperature-scaled probabilities (T=0.8) for confidence weighting, combined with optimal residual initialization (resid_lambdas=0.8, x0_lambdas=0.2), doubled toke"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 0.945984,
+              "description": "Remove torch.no_grad() from focal loss computation to allow gradients to flow through the focal weighting term (p_t), improving optimization signal"
             }
           ]
         }
