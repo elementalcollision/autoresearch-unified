@@ -345,6 +345,11 @@ class OpenAIBackend(LLMBackend):
 class AzureOpenAIBackend(LLMBackend):
     """Azure OpenAI Service backend.
 
+    Supports both standard models (GPT-4.1) and reasoning models
+    (Kimi K2.5, o3) that use chain-of-thought tokens. Reasoning models
+    need a higher max_completion_tokens budget because they consume
+    tokens on hidden reasoning before producing the actual response.
+
     Requires:
         AZURE_OPENAI_API_KEY     - API key for the Azure resource
         AZURE_OPENAI_ENDPOINT    - Resource endpoint (e.g. https://my-resource.openai.azure.com)
@@ -354,6 +359,13 @@ class AzureOpenAIBackend(LLMBackend):
 
     DEFAULT_DEPLOYMENT = "gpt-4.1"
     DEFAULT_API_VERSION = "2024-12-01-preview"
+
+    # Reasoning models burn completion tokens on chain-of-thought before
+    # producing the actual response content. With a low budget, the model
+    # exhausts all tokens on reasoning and returns content=None.
+    REASONING_MODELS = {"kimi-k2.5", "o3", "o3-mini", "o4-mini"}
+    REASONING_MAX_TOKENS = 32768
+    STANDARD_MAX_TOKENS = 2048
 
     def __init__(self, model: str | None = None):
         try:
@@ -382,15 +394,30 @@ class AzureOpenAIBackend(LLMBackend):
     def name(self) -> str:
         return f"Azure OpenAI ({self._deployment}) via {self._endpoint}"
 
+    @property
+    def _is_reasoning_model(self) -> bool:
+        return self._deployment.lower() in self.REASONING_MODELS
+
     def validate(self) -> bool:
-        """Test the API key and deployment with a minimal request."""
+        """Test the API key and deployment with a minimal request.
+
+        Reasoning models need a higher token budget even for validation
+        because chain-of-thought consumes tokens before producing content.
+        """
         try:
             from openai import AuthenticationError
-            self._client.chat.completions.create(
+            # Reasoning models need ~500 tokens to produce "OK" after thinking.
+            max_tokens = 512 if self._is_reasoning_model else 16
+            response = self._client.chat.completions.create(
                 model=self._deployment,
-                max_tokens=16,
+                max_tokens=max_tokens,
                 messages=[{"role": "user", "content": "Say OK"}],
             )
+            content = response.choices[0].message.content
+            # For reasoning models, content can be None if the token budget
+            # was still too small. Treat as valid (auth worked) but warn.
+            if content is None and self._is_reasoning_model:
+                return True  # Auth is fine; generate_experiment uses more tokens
             return True
         except AuthenticationError:
             return False
@@ -414,9 +441,10 @@ class AzureOpenAIBackend(LLMBackend):
             best_experiment=best_experiment,
         )
 
+        max_tokens = self.REASONING_MAX_TOKENS if self._is_reasoning_model else self.STANDARD_MAX_TOKENS
         response = self._client.chat.completions.create(
             model=self._deployment,
-            max_tokens=2048,
+            max_tokens=max_tokens,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": user_prompt},
@@ -424,6 +452,12 @@ class AzureOpenAIBackend(LLMBackend):
         )
 
         response_text = response.choices[0].message.content
+        if response_text is None:
+            raise ValueError(
+                f"LLM returned empty content (model={self._deployment}, "
+                f"max_tokens={max_tokens}). "
+                f"Reasoning model may need a higher token budget."
+            )
         return parse_llm_response(response_text)
 
 
