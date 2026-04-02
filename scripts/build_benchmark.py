@@ -38,6 +38,7 @@ MODEL_NAMES = {
     "deepseek": "DeepSeek V3",
     "kimik25": "Kimi K2.5",
     "qwen35-397b": "Qwen 3.5 (397B)",
+    "gemma4-31b": "Gemma 4 (31B)",
 }
 
 # Map contributor handles to provider context where known
@@ -82,6 +83,8 @@ def get_model_family(slug: str) -> str:
         return "Moonshot"
     if slug.startswith("qwen"):
         return "Qwen"
+    if slug.startswith("gemma"):
+        return "Google"
     return "Other"
 
 
