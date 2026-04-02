@@ -3,3 +3,5 @@ exp0	baseline (no modifications)	1.088927	5.9	300333	17.1	2750	baseline	depth=8,
 exp1	Reduce TOTAL_BATCH_SIZE by half	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	c91026d4da487405ae576d8232f2f344b482bd91	0.0	0.000000	0.0
 exp2	Increase MATRIX_LR from 0.04 to 0.06	1.098767	5.9	300566	17.1	2752	discard	The baseline uses a relatively conservative learning rate for the matrix paramet	NVIDIA GeForce RTX 5090	c91026d4da487405ae576d8232f2f344b482bd91	512.4	0.001705	153761.2
 exp3	Set WARMUP_RATIO to 0.05	1.088907	5.9	299900	17.1	2748	keep	The baseline uses zero warmup, which can lead to early instability or suboptimal	NVIDIA GeForce RTX 5090	c91026d4da487405ae576d8232f2f344b482bd91	514.7	0.001715	154450.9
+exp4	Enable ACTIVATION_CHECKPOINTING	1.090554	3.6	290236	16.5	2658	discard	The current memory usage is very low (5.9 GB) compared to the 31 GB available on	NVIDIA GeForce RTX 5090	c91026d4da487405ae576d8232f2f344b482bd91	471.3	0.001624	141440.7
+exp5	Reduce TOTAL_BATCH_SIZE to 1/4 of the default	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	c91026d4da487405ae576d8232f2f344b482bd91	0.0	0.000000	0.0
