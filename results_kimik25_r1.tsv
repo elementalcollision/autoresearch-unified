@@ -1,3 +1,4 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
 exp0	baseline (no modifications)	1.089738	5.9	300333	17.1	2750	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	d0cddd2217db87f214fdfb5915c805bc8eacd8ee	429.0	0.001428	128712.5
 exp1	Reduce TOTAL_BATCH_SIZE to 16384 to maximize gradient steps within budget	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	d0cddd2217db87f214fdfb5915c805bc8eacd8ee	0.0	0.000000	0.0
+exp2	Change WINDOW_PATTERN from "SSSL" to "SSSS" to replace the expensive full attention layer with sliding window attention throughout the model.	1.094843	5.9	280000	15.5	2562	discard	The "L" (full context) layer in "SSSL" significantly increases per-step latency 	NVIDIA GeForce RTX 5090	d0cddd2217db87f214fdfb5915c805bc8eacd8ee	479.8	0.001715	143937.4

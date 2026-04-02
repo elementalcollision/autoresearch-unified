@@ -2,14 +2,14 @@
   "pid": 1413,
   "alive": true,
   "started_at": "2026-04-02T17:56:47.605474",
-  "last_updated": "2026-04-02T18:06:43.708547",
-  "experiment": 1,
+  "last_updated": "2026-04-02T18:34:21.929131",
+  "experiment": 2,
   "status": "completed",
   "dataset": "pubmed",
   "model": "moonshotai/kimi-k2.5-0127",
   "best_bpb": 1.089738,
-  "total": 2,
+  "total": 3,
   "kept": 1,
-  "discarded": 0,
+  "discarded": 1,
   "crashes": 1
 }
