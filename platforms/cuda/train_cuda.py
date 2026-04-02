@@ -348,7 +348,7 @@ MATRIX_LR *= _batch_lr_scale
 SCALAR_LR *= _batch_lr_scale
 
 # Model size
-DEPTH = 20
+DEPTH = _hp_defaults['depth']
 DEVICE_BATCH_SIZE = _hp_defaults['device_batch_size']
 COMPILE_MODE = 'max-autotune'
 ACTIVATION_CHECKPOINTING = True
