@@ -21,7 +21,7 @@ class ExperimentResult:
     tok_sec: int       # tokens per second
     mfu: float         # model FLOPS utilization %
     steps: int         # training steps completed
-    status: str        # "baseline", "keep", "discard", "crash"
+    status: str        # "baseline", "keep", "discard", "crash", "skip"
     notes: str         # extra notes
     gpu_name: str = "" # hardware fingerprint (e.g. "AMD Instinct MI300X OAM")
     baseline_sha: str = ""  # commit SHA of the unmodified training script
