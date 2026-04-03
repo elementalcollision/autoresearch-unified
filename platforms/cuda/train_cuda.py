@@ -328,7 +328,7 @@ WINDOW_PATTERN = "LLLL" # sliding window pattern: L=full, S=half context
 MLP_RATIO = 10.0        # increase capacity of MLP layers
 
 # Optimization
-TOTAL_BATCH_SIZE = _hp_defaults['total_batch_size']
+TOTAL_BATCH_SIZE = int(_hp_defaults['total_batch_size'] * 0.8)
 EMBEDDING_LR = 1.0      # learning rate for token embeddings (Adam)
 UNEMBEDDING_LR = 0.01  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.045       # learning rate for matrix parameters (Muon)
