@@ -28,11 +28,16 @@ class ExperimentResult:
     watts: float = 0.0              # average power draw during training (W)
     joules_per_token: float = 0.0   # energy per token (J/tok)
     total_energy_joules: float = 0.0  # total energy for the experiment (J)
+    wall_watts: float = 0.0         # average wall power from external meter (W)
+    wall_joules_per_token: float = 0.0   # wall energy per token (J/tok)
+    wall_total_energy_joules: float = 0.0  # total wall energy (J)
+    gpu_power_fraction: float = 0.0  # gpu_watts / wall_watts
 
 
-# TSV header — 14 columns. Columns 12-14 (watts, joules_per_token, total_energy_joules)
-# track power/energy instrumentation for MLCommons/MLPerf Power analysis.
-HEADER = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\tbaseline_sha\twatts\tjoules_per_token\ttotal_energy_joules\n"
+# TSV header — 18 columns. Columns 12-14 (watts, joules_per_token, total_energy_joules)
+# track GPU power/energy instrumentation. Columns 15-18 (wall_watts, wall_joules_per_token,
+# wall_total_energy_joules, gpu_power_fraction) track wall-power from MLCommons power-dev.
+HEADER = "exp\tdescription\tval_bpb\tpeak_mem_gb\ttok_sec\tmfu\tsteps\tstatus\tnotes\tgpu_name\tbaseline_sha\twatts\tjoules_per_token\ttotal_energy_joules\twall_watts\twall_joules_per_token\twall_total_energy_joules\tgpu_power_fraction\n"
 
 
 def init_results_tsv(path: str = "results.tsv") -> None:
@@ -71,7 +76,11 @@ def append_result(path: str, result: ExperimentResult) -> None:
         f"{result.baseline_sha}\t"
         f"{result.watts:.1f}\t"
         f"{result.joules_per_token:.6f}\t"
-        f"{result.total_energy_joules:.1f}\n"
+        f"{result.total_energy_joules:.1f}\t"
+        f"{result.wall_watts:.1f}\t"
+        f"{result.wall_joules_per_token:.6f}\t"
+        f"{result.wall_total_energy_joules:.1f}\t"
+        f"{result.gpu_power_fraction:.4f}\n"
     )
     atomic_append(path, line)
 
@@ -104,6 +113,10 @@ def load_results(path: str = "results.tsv") -> list[ExperimentResult]:
                     watts=float(row.get("watts", 0) or 0),
                     joules_per_token=float(row.get("joules_per_token", 0) or 0),
                     total_energy_joules=float(row.get("total_energy_joules", 0) or 0),
+                    wall_watts=float(row.get("wall_watts", 0) or 0),
+                    wall_joules_per_token=float(row.get("wall_joules_per_token", 0) or 0),
+                    wall_total_energy_joules=float(row.get("wall_total_energy_joules", 0) or 0),
+                    gpu_power_fraction=float(row.get("gpu_power_fraction", 0) or 0),
                 ))
             except (ValueError, TypeError):
                 continue

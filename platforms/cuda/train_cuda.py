@@ -18,6 +18,8 @@ import torch.nn.functional as F
 
 from backends import get_hardware_info, suggest_hyperparameters, get_peak_flops, sync_device, get_peak_memory_mb
 from backends.power import PowerMonitor
+from backends.wall_power import WallPowerAdapter
+from backends.power_report import CombinedPowerReport
 from backends.muon_cuda import MuonAdamW
 from prepare import MAX_SEQ_LEN, TIME_BUDGET, Tokenizer, make_dataloader, evaluate_bpb
 
@@ -484,6 +486,8 @@ step = 0
 
 _power = PowerMonitor(backend="cuda")
 _power.start()
+_wall = WallPowerAdapter()
+_wall.start()
 
 while True:
     sync_device(device_type)
@@ -582,6 +586,16 @@ print(f"chip:             {_hw_info['chip_name']}")
 print(f"avg_watts:        {avg_watts:.1f}")
 print(f"joules_per_token: {joules_per_token:.6f}")
 print(f"total_energy_j:   {total_joules:.1f}")
+_wall.stop()
+_report = CombinedPowerReport.from_sources(
+    gpu_watts=avg_watts, gpu_joules=total_joules,
+    wall_data=_wall.get_results(),
+    training_seconds=total_training_time, total_tokens=total_tokens,
+)
+print(f"wall_watts:       {_report.wall_avg_watts:.1f}")
+print(f"wall_joules_per_token: {_report.wall_joules_per_token:.6f}")
+print(f"wall_total_energy_j:   {_report.wall_total_joules:.1f}")
+print(f"gpu_power_fraction:    {_report.gpu_power_fraction:.4f}")
 
 # Write results to TSV (standalone mode — orchestrator handles this when running via run_suite.py)
 if os.environ.get("AUTORESEARCH_ORCHESTRATOR") != "1":
