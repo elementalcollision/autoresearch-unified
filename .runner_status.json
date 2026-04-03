@@ -2,14 +2,14 @@
   "pid": 2854690,
   "alive": true,
   "started_at": "2026-04-03T20:47:36.151023",
-  "last_updated": "2026-04-03T22:55:10.655746",
-  "experiment": 23,
+  "last_updated": "2026-04-03T23:10:29.928891",
+  "experiment": 26,
   "status": "completed",
   "dataset": "pubmed",
   "model": "google/gemma-4-31b-it",
   "best_bpb": 1.037066,
-  "total": 24,
+  "total": 27,
   "kept": 7,
-  "discarded": 14,
-  "crashes": 3
+  "discarded": 16,
+  "crashes": 4
 }
