@@ -1,3 +1,5 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
 exp0	baseline (no modifications)	1.090410	5.9	299333	17.0	2741	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	9a884b008ec4db04f866b485ba020b3a81cf2896	523.4	0.001748	157023.8
 exp1	Reduce TOTAL_BATCH_SIZE by half	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	9a884b008ec4db04f866b485ba020b3a81cf2896	0.0	0.000000	0.0
+exp2	Increase MATRIX_LR from 0.02 to 0.04	1.059834	5.9	427000	26.9	3909	keep	The baseline val_bpb is relatively high, suggesting the model may be underfittin	NVIDIA GeForce RTX 5090	9a884b008ec4db04f866b485ba020b3a81cf2896	549.6	0.001287	164904.1
+exp3	Enable ACTIVATION_CHECKPOINTING	1.062842	3.6	406000	25.5	3716	discard	Enabling activation checkpointing reduces memory usage per sample, which may all	NVIDIA GeForce RTX 5090	9a884b008ec4db04f866b485ba020b3a81cf2896	529.2	0.001304	158793.1
