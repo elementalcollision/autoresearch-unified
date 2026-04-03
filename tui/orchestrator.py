@@ -358,14 +358,11 @@ class ExperimentOrchestrator:
                 if self._stop_event.is_set():
                     return
 
-            # Main experiment loop
-            # max_experiments is the TOTAL target, not "more from here"
-            for exp_num in range(start_exp, self._max_experiments):
-                if self._stop_event.is_set():
-                    break
-
-                # Hard gate: check actual TSV row count to prevent overshoot
-                # after crash/restart where lost rows reset start_exp lower.
+            # Main experiment loop. Uses a while loop (not for-range) so that
+            # failed iterations that don't produce TSV rows (unparseable
+            # responses, skipped experiments) don't reduce the final count.
+            _safety = 0
+            while not self._stop_event.is_set():
                 current_count = len(load_results(self._results_path))
                 if current_count >= self._max_experiments:
                     self._cb_status("stopped",
@@ -373,11 +370,16 @@ class ExperimentOrchestrator:
                         f">= {self._max_experiments} max")
                     break
 
+                _safety += 1
+                if _safety > self._max_experiments * 3:
+                    self._cb_error(
+                        f"Safety limit: {_safety} iterations without "
+                        f"reaching {self._max_experiments} experiments")
+                    break
+
+                exp_num = current_count  # next experiment number
                 self._update_heartbeat(exp_num, "running")
                 self._run_experiment(exp_num)
-
-                if self._stop_event.is_set():
-                    break
 
                 # Brief pause between experiments
                 time.sleep(2)
