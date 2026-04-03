@@ -1,8 +1,8 @@
 {
   "pid": 1323046,
-  "alive": true,
+  "alive": false,
   "started_at": "2026-04-03T09:37:09.216650",
-  "last_updated": "2026-04-03T20:47:32.475047",
+  "last_updated": "2026-04-03T20:47:33.477800",
   "experiment": 0,
   "status": "stopped",
   "dataset": "pubmed",
