@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-02T14:34:33.767769+00:00",
-  "total_runs": 14,
+  "generated_at": "2026-04-03T00:03:50.350555+00:00",
+  "total_runs": 17,
   "filters": {
     "datasets": [
       "climbmix",
@@ -9,12 +9,14 @@
     ],
     "model_families": [
       "Claude",
+      "Moonshot",
       "OpenAI",
-      "Other"
+      "Qwen"
     ],
     "hardware": [
       "AMD Instinct MI300X",
       "NVIDIA GeForce RTX 5070 Ti",
+      "NVIDIA GeForce RTX 5090",
       "NVIDIA RTX 4000 Ada Generation",
       "NVIDIA RTX PRO 6000 Blackwell Server Edition"
     ]
@@ -2096,7 +2098,7 @@
       "dataset": "pubmed",
       "model": "Kimi K2.5",
       "model_slug": "kimik25",
-      "model_family": "Other",
+      "model_family": "Moonshot",
       "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
       "gpu_slug": "rtx5070ti",
       "contributor": "bmdhodl",
@@ -2116,7 +2118,7 @@
           "dataset": "pubmed",
           "model_slug": "kimik25",
           "model": "Kimi K2.5",
-          "model_family": "Other",
+          "model_family": "Moonshot",
           "contributor": "bmdhodl",
           "gpu_slug": "rtx5070ti",
           "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
@@ -2664,7 +2666,7 @@
           "dataset": "pubmed",
           "model_slug": "kimik25",
           "model": "Kimi K2.5",
-          "model_family": "Other",
+          "model_family": "Moonshot",
           "contributor": "bmdhodl",
           "gpu_slug": "rtx5070ti",
           "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
@@ -3267,7 +3269,7 @@
           "dataset": "pubmed",
           "model_slug": "kimik25",
           "model": "Kimi K2.5",
-          "model_family": "Other",
+          "model_family": "Moonshot",
           "contributor": "bmdhodl",
           "gpu_slug": "rtx5070ti",
           "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
@@ -3862,6 +3864,1737 @@
         }
       ],
       "rank": 5
+    },
+    {
+      "dataset": "pubmed",
+      "model": "Qwen 3.5 (397B)",
+      "model_slug": "qwen35-397b",
+      "model_family": "Qwen",
+      "gpu_name": "NVIDIA GeForce RTX 5090",
+      "gpu_slug": "rtx5090",
+      "contributor": "elementalcollision",
+      "runs": 3,
+      "provisional": false,
+      "keep_rate_mean": 11.7,
+      "keep_rate_sd": 5.7,
+      "crash_rate_mean": 8.2,
+      "crash_rate_sd": 4.7,
+      "best_bpb": 1.036171,
+      "total_exps_sum": 291,
+      "total_keeps_sum": 34,
+      "total_crashes_sum": 24,
+      "run_details": [
+        {
+          "file": "data/results/pubmed/elementalcollision-rtx5090/results_qwen35-397b_r1.tsv",
+          "dataset": "pubmed",
+          "model_slug": "qwen35-397b",
+          "model": "Qwen 3.5 (397B)",
+          "model_family": "Qwen",
+          "contributor": "elementalcollision",
+          "gpu_slug": "rtx5090",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "total_exps": 97,
+          "keeps": 17,
+          "crashes": 3,
+          "discards": 77,
+          "skips": 0,
+          "keep_rate": 17.525773195876287,
+          "crash_rate": 3.0927835051546393,
+          "best_bpb": 1.050453,
+          "baseline_bpb": 1.08931,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.08931,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 1.099782,
+              "status": "discard"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 1.09039,
+              "status": "discard"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 1.096356,
+              "status": "discard"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.083643,
+              "status": "keep"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.08325,
+              "status": "keep"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.088657,
+              "status": "discard"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.086596,
+              "status": "discard"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.08638,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.087756,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.094963,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.082961,
+              "status": "keep"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.080658,
+              "status": "keep"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 1.082597,
+              "status": "discard"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.08299,
+              "status": "discard"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.080787,
+              "status": "discard"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.082548,
+              "status": "discard"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 1.082902,
+              "status": "discard"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 1.08729,
+              "status": "discard"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.079747,
+              "status": "keep"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 1.080955,
+              "status": "discard"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.08022,
+              "status": "discard"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.079117,
+              "status": "keep"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.076813,
+              "status": "keep"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.077104,
+              "status": "discard"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.077628,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 1.077453,
+              "status": "discard"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 1.076965,
+              "status": "discard"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.077493,
+              "status": "discard"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 1.078245,
+              "status": "discard"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 1.077271,
+              "status": "discard"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.077106,
+              "status": "discard"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 1.077264,
+              "status": "discard"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 1.080058,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 1.077216,
+              "status": "discard"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 1.077829,
+              "status": "discard"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 1.077848,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.07689,
+              "status": "discard"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 1.077133,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.076486,
+              "status": "keep"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 1.083005,
+              "status": "discard"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 1.077644,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.077082,
+              "status": "discard"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 1.079106,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.078268,
+              "status": "discard"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 1.076203,
+              "status": "keep"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 1.076677,
+              "status": "discard"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 1.103184,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.076319,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 1.076571,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.07625,
+              "status": "discard"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 1.076714,
+              "status": "discard"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 1.076235,
+              "status": "discard"
+            },
+            {
+              "exp": "exp54",
+              "val_bpb": 1.076604,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.076636,
+              "status": "discard"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 1.076679,
+              "status": "discard"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 1.076569,
+              "status": "discard"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 1.076027,
+              "status": "keep"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 1.076388,
+              "status": "discard"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 1.07635,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.075619,
+              "status": "keep"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 1.076187,
+              "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 1.079015,
+              "status": "discard"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.078359,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 1.076165,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 1.075909,
+              "status": "discard"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.07803,
+              "status": "discard"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 1.076058,
+              "status": "discard"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.075537,
+              "status": "keep"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.07562,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.07594,
+              "status": "discard"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 1.07578,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 1.075811,
+              "status": "discard"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 1.076893,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.065113,
+              "status": "keep"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.069909,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 1.065475,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 1.065337,
+              "status": "discard"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 1.075917,
+              "status": "discard"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 1.073625,
+              "status": "discard"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 1.064288,
+              "status": "keep"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 1.064776,
+              "status": "discard"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 1.064567,
+              "status": "discard"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 1.064307,
+              "status": "discard"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 1.063995,
+              "status": "keep"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 1.050578,
+              "status": "keep"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 1.050807,
+              "status": "discard"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 1.050789,
+              "status": "discard"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 1.052925,
+              "status": "discard"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 1.050695,
+              "status": "discard"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 1.050708,
+              "status": "discard"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 1.050453,
+              "status": "keep"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 1.051046,
+              "status": "discard"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 1.05091,
+              "status": "discard"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 1.058109,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp4",
+              "val_bpb": 1.083643,
+              "description": "Reduce WEIGHT_DECAY from 0.2 to 0.1 to lessen regularization pressure"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.08325,
+              "description": "Set FINAL_LR_FRAC from 0.0 to 0.1 to maintain learning signal at end of training"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.082961,
+              "description": "Increase ADAM_BETAS beta2 from 0.95 to 0.99 for more stable second-moment estimates"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.080658,
+              "description": "Reduce MATRIX_LR from 0.04 to 0.03 for more conservative matrix parameter updates"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.079747,
+              "description": "Reduce WEIGHT_DECAY from 0.1 to 0.05 to further lessen regularization pressure"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.079117,
+              "description": "Reduce SCALAR_LR from 0.5 to 0.3 for more conservative scalar parameter updates"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.076813,
+              "description": "Reduce UNEMBEDDING_LR from 0.004 to 0.003 for more conservative unembedding layer updates"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.076486,
+              "description": "Reduce FINAL_LR_FRAC from 0.1 to 0.05 to test if a gentler learning rate decay at the end of training improves convergence with the optimized learning rates"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 1.076203,
+              "description": "Reduce ADAM_BETAS beta1 from 0.8 to 0.75 for less momentum smoothing with the optimized learning rate configuration"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 1.076027,
+              "description": "Reduce ADAM_BETAS beta2 from 0.99 to 0.975 to complement the optimized beta1=0.75 with less second-moment smoothing"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.075619,
+              "description": "Increase WARMDOWN_RATIO from 0.5 to 0.55 to extend the high learning rate phase slightly with the optimized Adam betas configuration"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.075537,
+              "description": "Reduce MATRIX_LR from 0.03 to 0.029 for slightly more conservative matrix parameter updates with the optimized Adam betas configuration"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.065113,
+              "description": "Change WINDOW_PATTERN from \"SSSL\" to \"SLSL\" to test a different sliding window configuration with optimized learning rates"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 1.064288,
+              "description": "Reduce MATRIX_LR from 0.029 to 0.027 with the SLSL window pattern to leverage the increased gradient steps for more conservative convergence"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 1.063995,
+              "description": "Increase WARMDOWN_RATIO from 0.55 to 0.58 with the SLSL window pattern to extend the high learning rate phase leveraging improved throughput"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 1.050578,
+              "description": "Change WINDOW_PATTERN from \"SLSL\" to \"LLSL\" to increase full-context attention coverage while maintaining the high-throughput configuration"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 1.050453,
+              "description": "Increase FINAL_LR_FRAC from 0.05 to 0.06 with the LLSL window pattern to maintain a slightly stronger learning signal at end of training given the higher throughput"
+            }
+          ]
+        },
+        {
+          "file": "data/results/pubmed/elementalcollision-rtx5090/results_qwen35-397b_r2.tsv",
+          "dataset": "pubmed",
+          "model_slug": "qwen35-397b",
+          "model": "Qwen 3.5 (397B)",
+          "model_family": "Qwen",
+          "contributor": "elementalcollision",
+          "gpu_slug": "rtx5090",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "total_exps": 96,
+          "keeps": 11,
+          "crashes": 9,
+          "discards": 76,
+          "skips": 0,
+          "keep_rate": 11.458333333333332,
+          "crash_rate": 9.375,
+          "best_bpb": 1.036171,
+          "baseline_bpb": 1.088797,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.088797,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 1.056852,
+              "status": "keep"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.058336,
+              "status": "discard"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.058191,
+              "status": "discard"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.063922,
+              "status": "discard"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.056489,
+              "status": "keep"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.060131,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.056578,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.057973,
+              "status": "discard"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 1.063779,
+              "status": "discard"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 1.056781,
+              "status": "discard"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.057385,
+              "status": "discard"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 1.058216,
+              "status": "discard"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 1.059388,
+              "status": "discard"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 1.057273,
+              "status": "discard"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.056712,
+              "status": "discard"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 1.056757,
+              "status": "discard"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.041104,
+              "status": "keep"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.045959,
+              "status": "discard"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.038156,
+              "status": "keep"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.038397,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 1.049117,
+              "status": "discard"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 1.038335,
+              "status": "discard"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.037184,
+              "status": "keep"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 1.038123,
+              "status": "discard"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 1.037649,
+              "status": "discard"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 1.037323,
+              "status": "discard"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.036852,
+              "status": "keep"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 1.03744,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 1.037202,
+              "status": "discard"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 1.038069,
+              "status": "discard"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 1.038052,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.03995,
+              "status": "discard"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 1.040788,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.036919,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 1.037561,
+              "status": "discard"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 1.036932,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.037679,
+              "status": "discard"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 1.037054,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.040328,
+              "status": "discard"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 1.046551,
+              "status": "discard"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 1.044905,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.037309,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 1.04325,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.040457,
+              "status": "discard"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 1.036967,
+              "status": "discard"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 1.037944,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.037448,
+              "status": "discard"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 1.037083,
+              "status": "discard"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 1.037447,
+              "status": "discard"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 1.039306,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.038027,
+              "status": "discard"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 1.042657,
+              "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 1.036573,
+              "status": "keep"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.037262,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 1.036996,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 1.042705,
+              "status": "discard"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.044836,
+              "status": "discard"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.048056,
+              "status": "discard"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.037619,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.03769,
+              "status": "discard"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 1.038118,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 1.036831,
+              "status": "discard"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 1.036578,
+              "status": "discard"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.036551,
+              "status": "keep"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.038059,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 1.037217,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 1.037976,
+              "status": "discard"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 1.038444,
+              "status": "discard"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 1.038588,
+              "status": "discard"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 1.036907,
+              "status": "discard"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 1.036495,
+              "status": "keep"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 1.038418,
+              "status": "discard"
+            },
+            {
+              "exp": "exp85",
+              "val_bpb": 1.050313,
+              "status": "discard"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 1.036924,
+              "status": "discard"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 1.036522,
+              "status": "discard"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 1.036478,
+              "status": "keep"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 1.036568,
+              "status": "discard"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 1.036763,
+              "status": "discard"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 1.036966,
+              "status": "discard"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 1.047575,
+              "status": "discard"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 1.036512,
+              "status": "discard"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 1.036643,
+              "status": "discard"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 1.036171,
+              "status": "keep"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 1.036509,
+              "status": "discard"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 1.03654,
+              "status": "discard"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 1.036241,
+              "status": "discard"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 1.036622,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp3",
+              "val_bpb": 1.056852,
+              "description": "Add learning rate warmup by changing WARMUP_RATIO from 0.0 to 0.1"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.056489,
+              "description": "Adjust ADAM_BETAS from (0.75, 0.975) to (0.85, 0.99) for more stable Adam optimizer momentum"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.041104,
+              "description": "Change WINDOW_PATTERN from \"LLSL\" to \"LLLL\" to use full attention throughout instead of sliding window"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.038156,
+              "description": "Increase UNEMBEDDING_LR from 0.003 to 0.006 to accelerate lm_head convergence"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 1.037184,
+              "description": "Increase EMBEDDING_LR from 0.8 to 0.9 to further accelerate token embedding convergence, building on the success of exp25 (1.0384) which nearly matched the best result."
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.036852,
+              "description": "Increase SCALAR_LR from 0.3 to 0.35 to accelerate per-layer scalar parameter convergence"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 1.036573,
+              "description": "Reduce FINAL_LR_FRAC from 0.06 to 0.055 to test intermediate learning rate decay endpoint with current optimal LR settings"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.036551,
+              "description": "Reduce MATRIX_LR from 0.027 to 0.0266 to test finer-grained matrix learning rate optimization between exp44 (0.0265) and exp74 (0.0268)"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 1.036495,
+              "description": "Set MLP_RATIO to 3.0 to test intermediate MLP expansion ratio for better capacity-efficiency balance"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 1.036478,
+              "description": "Change ADAM_BETAS from (0.85, 0.99) to (0.84, 0.99) to test if slightly lower beta1 improves convergence with current optimal settings"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 1.036171,
+              "description": "Reduce ADAM_BETAS beta2 from 0.99 to 0.988 to test if slightly lower second moment smoothing improves convergence"
+            }
+          ]
+        },
+        {
+          "file": "data/results/pubmed/elementalcollision-rtx5090/results_qwen35-397b_r3.tsv",
+          "dataset": "pubmed",
+          "model_slug": "qwen35-397b",
+          "model": "Qwen 3.5 (397B)",
+          "model_family": "Qwen",
+          "contributor": "elementalcollision",
+          "gpu_slug": "rtx5090",
+          "gpu_name": "NVIDIA GeForce RTX 5090",
+          "total_exps": 98,
+          "keeps": 6,
+          "crashes": 12,
+          "discards": 80,
+          "skips": 0,
+          "keep_rate": 6.122448979591836,
+          "crash_rate": 12.244897959183673,
+          "best_bpb": 1.03977,
+          "baseline_bpb": 1.088978,
+          "bpb_trajectory": [
+            {
+              "exp": "exp0",
+              "val_bpb": 1.088978,
+              "status": "baseline"
+            },
+            {
+              "exp": "exp1",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp2",
+              "val_bpb": 1.040394,
+              "status": "keep"
+            },
+            {
+              "exp": "exp3",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp4",
+              "val_bpb": 1.040659,
+              "status": "discard"
+            },
+            {
+              "exp": "exp5",
+              "val_bpb": 1.074903,
+              "status": "discard"
+            },
+            {
+              "exp": "exp6",
+              "val_bpb": 1.043549,
+              "status": "discard"
+            },
+            {
+              "exp": "exp7",
+              "val_bpb": 1.044826,
+              "status": "discard"
+            },
+            {
+              "exp": "exp8",
+              "val_bpb": 1.043275,
+              "status": "discard"
+            },
+            {
+              "exp": "exp9",
+              "val_bpb": 1.040426,
+              "status": "discard"
+            },
+            {
+              "exp": "exp10",
+              "val_bpb": 1.059136,
+              "status": "discard"
+            },
+            {
+              "exp": "exp11",
+              "val_bpb": 1.047198,
+              "status": "discard"
+            },
+            {
+              "exp": "exp12",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp13",
+              "val_bpb": 1.043639,
+              "status": "discard"
+            },
+            {
+              "exp": "exp14",
+              "val_bpb": 1.042417,
+              "status": "discard"
+            },
+            {
+              "exp": "exp15",
+              "val_bpb": 1.041266,
+              "status": "discard"
+            },
+            {
+              "exp": "exp16",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp17",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp18",
+              "val_bpb": 1.041486,
+              "status": "discard"
+            },
+            {
+              "exp": "exp19",
+              "val_bpb": 1.041413,
+              "status": "discard"
+            },
+            {
+              "exp": "exp20",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp21",
+              "val_bpb": 1.041437,
+              "status": "discard"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.040321,
+              "status": "keep"
+            },
+            {
+              "exp": "exp23",
+              "val_bpb": 1.041007,
+              "status": "discard"
+            },
+            {
+              "exp": "exp24",
+              "val_bpb": 1.044708,
+              "status": "discard"
+            },
+            {
+              "exp": "exp25",
+              "val_bpb": 1.041403,
+              "status": "discard"
+            },
+            {
+              "exp": "exp26",
+              "val_bpb": 1.042148,
+              "status": "discard"
+            },
+            {
+              "exp": "exp27",
+              "val_bpb": 1.046885,
+              "status": "discard"
+            },
+            {
+              "exp": "exp28",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp29",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp30",
+              "val_bpb": 1.041943,
+              "status": "discard"
+            },
+            {
+              "exp": "exp31",
+              "val_bpb": 1.13587,
+              "status": "discard"
+            },
+            {
+              "exp": "exp32",
+              "val_bpb": 1.104971,
+              "status": "discard"
+            },
+            {
+              "exp": "exp33",
+              "val_bpb": 1.056026,
+              "status": "discard"
+            },
+            {
+              "exp": "exp34",
+              "val_bpb": 1.049316,
+              "status": "discard"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 1.040172,
+              "status": "keep"
+            },
+            {
+              "exp": "exp36",
+              "val_bpb": 1.049238,
+              "status": "discard"
+            },
+            {
+              "exp": "exp37",
+              "val_bpb": 1.050762,
+              "status": "discard"
+            },
+            {
+              "exp": "exp38",
+              "val_bpb": 1.040235,
+              "status": "discard"
+            },
+            {
+              "exp": "exp39",
+              "val_bpb": 1.040615,
+              "status": "discard"
+            },
+            {
+              "exp": "exp40",
+              "val_bpb": 1.135873,
+              "status": "discard"
+            },
+            {
+              "exp": "exp41",
+              "val_bpb": 1.048777,
+              "status": "discard"
+            },
+            {
+              "exp": "exp42",
+              "val_bpb": 1.132642,
+              "status": "discard"
+            },
+            {
+              "exp": "exp43",
+              "val_bpb": 1.040865,
+              "status": "discard"
+            },
+            {
+              "exp": "exp44",
+              "val_bpb": 1.049718,
+              "status": "discard"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.040099,
+              "status": "keep"
+            },
+            {
+              "exp": "exp46",
+              "val_bpb": 1.040639,
+              "status": "discard"
+            },
+            {
+              "exp": "exp47",
+              "val_bpb": 1.102954,
+              "status": "discard"
+            },
+            {
+              "exp": "exp48",
+              "val_bpb": 1.040415,
+              "status": "discard"
+            },
+            {
+              "exp": "exp49",
+              "val_bpb": 1.040223,
+              "status": "discard"
+            },
+            {
+              "exp": "exp50",
+              "val_bpb": 1.040099,
+              "status": "discard"
+            },
+            {
+              "exp": "exp51",
+              "val_bpb": 1.04041,
+              "status": "discard"
+            },
+            {
+              "exp": "exp52",
+              "val_bpb": 1.040881,
+              "status": "discard"
+            },
+            {
+              "exp": "exp53",
+              "val_bpb": 1.040367,
+              "status": "discard"
+            },
+            {
+              "exp": "exp55",
+              "val_bpb": 1.041198,
+              "status": "discard"
+            },
+            {
+              "exp": "exp56",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp57",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp58",
+              "val_bpb": 1.042952,
+              "status": "discard"
+            },
+            {
+              "exp": "exp59",
+              "val_bpb": 1.040963,
+              "status": "discard"
+            },
+            {
+              "exp": "exp60",
+              "val_bpb": 1.040574,
+              "status": "discard"
+            },
+            {
+              "exp": "exp61",
+              "val_bpb": 1.040195,
+              "status": "discard"
+            },
+            {
+              "exp": "exp62",
+              "val_bpb": 1.041328,
+              "status": "discard"
+            },
+            {
+              "exp": "exp63",
+              "val_bpb": 1.04044,
+              "status": "discard"
+            },
+            {
+              "exp": "exp64",
+              "val_bpb": 1.049486,
+              "status": "discard"
+            },
+            {
+              "exp": "exp65",
+              "val_bpb": 1.040113,
+              "status": "discard"
+            },
+            {
+              "exp": "exp66",
+              "val_bpb": 1.040116,
+              "status": "discard"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.040018,
+              "status": "keep"
+            },
+            {
+              "exp": "exp68",
+              "val_bpb": 1.040454,
+              "status": "discard"
+            },
+            {
+              "exp": "exp69",
+              "val_bpb": 1.049164,
+              "status": "discard"
+            },
+            {
+              "exp": "exp70",
+              "val_bpb": 1.042521,
+              "status": "discard"
+            },
+            {
+              "exp": "exp71",
+              "val_bpb": 1.040124,
+              "status": "discard"
+            },
+            {
+              "exp": "exp72",
+              "val_bpb": 1.040254,
+              "status": "discard"
+            },
+            {
+              "exp": "exp73",
+              "val_bpb": 1.049207,
+              "status": "discard"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 1.03977,
+              "status": "keep"
+            },
+            {
+              "exp": "exp75",
+              "val_bpb": 1.040011,
+              "status": "discard"
+            },
+            {
+              "exp": "exp76",
+              "val_bpb": 1.040206,
+              "status": "discard"
+            },
+            {
+              "exp": "exp77",
+              "val_bpb": 1.041623,
+              "status": "discard"
+            },
+            {
+              "exp": "exp78",
+              "val_bpb": 1.040297,
+              "status": "discard"
+            },
+            {
+              "exp": "exp79",
+              "val_bpb": 1.041408,
+              "status": "discard"
+            },
+            {
+              "exp": "exp80",
+              "val_bpb": 1.03991,
+              "status": "discard"
+            },
+            {
+              "exp": "exp81",
+              "val_bpb": 1.039934,
+              "status": "discard"
+            },
+            {
+              "exp": "exp82",
+              "val_bpb": 1.040171,
+              "status": "discard"
+            },
+            {
+              "exp": "exp83",
+              "val_bpb": 1.069999,
+              "status": "discard"
+            },
+            {
+              "exp": "exp84",
+              "val_bpb": 1.040136,
+              "status": "discard"
+            },
+            {
+              "exp": "exp85",
+              "val_bpb": 1.040098,
+              "status": "discard"
+            },
+            {
+              "exp": "exp86",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp87",
+              "val_bpb": 1.040091,
+              "status": "discard"
+            },
+            {
+              "exp": "exp88",
+              "val_bpb": 1.040106,
+              "status": "discard"
+            },
+            {
+              "exp": "exp89",
+              "val_bpb": 1.042979,
+              "status": "discard"
+            },
+            {
+              "exp": "exp90",
+              "val_bpb": 0.0,
+              "status": "crash"
+            },
+            {
+              "exp": "exp91",
+              "val_bpb": 1.054441,
+              "status": "discard"
+            },
+            {
+              "exp": "exp92",
+              "val_bpb": 1.074693,
+              "status": "discard"
+            },
+            {
+              "exp": "exp93",
+              "val_bpb": 1.040275,
+              "status": "discard"
+            },
+            {
+              "exp": "exp94",
+              "val_bpb": 1.041143,
+              "status": "discard"
+            },
+            {
+              "exp": "exp95",
+              "val_bpb": 1.040698,
+              "status": "discard"
+            },
+            {
+              "exp": "exp96",
+              "val_bpb": 1.040258,
+              "status": "discard"
+            },
+            {
+              "exp": "exp97",
+              "val_bpb": 1.040239,
+              "status": "discard"
+            },
+            {
+              "exp": "exp98",
+              "val_bpb": 1.040193,
+              "status": "discard"
+            },
+            {
+              "exp": "exp99",
+              "val_bpb": 1.041753,
+              "status": "discard"
+            }
+          ],
+          "kept_improvements": [
+            {
+              "exp": "exp2",
+              "val_bpb": 1.040394,
+              "description": "Enable ACTIVATION_CHECKPOINTING to reduce memory footprint"
+            },
+            {
+              "exp": "exp22",
+              "val_bpb": 1.040321,
+              "description": "Change COMPILE_MODE from 'reduce-overhead' to 'max-autotune' to potentially improve throughput on RTX 5090"
+            },
+            {
+              "exp": "exp35",
+              "val_bpb": 1.040172,
+              "description": "Increase MLP_RATIO from 3.0 to 4.0 to increase model capacity while maintaining high step count"
+            },
+            {
+              "exp": "exp45",
+              "val_bpb": 1.040099,
+              "description": "Increase MLP_RATIO from 4.0 to 4.5 to find optimal model capacity between exp35 (4.0) and exp38 (5.0)"
+            },
+            {
+              "exp": "exp67",
+              "val_bpb": 1.040018,
+              "description": "Fine-tune MLP_RATIO from 4.5 to 4.125 to explore the optimal model capacity between the plateau of best-performing values (4.0, 4.25, and 4.5 all achieved 1.0401)"
+            },
+            {
+              "exp": "exp74",
+              "val_bpb": 1.03977,
+              "description": "Increase WARMDOWN_RATIO from 0.58 to 0.62 to spend more training time in the learning rate decay phase"
+            }
+          ]
+        }
+      ],
+      "rank": 6
     },
     {
       "dataset": "pubmed",
@@ -5787,7 +7520,7 @@
           ]
         }
       ],
-      "rank": 6
+      "rank": 7
     },
     {
       "dataset": "pubmed",
@@ -7803,7 +9536,7 @@
           ]
         }
       ],
-      "rank": 7
+      "rank": 8
     }
   ]
 }

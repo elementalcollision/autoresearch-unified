@@ -616,6 +616,27 @@ class ExperimentOrchestrator:
     # Single experiment
     # ------------------------------------------------------------------
 
+    def _log_skip(self, exp_num: int, description: str, reason: str) -> None:
+        """Log a skipped experiment as a TSV row with status='skip'.
+
+        Called when an experiment cannot proceed due to pre-training failures
+        (API unavailable, code apply error, syntax error, git commit failure).
+        Ensures every exp_num gets a row so TSV count == max_experiments.
+        """
+        result = ExperimentResult(
+            exp=f"exp{exp_num}",
+            description=description,
+            val_bpb=0.0, peak_mem_gb=0.0, tok_sec=0,
+            mfu=0.0, steps=0, status="skip",
+            notes=reason[:80],
+            gpu_name=self._hw_info.get("chip_name", "unknown"),
+            baseline_sha=self._baseline_sha or "",
+        )
+        append_result(self._results_path, result)
+        self.total_runs += 1
+        self._cb_experiment_complete(result)
+        self._cb_stats_update()
+
     def _run_experiment(self, exp_num: int, _pause_depth: int = 0) -> None:
         """Run a single experiment: LLM -> modify -> commit -> train -> evaluate.
 
@@ -660,6 +681,7 @@ class ExperimentOrchestrator:
                 return self._run_experiment(exp_num, _pause_depth + 1)
             else:
                 self._cb_error(f"Skipping exp{exp_num} -- API unavailable after 30 min of retries")
+                self._log_skip(exp_num, "API unavailable", "API unavailable after 30 min of retries")
                 return
 
         # Check for near-duplicate proposals and re-query if needed (max 2 retries)
@@ -677,6 +699,7 @@ class ExperimentOrchestrator:
                 current_code, results_history + nudge_dup, exp_num
             )
             if proposal is None:
+                self._log_skip(exp_num, "Duplicate re-query failed", "API unavailable during duplicate re-query")
                 return
         else:
             # Still a duplicate after retries — proceed anyway rather than skip
@@ -691,6 +714,7 @@ class ExperimentOrchestrator:
             self._apply_hp_block(proposal.code)
         except Exception as e:
             self._cb_error(f"Failed to apply code: {e}")
+            self._log_skip(exp_num, proposal.description, f"code apply failed: {e}")
             return
 
         # Validate the modified code parses
@@ -701,6 +725,7 @@ class ExperimentOrchestrator:
             self._cb_error(f"Syntax error in modified code: {e}")
             # Restore original
             self._apply_hp_block(current_code)
+            self._log_skip(exp_num, proposal.description, f"syntax error: {e}")
             return
 
         # 3. Commit
@@ -712,6 +737,7 @@ class ExperimentOrchestrator:
         except Exception as e:
             self._cb_error(f"Git commit failed: {e}")
             self._apply_hp_block(current_code)
+            self._log_skip(exp_num, proposal.description, f"git commit failed: {e}")
             return
 
         # 4. Train
