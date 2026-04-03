@@ -1,3 +1,6 @@
 exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
 exp0	baseline (no modifications)	1.090518	5.9	298666	17.0	2734	baseline	depth=8, NVIDIA GeForce RTX 5090	NVIDIA GeForce RTX 5090	31130ae2797ecafd91510fe75904552b5230e0b7	521.3	0.001746	156401.0
 exp1	Decrease TOTAL_BATCH_SIZE by a factor of 2	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	31130ae2797ecafd91510fe75904552b5230e0b7	0.0	0.000000	0.0
+exp2	Reduce TOTAL_BATCH_SIZE to a specific value (half of default) using a constant instead of the helper	1.038544	5.8	539666	35.6	4941	keep	The previous attempt to decrease batch size crashed, likely due to how the reduc	NVIDIA GeForce RTX 5090	31130ae2797ecafd91510fe75904552b5230e0b7	565.2	0.001047	169578.2
+exp3	Decrease TOTAL_BATCH_SIZE from 32768 to 16384	0.000000	0.0	0	0.0	0	crash	training crashed or timed out	NVIDIA GeForce RTX 5090	31130ae2797ecafd91510fe75904552b5230e0b7	0.0	0.000000	0.0
+exp4	Increase MATRIX_LR from 0.045 to 0.06	1.041706	5.8	543333	35.8	4974	discard	Since we have successfully increased the number of steps by reducing the batch s	NVIDIA GeForce RTX 5090	31130ae2797ecafd91510fe75904552b5230e0b7	560.8	0.001032	168254.2
