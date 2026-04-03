@@ -1,15 +1,15 @@
 {
-  "pid": 50352,
-  "alive": false,
-  "started_at": "2026-04-02T22:37:35.620395",
-  "last_updated": "2026-04-03T09:37:06.503572",
-  "experiment": 0,
-  "status": "stopped",
+  "pid": 1323046,
+  "alive": true,
+  "started_at": "2026-04-03T09:37:09.216650",
+  "last_updated": "2026-04-03T09:42:52.929557",
+  "experiment": 1,
+  "status": "completed",
   "dataset": "pubmed",
   "model": "google/gemma-4-31b-it",
-  "best_bpb": 1.052004,
-  "total": 100,
-  "kept": 14,
-  "discarded": 81,
-  "crashes": 5
+  "best_bpb": 1.09041,
+  "total": 2,
+  "kept": 1,
+  "discarded": 0,
+  "crashes": 1
 }
