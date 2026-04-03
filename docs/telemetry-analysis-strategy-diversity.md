@@ -20,7 +20,7 @@ This document captures the telemetry analysis from the first controlled A/B test
 Both arms used identical configuration:
 - `--max 30 --model openai/gpt-4.1 --dataset climbmix`
 - 5-minute training budget per experiment
-- 14-column TSV with power instrumentation (pynvml)
+- 14-column TSV with power instrumentation (nvidia-ml-py)
 
 ## Results Summary
 
