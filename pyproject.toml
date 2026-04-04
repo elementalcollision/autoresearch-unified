@@ -17,6 +17,7 @@ dependencies = [
 # Platform-specific GPU dependencies
 cuda = [
     "torch>=2.6.0",
+    "nvidia-ml-py>=12.560.30",
 ]
 rocm = [
     "torch>=2.6.0",
