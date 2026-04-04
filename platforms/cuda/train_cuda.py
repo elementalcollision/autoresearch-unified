@@ -324,7 +324,7 @@ _hp_defaults = suggest_hyperparameters(_hw_info)
 # Model architecture
 ASPECT_RATIO = 64       # model_dim = depth * ASPECT_RATIO
 HEAD_DIM = 128          # target head dimension for attention
-WINDOW_PATTERN = "LSLS" # sliding window pattern: L=full, S=half context
+WINDOW_PATTERN = "LLLL" # sliding window pattern: L=full, S=half context
 MLP_RATIO = 12.0        # increase capacity of MLP layers
 
 # Optimization
