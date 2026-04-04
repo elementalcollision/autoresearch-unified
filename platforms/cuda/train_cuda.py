@@ -329,7 +329,7 @@ MLP_RATIO = 13.0        # increase capacity of MLP layers
 
 # Optimization
 TOTAL_BATCH_SIZE = 32768 # reduced from default (approx 2^15) to increase step count
-EMBEDDING_LR = 1.0      # learning rate for token embeddings (Adam)
+EMBEDDING_LR = 1.2      # learning rate for token embeddings (Adam)
 UNEMBEDDING_LR = 0.01  # learning rate for lm_head (Adam)
 MATRIX_LR = 0.033       # learning rate for matrix parameters (Muon)
 SCALAR_LR = 10.0         # learning rate for per-layer scalars (Adam)
