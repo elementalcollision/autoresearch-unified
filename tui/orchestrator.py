@@ -40,6 +40,14 @@ from tui.results import (
     next_experiment_number,
 )
 
+# Optional drift-monitor integration
+# (pip install drift-monitor for richer stagnation detection)
+try:
+    from drift_monitor.harness import DriftHarness, DriftConfig
+    _HAS_DRIFT_MONITOR = True
+except ImportError:
+    _HAS_DRIFT_MONITOR = False
+
 
 # Marker comments that delimit the hyperparameter block in training scripts.
 # These are identical across all platform training scripts.
@@ -123,6 +131,15 @@ class ExperimentOrchestrator:
         self.best_experiment = "none"
         self._baseline_sha: str | None = None  # commit SHA with zero HP changes
 
+        # Optional drift monitoring (richer stagnation detection)
+        self._drift_harness = None
+        if _HAS_DRIFT_MONITOR:
+            try:
+                results_dir = os.path.dirname(os.path.abspath(results_path)) if results_path else "."
+                self._drift_harness = DriftHarness(results_dir=results_dir)
+            except Exception:
+                pass  # Drift monitoring is best-effort
+
     # ------------------------------------------------------------------
     # Public API
     # ------------------------------------------------------------------
@@ -176,6 +193,11 @@ class ExperimentOrchestrator:
             self._callbacks.on_training_output(line)
 
     def _cb_experiment_complete(self, result: ExperimentResult) -> None:
+        if self._drift_harness is not None:
+            try:
+                self._drift_harness.observe_experiment(result)
+            except Exception:
+                pass  # Drift monitoring must never crash the experiment loop
         if self._callbacks:
             self._callbacks.on_experiment_complete(result)
 
@@ -661,8 +683,14 @@ class ExperimentOrchestrator:
         current_code = self._extract_hp_block()
         results_history = format_history_for_prompt(self._results_path)
 
-        # Append stagnation nudge if the LLM is stuck in a narrow strategy space
-        nudge = self._detect_stagnation()
+        # Append drift/stagnation nudge if the LLM is stuck
+        if self._drift_harness is not None:
+            try:
+                nudge = self._drift_harness.get_drift_nudge()
+            except Exception:
+                nudge = self._detect_stagnation()  # fall back on error
+        else:
+            nudge = self._detect_stagnation()
         if nudge:
             results_history += nudge
 

@@ -57,6 +57,9 @@ analysis = [
     "matplotlib>=3.10.8",
     "pandas>=2.3.3",
 ]
+drift = [
+    "drift-monitor @ git+https://github.com/elementalcollision/drift-monitor.git",
+]
 
 # Convenience bundles
 all-cuda = [
