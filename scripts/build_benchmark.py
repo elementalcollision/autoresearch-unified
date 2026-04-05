@@ -39,6 +39,7 @@ MODEL_NAMES = {
     "kimik25": "Kimi K2.5",
     "qwen35-397b": "Qwen 3.5 (397B)",
     "gemma4-31b": "Gemma 4 (31B)",
+    "gptoss120b": "GPT-OSS-120B",
 }
 
 # Map contributor handles to provider context where known

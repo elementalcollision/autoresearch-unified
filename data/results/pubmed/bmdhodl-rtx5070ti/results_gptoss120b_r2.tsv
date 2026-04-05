@@ -1,0 +1,101 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
+exp0	baseline	1.202751	6.0	0	0.0	0	baseline	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp1	Add label smoothing to cross-entropy loss to improve generalization	1.179595	7.0	0	0.0	0	keep	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp2	Add dropout (p=0.1) after attention and MLP residual connections to improve regularization	1.223943	7.2	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp3	Reduce embedding initialization std from 1.0 to 0.02 for better generalization	1.064721	6.0	0	0.0	0	keep	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp4	Add small L2 regularization on token embeddings to improve generalization [IndentationError: unexpected indent]	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp5	Set matrix weight decay to zero to reduce regularization on core weights	1.119637	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp6	Add a small learning rate warmup to improve early training stability	1.126646	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp7	Add a small learning rate warmup (5% of the time budget) to improve early training stability	1.126164	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp8	Reduce softcap from 12 to 6 to better regularize logits	1.129564	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp9	Increase L2 regularization on token embeddings to improve generalization	1.086838	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp10	Increase L2 regularization (weight decay) on token embeddings to improve generalization	1.086493	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp11	Add bias terms to all linear layers (except ve_gate) to increase model capacity [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp12	Add dropout after token embeddings to improve regularization	1.089443	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp13	Add dropout after final layer normalization before logits to improve regularization	1.071234	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp14	Replace ReLU-square activation in MLP with GELU for better expressivity	1.109126	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp15	Increase z-loss regularization coefficient to strengthen logit regularization	1.089720	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp16	Enable cuDNN benchmark to improve throughput and allow more training steps within the time budget	1.083413	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp17	Enable cuDNN benchmark for higher throughput	1.087206	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp18	Increase weight decay for token embeddings to improve regularization	1.077753	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp19	FAILED TO APPLY: Add dropout after final layer normalization before logits to improve regularization	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp20	Reduce softcap from 12 to 8 to improve logit regularization and potentially lower val_bpb	1.093030	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp21	Replace ReLU-square activation in MLP with SiLU (Swish) for potentially better expressivity	1.112338	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp22	Replace linear LR schedule with cosine schedule for smoother learning rate decay [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp23	Use torch.compile's reduce-overhead mode to improve training throughput [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp24	FAILED TO APPLY: Add dropout after token embeddings and after final layer normalization to improve regularization	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp25	Add dropout after attention output to improve regularization	1.093541	6.1	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp26	Add a small learning rate warmup (5% of time budget) to improve early training stability	1.136945	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp27	Increase Muon optimizer orthogonalization steps from 5 to 7 for potentially better convergence	1.083804	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp28	FAILED TO APPLY: Enable cuDNN benchmark for potentially higher throughput	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp29	FAILED TO APPLY: Increase learning rate for per-layer scalar parameters to accelerate adaptation	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp30	Increase Muon optimizer orthogonalization steps from 5 to 9 for potentially better convergence	1.084079	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp31	Increase Muon optimizer orthogonalization steps from 5 to 11 for potentially better convergence	1.087894	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp32	FAILED TO APPLY: Use higher Adam betas for better stability and convergence	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp33	Add dropout after final layer normalization before logits (p=0.1) to improve regularization	1.075131	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp34	Remove adaptive gradient clipping by setting max_norm to a constant high value	1.084362	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp35	Replace linear warmdown with cosine LR decay for smoother schedule	1.209291	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp36	Add a small learning rate warmup (2% of the time budget) to improve early training stability	1.120436	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp37	Set a non-zero final learning rate fraction to retain some learning rate at the end of training	1.073404	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp38	Use cosine decay for learning rate warmdown and import math at top	1.144734	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp39	Replace linear LR schedule with cosine warmup and warmdown for smoother learning rate progression	1.090000	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp40	FAILED TO APPLY: Enable cuDNN benchmark for higher throughput	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp41	Set Muon optimizer weight decay to zero to reduce regularization on core matrix parameters	1.106942	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp42	Disable adaptive gradient clipping by setting a very high max_norm	1.140760	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp43	Use all short windows to reduce attention compute and increase training throughput	1.083153	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp44	Disable adaptive gradient clipping by setting a very high max_norm	1.145432	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp45	FAILED TO APPLY: Enable cuDNN benchmark for higher throughput	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp46	Enable cuDNN benchmark for higher throughput	1.086650	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp47	FAILED TO APPLY: Combine final-layer dropout with a non-zero final learning rate fraction to improve regularization and maintain learning rate at the end	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp48	Increase z-loss regularization coefficient from 1e-4 to 2e-4 to strengthen logit regularization	1.091623	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp49	Set a small non-zero final learning rate fraction to keep learning rate at the end of training	1.079878	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp50	Disable adaptive gradient clipping by using a constant max_norm of 1.0	1.082911	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp51	Increase z-loss regularization coefficient to strengthen logit regularization	1.089140	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp52	Increase Muon orthogonalization steps from 5 to 7 for potentially better convergence	1.083364	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp53	Enable torch.compile reduce-overhead mode to improve training throughput [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp54	Increase z-loss regularization coefficient to strengthen logit regularization	1.091472	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp55	Use all short windows ("SSSS") to reduce compute per step and increase training throughput	1.085726	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp56	Enable cuDNN benchmark to increase training throughput	1.082595	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp57	FAILED TO APPLY: Enable cuDNN benchmark for higher throughput	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp58	Add stochastic depth (randomly drop entire transformer blocks) to improve regularization and potentially lower val_bpb.	1.335104	11.6	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp59	Increase softcap from 12 to 24 to allow larger logits range, potentially improving model expressivity and lowering val_bpb	1.082677	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp60	Reduce token embedding initialization std to 0.02 for better generalization	1.058682	6.0	0	0.0	0	keep	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp61	Enable cuDNN benchmark for higher throughput	1.061450	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp62	Use full float32 precision for matmul instead of high (TF32) to improve training stability and potentially lower validation bpb.	1.084675	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp63	Reduce softcap from 12 to 8 to allow logits more expressive range	1.092761	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp64	Increase model depth to at least 14 layers to improve capacity	2.822764	17.1	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp65	Add dropout (p=0.2) after final layer normalization before logits to improve regularization	1.132095	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp66	Increase per-layer scalar learning rates by doubling SCALAR_LR	1.206528	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp67	Enable cuDNN benchmark and disable TF32 for potentially higher throughput and better precision	1.085946	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp68	FAILED TO APPLY: Add a modest dropout (p=0.05) after the final layer normalization before logits to improve regularization	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp69	Disable gradient clipping to increase training throughput	1.149303	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp70	Increase softcap from 12 to 16 to allow larger logit range and potentially improve model expressivity	1.088320	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp71	Lower float32 matmul precision to medium for faster training throughput	1.082765	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp72	Use constant weight decay instead of cosine decay schedule for Muon optimizer	1.080724	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp73	Increase final learning rate fraction to retain more LR at end of training	1.062803	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp74	Add a modest dropout (p=0.1) after each transformer block's output to improve regularization	1.098751	6.1	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp75	Switch autocast to float16 for potentially higher throughput	1.084892	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp76	Increase z-loss regularization coefficient from 1e-4 to 5e-4 for stronger logit regularization	1.090477	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp77	Increase head dimension to reduce number of attention heads	1.062834	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp78	Disable aggressive gradient clipping by using a large constant max_norm	1.143079	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp79	Enable cuDNN benchmark and disable TF32 for higher precision and potential throughput gains	1.085846	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp80	Disable TF32 matrix multiplication for higher precision (may improve validation bpb)	1.084867	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp81	Enable cuDNN benchmark to increase training throughput	1.085483	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp82	Disable adaptive gradient clipping to reduce overhead and allow larger gradients	1.142858	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp83	Keep token and value embeddings in float32 (higher precision) instead of casting to bf16, which may improve validation bpb	1.100048	7.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp84	FAILED TO APPLY: Use higher Adam betas for better stability and convergence	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp85	Reduce HEAD_DIM to increase number of attention heads (more expressive attention)	1.168823	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp86	FAILED TO APPLY: Enable cuDNN benchmark for higher training throughput	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp87	Add bias term to the language model head to increase expressivity	1.096577	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp88	Reduce HEAD_DIM to increase number of attention heads (more expressive attention)	1.171037	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp89	Reduce float32 matmul precision from high to medium to increase training throughput	1.096999	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp90	Reduce token embedding initialization std from 1.0 to 0.01 (lower than previous 0.02) to improve generalization	1.063359	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp91	Reduce Muon optimizer weight decay from 0.2 to 0.05 to improve regularization and potentially lower val_bpb	1.110836	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp92	Reduce LR warmdown ratio to keep higher learning rate longer during training	1.073310	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp93	Disable adaptive gradient clipping by setting a large constant max_norm	1.158634	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp94	Remove softcap tanh scaling from logits to allow unrestricted logits range	1.093284	6.5	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp95	Reduce softcap from 12 to 10 to allow slightly larger logit range and potentially improve validation bpb	1.096605	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp96	Reduce LR warmdown fraction to keep learning rate higher longer, potentially improving convergence within the fixed time budget	1.072476	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp97	Increase weight decay for token and value embedding parameters to improve regularization	1.086375	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp98	Increase weight decay for token embedding parameters to improve regularization	1.085449	6.0	0	0.0	0	discard	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp99	Keep token and value embeddings in float32 instead of casting to bfloat16 to improve model quality [IndentationError: expected an indented block after 'for' statement on line 202]	0.000000	0.0	0	0.0	0	crash	gptoss120b-r2-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
