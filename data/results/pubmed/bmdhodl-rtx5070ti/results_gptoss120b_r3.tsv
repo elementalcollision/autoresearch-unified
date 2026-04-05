@@ -1,0 +1,101 @@
+exp	description	val_bpb	peak_mem_gb	tok_sec	mfu	steps	status	notes	gpu_name	baseline_sha	watts	joules_per_token	total_energy_joules
+exp0	baseline	1.085763	6.0	0	0.0	0	baseline	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp1	Add a small learning rate warmup phase to improve early training stability	1.113011	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp2	Add dropout (p=0.1) after MLP activation to regularize training	1.092556	6.5	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp3	Add label smoothing (0.01) to cross-entropy loss for better generalization	1.109973	7.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp4	Increase weight decay on token embeddings and value embeddings to improve regularization	1.078353	6.0	0	0.0	0	keep	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp5	FAILED TO APPLY: Add dropout (p=0.1) after each residual addition in Block to improve regularization	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp6	Add small L2 regularization on per-layer scalar parameters (resid_lambdas and x0_lambdas) to improve stability and reduce validation bpb	1.091502	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp7	Replace linear LR schedule with a cosine annealing schedule to improve learning dynamics [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp8	Add small gradient noise injection after clipping to improve generalization [timeout (900s wall clock)]	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp9	Increase z-loss regularization strength to better control logits magnitude	1.090483	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp10	Switch LR schedule to cosine decay (with optional warmup) for smoother learning rate progression	1.210657	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp11	Increase z-loss regularization strength to better control logits magnitude	1.086794	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp12	Add a small learning rate warmup to improve early training stability	1.112757	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp13	Increase weight decay for token embeddings to improve regularization	1.077110	6.0	0	0.0	0	keep	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp14	Add modest label smoothing (0.05) to cross-entropy loss for better generalization	1.216479	7.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp15	Replace custom ReLU-square activation in MLP with GELU for potentially smoother gradients	1.104767	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp16	Add dropout after attention output to regularize and improve validation bpb	1.090329	6.1	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp17	Add embedding dropout (p=0.1) to regularize token embeddings	1.083499	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp18	Increase softcap to allow larger logits, potentially improving validation bpb	1.082536	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp19	Increase model capacity by raising ASPECT_RATIO from 64 to 80, yielding larger hidden dimension and more attention heads	1.282743	7.5	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp20	Increase softcap from 12 to 20 to allow larger logits, potentially improving validation bpb	1.085502	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp21	Add dropout to value embeddings after gating to regularize attention input	1.090093	6.1	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp22	Increase softcap from 12 to 30 to allow larger logits and potentially improve validation bpb	1.086789	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp23	Set a non-zero final learning rate fraction to retain some learning rate at the end of training	1.076773	6.0	0	0.0	0	keep	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp24	Make LR warmdown more aggressive to potentially improve validation bpb	1.096443	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp25	Increase z-loss regularization weight to better control logits magnitude	1.088880	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp26	Set matrix weight decay to zero to reduce over-regularization of Muon parameters	1.110470	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp27	Add bias to the query projection linear layer to improve expressivity [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp28	Use full context window at all layers by changing window pattern to all long windows	1.086437	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp29	Increase softcap from 12 to 15 to allow slightly larger logits	1.084003	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp30	Increase z-loss regularization weight to strengthen logit magnitude control	1.092663	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp31	Lower softcap from 12 to 8 to potentially improve logit scaling and validation bpb	1.096128	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp32	Increase weight decay for token embeddings to 0.01 for stronger regularization	1.076852	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp33	Reduce head dimension to increase training throughput and allow more steps within the time budget	1.153519	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp34	Increase weight decay for value embeddings from 0.001 to 0.01 for stronger regularization	1.082378	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp35	Reduce model size by decreasing ASPECT_RATIO to increase training throughput	0.992396	4.6	0	0.0	0	keep	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp36	Increase z-loss regularization weight to strengthen logit magnitude control	0.998766	4.6	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp37	Increase z-loss regularization weight to strengthen logit magnitude control	1.088001	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp38	Initialize per-layer x0 scaling parameters to zero instead of 0.1 to reduce initial bias and potentially improve training dynamics	1.107297	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp39	Reduce value embedding gate scaling from 2× to 1× to lessen residual impact of value embeddings	1.094731	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp40	Set Muon weight decay to zero to reduce regularization on matrix parameters	1.109384	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp41	Introduce a small learning rate warmup phase (2% of total time) to improve early training stability	1.116748	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp42	Increase HEAD_DIM to 256 to reduce number of attention heads and improve training throughput	1.061178	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp43	Increase z-loss regularization coefficient to strengthen logit magnitude control	1.092418	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp44	Set Muon weight decay to zero to reduce over-regularization	1.107320	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp45	FAILED TO APPLY: Set a non-zero final learning rate fraction to keep some learning rate at the end of training	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp46	Increase z-loss regularization weight to strengthen logit magnitude control	1.087672	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp47	Add mild label smoothing (0.02) to cross-entropy loss for better generalization	1.138675	7.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp48	Increase z-loss regularization weight from 1e-4 to 5e-4 to strengthen logit magnitude control	1.088482	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp49	Add small weight decay to x0 scaling parameters for better regularization	1.084159	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp50	Enable TF32 and cuDNN benchmarking to increase training throughput	1.083608	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp51	Initialize per-layer residual scaling to 0.5 and remove initial x0 bias to improve training dynamics	1.066255	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp52	Enable cuDNN benchmark for faster kernel selection, increasing training throughput	1.086526	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp53	Reduce value‑embedding gate scaling from 2× to 1× (remove extra factor) to lessen residual impact of value embeddings	1.095000	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp54	Enable cuDNN benchmark and TF32 for higher training throughput	1.083986	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp55	Switch autocast precision from bfloat16 to float16 for faster throughput	1.087125	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp56	Add small L2 weight decay to per-layer x0 scaling parameters for better regularization	1.080953	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp57	Reduce z-loss regularization weight to lessen logit magnitude penalty	1.081734	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp58	Reduce the weight decay floor in the cosine decay schedule to allow higher learning rates later in training	1.087108	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp59	Add dropout (p=0.2) after attention and MLP outputs in each Block for regularization	1.078586	6.3	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp60	Increase weight decay for embedding-related AdamW parameter groups from 0.001 to 0.01 to strengthen regularization	1.077778	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp61	Increase scalar learning rate to allow faster adaptation of per-layer scaling parameters	1.129527	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp62	Add small weight decay to x0 scaling parameters for better regularization	1.085324	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp63	Increase weight decay for value embedding parameters to 0.01 for better regularization	1.084072	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp64	Reduce z-loss regularization weight to lessen logit magnitude penalty	1.083171	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp65	FAILED TO APPLY: Add small label smoothing (0.001) to cross-entropy loss	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp66	Increase Muon weight decay to strengthen regularization	1.079083	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp67	Increase LR warmdown ratio to decay learning rate more aggressively towards the end	1.120822	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp68	Remove Muon weight decay to reduce regularization on matrix parameters	1.106532	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp69	Enable cuDNN benchmark and TF32 matmul for higher throughput	1.087170	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp70	Increase LR warmdown aggressiveness to 0.75 to improve convergence	1.121343	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp71	Use all short windows to reduce attention compute and increase training steps	1.088194	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp72	Initialize residual scaling parameters to 0.5 instead of 1.0 to improve training dynamics	1.069875	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp73	FAILED TO APPLY: Add a tiny label smoothing (0.001) to cross-entropy loss for better regularization	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp74	Force use of native torch SDPA instead of flash-attn3 to improve throughput	1.084256	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp75	Replace ReLU-square activation in MLP with SiLU (Swish) activation	1.106846	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp76	Make softcap a learnable parameter instead of a fixed constant [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp77	Use torch.compile with reduce-overhead mode to lower compilation overhead and increase training throughput [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp78	Add tiny label smoothing (0.001) to cross-entropy loss for slight regularization	1.094065	7.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp79	Increase weight decay for token embeddings, value embeddings, and lm_head to 0.01 for stronger regularization	1.076748	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp80	FAILED TO APPLY: Enable cuDNN benchmark and TF32 for higher training throughput	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp81	Replace piecewise LR schedule with a smooth cosine decay over the entire training time	1.206338	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp82	Reduce model dimension by lowering ASPECT_RATIO to 48, increasing training steps within the time budget	0.991808	4.6	0	0.0	0	keep	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp83	Enable reduce-overhead mode in torch.compile to lower compile overhead and increase effective training steps [Traceback (most recent call last):	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp84	Increase head dimension to reduce number of attention heads and improve throughput	1.413419	9.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp85	Replace piecewise LR schedule with a smooth cosine annealing schedule for the entire training	1.211807	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp86	Reduce model dimension by lowering ASPECT_RATIO from 64 to 48, enabling more training steps within the time budget	0.993419	4.6	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp87	Reduce weight initialization scale to improve early training stability	1.076733	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp88	Switch autocast precision from bfloat16 to float16 for faster throughput	1.082897	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp89	Increase softcap from 12 to 40 to allow larger logits and potentially improve validation bpb	1.083666	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp90	Increase scalar learning rate to accelerate per-layer scaling parameter updates	1.211362	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp91	Increase head dimension to 256, reducing number of attention heads and improving throughput	1.062020	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp92	Remove weight decay floor in cosine schedule to allow decay to zero at end of training	1.088426	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp93	Disable aggressive adaptive gradient clipping by setting a constant high clipping norm	1.082817	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp94	Enable TF32 and cuDNN benchmark to increase training throughput	1.082073	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp95	Remove weight decay floor in cosine decay schedule to allow weight decay to reach zero at training end	1.086932	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp96	Enable cuDNN benchmark and TF32 for faster training throughput	1.085340	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp97	Reduce value embedding gate scaling from 2× to 1× to lessen its impact on attention values	1.098193	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp98	FAILED TO APPLY: Increase per-layer scalar learning rates by doubling SCALAR_LR	0.000000	0.0	0	0.0	0	crash	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
+exp99	Increase HEAD_DIM to 512 to reduce number of attention heads and improve training throughput	1.362862	6.0	0	0.0	0	discard	gptoss120b-r3-controlled	NVIDIA GeForce RTX 5070 Ti	3fb6704	0.0	0.000000	0.0
