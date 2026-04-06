@@ -1,0 +1,47 @@
+[project]
+name = "autoagent-unified"
+version = "0.1.0"
+description = "Autonomous agent optimization + LLM-driven GPU pretraining research — unified framework with drift monitoring"
+readme = "PLAN.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+dependencies = [
+    "numpy>=2.2.6",
+    "pandas>=2.0.0",
+    "openpyxl>=3.1.0",
+]
+
+[project.optional-dependencies]
+# LLM providers (multi-provider support — install one or more)
+anthropic = ["anthropic>=0.40.0"]
+openai = ["openai>=1.0.0"]
+openai-agents = ["openai-agents>=0.1.0"]
+
+# Platform-specific GPU dependencies
+cuda = ["torch>=2.6.0", "nvidia-ml-py>=12.560.30"]
+rocm = ["torch>=2.6.0"]
+metal = ["mlx>=0.5.0", "torch>=2.6.0"]
+
+# Analysis & visualization
+analysis = ["matplotlib>=3.10.0", "pyarrow>=21.0.0"]
+
+# Convenience bundles
+agent-claude = ["autoagent-unified[anthropic]"]
+agent-openai = ["autoagent-unified[openai,openai-agents]"]
+agent-all = ["autoagent-unified[anthropic,openai,openai-agents]"]
+
+all-cuda = ["autoagent-unified[agent-all,cuda,analysis]"]
+all-rocm = ["autoagent-unified[agent-all,rocm,analysis]"]
+all-metal = ["autoagent-unified[agent-all,metal,analysis]"]
+
+[tool.setuptools]
+packages = [
+    "autoresearch",
+    "backends",
+    "drift",
+    "tools",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]

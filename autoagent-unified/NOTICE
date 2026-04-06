@@ -1,0 +1,46 @@
+THIRD-PARTY NOTICES
+====================
+
+autoagent-unified incorporates code and concepts from the following projects:
+
+
+1. autoagent
+   Source: https://github.com/kevinrgu/autoagent
+   License: No explicit license declared (as of 2026-04-06).
+            Contact the upstream author (kevinrgu) to clarify licensing terms
+            before distributing this fork publicly.
+   Components used:
+     - Meta-agent optimization framework (agent.py architecture)
+     - Harbor benchmark integration pattern
+     - program.md directive format
+     - Dockerfile.base container structure
+
+
+2. autoresearch-unified
+   Source: https://github.com/elementalcollision/autoresearch-unified
+   License: MIT (code) / CC-BY-4.0 (data)
+   Components ported:
+     - autoresearch/resilience.py   (crash-safe atomic writes, heartbeat, signal handlers)
+     - autoresearch/results.py      (14-column TSV result management)
+     - autoresearch/parser.py       (training output parser)
+     - autoresearch/llm_backend.py  (multi-provider LLM abstraction)
+     - autoresearch/git_manager.py  (experiment commit/revert tracking)
+     - autoresearch/credentials.py  (API key management)
+     - autoresearch/hardware.py     (hardware info for TUI display)
+     - autoresearch/power.py        (cross-platform power monitoring)
+     - backends/__init__.py         (hardware detection, peak FLOPS)
+     - backends/registry.py         (platform registry)
+
+
+NOTE ON LICENSING
+=================
+The upstream autoagent repository does not include a LICENSE file as of the
+date this fork was created. Under default copyright law, this means the code
+is technically "all rights reserved" by the original author.
+
+ACTION REQUIRED: Before distributing this fork publicly, you must:
+1. Contact kevinrgu to request a permissive license (MIT/Apache-2.0) be added
+   to the upstream repository, OR
+2. Obtain explicit written permission to fork and redistribute the code.
+
+Once the upstream license is clarified, update this NOTICE file accordingly.

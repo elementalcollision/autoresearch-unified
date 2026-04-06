@@ -1,0 +1,37 @@
+# autoagent-unified Docker base image
+#
+# Based on autoagent's original Dockerfile with autoresearch additions:
+# - Multi-provider LLM support (Claude + OpenAI)
+# - Power monitoring via nvidia-ml-py
+# - Drift monitor dependencies
+
+FROM ghcr.io/astral-sh/uv:python3.12-bookworm-slim
+
+# System dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy project files
+COPY pyproject.toml .
+COPY agent.py .
+COPY program.md .
+
+# Copy modules
+COPY autoresearch/ autoresearch/
+COPY backends/ backends/
+COPY drift/ drift/
+COPY tools/ tools/
+
+# Install dependencies
+RUN uv pip install --system -e ".[agent-all,cuda]" 2>/dev/null || \
+    uv pip install --system -e ".[agent-all]"
+
+# Create output directories
+RUN mkdir -p /logs /app/output /app/results
+
+# Default: run the agent
+CMD ["python", "agent.py"]
