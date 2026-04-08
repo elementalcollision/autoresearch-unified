@@ -15,8 +15,16 @@ import torch.nn.functional as F
 _COMPILE = os.environ.get("AUTORESEARCH_NO_COMPILE", "") != "1"
 
 def _maybe_compile(fn):
-    """Apply torch.compile unless AUTORESEARCH_NO_COMPILE=1."""
-    return torch.compile(fn) if _COMPILE else fn
+    """Apply torch.compile unless AUTORESEARCH_NO_COMPILE=1.
+    Catches Inductor backend crashes (e.g. CDNA3 shape inference bug) and
+    falls back to eager rather than crashing the training run."""
+    if not _COMPILE:
+        return fn
+    try:
+        return torch.compile(fn)
+    except (AssertionError, RuntimeError) as e:
+        print(f"torch.compile failed for {fn.__name__}: {e} — using eager fallback")
+        return fn
 
 # ---------------------------------------------------------------------------
 # Polar Express coefficients (Newton-Schulz orthogonalization)

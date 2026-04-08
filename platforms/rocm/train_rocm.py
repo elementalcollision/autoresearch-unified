@@ -15,6 +15,11 @@ from dataclasses import dataclass, asdict
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
+import torch._dynamo.config as dynamo_config
+
+# Dynamo safety net: suppress compilation errors and fall back to eager
+# rather than crashing the entire training run. Logs when suppression fires.
+dynamo_config.suppress_errors = True
 
 from backends import get_hardware_info, suggest_hyperparameters, get_peak_flops, sync_device, get_peak_memory_mb
 from backends.power import PowerMonitor
@@ -401,14 +406,40 @@ optimizer = model.setup_optimizer(
     weight_decay=WEIGHT_DECAY,
 )
 
-# torch.compile for ROCm — uses AMD Triton backend for kernel fusion
-# "default" mode is used instead of "reduce-overhead" because CUDA graph capture
-# (used by reduce-overhead) has limited support on ROCm/HIP
+# torch.compile for ROCm — tiered fallback chain for CDNA3 compatibility
+# Inductor backend crashes on MI300X (gfx942) with "wrong number of dimensions"
+# in compiled backward pass. This chain tries Inductor first, then aot_eager, then eager.
+_COMPILE_BACKEND = os.environ.get("AUTORESEARCH_COMPILE_BACKEND", "inductor")
+_COMPILE_MODE = os.environ.get("AUTORESEARCH_COMPILE_MODE", "default")
+
+# Inductor env var workarounds for CDNA3 shape inference bugs
+# These are safe no-ops if the bug is fixed in the PyTorch version being used
+os.environ.setdefault("TORCHINDUCTOR_SHAPE_PADDING", "1")
+os.environ.setdefault("TORCHINDUCTOR_FREEZING", "0")
+
 if os.environ.get("AUTORESEARCH_NO_COMPILE", "") == "1":
     print("torch.compile DISABLED (AUTORESEARCH_NO_COMPILE=1)")
 else:
-    print("Compiling model with torch.compile (default mode)...")
-    model = torch.compile(model, mode="default")
+    _compile_ok = False
+    # Tier 1: Try requested backend + mode (default: inductor/default)
+    try:
+        print(f"Compiling model with torch.compile(mode='{_COMPILE_MODE}', backend='{_COMPILE_BACKEND}')...")
+        model = torch.compile(model, mode=_COMPILE_MODE, backend=_COMPILE_BACKEND)
+        _compile_ok = True
+    except (AssertionError, RuntimeError) as e:
+        print(f"torch.compile failed with {_COMPILE_BACKEND}/{_COMPILE_MODE}: {e}")
+
+    # Tier 2: Fall back to aot_eager (AOT autograd without Inductor codegen)
+    if not _compile_ok and _COMPILE_BACKEND != "aot_eager":
+        try:
+            print("Falling back to torch.compile(backend='aot_eager')...")
+            model = torch.compile(model, backend="aot_eager")
+            _compile_ok = True
+        except Exception as e2:
+            print(f"aot_eager fallback also failed: {e2}")
+
+    if not _compile_ok:
+        print("WARNING: All torch.compile backends failed — running in eager mode (expect low MFU)")
 
 train_loader = make_dataloader(tokenizer, DEVICE_BATCH_SIZE, MAX_SEQ_LEN, "train", backend="cuda")
 x, y, epoch = next(train_loader)  # prefetch first batch
