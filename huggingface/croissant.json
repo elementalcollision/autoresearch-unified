@@ -277,6 +277,83 @@
             "fileObject": { "@id": "experiments-parquet" },
             "extract": { "column": "notes" }
           }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "experiments/watts",
+          "name": "watts",
+          "description": "Average GPU power draw during training in watts (software-sampled via pynvml/amdsmi/powermetrics). 0.0 if unavailable.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "watts" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "experiments/joules_per_token",
+          "name": "joules_per_token",
+          "description": "GPU energy per token in joules (gpu_watts * training_seconds / total_tokens). 0.0 if unavailable.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "joules_per_token" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "experiments/total_energy_joules",
+          "name": "total_energy_joules",
+          "description": "Total GPU energy consumption for the experiment in joules. 0.0 if unavailable.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "total_energy_joules" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "experiments/wall_watts",
+          "name": "wall_watts",
+          "description": "Average wall power from external meter (MLCommons power-dev / Yokogawa) in watts. 0.0 if no external meter available.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "wall_watts" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "experiments/wall_joules_per_token",
+          "name": "wall_joules_per_token",
+          "description": "Wall energy per token in joules (wall_watts * training_seconds / total_tokens). 0.0 if no external meter available.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "wall_joules_per_token" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "experiments/wall_total_energy_joules",
+          "name": "wall_total_energy_joules",
+          "description": "Total wall energy consumption for the experiment in joules. 0.0 if no external meter available.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "wall_total_energy_joules" }
+          }
+        },
+        {
+          "@type": "cr:Field",
+          "@id": "experiments/gpu_power_fraction",
+          "name": "gpu_power_fraction",
+          "description": "Fraction of wall power consumed by GPU (gpu_watts / wall_watts). 0.0 if no external meter available.",
+          "dataType": "sc:Float",
+          "source": {
+            "fileObject": { "@id": "experiments-parquet" },
+            "extract": { "column": "gpu_power_fraction" }
+          }
         }
       ]
     },

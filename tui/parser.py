@@ -33,6 +33,10 @@ class FinalMetrics:
     avg_watts: float = 0.0
     joules_per_token: float = 0.0
     total_energy_j: float = 0.0
+    wall_watts: float = 0.0
+    wall_joules_per_token: float = 0.0
+    wall_total_energy_j: float = 0.0
+    gpu_power_fraction: float = 0.0
 
 
 # Matches: step 00192 (62.3%) | loss: 4.168331 | lrm: 0.66 | dt: 1001ms | tok/sec: 32,737 | mfu: 23.0% | epoch: 1 | remaining: 118s
@@ -140,6 +144,10 @@ class OutputParser:
             avg_watts=float(d.get('avg_watts', 0)),
             joules_per_token=float(d.get('joules_per_token', 0)),
             total_energy_j=float(d.get('total_energy_j', 0)),
+            wall_watts=float(d.get('wall_watts', 0)),
+            wall_joules_per_token=float(d.get('wall_joules_per_token', 0)),
+            wall_total_energy_j=float(d.get('wall_total_energy_j', 0)),
+            gpu_power_fraction=float(d.get('gpu_power_fraction', 0)),
         )
 
     def _format_final(self) -> str:

@@ -497,6 +497,10 @@ class ExperimentOrchestrator:
                 watts=final.avg_watts,
                 joules_per_token=final.joules_per_token,
                 total_energy_joules=final.total_energy_j,
+                wall_watts=final.wall_watts,
+                wall_joules_per_token=final.wall_joules_per_token,
+                wall_total_energy_joules=final.wall_total_energy_j,
+                gpu_power_fraction=final.gpu_power_fraction,
             )
             self.best_val_bpb = final.val_bpb
             self.best_experiment = "exp0 (baseline)"
@@ -784,6 +788,10 @@ class ExperimentOrchestrator:
                 watts=final.avg_watts,
                 joules_per_token=final.joules_per_token,
                 total_energy_joules=final.total_energy_j,
+                wall_watts=final.wall_watts,
+                wall_joules_per_token=final.wall_joules_per_token,
+                wall_total_energy_joules=final.wall_total_energy_j,
+                gpu_power_fraction=final.gpu_power_fraction,
             )
         else:
             # Crash
